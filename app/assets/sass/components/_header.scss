@@ -1,0 +1,94 @@
+/*------------------------------------*\
+  #Header
+\*------------------------------------*/
+
+.header-global {
+
+    background: $ccs-colour;
+    color: govuk-colour("white");
+
+    @media only print {
+        padding-bottom: 20px; // print with graphics: fix bottom header light red line
+    }
+
+}
+
+.header-global--news-details {
+
+    background: #404040;
+    color: govuk-colour("white");
+
+}
+
+.header-global a {
+
+    color: white;
+
+    &:hover,
+    &:active {
+
+        color: govuk-colour("light-grey");
+
+    }
+    &:focus {
+
+        color: $govuk-focus-text-colour;
+
+    }
+    @media only print {
+        color: black;
+    }
+
+}
+
+.logo {
+
+    display: block;
+
+    max-width: govuk-px-to-rem(110);
+
+    &:hover {
+
+        opacity: 0.5;
+
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    @include govuk-media-query($from: desktop) {
+
+        max-width: govuk-px-to-rem(140);
+
+    }
+
+}
+
+.header-global .logo {
+
+    padding-top: govuk-px-to-rem(20);
+
+    @include govuk-media-query($from: desktop) {
+        // Remove the float: left
+        // Add margin-left for spacing from the left edge
+        margin-left: govuk-px-to-rem(20);
+        padding-top: 0;
+        margin-right: auto;
+        margin-left: 100px;
+    }
+
+}
+
+
+.logo img {
+    // IE9 Fix
+    border: 0 none;
+}
+
+
+.footer-global .logo {
+
+    margin-bottom: govuk-px-to-rem(40);
+
+}

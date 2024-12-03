@@ -1,0 +1,145 @@
+<div class="govuk-panel govuk-panel--white">
+    <fieldset class="govuk-fieldset" aria-describedby="star-rating-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-heading-m">Overall, how would you rate your experience with the our service today?</h2>
+        </legend>
+
+        <p class="govuk-body" id="star-rating-hint">To do this add a star rating out of 5 - with 1 being very
+            dissatisfied and 5 being very satisfied.
+            <span class="govuk-visually-hidden">Select a rating by clicking on the stars</span>
+        </p>
+
+        <div class="star-rating">
+            <span class="star" data-rating="1" role="radio" aria-label="1 star very dissatisfied" tabindex="0">☆</span>
+            <span class="star" data-rating="2" role="radio" aria-label="2 stars dissatisfied" tabindex="0">☆</span>
+            <span class="star" data-rating="3" role="radio" aria-label="3 stars neither satisfied or dissatisfied"
+                tabindex="0">☆</span>
+            <span class="star" data-rating="4" role="radio" aria-label="4 stars satisfied" tabindex="0">☆</span>
+            <span class="star" data-rating="5" role="radio" aria-label="5 stars very satisfied" tabindex="0">☆</span>
+
+            <div class="flex-break"></div>
+            <div id="rating1" class="govuk-body-m rating-text">Very dissatisfied</div>
+            <div id="rating2" class="govuk-body-m rating-text">Dissatisfied</div>
+            <div id="rating3" class="govuk-body-m rating-text">Neither satisfied or dissatisfied</div>
+            <div id="rating4" class="govuk-body-m rating-text">Satisfied</div>
+            <div id="rating5" class="govuk-body-m rating-text">Very satisfied</div>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button" onclick="submitStarRating()"
+            style="background-color: #00FFD1; color: black; margin-top: 2rem;">
+            Submit
+        </button>
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="cancelStarRating()"
+            style="margin-top: 2rem; margin-left: 1rem; background-color: #cbcbcb;">
+            Cancel
+        </button>
+    </fieldset>
+</div>
+
+<style>
+    .govuk-panel--white {
+        background: white;
+        padding: 2rem;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .star-rating {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .star {
+        cursor: pointer;
+        padding: 0 0.5rem;
+        font-size: 4rem;
+    }
+
+    .star:hover,
+    .star.selected {
+        color: #FFB800;
+    }
+
+    .star:hover~.star {
+        color: black;
+    }
+
+    .rating-text {
+        display: none;
+        white-space: nowrap;
+        width: 350px;
+        justify-content: center;
+        margin: 10px auto;
+    }
+
+    .flex-break {
+        flex-basis: 100%;
+        height: 0;
+    }
+</style>
+
+<script>
+    const stars = document.querySelectorAll('.star');
+    const ratingTexts = document.querySelectorAll('.rating-text');
+    const starRatingContainer = document.querySelector('.star-rating');
+
+    stars.forEach(star => {
+        // Show rating text on hover
+        star.addEventListener('mouseenter', () => {
+            const rating = star.dataset.rating;
+            hideAllRatingTexts();
+            document.getElementById(`rating${rating}`).style.display = 'flex';
+        });
+
+        // Handle selection
+        star.addEventListener('click', handleSelection);
+        star.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleSelection(e);
+            }
+        });
+    });
+
+    // Replace individual star mouseleave with container mouseleave
+    starRatingContainer.addEventListener('mouseleave', () => {
+        const selectedStar = starRatingContainer.querySelector('.star.selected');
+        if (selectedStar) {
+            // If there's a selection, show that rating's text
+            const rating = selectedStar.dataset.rating;
+            hideAllRatingTexts();
+            document.getElementById(`rating${rating}`).style.display = 'flex';
+        } else {
+            // If no selection, hide all texts
+            hideAllRatingTexts();
+        }
+    });
+
+    function hideAllRatingTexts() {
+        ratingTexts.forEach(text => text.style.display = 'none');
+    }
+
+    function handleSelection(e) {
+        const rating = e.target.dataset.rating;
+        stars.forEach(s => {
+            s.classList.remove('selected');
+            if (s.dataset.rating <= rating) {
+                s.classList.add('selected');
+                s.textContent = '★';
+            } else {
+                s.textContent = '☆';
+            }
+        });
+
+        // Show the selected rating text
+        hideAllRatingTexts();
+        document.getElementById(`rating${rating}`).style.display = 'flex';
+    }
+
+    function cancelStarRating() {
+        // Navigate back to the previous page
+        window.history.back();
+    }
+</script>

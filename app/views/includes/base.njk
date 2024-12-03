@@ -1,0 +1,400 @@
+<!doctype html>
+<html class="{% block htmlclass %}no-js{% endblock %}" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    {% if content_group is defined and content_group is not empty %}
+    <meta name="content_group" value={{content_group}}>
+    {% endif%}
+
+    {% if homepage_meta is defined %}
+    <meta name="description"
+        content="We help the UK public sector get better value for money when buying products and services. Unlock the power of procurement with Crown Commercial Service.">
+    <meta name="thumbnail" content='https://assets.crowncommercial.gov.uk/wp-content/uploads/thumbnail.png' />
+    <meta property="og:image" content='https://assets.crowncommercial.gov.uk/wp-content/uploads/thumbnail.png' />
+    <meta property="twitter:image" content='https://assets.crowncommercial.gov.uk/wp-content/uploads/thumbnail.png' />
+    {% endif %}
+
+    {% if canonical is defined and canonical is not empty %}
+
+    {% if canonical[-1] == '/' %}
+    {% set canonical = canonical | slice(0, -1) %}
+    {% endif %}
+
+    <link rel="canonical" href="{{ site_url }}{{ canonical }}" />
+    {% endif %}
+
+    {#
+    # The minus is to remove whitespace
+    # https://twig.symfony.com/doc/2.x/templates.html#whitespace-control
+    #}
+    <title>{%- block title %}
+        {%- if page.head.title is not empty and page.head.title != page.title -%}
+        {{ page.head.title }}
+        {%- else -%}
+        {{ page.title | safe }} - CCS
+        {%- endif -%}
+        {% endblock -%}</title>
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <script>(function (H) {
+            H.className = H.className.replace(/\bno-js\b/, 'js')
+        })(document.documentElement)</script>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% endblock %}
+
+
+    {% if app.environment == "prod" %}
+    <link rel="stylesheet" href="/assets/styles/styles.min.css?v=1.54">
+    {% else %}
+    {# To debug CSS in other environments (not live), change the below to
+    # styles.css instead of styles.min.css
+    #}
+    <link rel="stylesheet" href="/assets/styles/styles.min.css?v=1.54">
+    {% endif %}
+
+    {# Browser icon #}
+    <link rel="icon" href="/assets/images/favicon.ico?v=1" />
+
+    {% block blocking_javascript %}
+
+    {# Google Tag Manager #}
+    <script>
+
+        var emailRegex = /(([^<>()\[\]\\.,;:\s@"%]+(\.[^<>()\[\]\\.,;:\s@"%]+)*)|(".+"))(@|%40)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+
+        function extractParams() {
+            var urlParams = {},
+                match,
+                search = /([^&=]+)=?([^&]*)/g,
+                query = window.location.search.substring(1);
+            while (match = search.exec(query)) {
+                urlParams[match[1]] = match[2];
+            }
+            return urlParams
+        }
+
+        function rewriteURL(urlParams) {
+            var keys = Object.keys(urlParams).sort();
+            var params = "?";
+
+            for (var i = 0; i < keys.length; i++) {
+                if (i > 0) {
+                    params = params.concat("&")
+                }
+                params = params.concat(keys[i] + "=" + urlParams[keys[i]])
+            }
+            return window.location.protocol + "//" + window.location.host + window.location.pathname + params + window.location.hash
+        }
+
+        if (Object.keys(window.location.search).length === 0) {
+            var host = window.location.host;
+            var pathname = window.location.pathname
+            var url = host + pathname;
+
+            if (url.match(emailRegex) !== null) {
+                window.history.replaceState({}, '', 'EMAIL_REDACTED');
+            }
+
+        } else {
+            var urlParams = extractParams()
+            // look for any email and replace it 
+            for (var key in urlParams) {
+                urlParams[key] = decodeURIComponent(urlParams[key]).replace(emailRegex, "EMAIL_REDACTED")
+            }
+
+            var newURL = rewriteURL(urlParams);
+
+            if (newURL !== window.location.href) {
+                window.history.replaceState({}, "", newURL)
+            }
+        }
+
+        window.readCookie = function (name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1, c.length);
+                }
+                if (c.indexOf(nameEQ) == 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            return null;
+        };
+
+        var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+        if ('{{ app.environment }}' == "local" || '{{ app.environment }}' == "prod") {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5NQGRQN');
+        }
+    </script>
+    {# End Google Tag Manager #}
+    <script src="/assets/scripts/dataLayer.js"></script>
+
+    {% endblock %}
+</head>
+
+{% set flourish = "none" %}
+{% set taxonomy = "pillar" %}
+{% if page.taxonomies is defined %}
+
+{% for taxonomy in page.taxonomies %}
+
+{% for term in taxonomy %}
+{#{{ term.slug }}#}
+{% set flourish = term.slug %}
+{% endfor %}
+
+{% endfor %}
+
+{% if "sectors" in page.taxonomies | keys %}
+{% set taxonomy = "sector" %}
+{% endif %}
+{% if "pillar" in page.taxonomies | keys %}
+{% set taxonomy = "pillar" %}
+{% endif %}
+
+{% endif %}
+
+
+{#
+# Colour flourishes are specified using the `pillar--` class on the body, different
+# values result in different colours being used.
+#
+# If `show-flourishes` isn't included, then certain colour flourishes won't show
+#}
+
+<body class="govuk-template__body {% block flourishClasses %}  {{ taxonomy }}--{{ flourish }}{% endblock %}">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    {# For data layer - outputs environment to be used in js file #}
+    <div id="app-env" style="display: none" data-env="{{app.environment}}"></div>
+
+    {# Google Tag Manager (noscript) THIS SHOULD BE REMOVED IF EXPLICIT OPT-IN is used #}
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NQGRQN" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    {# End Google Tag Manager (noscript) #}
+
+    <div id="skiplink-container">
+        <div>
+            <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+        </div>
+    </div>
+
+    {#<a href="#main-content" class="govuk-skip-link">Skip to main content</a>#}
+
+    {% block header %}
+    {% include '/includes/header.njk' %}
+    {% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {{ include('/includes/footer.njk') }}
+
+    {% block nonblocking_javascript %}
+
+    {% if app.environment == "THIS WILL NEVER BE TRUE" %}
+    <script type="text/javascript">
+        (function () {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "//api.usersnap.com/load/5c0d7b68-6a20-4882-8277-074dd8f65f37.js";
+            var x = document.getElementsByTagName("script")[0];
+            x.parentNode.insertBefore(s, x);
+        })();</script>
+    {% endif %}
+
+    {% endblock %}
+
+
+
+    <script src="/assets/scripts/libraries/jquery-3.6.0.min.js"></script>
+    <script src="/assets/scripts/libraries/objectFitPolyfill.min.js"></script>
+    <script src="/assets/scripts/app.js?v=2.3"></script>
+    <script src="/assets/scripts/libraries/cookies-opt-in.js?v=3.0.2"></script>
+    <script type="text/javascript">
+        $('a[target^="_new-window"]').click(function () {
+            var width = window.innerWidth * 0.9;
+            var height = width * window.innerHeight / window.innerWidth;
+            window.open(this.href, 'popup', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2)); return false;
+        })
+    </script>
+
+    {# Usersnap code
+    <script type="text/javascript">
+            (function () {
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = '//api.usersnap.com/load/c42d67c2-699b-4699-973f-78255aad58db.js';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            })();
+    </script>
+    End Usersnap code #}
+
+    <!-- Pardot -->
+    <!-- @todo Wrap around Cookie Manager JS to ensure we have user consent before this is run -->
+    <script type="text/javascript">
+        piAId = '812463';
+        piCId = '';
+        piHostname = 'information.crowncommercial.gov.uk';
+
+        var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+        if (cookiePreferences !== null) {
+            if (cookiePreferences.marketing === true) {
+                (function () {
+                    function async_load() {
+                        var s = document.createElement('script'); s.type = 'text/javascript';
+                        s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + piHostname + '/pd.js';
+                        var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+                    }
+                    if (window.attachEvent) { window.attachEvent('onload', async_load); }
+                    else { window.addEventListener('load', async_load, false); }
+                })();
+            }
+        }
+
+        // toggle mobile menu icon
+        var menuIcon = document.querySelector(".global-navigation__toggler");
+        var iconClosed = document.querySelector(".icon-menu-closed");
+        var iconOpen = document.querySelector(".icon-menu-open");
+
+        menuIcon.addEventListener("click", function () {
+            if (window.getComputedStyle(iconClosed, null).display == "inline") {
+                iconClosed.style.display = "none";
+                iconOpen.style.display = "inline";
+            }
+
+            else if (window.getComputedStyle(iconOpen, null).display == "inline") {
+                iconOpen.style.display = "none";
+                iconClosed.style.display = "inline";
+            }
+        });
+
+        var backToTopBtn = document.getElementById("BackToTopButton");
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            animateScrollToTop();
+        });
+
+        backToTopBtn.addEventListener('keypress', function (e) {
+            e.preventDefault();
+            if (e.key === 'Enter') {
+                animateScrollToTop();
+            }
+        });
+
+        function animateScrollToTop() {
+            $('html, body').animate({ scrollTop: 0 }, '300');
+        }
+
+        window.onload = function () {
+            dataLayerSetup();
+            window.addEventListener("scroll", function (event) {
+                if (window.scrollY + window.innerHeight > (document.querySelector('footer').getBoundingClientRect().top + window.pageYOffset)) {
+                    backToTopBtn.classList.add("fixed");
+                    backToTopBtn.classList.remove("flex");
+                } else {
+                    backToTopBtn.classList.add("flex");
+                    backToTopBtn.classList.remove("fixed");
+                }
+
+                if (window.scrollY > 200) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            }, false);
+        };
+
+        // add download notification to links
+        var links = document.querySelectorAll("a");
+
+        links.forEach(link => {
+            var href = link.getAttribute("href");
+            var exts = [".doc", ".docx", ".xlsx", ".pptx", ".csv", ".odt", ".ods", ".zip"];
+            var target = link.getAttribute("target");
+            var span = document.createElement("span");
+
+            if (target === "_blank") {
+                span.innerText = "Opens in new window";
+                link.classList.add("download-info")
+                link.appendChild(span);
+            }
+
+            if (href != null) {
+                if (exts.some(ext => href.includes(ext))) {
+                    span.innerText = "This file will download";
+                    link.classList.add("download-info")
+                    link.appendChild(span);
+                }
+            }
+
+
+
+        })
+
+        // make cards same height in list
+        var cardLists = document.querySelectorAll("ul.card-list");
+        var maxHeight = 0;
+        var windowWidth = window.innerWidth;
+
+        if (cardLists != null) {
+            cardLists.forEach(function (cardList) {
+                cards = cardList.querySelectorAll("li.card-list__item");
+
+                if (cards.length > 1) {
+                    cards.forEach(function (card) {
+                        var cardHeight = card.querySelector(".card-list__item__wrapper").offsetHeight;
+                        if (cardHeight > maxHeight) {
+                            maxHeight = cardHeight;
+                        }
+                    });
+
+                    cards.forEach(function (card) {
+                        card.querySelector(".card-list__item__wrapper").style.height = maxHeight - 50 + "px";
+
+                        if (windowWidth < 600) {
+                            card.querySelector(".card-list__item__wrapper").style.height = "auto";
+                        }
+                    })
+                }
+            })
+        }
+
+
+    </script>
+
+    <script type="module" src="/assets/scripts/all.js?v=2.3"></script>
+    <script type="module">
+        import { initAll } from '/assets/scripts/all.js'
+        window.addEventListener("DOMContentLoaded", function () {
+            initAll()
+        }, false);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var backToTopButton = document.getElementById('BackToTopButton');
+
+        // Change the scroll threshold to 1300 pixels
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 1300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+</script>

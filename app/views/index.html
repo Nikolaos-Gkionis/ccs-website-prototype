@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-top-9">
+      Version 0.6
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Task list
+    </h2>
+
+    <div class="govuk-grid-column-three-quarters">
+      <ul class="govuk-task-list">
+        <!-- Completed Tasks -->
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/ccs-home/index" aria-describedby="task-list-1-status">
+              Recreate the CCS homepage
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-1-status">
+            Completed
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/ccs-home/generic-page"
+              aria-describedby="task-list-2-status">
+              Recreate a general page, no hero and images.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-2-status">
+            Completed
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-list-5-status">
+              Make the Favicon work.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-5-status">
+            Completed
+          </div>
+        </li>
+
+        <!-- In Progress Tasks -->
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/ccs-home/components"
+              aria-describedby="task-list-3-hint task-list-3-status">
+              Recreate the CCS cards, buttons, and search components.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-3-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              In progress
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/ccs-home/feedback" aria-describedby="task-list-6-status">
+              Make a feedback form page.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-6-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              In progress
+            </strong>
+          </div>
+        </li>
+
+        <!-- Not Started Tasks -->
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-list-4-status">
+              Make the "Back to top" button work.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-4-status">
+            <strong class="govuk-tag govuk-tag--grey">
+              Not started yet
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="task-list-7-status">
+              Make a search page.
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="task-list-7-status">
+            <strong class="govuk-tag govuk-tag--grey">
+              Not started yet
+            </strong>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

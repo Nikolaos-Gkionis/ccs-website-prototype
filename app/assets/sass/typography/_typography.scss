@@ -1,0 +1,42 @@
+/*------------------------------------*\
+  #Typography
+\*------------------------------------*/
+
+.ccs-font-weight-semibold {
+
+    font-weight: 600;
+
+}
+
+.ccs-secondary-text-color {
+
+    color: $govuk-secondary-text-colour;
+
+    p {
+
+        color: inherit;
+
+    }
+
+}
+
+// Font overrides don't inherit by default so we have to do it manually
+// special characters in CSS class names should be escaped
+.govuk-\!-font-size-16 p {
+
+    font-size: inherit;
+    line-height: inherit;
+
+}
+
+.govuk-error-message {
+    color: #a62a16;
+}
+
+.govuk-error-summary {
+    border: 5px solid #a62a16
+}
+
+p.govuk-body-s {
+    word-wrap: break-word;
+}

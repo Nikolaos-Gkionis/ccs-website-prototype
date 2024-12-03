@@ -1,0 +1,368 @@
+/*------------------------------------*\
+  #Navigation
+\*------------------------------------*/
+
+.ccs-width-container {
+
+    // On mobile, add half width gutters
+    margin: 0 $govuk-gutter-half;
+
+    // On tablet, add full width gutters
+    @include govuk-media-query($from: tablet) {
+        margin: 0 $govuk-gutter;
+    }
+
+    // As soon as the viewport is greater than the width of the page plus the
+    // gutters, just centre the content instead of adding gutters.
+    @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
+        margin: 0 auto;
+        max-width: $govuk-page-width;
+    }
+
+}
+
+.main-width-container {
+
+    // On mobile, add half width gutters
+    margin: 0 $govuk-gutter-half;
+
+    // On tablet, add full width gutters
+    @include govuk-media-query($from: tablet) {
+        margin: 0 $govuk-gutter;
+    }
+
+    // As soon as the viewport is greater than the width of the page plus the
+    // gutters, just centre the content instead of adding gutters.
+    @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
+        margin-left: -120px;
+        max-width: $govuk-page-width;
+    }
+
+}
+
+.nav-wrapper {
+
+    padding: 0 0 govuk-px-to-rem(20) 0;
+    position: relative;
+    min-width: 1200px; 
+    margin: 0 auto; 
+    margin-left: -60px;
+
+    @include govuk-media-query($from: desktop) {
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-end;
+        padding: govuk-px-to-rem(22) 0 govuk-px-to-rem(26) 0;
+        text-align: right;
+
+    }
+
+}
+
+.global-navigation {
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    background-color: #7C1539;
+    margin-bottom: govuk-px-to-rem(- 20);
+    // This is to offset the margin-bottom which is rendered on .global-header when the navigation is closed
+    margin-top: govuk-px-to-rem(20);
+
+    @include govuk-media-query($from: desktop) {
+
+        background-color: transparent;
+        margin-top: 0;
+        margin-bottom: 0;
+
+    }
+
+}
+
+.global-navigation[aria-hidden="false"] {
+
+    display: flex;
+    visibility: visible;
+
+    @media only print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+}
+.global-navigation[aria-hidden="true"] {
+
+    display: none;
+    visibility: hidden;
+
+}
+
+/* ul */
+.nav-list {
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include govuk-media-query($from: desktop) {
+
+    }
+
+}
+
+.nav-list--primary {
+
+    order: 0;
+
+    @include govuk-media-query($from: desktop) {
+
+        order: 2;
+        margin-top: govuk-px-to-rem(8);
+        margin-bottom: govuk-px-to-rem(- 4);
+
+    }
+
+}
+
+.nav-list--secondary {
+
+    // put this list after the primary one on mobile
+    order: 1;
+    padding-top: govuk-px-to-rem(30);
+
+    position: relative;
+
+    &:before {
+
+        content: " ";
+        display: block;
+        position: absolute;
+        top: govuk-px-to-rem(20);
+        left: govuk-px-to-rem(15);
+        width: calc(100% - 30px);
+        height: govuk-px-to-rem(1);
+        background-color: rgba(white, 0.42);
+        
+
+    }
+
+    @include govuk-media-query($from: 641) {
+
+        &:before {
+
+            left: govuk-px-to-rem(30);
+            width: calc(100% - 60px);
+
+        }
+
+    }
+
+    @include govuk-media-query($from: desktop) {
+
+        order: 1;
+
+        &:before { content: none; }
+
+    }
+
+}
+
+.nav-list-ppg {
+
+    order: 1;
+    padding-top: govuk-px-to-rem(30);
+    position: relative;
+    padding-bottom: govuk-px-to-rem(30);
+
+    @include govuk-media-query($from: desktop) {
+
+        display: none;
+
+    }
+
+    .nav-list__link {
+                font-weight: 400;
+                font-size: 1.25rem;
+                line-height: 1.05;
+    }
+
+    p {
+        margin-bottom: 0px;
+        color: white;
+        font-weight: 600 !important;
+    }
+
+    &:before {
+
+        content: " ";
+        display: block;
+        position: absolute;
+        top: govuk-px-to-rem(20);
+        left: govuk-px-to-rem(15);
+        width: calc(100% - 30px);
+        height: govuk-px-to-rem(1);
+        background-color: rgba(white, 0.42);
+
+
+    }
+}
+
+
+
+
+/* li */
+.nav-list__item {
+
+    @include govuk-media-query($from: desktop) {
+
+        display: inline-block;
+        margin-right: 1.5em;
+
+    }
+
+    &:last-child {
+
+        margin-right: 0;
+
+    }
+
+}
+
+
+
+/* a */
+.nav-list__link {
+
+    display: block;
+    padding: govuk-px-to-rem(15) govuk-px-to-rem(15) govuk-px-to-rem(14) govuk-px-to-rem(15);
+    text-decoration: none;
+    border-bottom: solid govuk-px-to-rem(2) transparent;
+
+    @include govuk-media-query($from: 641) {
+
+        padding: govuk-px-to-rem(15) govuk-px-to-rem(30) govuk-px-to-rem(14) govuk-px-to-rem(30);
+
+    }
+
+    @include govuk-media-query($from: desktop) {
+
+        display: inline-block;
+        padding: govuk-px-to-rem(8) govuk-px-to-rem(0) 0.25em govuk-px-to-rem(0);
+
+    }
+
+}
+
+
+/* a */
+.nav-list--primary .nav-list__link {
+
+    // GDS uses an 8-key font scale which predefines which sizes are available.
+    // This allows fonts to scale with breakpoints
+    @include govuk-font(20, $weight: regular);
+
+    @include govuk-media-query($from: desktop) {
+    
+            @include govuk-font(20, $weight: bold);
+    
+        }
+
+}
+
+
+
+/* a */
+.nav-list--secondary .nav-list__link {
+
+    // GDS uses an 8-key font scale which predefines which sizes are available.
+    // This allows fonts to scale with breakpoints
+    @include govuk-font(20, $weight: regular);
+
+}
+
+
+
+/**
+ * Highlight current navigation item
+ */
+.nav-list__link.nav-list__link:hover,
+.item-current {
+
+    @include govuk-media-query($from: desktop) {
+
+        background-color: transparent;
+        border-color: white;
+        color: inherit;
+
+    }
+
+}
+
+// override govuk focused text here
+.nav-list__link.nav-list__link:focus {
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour!important;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    // When link is focussed, hide the default underline since the
+    // box shadow adds the "underline"
+    outline: $govuk-focus-width solid transparent;
+}
+
+.nav-list__link.nav-list__link + .nav-list__link.nav-list__link {
+
+    @include govuk-media-query($from: desktop) {}
+
+}
+
+.global-navigation__toggler {
+
+    background-color: white;
+    border: 0;
+    border-radius: govuk-px-to-rem(3);
+    color: #9B1A47;
+    padding: govuk-px-to-rem(7) govuk-px-to-rem(14);
+    position: absolute;
+    right: govuk-px-to-rem(15);
+    top: govuk-px-to-rem(41);
+    font-size: govuk-px-to-rem(18);
+    font-weight: 500;
+
+    @include govuk-media-query($from: 641) {
+
+        right: govuk-px-to-rem(30);
+
+    }
+
+    @include govuk-media-query($from: desktop) {
+
+        display: none;
+
+    }
+
+    @include govuk-media-query($until: 261) {
+
+        position: static;
+        margin-top: 20px;
+
+    }
+}
+
+
+.nav-list--primary,
+.nav-list--secondary, nav-list-ppg {
+    @media only print {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: normal;
+        // padding-left: 20px;
+    }
+}
+
+.nav-list--primary .nav-list__link,
+.nav-list--secondary .nav-list__link {
+    @media only print {
+        line-height: .6;
+    }
+}

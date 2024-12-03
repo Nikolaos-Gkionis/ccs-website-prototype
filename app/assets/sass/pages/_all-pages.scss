@@ -1,0 +1,43 @@
+/*------------------------------------*\
+  #All pages
+\*------------------------------------*/
+.govuk-widthless-container {
+
+    // @extend .govuk-width-container;
+    //
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+
+.govuk-main-wrapper--tight {
+    padding-top: govuk-px-to-rem(10);
+
+    @include govuk-media-query($from: tablet) {
+        padding-top: govuk-px-to-rem(20);
+    }
+
+    @include govuk-media-query($from: desktop) {
+        padding-top: govuk-px-to-rem(30);
+    }
+}
+
+
+
+.page-introduction {
+    padding-bottom: govuk-px-to-rem(10);
+
+    @include govuk-media-query($from: tablet) {
+        padding-bottom: govuk-px-to-rem(20);
+    }
+}
+
+
+.grey-background {
+    background: #F6F6F6;
+    padding: 20px;
+    margin: 20px 0px;
+}
