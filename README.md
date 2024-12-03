@@ -18,6 +18,10 @@ You must protect user privacy at all times, even when using prototypes. Prototyp
 - npm install
 - npm run dev (to run locally)
 
+### Styling the build
+
+- use the ccs-layout.html file in the layouts folder with the unbranded version of the kit
+
 ### Node version requirements
 
 We always recommend you use the current long term support (LTS) version of Node.js.
