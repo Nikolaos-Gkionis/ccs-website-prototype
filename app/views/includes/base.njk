@@ -7,6 +7,8 @@
     <meta name="content_group" value={{content_group}}>
     {% endif%}
 
+
+
     {% if homepage_meta is defined %}
     <meta name="description"
         content="We help the UK public sector get better value for money when buying products and services. Unlock the power of procurement with Crown Commercial Service.">
@@ -57,7 +59,13 @@
     {% endif %}
 
     {# Browser icon #}
-    <link rel="icon" href="/assets/images/favicon.ico?v=1" />
+    <link rel="icon" sizes="48x48" href="/plugin-assets/govuk-frontend/dist/govuk/assets/images/favicon.ico">
+    <link rel="icon" sizes="any" href="/plugin-assets/govuk-frontend/dist/govuk/assets/images/favicon.svg"
+        type="image/svg+xml">
+    <link rel="mask-icon" href="/plugin-assets/govuk-frontend/dist/govuk/assets/images/govuk-icon-mask.svg"
+        color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/plugin-assets/govuk-frontend/dist/govuk/assets/images/govuk-icon-180.png">
+    <link rel="manifest" href="/plugin-assets/govuk-frontend/dist/govuk/assets/manifest.json">
 
     {% block blocking_javascript %}
 
