@@ -321,3 +321,18 @@ $govuk-spacing-responsive-scale: (
         tablet: 60px
     )
 );
+
+.center-content {
+    text-align: center;
+}
+
+.govuk-checkboxes__input:focus {
+    outline: 1px solid #ffdd00;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px;
+}
+.govuk-checkboxes--small .govuk-checkboxes__input:hover {
+    outline: 1px solid #ffdd00;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px;
+}

@@ -98,3 +98,12 @@
     }
 
 }
+
+.govuk-checkboxes__input--small + .govuk-checkboxes__label:hover::before {
+    box-shadow: 0 0 0 1px $govuk-focus-colour;
+}
+
+.govuk-checkboxes__input--small:focus + .govuk-checkboxes__label::before {
+    box-shadow: 0 0 0 1px $govuk-focus-text-colour;
+    outline: 1px solid transparent;
+}
