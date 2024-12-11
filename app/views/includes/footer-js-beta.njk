@@ -156,6 +156,12 @@
         document.getElementById('feedback-form').style.display = 'none';
         document.getElementById('feedback-thanks-new').style.display = 'none';
         document.getElementById('feedback-thanks-old').style.display = 'block';
+
+        // Add smooth scroll to the thanks message
+        document.getElementById('feedback-thanks-old').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
     }
 </script>
 
