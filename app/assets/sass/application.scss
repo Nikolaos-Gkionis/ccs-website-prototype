@@ -339,11 +339,18 @@ $govuk-spacing-responsive-scale: (
 
 .main-width-container {
     max-width: 1240px !important;
-    margin: 0 auto;
-    width: 100%;
+    margin-left: 140px;
 }
 
 // Also override any potential govuk-width-container styles
 .govuk-width-container {
     max-width: 1240px !important;
+}
+
+.body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.govuk-body {
+    font-family: 'Source Sans Pro', sans-serif !important;
 }
