@@ -1,0 +1,86 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header.njk" %}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="main-width-container">
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag">
+                Alpha
+            </strong>
+            <span class="govuk-phase-banner__text">
+                This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by
+                    email</a>.
+            </span>
+        </p>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/ccs-home/index">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="#">Generic page</a>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="govuk-!-margin-top-9">
+        <h1 class="govuk-heading-xl">Generic page</h1>
+
+        <h2 class="govuk-heading-m">Get help with your application</h2>
+        <h3 class="govuk-heading-s">Phone</h3>
+        <p class="govuk-body">If you have a unique reference number, have it with you when you call.</p>
+        <ul class="govuk-list">
+            <li>Phone: 020 7946 0101</li>
+            <li>Textphone: 020 7946 0102</li>
+            <li>Monday to Friday, 8am to 6pm</li>
+            <li>Saturday and Sunday, 10am to 4pm</li>
+            <li class="govuk-!-margin-top-5">Welsh language: 020 7946 0103</li>
+            <li>Monday to Friday, 8:30am to 5pm</li>
+        </ul>
+        <p class="govuk-body">
+            <a class="govuk-link" href="#">Find out about call charges</a>
+        </p>
+        <h3 class="govuk-heading-s">Email</h3>
+        <ul class="govuk-list">
+            <li><a class="govuk-link" href="#">name@example.com</a></li>
+            <li>We aim to respond within 2 working days</li>
+        </ul>
+        <h3 class="govuk-heading-s">Webchat</h3>
+        <ul class="govuk-list">
+            <li><a class="govuk-link" href="#">Speak to an adviser now</a></li>
+            <li>Current waiting time is 17 minutes</li>
+        </ul>
+        <h3 class="govuk-heading-s">Address</h3>
+        <p class="govuk-body">
+            49 to 53 Cherry Street<br>
+            London<br>
+            AB1 2DC
+        </p>
+        <h3 class="govuk-heading-s">Social media</h3>
+        <p class="govuk-body">You can use Twitter to get general help. We cannot discuss specific cases or individual
+            applications, so please do not give any personal details.</p>
+        <p class="govuk-body">
+            Twitter: @GOVUK
+        </p>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js.njk" %}
+{% endblock %}

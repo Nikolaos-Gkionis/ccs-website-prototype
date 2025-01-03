@@ -39,10 +39,10 @@
     <div class="govuk-breadcrumbs">
         <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="/ccs-home/">Home</a>
+                <a class="govuk-breadcrumbs__link" href="/ccs-home-beta/">Home</a>
             </li>
             <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="/ccs-home/search-agreements">Search agreements </a>
+                <a class="govuk-breadcrumbs__link" href="/ccs-home-beta/search-agreements">Search agreements </a>
             </li>
         </ol>
     </div>
@@ -67,7 +67,7 @@
 
             <div class="govuk-grid-column-one-third">
 
-                <form v-on:submit.prevent="fetchAPIData" action="/ccs-home/content" method="GET">
+                <form v-on:submit.prevent="fetchAPIData" action="/ccs-home-beta/content-beta" method="GET">
 
                     <div class="govuk-form-group govuk-form-group--enclosure">
                         <div class="govuk-form-group sidebar__search-group">
@@ -108,7 +108,7 @@
                                 onclick="pushToDataLayer({'event': 'search_filter', 'interaction_type': 'clear'});"
                                 @click="resetAllFilter" class="govuk-link hideWithoutJS govuk-visually-hidden">Clear
                                 filters</a>
-                            <a v-show="!javascriptVersion" href="/ccs-home/content" class="govuk-link">Clear
+                            <a v-show="!javascriptVersion" href="/ccs-home-beta/content-beta" class="govuk-link">Clear
                                 filters</a>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                             <div class="apollo-enclosure">
                                 <h2 class="aside__heading">Upcoming agreements</h2>
 
-                                <p><a href="/ccs-home/content">View our upcoming agreement page</a>
+                                <p><a href="/ccs-home-beta/content-beta">View our upcoming agreement page</a>
                                     for agreements
                                     that are being developed and are not yet live.</p>
 
@@ -509,7 +509,7 @@
                         <li v-show="javascriptVersion" v-for="result in results">
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a v-bind:href="'/ccs-home/content">{[ result.title
+                                <a v-bind:href="'/ccs-home-beta/content-beta">{[ result.title
                                     ]}</a>
                                 <span v-if="result.status == 'Expired - Data Still Received'"
                                     class="govuk-tag ccs-tag ccs-tag--error"> Expired: {[ result.end_date | toDateDMY ]}
@@ -573,7 +573,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Adult Skills and Learning DPS</a>
+                                <a href="/ccs-home-beta/content-beta">Adult Skills and Learning DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -591,7 +591,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Apprenticeship Training Dynamic
+                                <a href="/ccs-home-beta/content-beta">Apprenticeship Training Dynamic
                                     Marketplace DPS</a>
                             </h3>
 
@@ -611,7 +611,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Artificial Intelligence (AI)</a>
+                                <a href="/ccs-home-beta/content-beta">Artificial Intelligence (AI)</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -629,7 +629,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Audio Visual Technical Consultancy &amp;
+                                <a href="/ccs-home-beta/content-beta">Audio Visual Technical Consultancy &amp;
                                     Commissioning</a>
                             </h3>
 
@@ -648,7 +648,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Audit &amp; Assurance Services
+                                <a href="/ccs-home-beta/content-beta">Audit &amp; Assurance Services
                                     (A&amp;AS)</a>
                             </h3>
 
@@ -666,7 +666,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Automation Marketplace DPS</a>
+                                <a href="/ccs-home-beta/content-beta">Automation Marketplace DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -683,7 +683,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Back Office Software</a>
+                                <a href="/ccs-home-beta/content-beta">Back Office Software</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -701,7 +701,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Big Data and Analytics</a>
+                                <a href="/ccs-home-beta/content-beta">Big Data and Analytics</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -718,7 +718,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Building Materials and Equipment</a>
+                                <a href="/ccs-home-beta/content-beta">Building Materials and Equipment</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -736,7 +736,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Buying Better Food and Drink</a>
+                                <a href="/ccs-home-beta/content-beta">Buying Better Food and Drink</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -754,7 +754,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Campaign Solutions 2</a>
+                                <a href="/ccs-home-beta/content-beta">Campaign Solutions 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -772,7 +772,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Cloud Compute 2</a>
+                                <a href="/ccs-home-beta/content-beta">Cloud Compute 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -790,7 +790,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Communications Marketplace</a>
+                                <a href="/ccs-home-beta/content-beta">Communications Marketplace</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -807,7 +807,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Construction Professional Services</a>
+                                <a href="/ccs-home-beta/content-beta">Construction Professional Services</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -825,7 +825,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Construction Professional Services DPS</a>
+                                <a href="/ccs-home-beta/content-beta">Construction Professional Services DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -842,7 +842,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Construction Works and Associated
+                                <a href="/ccs-home-beta/content-beta">Construction Works and Associated
                                     Services</a>
                             </h3>
 
@@ -860,7 +860,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Construction Works and Associated Services
+                                <a href="/ccs-home-beta/content-beta">Construction Works and Associated Services
                                     2 (CWAS2) /
                                     ProCure 23 (P23)</a>
                             </h3>
@@ -879,7 +879,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Costs Lawyer Services 2</a>
+                                <a href="/ccs-home-beta/content-beta">Costs Lawyer Services 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -896,7 +896,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Courier and Specialist Movements</a>
+                                <a href="/ccs-home-beta/content-beta">Courier and Specialist Movements</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -914,7 +914,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home/content">Crown Hosting II</a>
+                                <a href="/ccs-home-beta/content-beta">Crown Hosting II</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -945,24 +945,24 @@
                         <li class="pagination__item active"><span class="visuallyhidden">Page </span>1
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live">
+                            <a href="/ccs-home-beta/content-beta/agreements/2?keyword=&amp;status%5B0%5D=Live">
                                 <span class="visuallyhidden">Page </span>2
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home/content/agreements/3?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home-beta/content-beta/agreements/3?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>3
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home/content/agreements/4?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home-beta/content-beta/agreements/4?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>4
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home/content/agreements/5?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home-beta/content-beta/agreements/5?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>5
                             </a>
@@ -971,7 +971,8 @@
 
 
                         <li class="pagination__item pagination__item--next">
-                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live" rel="next">
+                            <a href="/ccs-home-beta/content-beta/agreements/2?keyword=&amp;status%5B0%5D=Live"
+                                rel="next">
                                 <span>Next</span> <span class="visuallyhidden">page</span>
                                 <span class="icon">
                                     <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg">
@@ -1285,7 +1286,7 @@
 
                 },
                 frontendSearchUrl: function () {
-                    var searchUrl = '/ccs-home/content/agreements' + this.frontendQueryUrl;
+                    var searchUrl = '/ccs-home-beta/content-beta/agreements' + this.frontendQueryUrl;
                     return searchUrl;
                 }
             },
@@ -1578,7 +1579,8 @@
 
                     <ul class="govuk-list govuk-!-font-size-18">
                         <li class="">
-                            <a class="govuk-footer__link" href="/ccs-home/content/contracts-finder">Contracts Finder</a>
+                            <a class="govuk-footer__link" href="/ccs-home-beta/content-beta/contracts-finder">Contracts
+                                Finder</a>
                         </li>
                         <li class="">
                             <a class="govuk-footer__link" href="https://www.gov.uk/find-tender">Find a Tender</a>
