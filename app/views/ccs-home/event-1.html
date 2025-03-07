@@ -1,0 +1,115 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-beta.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body class="govuk-template__body   pillar--none">
+
+    <div class="govuk-width-container">
+
+
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/">Home</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="/ccs-home/events-search">Events</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                    Event: Interchange UK
+                </li>
+            </ol>
+        </div>
+
+
+        <main class="govuk-main-wrapper event-detail">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds-from-desktop event-detail__content govuk-clearfix">
+                    <a href="/events" class="govuk-back-link">Back <span class="visuallyhidden">to events
+                            page</span></a>
+
+                    <h1 class="govuk-heading-xl page-title page-title--tight"
+                        style="font-family: 'Source Sans Pro', sans-serif;">Event: Interchange UK</h1>
+
+                    <h2 class="govuk-heading-m" style="font-family: 'Source Sans Pro', sans-serif;">About this event
+                    </h2>
+
+                    <div class="wysiwyg-content" id="event_description">
+                        <p>Interchange is the UK&#8217;s only large scale integrated transport infrastructure platform.
+                            The event is dedicated to transforming and modernising transport infrastructure networks
+                            through integration, decarbonisation, and digitisation. Taking place at Manchester Central
+                            on 4 and 5 March 2025, Interchange has the active engagement and participation of all the
+                            key public and private <a
+                                href="https://www.interchange-uk.com/infrastructure-partners">infrastructure
+                                operators</a> and their value chains offering unmatched opportunities to stimulate new
+                            ideas, challenge the orthodoxy and establish new relationships.</p>
+                        <p>Visit our stand to discuss all your buying needs.</p>
+                    </div>
+
+                    <p><a class="--gem-c-button govuk-!-font-size-18 govuk-!-font-weight-bold govuk-button"
+                            href="https://www.interchange-uk.com/">Register for free today</a></p>
+
+
+                    <div>
+                        <!-- Location Google Map for M2 3GX-->
+                        <iframe width="100%" height="300" frameborder="0" style="border:0; margin-bottom: 20px;"
+                            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=M2+3GX,UK"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <aside class="govuk-grid-column-one-third-from-desktop event-detail__aside">
+                    <div class="apollo-enclosure apollo-enclosure--padded event-detail__aside__inner">
+                        <div class="event-detail__date-time">
+                            <h3 class="govuk-heading-s">Date and time</h3>
+
+                            <p>Tue, 4 March 2025 09:00 - <br />Wed, 5 March 2025 17:00</p>
+                        </div>
+
+                        <div class="event-detail__location">
+                            <h2 class="govuk-heading-s">Location</h2>
+
+                            <p class="govuk-!-margin-0">Manchester Central</p>
+
+                            <p class="govuk-!-margin-0">Windmill St </p>
+
+                            <p class="govuk-!-margin-0">Manchester</p>
+
+                            <p class="govuk-!-margin-0">M2 3GX</p>
+
+                            <br />
+
+                        </div>
+                    </div>
+
+                    <div class="apollo-enclosure" style="background-color: #9B1A47; color: #ffffff;">
+                        <h2 class="aside__heading">Help us make this service better for you</h2>
+                        <p> <a class="govuk-link" style="color: #ffffff; font-weight: 600;" href="/survey">Give
+                                feedback on how we can improve this service.
+                            </a>.</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+    </div>
+
+    <script id="ldjson" type="application/ld+json">
+{"@context":"https:\/\/schema.org","@type":"Event","name":"Event: Interchange UK","startDate":"2025-03-04T09:00:00+00:00","endDate":"2025-03-05T17:00:00+00:00","eventAttendanceMode":"https:\/\/schema.org\/OfflineEventAttendanceMode","eventStatus":"https:\/\/schema.org\/EventScheduled","location":{"@type":"Place","name":"Manchester Central","address":{"@type":"PostalAddress","streetAddress":"Windmill St","addressLocality":"Manchester","postalCode":"M2 3GX","addressRegion":"","addressCountry":"United Kingdom"}},"image":null,"description":"Interchange is the UK&#8217;s only large scale integrated transport infrastructure platform. The event is dedicated to transforming and modernising transport infrastructure networks through integration, decarbonisation, and digitisation. Taking place at Manchester Central on 4 and 5 March 2025, Interchange has the active engagement and participation of all the key public and private infrastructure operators and their value chains offering unmatched opportunities to stimulate new ideas, challenge the orthodoxy and establish new relationships.\nVisit our stand to discuss all your buying needs.\n","organizer":{"@type":"Organization","name":"Crown Commercial Service","url":"https:\/\/www.crowncommercial.gov.uk\/"}}
+</script>
+    <script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href, 'page_type': 'event', 'event_name': 'Event: Interchange UK' });</script>
+
+
+    {% endblock %}
+
+    {% block footer %}
+    {% include "includes/footer-js-beta.njk" %}
+    {% endblock %}

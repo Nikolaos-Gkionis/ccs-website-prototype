@@ -1,0 +1,1486 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-beta.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body class="govuk-template__body   pillar--none">
+
+    <div class="ccs-width-container">
+
+        <!-- Phase banner 
+
+        <div class="govuk-width-container">
+
+            <div class="govuk-phase-banner">
+                <p class="govuk-phase-banner__content">
+                    <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                        beta
+                    </strong>
+                    <span class="govuk-phase-banner__text">
+                        This is a new service – your
+                        <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>feedback</a> will help
+                        us to improve it.
+                    </span>
+                </p>
+
+            </div>
+        -->
+
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+                <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/agreements">Search
+                        agreements</a></li>
+                <li class="govuk-breadcrumbs__list-item" aria-current="page">Digital Outcomes 6</li>
+            </ol>
+        </div>
+
+        <main id="main-content" role="main" class="govuk-main-wrapper">
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                    <h1 class="govuk-heading-xl page-title govuk-!-margin-bottom-3"
+                        style="font-family: 'Source Sans Pro', sans-serif;">Digital
+                        Outcomes 6</h1>
+                    <p class="govuk-body-m" style="font-family: 'Source Sans Pro', sans-serif;">
+                        A route to market
+                        to access agile development and user-centred
+                        design services to accelerate innovation within the public sector.
+                    </p>
+
+
+                    <div class="govuk-body">
+                        <p class="agreement-overview"> <strong> Agreement number: </strong> RM1043.8 </p>
+                        <p class="agreement-overview"> <strong> Start date: </strong> 28/06/2022 </p>
+                        <p class="agreement-overview"> <strong> End date: </strong> 27/03/2026 </p>
+
+                        <p class="agreement-overview"> <strong> Regulation: </strong> PCR2015 </p>
+                        <p class="agreement-overview"> <strong> Agreement type: </strong> PCR15 Framework </p>
+                    </div>
+
+                    <p><strong>Available for:</strong>
+                        Central government
+                        Charities
+                        Education
+                        Health
+                        Local authority
+                        Blue light (police, fire, ambulance, search and rescue)
+                        Devolved administrations
+
+                    </p>
+
+
+                    <h2 class="govuk-heading-m" id="updates">Updates</h2>
+
+                    <p><strong>04 November 2024:</strong> We are extending this agreement for 9 months, until 27
+                        March 2026. The extension will maintain service provision so that customers can continue to
+                        buy the services they need. The extension will also facilitate a crossover period to support
+                        the movement to a replacement framework that delivers the optimal customer and supplier
+                        experience.
+                    </p>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text" id="details-summary">Show previous
+                                updates</span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            <p><strong>30 July 2024:</strong> We have started the development of Digital Outcomes
+                                and Specialists 7 (DOS7). <a
+                                    href="https://www.crowncommercial.gov.uk/agreements/RM1043.9">Visit DOS7
+                                    upcoming agreement page for further updates and future events</a>.
+                            </p>
+                            <p><strong>19 October 2023:</strong> We are extending this agreement for up to 12 months
+                                until 27 June 2025. This extension will allow you to continue to buy the services
+                                you need while we develop a replacement agreement.
+                            </p>
+                        </div>
+                    </details>
+
+
+
+                    <div>
+                        <h2 class="govuk-heading-m" id="contents">Contents</h2>
+
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li> <a class="govuk-link" href="#ataglance">at a glance</a></li>
+
+                            <li> <a class="govuk-link" href="#products">products and suppliers</a></li>
+
+                            <li> <a class="govuk-link" href="#documents">documents</a></li>
+
+                            <li> <a class="govuk-link" href="#benefitsofccs">the benefits of using CCS</a></li>
+                        </ul>
+                    </div>
+
+
+
+                    <div>
+                        <h2 class="govuk-heading-m" id="ataglance">At a glance</h2>
+                        <div class="govuk-tabs" data-module="govuk-tabs">
+
+                            <ul class="govuk-tabs__list" role="tablist">
+
+                                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected" role="presentation">
+                                    <a class="govuk-tabs__tab" href="#desc" id="tab_desc" role="tab"
+                                        aria-controls="desc" aria-selected="true" tabindex="0"
+                                        onclick="pushToDataLayer({'event': 'tab_navigation', 'link_text': 'Description'});">Description</a>
+                                </li>
+
+                                <li class="govuk-tabs__list-item" role="presentation">
+                                    <a class="govuk-tabs__tab" href="#benefits" id="tab_benefits" role="tab"
+                                        aria-controls="benefits" aria-selected="false" tabindex="-1"
+                                        onclick="pushToDataLayer({'event': 'tab_navigation', 'link_text': 'Benefits'});">Benefits</a>
+                                </li>
+
+                                <li class="govuk-tabs__list-item" role="presentation">
+                                    <a class="govuk-tabs__tab" href="#nottousefor" id="tab_nottousefor" role="tab"
+                                        aria-controls="nottousefor" aria-selected="false" tabindex="-1"
+                                        onclick="pushToDataLayer({'event': 'tab_navigation', 'link_text': 'When you can\'t use this agreement'});">When
+                                        you can't use this agreement</a>
+                                </li>
+
+                                <li class="govuk-tabs__list-item" role="presentation">
+                                    <a class="govuk-tabs__tab" href="#key-facts" id="tab_key-facts" role="tab"
+                                        aria-controls="key-facts" aria-selected="false" tabindex="-1"
+                                        onclick="pushToDataLayer({'event': 'tab_navigation', 'link_text': 'How to buy'});">How
+                                        to buy</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="govuk-tabs__panel" id="desc" role="tabpanel" aria-labelledby="tab_desc">
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Find suppliers who can design and build
+                                            bespoke digital products and services using an agile approach.</span>
+                                    </p>
+                                    <p><span style="font-weight: 400;">These digital services can be provided by 1
+                                            person or by a team.</span></p>
+                                    <p><span style="font-weight: 400;">You can also use this agreement to
+                                            find:</span></p>
+                                    <ul>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">studio space to conduct user
+                                                research</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">users with the appropriate characteristics
+                                                to test your service</span></li>
+                                    </ul>
+                                    <p><span style="font-weight: 400;">This new agreement will run alongside
+                                        </span><a href="https://www.crowncommercial.gov.uk/agreements/RM6263"><span
+                                                style="font-weight: 400;">RM6263 Digital Specialists and
+                                                Programmes</span></a><span style="font-weight: 400;">. Together they
+                                            will replace </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM1043.7"><span
+                                                style="font-weight: 400;">RM1043.7 Digital Outcomes and Specialists
+                                                5</span></a><span style="font-weight: 400;">.</span></p>
+                                    <p><span style="font-weight: 400;">The agreement will run for 24 months, with an
+                                            optional 12 month extension.</span></p>
+                                    <p><b>Procurement activity for Digital Outcomes (DOS)</b></p>
+                                    <p><a
+                                            href="https://redirect.contractawardservice.crowncommercial.gov.uk/digital-outcomes/opportunities"><span
+                                                style="font-weight: 400;">View DOS 6 opportunities published on
+                                                Contract Award Service</span></a></p>
+                                    <p><a
+                                            href="https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists/opportunities"><span
+                                                style="font-weight: 400;">View all DOS 5 and earlier opportunities
+                                                published on Digital Marketplace</span></a></p>
+                                    <p><a
+                                            href="https://app.powerbi.com/view?r=eyJrIjoiNjhlYmE2M2EtZWFiMy00ZDc4LWE2MWMtOTQ2NDlmZTQ5YjExIiwidCI6IjlmOGMwZDc5LTNlODctNGNkMy05Nzk5LWMzNDQzMTQ2ZWE1ZSIsImMiOjh9"><span
+                                                style="font-weight: 400;">View DOS spend figures</span></a></p>
+
+                                </div>
+                            </div>
+
+                            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="nottousefor" role="tabpanel"
+                                aria-labelledby="tab_nottousefor">
+                                <div class="wysiwyg-content">
+                                    <p>Products and services that are out of scope include (but are not limited to):
+                                    </p>
+                                    <ul>
+                                        <li>standalone hosting, support and maintenance of a live application or
+                                            website</li>
+                                        <li>supplementing a temporary shortfall in staff with no clear deliverables
+                                            (who might work across projects under the direction of the buyer)</li>
+                                        <li>any non-digital role, or a role where there are no clear deliverables
+                                        </li>
+                                    </ul>
+                                    <p><span style="font-weight: 400;">DOS 6 is not a route to market for contingent
+                                            labour (contractors or interim staff). </span></p>
+                                    <p>For contingent labour requirements you will need to use <a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM3749"><span
+                                                style="font-weight: 400;">Public Sector Resourcing</span></a>.</p>
+                                    <p>To access management consultancy services, including business, strategy and
+                                        policy and finance consultancy you will need to use <a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6187"><span
+                                                style="font-weight: 400;">Management Consultancy Framework Three
+                                                (MCF3)</span></a>.</p>
+                                    <p>Where the requirement is for individual DDaT specialists with
+                                        identified/fixed deliverables or specific pieces of work use <a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6263" target="_blank"
+                                            rel="noopener"
+                                            data-saferedirecturl="https://www.google.com/url?q=https://www.crowncommercial.gov.uk/agreements/RM6263&amp;source=gmail&amp;ust=1698314426276000&amp;usg=AOvVaw2papDSiQYmEba7srzIvork">Digital
+                                            Specialists and Programmes</a> lot 2.</p>
+                                    <p><span style="font-weight: 400;">For support with the setup and maintenance of
+                                            cloud software or hosting services use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM1557.13"><span
+                                                style="font-weight: 400;">G-Cloud 13</span></a><span
+                                            style="font-weight: 400;">.</span></p>
+                                    <p><span style="font-weight: 400;">For the delivery of larger digital
+                                            transformation programmes or capability based services covering a number
+                                            of projects under an overarching set of objectives use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6263"><span
+                                                style="font-weight: 400;">Digital Specialists and
+                                                Programmes</span></a><span style="font-weight: 400;"> lot 1.</span>
+                                    </p>
+                                    <p><span style="font-weight: 400;">Where the requirement is for digital
+                                            capability based services for the public health and social care sectors
+                                            use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6221"><span
+                                                style="font-weight: 400;">Digital Capability for
+                                                Health</span></a><span style="font-weight: 400;">.</span></p>
+                                    <p><span style="font-weight: 400;">For major service transformation programmes
+                                            which require hosting, support and maintenance of new or existing
+                                            platforms use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6100"><span
+                                                style="font-weight: 400;">Technology Services 3</span></a><span
+                                            style="font-weight: 400;">.</span></p>
+                                    <p><span style="font-weight: 400;">To provide independent quality assurance and
+                                            testing (QAT) of a designed solution use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM6148"><span
+                                                style="font-weight: 400;">Quality Assurance and Testing for IT
+                                                Systems 2</span></a><span style="font-weight: 400;">.</span></p>
+                                    <p><span style="font-weight: 400;">For an independent health check of IT systems
+                                            use </span><a
+                                            href="https://www.crowncommercial.gov.uk/agreements/RM3764.3"><span
+                                                style="font-weight: 400;">Cyber Security Services 3</span></a><span
+                                            style="font-weight: 400;">.</span></p>
+
+                                </div>
+                            </div>
+
+                            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="key-facts" role="tabpanel"
+                                aria-labelledby="tab_key-facts">
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This is a further competition only agreement.
+                                            There is no option to direct award. Each procurement can only be awarded
+                                            to a single supplier.</span></p>
+                                    <p><span style="font-weight: 400;">You must publish your requirements
+                                            (Invitation to Tender) on Contract Award Service (CAS). This is a new
+                                            service from CCS and can be accessed through your </span><a
+                                            href="https://auth.identify.crowncommercial.gov.uk/"><span
+                                                style="font-weight: 400;">Public Procurement Gateway (PPG)
+                                                account</span></a><span style="font-weight: 400;">. All suppliers
+                                            awarded a place on the agreement, and registered on the platform, will
+                                            be able to view and respond to your requirements.</span></p>
+                                    <p><span style="font-weight: 400;">For lots 1 and 3 you must follow a two-stage
+                                            further competition process (stage 1: shortlisting and stage 2: further
+                                            assessment).</span></p>
+                                    <p><span style="font-weight: 400;">For lot 2 you can follow a one-stage further
+                                            competition process (having first created a supplier shortlist by
+                                            filtering against the studio attributes required).</span></p>
+                                    <p><span style="font-weight: 400;">The basic steps to run a further competition
+                                            for this agreement are:</span></p>
+                                    <ol>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">prepare a draft of your
+                                                requirements</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">get
+                                                approval to buy what you need</span>
+                                        </li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">write and publish your requirements on
+                                                Contract Award Service</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">answer supplier questions</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">review and score 'essential' and
+                                                'nice-to-have' skills and experience to create your shortlist</span>
+                                        </li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">give feedback to suppliers who are not
+                                                shortlisted</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">invite shortlisted suppliers to the
+                                                further assessment stage</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">evaluate technical and pricing proposals
+                                                and your chosen additional assessment methods to find the right
+                                                supplier for your needs</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">award a contract and give feedback to
+                                                unsuccessful suppliers</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">publish the contract on Contracts
+                                                Finder</span></li>
+                                    </ol>
+
+                                </div>
+                            </div>
+
+                            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="benefits" role="tabpanel"
+                                aria-labelledby="tab_benefits">
+                                <div class="wysiwyg-content">
+                                    <ul>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">offers bespoke services through suppliers
+                                                with the right capabilities to meet your needs</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">no
+                                                restriction on the value of an
+                                                individual call-off contract (the agreement has an overall Find a
+                                                Tender Service (FTS) value of £813 million)</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">our
+                                                further competition process allows you
+                                                to get the best supplier to meet your users needs</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">the
+                                                agreement terms and conditions follow
+                                                the Public Sector Contract format, and you have scope to make
+                                                changes to your call-off contract (depending on the complexity of
+                                                your needs)</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">you
+                                                own the intellectual property rights
+                                                and source code for the bespoke development, so you can share and
+                                                re-use these with other public sector buyers</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">our
+                                                suppliers are mostly small and medium
+                                                sized businesses that use an agile approach when designing your
+                                                digital products or services</span></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="govuk-heading-m" id="products">Products and suppliers</h2>
+
+
+                    <div class="govuk-inset-text">
+                        <p><strong>You can now buy online with CCS.</strong> <br>Please select a lot to start.</p>
+                    </div>
+
+                    <div class="grey-margin-bottom" id="agreement-lots"></div>
+
+                    <dl class="apollo-list apollo-list--definition grey-margin-bottom">
+                        <dt class="apollo-list--definition__key">
+                            <span class="apollo-list--definition__key__inner"><a
+                                    href="https://redirect.contractawardservice.crowncommercial.gov.uk/agreement/lot?agreement_id=RM1043.8&lotNum=1">Lot
+                                    1 Digital Outcomes</a></span>
+                        </dt>
+                        <dd class="apollo-list--definition__value">
+                            <div class="govuk-!-margin-bottom-2"><span style="font-weight: 400;">Access teams of 1
+                                    or more digital specialists who will provide outcome-based services under
+                                    clearly defined pieces of work.</span></div>
+
+                            <p>Expires: 27/03/2026</p>
+
+
+                        </dd>
+                    </dl>
+                    <dl class="apollo-list apollo-list--definition grey-margin-bottom">
+                        <dt class="apollo-list--definition__key">
+                            <span class="apollo-list--definition__key__inner"><a
+                                    href="https://redirect.contractawardservice.crowncommercial.gov.uk/agreement/lot?agreement_id=RM1043.8&lotNum=2">Lot
+                                    2 User Research Studios</a></span>
+                        </dt>
+                        <dd class="apollo-list--definition__value">
+                            <div class="govuk-!-margin-bottom-2"><span style="font-weight: 400;">Hire studio space
+                                    in which to conduct user research activity.</span></div>
+
+                            <p>Expires: 27/03/2026</p>
+
+
+                        </dd>
+                    </dl>
+                    <dl class="apollo-list apollo-list--definition grey-margin-bottom">
+                        <dt class="apollo-list--definition__key">
+                            <span class="apollo-list--definition__key__inner"><a
+                                    href="https://redirect.contractawardservice.crowncommercial.gov.uk/agreement/lot?agreement_id=RM1043.8&lotNum=3">Lot
+                                    3 User Research Participants</a></span>
+                        </dt>
+                        <dd class="apollo-list--definition__value">
+                            <div class="govuk-!-margin-bottom-2"><span style="font-weight: 400;">Find users with the
+                                    required attributes and characteristics to test a digital product or
+                                    service.</span></div>
+
+                            <p>Expires: 27/03/2026</p>
+
+
+                        </dd>
+                    </dl>
+
+                    <div>
+                        <h2 class="govuk-heading-m" id="documents">Documents</h2>
+                        <p>Each section below has the links to the documents, what they are for, when to use them
+                            and if you need to enter any information into them.</p>
+                        <p>You might not need all the contractual documents to buy the products or services from
+                            this agreement.</p>
+                    </div>
+
+                    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">Buyer
+                                        guides</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+                                <p>Before buying from this agreement you should read the buyer guide and how to use
+                                    contractual documents.</p>
+                                <p>The buyer guide will help you understand how the agreement works and what you can
+                                    or can't use the agreement for.</p>
+                                <p>This section might also include further guides or lists you will need to look at
+                                    and make selections from, as well as previous webinar slides and Q&A scripts
+                                    from sessions with buyers and suppliers.</p>
+                                <div class="wysiwyg-content">
+                                    <p><a
+                                            href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8-DOS-6-Buyer-Guide-v1.1.odt">RM1043.8
+                                            Buyer guide</a></p>
+                                    <p><a
+                                            href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8-key-changes-DOS5-to-DOS6.odt">RM1043.8
+                                            Key changes from DOS5 and DOS6</a></p>
+                                    <p>&nbsp;</p>
+                                    <p>&nbsp;</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">Core
+                                        terms and conditions</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+                                <p>The core terms form part of the framework and call-off contracts and must be used
+                                    on every contract. They cannot be changed.</p>
+                                <p>The core terms are CCS's standard commercial terms. They govern the supplier's
+                                    relationship with CCS and every customer who has a call-off contract.</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The framework award form is the basis of the
+                                            agreement between the supplier and CCS. It is signed by the supplier and
+                                            countersigned by CCS to accept them on the DOS 6 agreement. It creates
+                                            the framework contract and summarises the main features of the
+                                            procurement. All buyers need to be aware that it contains the Framework
+                                            Special Terms, which amend the Core Terms.</span></p>
+                                    <p><a
+                                            href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Award-Form-v2.0-1.odt">Framework
+                                            award form</a></p>
+                                    <p><span style="font-weight: 400;">The core terms form part of the framework and
+                                            call-off contracts and must be used on every contract. They govern the
+                                            supplier's relationship with CCS and every buyer who has a call-off
+                                            contract. They cannot be changed.</span></p>
+                                    <p><a
+                                            href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Core-Terms-v3.0.11.odt">Core
+                                            Terms</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button"
+                                        id="accordion-default-heading-1">Call-off order form</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+                                <p>When a customer decides to buy from a supplier, they'll complete an order form
+                                    with important information about the call-off contract.</p>
+                                <p>Customers can change any of their chosen schedules by adding special terms in the
+                                    call-off order form.</p>
+
+                                <p>A completed order form will contain:
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>what will be supplied</li>
+                                    <li>how it will be supplied</li>
+                                    <li>how much it will cost</li>
+                                    <li>contact details for suppliers and customers</li>
+                                    <li>a list of all the call-off and joint schedules</li>
+                                </ul>
+                                </p>
+                                <p>The call-off contract will be created when both parties either agree to:
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>sign a completed order form</li>
+                                    <li>create a binding electronic purchase order which includes the information in
+                                        the order form</li>
+                                </ul>
+                                </p>
+
+                                <div class="wysiwyg-content">
+                                    <p><a
+                                            href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-6-Order-Form-Template-Statement-of-Work-Template-and-Call-Off-Schedules-v2.0.odt">RM1043.8
+                                            Order form</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">Joint
+                                        schedules</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-1-Definitions-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 1 definitions </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This defines significant words and phrases
+                                            used in the core terms and template schedules. You will need to add any
+                                            new definitions specifically needed for your contract, and add them as
+                                            special terms in your call-off order form.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-2-Variation-Form-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 2 variation form</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Explains the format for formally documenting
+                                            any contract changes you may need.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-3-Insurance-Requirements-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 3 insurance requirements </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">An essential schedule that captures the
+                                            supplier&#8217;s basic obligations for any insurances needed at the
+                                            framework level, and mandating that the supplier must give you any
+                                            additional insurances that you specify in your order form.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-4-Commercially-Sensitive-Information-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 4 commercially sensitive information</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">You should ask your supplier to tell you if
+                                            any of the information they provided as part of their bid is
+                                            commercially sensitive, such that they would not want it disclosed in
+                                            response to a Freedom of Information (FOI) request. Their response will
+                                            provide the content for this schedule, but it is your decision if the
+                                            relevant information would be withheld if a relevant FOI request was
+                                            received.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-5-Corporate-Social-Responsibility-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 5 corporate social responsibility </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This is a core schedule that sets out basic
+                                            corporate social responsibility (CSR) or social value requirements that
+                                            apply to all suppliers in the agreement. You may have your own CSR or
+                                            social value requirements to include in your contract and, where you
+                                            have specified that as part of a competition, these must be
+                                            satisfied.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-6-Key-Subcontractors-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 6 key subcontractors </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">You only need this document if the supplier
+                                            uses one or more key-subcontractors to fulfil its obligations under your
+                                            contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-7-Financial-Difficulties-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 7 financial difficulties </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">If a supplier has any financial difficulty
+                                            when you use your call-off you will need to use this schedule to monitor
+                                            their financial standing and any consequences of changes to this.</span>
+                                    </p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-8-Guarantee-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 8 guarantee </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">You can use this schedule when you want
+                                            assurance provided by a third party guarantor that the supplier&#8217;s
+                                            obligations will be met, because you are concerned about the financial
+                                            status of your supplier.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-10-Rectification-Plan-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 10 rectification plan</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This explains the format for any
+                                            rectification plan that your supplier may have to provide in the event
+                                            that you experience a supplier default.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-11-Processing-Data-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 11 processing data </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This schedule addresses the processing of any
+                                            personal data associated with the performance of your contract.
+                                            Normally, in terms of data protection rules:</span></p>
+                                    <ul>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">the
+                                                customer will be the controller,
+                                                specifying the purpose and means of processing personal data</span>
+                                        </li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">the
+                                                supplier will be the processor,
+                                                carrying out such processing under the instructions of the
+                                                controller</span><span style="font-weight: 400;"><br />
+                                            </span></li>
+                                    </ul>
+                                    <p><span style="font-weight: 400;">In these circumstances you will need to
+                                            clearly set out what personal data you are authorising the supplier to
+                                            process, by using the data processing template available in this
+                                            document.</span></p>
+                                    <p><span style="font-weight: 400;">In certain circumstances the customer and the
+                                            supplier may decide that they have a joint controller relationship in
+                                            respect of the processing of certain personal data in relation to an
+                                            order contract. Where this is the case Annex 2 of the schedule must be
+                                            used, and the data must be written in the data processing
+                                            template.</span></p>
+                                    <p><span style="font-weight: 400;">Finally, there may be circumstances under
+                                            which, for certain personal data, the supplier will maintain that they
+                                            will be the controller without the customer being either a joint
+                                            controller or processor. In this instance this should also be written in
+                                            the data processing template.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a onclick="fileDownload('', '', '');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Joint-Schedule-12-Supply-Chain-Visibility-v1.0.odt><strong>RM1043.8
+                                            Joint schedule 12 supply chain visibility </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Describes the process to allow the supplier
+                                            to provide timely, full, accurate and complete Supply Chain Information
+                                            Report, with Template provided in Annex 1</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button"
+                                        id="accordion-default-heading-1">Call-off schedules</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+
+                                <p>Call-off schedules are used when suppliers sell their goods or services to
+                                    customers.</p>
+                                <p>You can choose which schedules to include and whether to edit these template
+                                    schedules when they form a call-off contract.</p>
+
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-1-Transparency-Reports-v1.0.odt', 'RM1043.8 Call off schedule 1 transparency report', '10849');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-1-Transparency-Reports-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 1 transparency report</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Information about the call-off contract you
+                                            need from the supplier, so that you can meet your public accountability
+                                            and transparency requirements.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-2-Staff-Transfer-v1.0.odt', 'RM1043.8 Call off schedule 2 staff transfer ', '69607');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-2-Staff-Transfer-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 2 staff transfer </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">To ensure that appropriate provisions are
+                                            included to deal with staff transfer on both entry and exit of the
+                                            call-off contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-3-Continuous-Improvement-v1.0.odt', 'RM1043.8 Call off schedule 3 continuous improvement ', '9177');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-3-Continuous-Improvement-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 3 continuous improvement </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Obligation on the part of the supplier to
+                                            always strive to identify new or potential improvements to how they meet
+                                            the needs of the project, including through regular reviews with the
+                                            customer.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-4-Call-Off-Tender-v1.0.odt', 'RM1043.8 Call off schedule 4 call off tender ', '6165');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-4-Call-Off-Tender-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 4 call off tender </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Add the supplier&#8217;s bid into this
+                                            document, including anything additional they offered that you would like
+                                            included in the contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-5-Pricing-Details-and-Expenses-Policy-v1.0.odt', 'RM1043.8 Call off schedule 5 pricing details and expenses policy', '11148');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-5-Pricing-Details-and-Expenses-Policy-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 5 pricing details and expenses policy</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This schedule should be used to show more
+                                            detailed pricing information, in addition to the pricing and
+                                            reimbursable expenses detailed in the order form.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-6-Intellectual-Property-Rights-and-Additional-Terms-on-Digital-Deliverables-v1.0.odt', 'RM1043.8 Call off schedule 6 intellectual property rights and additional terms on digital deliverables ', '21210');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-6-Intellectual-Property-Rights-and-Additional-Terms-on-Digital-Deliverables-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 6 intellectual property rights and additional terms on
+                                            digital deliverables </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Additional provisions on intellectual
+                                            property rights for the digital deliverables, to ensure the ongoing
+                                            operability of the service and ability to publish the solution code as
+                                            open source.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-7-Key-Supplier-Staff-v1.0.odt', 'RM1043.8 Call off schedule 7 key supplier staff ', '8827');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-7-Key-Supplier-Staff-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 7 key supplier staff </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Sets out the restrictions on a supplier
+                                            changing staff that are crucial to deliver the call-off contract.</span>
+                                    </p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-8-Business-Continuity-and-Disaster-Recovery-v1.0.odt', 'RM1043.8 Call off schedule 8 business continuity and disaster recovery', '14811');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-8-Business-Continuity-and-Disaster-Recovery-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 8 business continuity and disaster
+                                            recovery</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">What the supplier must do to make sure the
+                                            call-off contract can still be delivered even if there&#8217;s an
+                                            unexpected event. Use if:</span></p>
+                                    <ul>
+                                        <li style="font-weight: 400;" aria-level="1"><span
+                                                style="font-weight: 400;">call-off contracts will be critical for
+                                                the customer&#8217;s organisation</span></li>
+                                        <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">it
+                                                would be difficult to replace the
+                                                supplier if things go wrong</span></li>
+                                    </ul>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-9-Security-v2.0.odt', 'RM1043.8 Call off schedule 9 security ', '31952');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-9-Security-v2.0.odt><strong>RM1043.8
+                                            Call off schedule 9 security </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">What the supplier must do to make sure that
+                                            customer data and deliverables are kept secure.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-10-Exit-Management-v1.0.odt', 'RM1043.8 Call off schedule 10 exit management ', '18651');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-10-Exit-Management-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 10 exit management </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">What the supplier needs to do at the end of a
+                                            call-off contract to help the customer continue to deliver public
+                                            services.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-12-Clustering-v1.0.odt', 'RM1043.8 Call off schedule 12 clustering ', '13953');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-12-Clustering-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 12 clustering </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">You can use this schedule if other customers
+                                            (contracting authorities) want to join with you to buy using a single
+                                            call-off, instead of lots of individual call-off contracts.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-13-Implementation-Plan-and-Testing-v1.0.odt', 'RM1043.8 Call off schedule 13 implementation plan and testing', '27278');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-13-Implementation-Plan-and-Testing-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 13 implementation plan and testing</strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The agreed plan for when the services will be
+                                            delivered and tested to ensure they meet your needs.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-14-Service-Levels-and-Balanced-Scorecard-v1.0.odt', 'RM1043.8 Call off schedule 14 service levels and balanced scorecard', '24158');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-14-Service-Levels-and-Balanced-Scorecard-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 14 service levels and balanced scorecard</strong></a>
+                                </p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The standards of service required by the
+                                            customer and what happens when these are not met.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-15-Call-Off-Contract-Management-v1.0.odt', 'RM1043.8 Call off schedule 15 call off contract management ', '9653');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-15-Call-Off-Contract-Management-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 15 call off contract management </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">How the supplier and customer should work
+                                            together on the call-off contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-16-Benchmarking-v1.0.odt', 'RM1043.8 Call off schedule 16 benchmarking', '13479');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-16-Benchmarking-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 16 benchmarking</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Mechanism for the buyer to commission an
+                                            independent assessment of the value for money offered by the supplier in
+                                            the delivery of the contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-17-MOD-Terms-v1.0.odt', 'RM1043.8 Call off schedule 17 MOD terms', '11781');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-17-MOD-Terms-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 17 MOD terms</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">For Ministry of Defence (MOD) customers only.
+                                        </span><span style="font-weight: 400;">Any additional terms needed by the
+                                            MOD.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-18-Background-Checks-v1.0.odt', 'RM1043.8 Call off schedule 18 background checks', '9096');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-18-Background-Checks-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 18 background checks</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">This schedule is used when supplier staff
+                                            must be vetted before working on the contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-19-Scottish-Law-v1.0.odt', 'RM1043.8 Call off schedule 19 Scottish law', '11160');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-19-Scottish-Law-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 19 Scottish law</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Switches the interpretation of the call-off
+                                            contract to Scottish law.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-20-Call-Off-Specification-v1.0.odt', 'RM1043.8 Call off schedule 20 call off specification ', '6503');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-20-Call-Off-Specification-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 20 call off specification </strong></a></p>
+                                <p class="joint-schedule-title">Essential document</p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The full details of your specification of
+                                            requirements, which are referenced in the order form.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-21-Northern-Ireland-Law-v1.0.odt', 'RM1043.8 Call off schedule 21 Northern Ireland law', '8894');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-21-Northern-Ireland-Law-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 21 Northern Ireland law</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Switches the interpretation of the call-off
+                                            contract to Northern Ireland law.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-23-HMRC-Terms-v1.0.odt', 'RM1043.8 Call off schedule 23 HMRC terms', '26778');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-23-HMRC-Terms-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 23 HMRC terms</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Any additional terms needed by HMRC.</span>
+                                    </p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-25-Ethical-Walls-Agreement-v2.0.odt', 'RM1043.8 Call off schedule 25 ethical walls agreement', '20936');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-25-Ethical-Walls-Agreement-v2.0.odt><strong>RM1043.8
+                                            Call off schedule 25 ethical walls agreement</strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">If you use this schedule, you will need to enter
+                                    details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">To ensure transparency, fairness,
+                                            non-discrimination and equal treatment in relation to the buyer's
+                                            procurement process.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-26-Cyber-Essentials-Scheme-v1.0.odt', 'RM1043.8 Call off schedule 26 cyber essentials scheme ', '9217');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Call-Off-Schedule-26-Cyber-Essentials-Scheme-v1.0.odt><strong>RM1043.8
+                                            Call off schedule 26 cyber essentials scheme </strong></a></p>
+                                <p class="joint-schedule-title">Optional document</p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Used when the Order Form requires the
+                                            Supplier to provide a Cyber Essentials Certificate or Cyber Essentials
+                                            Plus Certificate.</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button"
+                                        id="accordion-default-heading-1">Framework schedules</span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-default-heading-1" role="region">
+
+                                <p>Framework schedules are used by CCS to set up the agreement with suppliers.</p>
+
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 1 specification', '37530');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-1-Specification-v1.0-1.odt><strong>RM1043.8
+                                            Framework schedule 1 specification</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">What CCS expects the supplier to provide to
+                                            customers.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 2 framework tender', '6047');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-2-Framework-Tender-v1.0-1.odt><strong>RM1043.8
+                                            Framework schedule 2 framework tender</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">How the supplier proposes to meet the
+                                            specification requirements.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 3 framework prices', '17719');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-3-Framework-Prices-v1.0-1.odt><strong>RM1043.8
+                                            Framework schedule 3 framework prices</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The pricing mechanism for buyers and
+                                            suppliers under the framework contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 4 framework management ', '19387');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-4-Framework-Management-v1.0.odt><strong>RM1043.8
+                                            Framework schedule 4 framework management </strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Describes how CCS and the supplier will
+                                            manage the framework contract.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 5 management charges and information', '13511');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-5-Management-Charges-and-Information-v2.0.odt><strong>RM1043.8
+                                            Framework schedule 5 management charges and information</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">Describes the management charges, and
+                                            information process and charges, between CCS and the suppliers at
+                                            framework contract level.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 6 order form template, statement of work template and call off schedules', '29931');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-6-Order-Form-Template-Statement-of-Work-Template-and-Call-Off-Schedules-v2.0.odt><strong>RM1043.8
+                                            Framework schedule 6 order form template, statement of work template and
+                                            call off schedules</strong></a></p>
+                                <p class="joint-schedule-title">You will need to enter details in this document</p>
+                                <div class="wysiwyg-content">
+                                    <p>If you already completed the order form in the Call-off order form section,
+                                        you won't need to complete this document, because they are the same.</p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 7 call off award procedure', '22790');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-7-Call-Off-Award-Procedure-v1.0.odt><strong>RM1043.8
+                                            Framework schedule 7 call off award procedure</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">The process a customer must follow to award a
+                                            call-off contract, which needs to be clearly stated in your further
+                                            competition documents.</span></p>
+                                </div>
+                                <p class="joint-schedule-title"><a
+                                        onclick="fileDownload('', 'RM1043.8 Framework schedule 8 self audit certificate', '8854');"
+                                        href=https://assets.crowncommercial.gov.uk/wp-content/uploads/RM1043.8_Framework-Schedule-8-Self-Audit-Certificate-v1.0.odt><strong>RM1043.8
+                                            Framework schedule 8 self audit certificate</strong></a></p>
+                                <p class="joint-schedule-title">Read only</p>
+                                <div class="wysiwyg-content">
+                                    <p><span style="font-weight: 400;">CCS requires suppliers to provide a self
+                                            audit certificate following an annual self audit to verify their
+                                            accounts.</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div>
+                        <h2 class="govuk-heading-m" id="benefitsofccs">The benefits of using CCS</h2>
+                        <iframe src="https://www.youtube-nocookie.com/embed/FRlRf8OpT7o" allowfullscreen="" width="560"
+                            height="315" title="*QA*:power to your procurement"></iframe>
+                    </div>
+
+                    <div class="app-c-print-link" style="margin-top: 80px;">
+                        <a href="#" onclick="window.print(); return false;" class="govuk-link"
+                            style="padding: 8px 16px; border: 1px solid #000000;">
+                            <span class="print-icon">🖨️</span> Print this page
+                        </a>
+                        <a href="#" onclick="bookmarkPage(); return false;" class="govuk-link"
+                            style="margin-left: 15px; padding: 8px 16px; border: 1px solid #000000;">
+                            <span class="bookmark-icon">🔖</span> Bookmark this page
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="govuk-grid-column-one-third" style="font-family: 'Source Sans Pro', sans-serif;">
+                    <aside class="aside">
+
+                        <!-- Add Actions section with print and bookmark buttons -->
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Actions</h2>
+                            <div class="action-buttons">
+                                <a href="#" onclick="window.print(); return false;" class="action-button">
+                                    <svg class="action-button__icon" xmlns="http://www.w3.org/2000/svg" height="20"
+                                        width="20" viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
+                                    </svg>
+                                    Print this page
+                                </a>
+                                <a href="#" onclick="bookmarkPage(); return false;" class="action-button"
+                                    style="padding-left: 8px;">
+                                    <svg class="action-button__icon" xmlns="http://www.w3.org/2000/svg" height="20"
+                                        width="20" viewBox="0 0 24 24">
+                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
+                                    </svg>
+                                    Bookmark this page
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Contact</h2>
+
+                            <p> CCS customer services team is available Monday to Friday, 9am to 5pm.</p>
+
+                            <h3 class="govuk-!-font-size-16 ccs-font-weight-semibold govuk-!-margin-0">
+                                Contact form</h3>
+                            <p><a href="/contact">Complete contact form</a></p>
+
+                            <h3 class="govuk-!-font-size-16 ccs-font-weight-semibold govuk-!-margin-0">Telephone:
+                            </h3>
+                            <p><a href="tel:03454102222">0345 410 2222</a></p>
+
+
+                        </div>
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Useful information </h2>
+                            <p><a href="/glossary">Glossary</a></p>
+                        </div>
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Do you need an accessible version of a document? </h2>
+                            <br />
+                            <h3 class="govuk-!-font-size-16 ccs-font-weight-semibold govuk-!-margin-0">
+                                Email:</h3>
+                            <p><a href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a></p>
+
+                            <h3 class="govuk-!-font-size-16 ccs-font-weight-semibold govuk-!-margin-0">Telephone:
+                            </h3>
+                            <p><a href="tel:03454102222">0345 410 2222</a></p>
+                        </div>
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Help us make this service better for you</h2>
+                            <p> <a class="govuk-link" style="font-weight: 600;" href="/survey">Give
+                                    feedback on how we can improve this service.
+                                </a>.</p>
+                        </div>
+
+                    </aside>
+                </div>
+            </div>
+
+            <script>
+                const detailsSummarySpan = document.getElementById("details-summary");
+
+                if (detailsSummarySpan !== null) {
+                    detailsSummarySpan.addEventListener('click', event => {
+                        if (document.getElementById("details-summary").textContent == "Show previous updates") {
+                            document.getElementById("details-summary").textContent = "Hide previous updates";
+                        } else {
+                            document.getElementById("details-summary").textContent = "Show previous updates";
+                        }
+                    });
+                }
+            </script>
+
+        </main>
+    </div>
+
+
+
+    <button type="button" id="BackToTopButton" class="back-to-top-button" aria-label="Back to top"
+        style="border: none;">
+        Back to top
+        <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path>
+        </svg>
+    </button>
+
+</body>
+
+
+
+</html>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    // Back to Top Button functionality
+    var backToTopBtn = document.getElementById("BackToTopButton");
+    var skipLink = document.querySelector(".govuk-skip-link");
+
+    // Click and keypress handlers
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        animateScrollToTop();
+    });
+
+    backToTopBtn.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            animateScrollToTop();
+        }
+    });
+
+    // Smooth scroll to top function using vanilla JavaScript
+    function animateScrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Wait for scroll to complete before focusing
+        setTimeout(() => {
+            if (skipLink !== null) {
+                skipLink.focus();
+            }
+        }, 300);
+    }
+
+    // Show/hide button based on scroll position
+    function showOrHideBackToTop() {
+        // Handle position relative to footer
+        if (window.scrollY + window.innerHeight > (document.querySelector('footer').getBoundingClientRect().top + window.pageYOffset)) {
+            backToTopBtn.classList.add("fixed");
+            backToTopBtn.classList.remove("flex");
+        } else {
+            backToTopBtn.classList.add("flex");
+            backToTopBtn.classList.remove("fixed");
+        }
+
+        // Show/hide based on scroll position
+        if (window.scrollY > 200) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    }
+
+    // Initialize on page load
+    window.onload = function () {
+        showOrHideBackToTop();
+        window.addEventListener("scroll", showOrHideBackToTop, false);
+    };
+
+    function bookmarkPage() {
+        if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
+            window.sidebar.addPanel(document.title, window.location.href, '');
+        } else if (window.external && ('AddFavorite' in window.external)) { // IE
+            window.external.AddFavorite(window.location.href, document.title);
+        } else { // Modern browsers
+            alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+        }
+    }
+</script>
+
+<script> frameworkAndSupplierPage(); </script>
+<script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href, 'page_type': 'agreement', 'agreement': 'Digital Outcomes 6', 'agreement_id': 'RM1043.8' });</script>
+
+<script src="/assets/scripts/dataLayer.js"></script>
+
+
+
+<script src="/assets/scripts/libraries/jquery-3.6.0.min.js"></script>
+<script src="/assets/scripts/libraries/objectFitPolyfill.min.js"></script>
+<script src="/assets/scripts/app.js?v=2.3"></script>
+<script type="text/javascript">
+    $('a[target^="_new-window"]').click(function () {
+        var width = window.innerWidth * 0.9;
+        var height = width * window.innerHeight / window.innerWidth;
+        window.open(this.href, 'popup', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2)); return false;
+    })
+</script>
+
+
+<!-- Pardot -->
+<!-- @todo Wrap around Cookie Manager JS to ensure we have user consent before this is run -->
+<script type="text/javascript">
+    piAId = '812463';
+    piCId = '';
+    piHostname = 'information.crowncommercial.gov.uk';
+
+    var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+    if (cookiePreferences !== null) {
+        if (cookiePreferences.marketing === true) {
+            (function () {
+                function async_load() {
+                    var s = document.createElement('script'); s.type = 'text/javascript';
+                    s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + piHostname + '/pd.js';
+                    var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+                }
+                if (window.attachEvent) { window.attachEvent('onload', async_load); }
+                else { window.addEventListener('load', async_load, false); }
+            })();
+        }
+    }
+
+    // toggle mobile menu icon
+    var menuIcon = document.querySelector(".global-navigation__toggler");
+    var iconClosed = document.querySelector(".icon-menu-closed");
+    var iconOpen = document.querySelector(".icon-menu-open");
+
+    menuIcon.addEventListener("click", function () {
+        if (window.getComputedStyle(iconClosed, null).display == "inline") {
+            iconClosed.style.display = "none";
+            iconOpen.style.display = "inline";
+        }
+
+        else if (window.getComputedStyle(iconOpen, null).display == "inline") {
+            iconOpen.style.display = "none";
+            iconClosed.style.display = "inline";
+        }
+    });
+
+    var backToTopBtn = document.getElementById("BackToTopButton");
+    var skipLink = document.querySelector(".govuk-skip-link");
+
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        animateScrollToTop();
+    });
+
+    backToTopBtn.addEventListener('keypress', function (e) {
+        e.preventDefault();
+        if (e.key === 'Enter') {
+            animateScrollToTop();
+        }
+    });
+
+    function animateScrollToTop() {
+        $('html, body').animate({ scrollTop: 0 }, '300');
+        // reset focus on page
+        if (skipLink !== null) {
+            skipLink.focus();
+        }
+
+    }
+
+    function showOrHideBackToTop() {
+        var contactForm = document.querySelector("form");
+
+        if (window.scrollY + window.innerHeight > (document.querySelector('footer').getBoundingClientRect().top + window.pageYOffset)) {
+            backToTopBtn.classList.add("fixed");
+            backToTopBtn.classList.remove("flex");
+        } else {
+            backToTopBtn.classList.add("flex");
+            backToTopBtn.classList.remove("fixed");
+        }
+
+        if (window.scrollY > 200) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+
+        if (contactForm !== null) {
+            if (contactForm.getAttribute("data-evt-type") == "contact_form") {
+                makeBackToTopFocusable();
+            }
+        }
+
+    }
+
+    // this is to fix an edge case where back to top is not focusable properly on contact page
+    function makeBackToTopFocusable() {
+        var links = document.querySelectorAll("main a");
+        var lastLink = links[links.length - 1];
+        var contactCard = document.querySelector("#submit");
+
+        lastLink.addEventListener("keydown", function (event) {
+            if (event.key === "Tab" && !event.shiftKey) {
+                event.preventDefault();
+                contactCard.scrollIntoView({ behaviour: "smooth", block: "start" });
+                // set timeout in order for scrollIntoView to finish firing first
+                setTimeout(function () {
+                    backToTopBtn.classList.add("show");
+                    backToTopBtn.style.position = "absolute";
+                    backToTopBtn.focus();
+                }, 200)
+
+            }
+        })
+    }
+
+    window.onload = function () {
+        dataLayerSetup();
+        showOrHideBackToTop()
+
+        window.addEventListener("scroll", function (event) {
+            showOrHideBackToTop()
+        }, false);
+
+    };
+
+    // add download notification to links
+    var links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+        var href = link.getAttribute("href");
+        var exts = [".doc", ".docx", ".xlsx", ".pptx", ".csv", ".odt", ".ods", ".zip"];
+        var target = link.getAttribute("target");
+        var span = document.createElement("span");
+
+        if (target === "_blank") {
+            span.innerText = "Opens in new window";
+            link.classList.add("download-info")
+            link.appendChild(span);
+        }
+
+        if (href != null) {
+            if (exts.some(ext => href.includes(ext))) {
+                span.innerText = "This file will download";
+                link.classList.add("download-info")
+                link.appendChild(span);
+            }
+        }
+
+
+
+    })
+
+    // make cards same height in list
+    var cardLists = document.querySelectorAll("ul.card-list");
+    var maxHeight = 0;
+    var windowWidth = window.innerWidth;
+
+    if (cardLists != null) {
+        cardLists.forEach(function (cardList) {
+            cards = cardList.querySelectorAll("li.card-list__item");
+
+            if (cards.length > 1) {
+                cards.forEach(function (card) {
+                    var cardHeight = card.querySelector(".card-list__item__wrapper").offsetHeight;
+                    if (cardHeight > maxHeight) {
+                        maxHeight = cardHeight;
+                    }
+                });
+
+                cards.forEach(function (card) {
+                    card.querySelector(".card-list__item__wrapper").style.height = maxHeight - 50 + "px";
+
+                    if (windowWidth < 600) {
+                        card.querySelector(".card-list__item__wrapper").style.height = "auto";
+                    }
+                })
+            }
+        })
+    }
+
+    // change colour of logo on focus for accessibility
+    var logo = document.querySelector(".logo");
+    var logoImg = document.querySelector(".navLogo");
+
+    logo.addEventListener("focus", function (event) {
+        logoImg.style.filter = "invert(100%)";
+    })
+
+    logo.addEventListener("focusout", function (event) {
+        logoImg.style.filter = "invert(0)";
+    })
+
+</script>
+
+<script type="module" src="/assets/scripts/all.js?v=2.3"></script>
+<script type="module">
+    import { initAll } from '/assets/scripts/all.js'
+    window.addEventListener("DOMContentLoaded", function () {
+        initAll()
+    }, false);
+</script>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js-beta.njk" %}
+{% endblock %}

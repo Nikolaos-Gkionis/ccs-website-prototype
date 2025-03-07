@@ -1,0 +1,46 @@
+/*------------------------------------*\
+  #Bookmark and Print links
+\*------------------------------------*/
+
+.app-c-print-link__link,
+.app-c-bookmark-link__link {
+    border: 0;
+    @include govuk-font(19, $weight: regular);
+    color: $govuk-link-colour;
+    text-decoration: underline;
+    display: inline-block;
+    margin-right: 15px;
+    padding: 8px 16px 8px 32px;
+    background-size: 16px 18px;
+    background-repeat: no-repeat;
+    background-position: 8px 50%;
+
+    &:hover,
+    &:active {
+        color: $govuk-link-hover-colour;
+        text-decoration: none;
+    }
+
+    &:focus {
+        color: $govuk-focus-text-colour;
+        background-color: $govuk-focus-colour !important;
+        box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+        outline: $govuk-focus-width solid transparent;
+    }
+}
+
+.app-c-print-link__link {
+    background-image: url(../images/print.png);
+}
+
+.app-c-bookmark-link__link {
+    background-image: url(../images/bookmark.png);
+}
+
+/*
+ * If Javascript isn't available, hide both links
+ */
+.no-js .app-c-print-link__link,
+.no-js .app-c-bookmark-link__link {
+    display: none;
+} 
