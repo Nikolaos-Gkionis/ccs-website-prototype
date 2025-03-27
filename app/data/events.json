@@ -1,0 +1,442 @@
+{
+  "meta": {
+    "X-WP-Total": 31,
+    "X-WP-TotalPages": 4
+  },
+  "body": [
+    {
+      "id": 1,
+      "slug": "event-interchange-uk",
+      "title": {
+        "rendered": "Event: Interchange UK"
+      },
+      "acf": {
+        "start_datetime": "4-03-2025 09:00",
+        "end_datetime": "5-03-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 1",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 2,
+      "slug": "webinar-g-cloud-14-what-can-i-buy-and-how-can-i-buy-it",
+      "title": {
+        "rendered": "Webinar: G-Cloud 14 – what can I buy and how can I buy it?"
+      },
+      "acf": {
+        "start_datetime": "5-03-2025 09:00", 
+        "end_datetime": "5-03-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 2",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 3,
+      "slug": "ccs-technology-forum",
+      "title": {
+        "rendered": "CCS Technology Forum"
+      },
+      "acf": {
+        "start_datetime": "6-03-2025 09:00",
+        "end_datetime": "6-03-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 3",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 4,
+      "slug": "engagement-housing-category-customer-forum",
+      "title": {
+        "rendered": "Engagement: Housing Category Customer Forum"
+      },
+      "acf": {
+        "start_datetime": "11-03-2025 09:00",
+        "end_datetime": "11-03-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 4",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 5,
+      "slug": "webinar-supplier-showcase-innovation-and-ai",
+      "title": {
+        "rendered": "Webinar: Supplier Showcase - Innovation & AI"
+      },
+      "acf": {
+        "start_datetime": "12-03-2025 09:00",
+        "end_datetime": "12-03-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 5",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 6,
+      "slug": "legal-panel-supplier-engagement",
+      "title": {
+        "rendered": "Legal Panel for Public Sector RM6374 Supplier Engagement"
+      },
+      "acf": {
+        "start_datetime": "19-03-2025 09:00",
+        "end_datetime": "19-03-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 6",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 7,
+      "slug": "webinar-unlock-ai-opportunities",
+      "title": {
+        "rendered": "Webinar: Unlock Public Sector Artificial Intelligence Opportunities - SME/VCSE"
+      },
+      "acf": {
+        "start_datetime": "19-03-2025 09:00",
+        "end_datetime": "19-03-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 7",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 8,
+      "slug": "technology-sme-meet-buyer-forum",
+      "title": {
+        "rendered": "Technology SME Meet the Buyer Forum - Unlocking Public Procurement Opportunities"
+      },
+      "acf": {
+        "start_datetime": "20-03-2025 09:00",
+        "end_datetime": "20-03-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 8",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 9,
+      "slug": "event-dprte-2025",
+      "title": {
+        "rendered": "Event: DPRTE 2025"
+      },
+      "acf": {
+        "start_datetime": "26-03-2025 09:00",
+        "end_datetime": "27-03-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 9",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 10,
+      "slug": "legal-panel-supplier-engagement-event",
+      "title": {
+        "rendered": "Legal Panel for Public Sector RM6374 Supplier Engagement Event"
+      },
+      "acf": {
+        "start_datetime": "1-04-2025 09:00",
+        "end_datetime": "1-04-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 10",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 11,
+      "slug": "future-event-11",
+      "title": {
+        "rendered": "Future Event 11"
+      },
+      "acf": {
+        "start_datetime": "5-04-2025 09:00",
+        "end_datetime": "5-04-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 11",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 12,
+      "slug": "future-event-12",
+      "title": {
+        "rendered": "Future Event 12"
+      },
+      "acf": {
+        "start_datetime": "8-04-2025 09:00",
+        "end_datetime": "8-04-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 12",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 13,
+      "slug": "future-event-13",
+      "title": {
+        "rendered": "Future Event 13"
+      },
+      "acf": {
+        "start_datetime": "10-04-2025 09:00",
+        "end_datetime": "10-04-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 13",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 14,
+      "slug": "future-event-14",
+      "title": {
+        "rendered": "Future Event 14"
+      },
+      "acf": {
+        "start_datetime": "15-04-2025 09:00",
+        "end_datetime": "15-04-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 14",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 15,
+      "slug": "future-event-15",
+      "title": {
+        "rendered": "Future Event 15"
+      },
+      "acf": {
+        "start_datetime": "17-04-2025 09:00",
+        "end_datetime": "17-04-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 15",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 16,
+      "slug": "future-event-16",
+      "title": {
+        "rendered": "Future Event 16"
+      },
+      "acf": {
+        "start_datetime": "22-04-2025 09:00",
+        "end_datetime": "22-04-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 16",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 17,
+      "slug": "future-event-17",
+      "title": {
+        "rendered": "Future Event 17"
+      },
+      "acf": {
+        "start_datetime": "24-04-2025 09:00",
+        "end_datetime": "24-04-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 17",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 18,
+      "slug": "future-event-18",
+      "title": {
+        "rendered": "Future Event 18"
+      },
+      "acf": {
+        "start_datetime": "29-04-2025 09:00",
+        "end_datetime": "29-04-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 18",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 19,
+      "slug": "future-event-19",
+      "title": {
+        "rendered": "Future Event 19"
+      },
+      "acf": {
+        "start_datetime": "1-05-2025 09:00",
+        "end_datetime": "1-05-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 19",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 20,
+      "slug": "future-event-20",
+      "title": {
+        "rendered": "Future Event 20"
+      },
+      "acf": {
+        "start_datetime": "6-05-2025 09:00",
+        "end_datetime": "6-05-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 20",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 21,
+      "slug": "future-event-21",
+      "title": {
+        "rendered": "Future Event 21"
+      },
+      "acf": {
+        "start_datetime": "8-05-2025 09:00",
+        "end_datetime": "8-05-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 21",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 22,
+      "slug": "future-event-22",
+      "title": {
+        "rendered": "Future Event 22"
+      },
+      "acf": {
+        "start_datetime": "13-05-2025 09:00",
+        "end_datetime": "13-05-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 22",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 23,
+      "slug": "future-event-23",
+      "title": {
+        "rendered": "Future Event 23"
+      },
+      "acf": {
+        "start_datetime": "15-05-2025 09:00",
+        "end_datetime": "15-05-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 23",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 24,
+      "slug": "future-event-24",
+      "title": {
+        "rendered": "Future Event 24"
+      },
+      "acf": {
+        "start_datetime": "20-05-2025 09:00",
+        "end_datetime": "20-05-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 24",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 25,
+      "slug": "future-event-25",
+      "title": {
+        "rendered": "Future Event 25"
+      },
+      "acf": {
+        "start_datetime": "22-05-2025 09:00",
+        "end_datetime": "22-05-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 25",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 26,
+      "slug": "future-event-26",
+      "title": {
+        "rendered": "Future Event 26"
+      },
+      "acf": {
+        "start_datetime": "27-05-2025 09:00",
+        "end_datetime": "27-05-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 26",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 27,
+      "slug": "future-event-27",
+      "title": {
+        "rendered": "Future Event 27"
+      },
+      "acf": {
+        "start_datetime": "29-05-2025 09:00",
+        "end_datetime": "29-05-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 27",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 28,
+      "slug": "future-event-28",
+      "title": {
+        "rendered": "Future Event 28"
+      },
+      "acf": {
+        "start_datetime": "3-06-2025 09:00",
+        "end_datetime": "3-06-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 28",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 29,
+      "slug": "future-event-29",
+      "title": {
+        "rendered": "Future Event 29"
+      },
+      "acf": {
+        "start_datetime": "5-06-2025 09:00",
+        "end_datetime": "5-06-2025 17:00",
+        "event_type": "Live webinar",
+        "event_description": "Description placeholder 29",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 30,
+      "slug": "future-event-30",
+      "title": {
+        "rendered": "Future Event 30"
+      },
+      "acf": {
+        "start_datetime": "10-06-2025 09:00",
+        "end_datetime": "10-06-2025 17:00",
+        "event_type": "Conference and exhibition",
+        "event_description": "Description placeholder 30",
+        "featured_image_url": false
+      }
+    },
+    {
+      "id": 31,
+      "slug": "future-event-31",
+      "title": {
+        "rendered": "Future Event 31"
+      },
+      "acf": {
+        "start_datetime": "12-06-2025 09:00",
+        "end_datetime": "12-06-2025 17:00",
+        "event_type": "Engagement",
+        "event_description": "Description placeholder 31",
+        "featured_image_url": false
+      }
+    }
+  ]
+} 

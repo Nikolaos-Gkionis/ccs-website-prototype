@@ -1,0 +1,119 @@
+{% block header %}
+
+<header class="header-global">
+    <div class="ccs-width-container center-content">
+
+        <div class="nav-wrapper">
+
+            <a href="/" class="logo">
+                <img src="{{ asset_path }}images/CCS_WHITE_SML_AW.png" alt="Go to the CCS homepage"
+                    onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';">
+            </a>
+
+            <button class="global-navigation__toggler" data-toggler="nav" aria-expanded="true">
+                <span>Menu</span> <span class="icon-menu-closed"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                        height="12" viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14.9561 3.59459L13.3615 2L7.47022 7.89124L1.59508 2.01609L0.000483532 3.61069L7.47187 11.0821L9.06646 9.48748L9.06482 9.48583L14.9561 3.59459Z"
+                            fill="#9B1A47"></path>
+                    </svg></span>
+                <span class="icon-menu-open" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                        height="12" viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.0439452 8.40541L1.63854 10L7.52978 4.10876L13.4049 9.98391L14.9995 8.38931L7.52813 0.917931L5.93354 2.51252L5.93518 2.51417L0.0439452 8.40541Z"
+                            fill="#9B1A47"></path>
+                    </svg></span>
+            </button>
+
+            <nav class="global-navigation" data-toggle="nav"
+                data-app-uri="http://www.crowncommercial.gov.uk/agreements/rm3749"
+                data-app-pathinfo="/agreements/rm3749" aria-hidden="false">
+
+                <ul class="nav-list nav-list--secondary">
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/about-ccs"
+                            data-evt-placement="header">About</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  "
+                            href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers"
+                            data-evt-placement="header">Information for buyers and suppliers</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/social-value"
+                            data-evt-placement="header">Social value</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/news"
+                            data-evt-placement="header">News</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/events"
+                            data-evt-placement="header">Events</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/contact"
+                            data-evt-placement="header">Contact</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="tel:0345%20410%202222" data-evt-placement="header">call us:
+                            0345 410 2222</a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav-list nav-list--primary">
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="/ccs-home/search-agreements"
+                            data-evt-placement="header">Search agreements</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/suppliers"
+                            data-evt-placement="header">Search suppliers</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/agreements/upcoming"
+                            data-evt-placement="header">Upcoming agreements</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/products-and-services"
+                            data-evt-placement="header">Products and services</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link  " href="https://www.crowncommercial.gov.uk/sectors"
+                            data-evt-placement="header">Sectors</a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav-list nav-list-ppg">
+                    <li class="nav-list__item">
+                        <p class="nav-list__link" data-evt-placement="header">Public Procurement Gateway</p>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="http://identify.crowncommercial.gov.uk/"
+                            data-evt-placement="header">Sign In</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="https://identify.crowncommercial.gov.uk/manage-org/register"
+                            data-evt-placement="header">Create account</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+
+    </div>
+
+    <!-- Hero -->
+    {% block hero %}
+    <div class="govuk-widthless-container">
+        {% include "includes/hero.njk" %}
+    </div>
+    {% endblock %}
+
+
+</header>
+
+{% endblock %}

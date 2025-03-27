@@ -39,35 +39,73 @@
     <div class="govuk-breadcrumbs">
         <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="/ccs-home-beta/">Home</a>
+                <a class="govuk-breadcrumbs__link" href="/ccs-home/">Home</a>
             </li>
             <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="/ccs-home-beta/search-agreements">Search agreements </a>
+                <a class="govuk-breadcrumbs__link" href="/ccs-home/search-agreements">Search agreements </a>
             </li>
         </ol>
     </div>
 
     <main id="main-content" role="main" class="govuk-main-wrapper">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full hideWithoutJS govuk-visually-hidden">
+            <div class="govuk-grid-column-two-thirds hideWithoutJS govuk-visually-hidden" id="search-title-container">
                 <h1 v-if="displayKeyword" class="govuk-heading-xl page-title"
                     style="font-family: 'Source Sans Pro', sans-serif;">Search agreements for {[displayKeyword]}
                 </h1>
                 <h1 v-else class="govuk-heading-xl page-title" style="font-family: 'Source Sans Pro', sans-serif;">
                     Search agreements</h1>
             </div>
-            <div v-show="!javascriptVersion" class="govuk-grid-column-full">
+            <div v-show="!javascriptVersion" class="govuk-grid-column-two-thirds">
                 <h1 v-else class="govuk-heading-xl page-title" style="font-family: 'Source Sans Pro', sans-serif;">
                     Search agreements</h1>
             </div>
-        </div>
 
+            <!-- Add text size controls -->
+            <div class="govuk-form-group">
+                <div class="govuk-grid-column-one-third">
+                    <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
+                        <legend
+                            class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold">
+                            Text size
+                        </legend>
+                        <div class="govuk-radios govuk-radios--small govuk-radios--inline" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="text-size-small" name="text-size" type="radio"
+                                    value="small" onclick="setTextSize('small')">
+                                <label class="govuk-label govuk-radios__label govuk-body govuk-!-font-size-16"
+                                    for="text-size-small">
+                                    Small
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="text-size-medium" name="text-size" type="radio"
+                                    value="medium" checked onclick="setTextSize('medium')">
+                                <label class="govuk-label govuk-radios__label govuk-body govuk-!-font-size-19"
+                                    for="text-size-medium">
+                                    Medium
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="text-size-large" name="text-size" type="radio"
+                                    value="large" onclick="setTextSize('large')">
+                                <label class="govuk-label govuk-radios__label govuk-body govuk-!-font-size-24"
+                                    for="text-size-large">
+                                    Large
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+        </div>
 
         <div class="govuk-grid-row">
 
             <div class="govuk-grid-column-one-third">
 
-                <form v-on:submit.prevent="fetchAPIData" action="/ccs-home-beta/content-beta" method="GET">
+                <form v-on:submit.prevent="fetchAPIData" action="/ccs-home/content" method="GET">
 
                     <div class="govuk-form-group govuk-form-group--enclosure">
                         <div class="govuk-form-group sidebar__search-group">
@@ -108,7 +146,7 @@
                                 onclick="pushToDataLayer({'event': 'search_filter', 'interaction_type': 'clear'});"
                                 @click="resetAllFilter" class="govuk-link hideWithoutJS govuk-visually-hidden">Clear
                                 filters</a>
-                            <a v-show="!javascriptVersion" href="/ccs-home-beta/content-beta" class="govuk-link">Clear
+                            <a v-show="!javascriptVersion" href="/ccs-home/content" class="govuk-link">Clear
                                 filters</a>
                         </div>
                     </div>
@@ -131,7 +169,8 @@
                                         Filter by agreement status
                                     </span>
                                 </h2>
-                                <span class="govuk-body-s hideWithoutJS govuk-visually-hidden">{[ checkedStatus.length
+                                <span class="govuk-body-s hideWithoutJS govuk-visually-hidden">{[
+                                    checkedStatus.length
                                     ]} selected</span>
 
                                 <span class="govuk-body-s" v-show="!javascriptVersion">1 selected</span>
@@ -162,7 +201,7 @@
                             <div class="apollo-enclosure">
                                 <h2 class="aside__heading">Upcoming agreements</h2>
 
-                                <p><a href="/ccs-home-beta/content-beta">View our upcoming agreement page</a>
+                                <p><a href="/ccs-home/content">View our upcoming agreement page</a>
                                     for agreements
                                     that are being developed and are not yet live.</p>
 
@@ -448,7 +487,12 @@
                     -->
 
                     <aside class="aside">
-
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Help us make this service better for you</h2>
+                            <p> <a class="govuk-link" style="font-weight: 600;" href="/survey">Give
+                                    feedback on how we can improve this service.
+                                </a></p>
+                        </div>
                         <div class="apollo-enclosure">
                             <h2 class="aside__heading">Helpful Links</h2>
                             <ul class="govuk-list govuk-!-font-size-19">
@@ -470,14 +514,9 @@
                         </div>
                         <div class="apollo-enclosure">
                             <h2 class="aside__heading">Do you need help requesting agreement pricing?</h2>
-                            <p>If pricing is available you will find instructions on how to access pricing in the 'how
+                            <p>If pricing is available you will find instructions on how to access pricing in the
+                                'how
                                 to buy' section on the individual agreement webpage.</p>
-                        </div>
-                        <div class="apollo-enclosure" style="background-color: #9B1A47; color: #ffffff;">
-                            <h2 class="aside__heading">Help us make this service better for you</h2>
-                            <p> <a class="govuk-link" style="color: #ffffff; font-weight: 600;" href="/survey">Give
-                                    feedback on how we can improve this service.
-                                </a></p>
                         </div>
                     </aside>
 
@@ -500,7 +539,8 @@
                         <ul class="ccs-filters-summary__list">
                             <li class="ccs-filters-summary__facet">
                                 <a style="cursor: pointer;" @click="clearSearchKeyword"
-                                    class="ccs-filters-summary__facet__cancel"> <span>{[ displayKeyword]}</span> </a>
+                                    class="ccs-filters-summary__facet__cancel"> <span>{[ displayKeyword]}</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -515,10 +555,11 @@
                         <li v-show="javascriptVersion" v-for="result in results">
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a v-bind:href="'/ccs-home-beta/content-beta">{[ result.title
+                                <a v-bind:href="'/ccs-home/content">{[ result.title
                                     ]}</a>
                                 <span v-if="result.status == 'Expired - Data Still Received'"
-                                    class="govuk-tag ccs-tag ccs-tag--error"> Expired: {[ result.end_date | toDateDMY ]}
+                                    class="govuk-tag ccs-tag ccs-tag--error"> Expired: {[ result.end_date |
+                                    toDateDMY ]}
                                 </span>
                             </h3>
 
@@ -526,7 +567,8 @@
                                 <li> <strong>Agreement ID:</strong> {[ result.rm_number ]} </li>
                                 <li> <strong>Start Date:</strong> {[ result.start_date | toDateDMY ]} </li>
 
-                                <li v-if="result.status == 'Expired - Data Still Received'"> <strong>End Date:</strong>
+                                <li v-if="result.status == 'Expired - Data Still Received'"> <strong>End
+                                        Date:</strong>
                                     {[ result.end_date | toDateDMY ]} </li>
 
                             </ul>
@@ -545,7 +587,8 @@
                 <div v-if="emptyResult" class="hideWithoutJS govuk-visually-hidden">
                     <div
                         v-if="checkedRegulation.length == 1 && checkedRegulation.includes('PCR2006') || checkedType.length == 1 && checkedType.includes('PCR06+Framework')">
-                        <p>All agreements under The Public Contracts Regulation (PCR) 2006 are now expired. <br>You can
+                        <p>All agreements under The Public Contracts Regulation (PCR) 2006 are now expired. <br>You
+                            can
                             view these archived agreements by clicking 'Expired' on the left side of this page.</p>
                     </div>
                     <div v-else>
@@ -567,7 +610,8 @@
                             </li>
                         </ul>
                         <br>
-                        <p>If you are still unable to find what you need, contact our customer service centre using our
+                        <p>If you are still unable to find what you need, contact our customer service centre using
+                            our
                             <a class="govuk-link" href="/contact">contact us form</a>.
                         </p>
                     </div>
@@ -579,7 +623,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Adult Skills and Learning DPS</a>
+                                <a href="/ccs-home/content">Adult Skills and Learning DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -589,15 +633,17 @@
                                 <li> <strong>End Date:</strong> 27/10/2028 </li>
 
                             </ul>
-                            <p class="govuk-body-s">All public sector organisations can access training for adults and
-                                young adults in the general public. Training is available both regionally and nationally
+                            <p class="govuk-body-s">All public sector organisations can access training for adults
+                                and
+                                young adults in the general public. Training is available both regionally and
+                                nationally
                                 through a range of funding types.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Apprenticeship Training Dynamic
+                                <a href="/ccs-home/content">Apprenticeship Training Dynamic
                                     Marketplace DPS</a>
                             </h3>
 
@@ -609,7 +655,8 @@
 
                             </ul>
                             <p class="govuk-body-s">Provides access to an extensive range of apprenticeship training
-                                programmes that fully supports Education and Skills Funding Agency (ESFA) funding rules.
+                                programmes that fully supports Education and Skills Funding Agency (ESFA) funding
+                                rules.
                                 These rules give departments and public sector bodies the freedom to choose who they
                                 contract with.
                             </p>
@@ -617,7 +664,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Artificial Intelligence (AI)</a>
+                                <a href="/ccs-home/content">Artificial Intelligence (AI)</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -628,14 +675,15 @@
 
                             </ul>
                             <p class="govuk-body-s">Discovery and consultancy services related to artificial
-                                intelligence (AI), implementation and support of AI systems, end-to-end partnerships,
+                                intelligence (AI), implementation and support of AI systems, end-to-end
+                                partnerships,
                                 and AI technologies.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Audio Visual Technical Consultancy &amp;
+                                <a href="/ccs-home/content">Audio Visual Technical Consultancy &amp;
                                     Commissioning</a>
                             </h3>
 
@@ -646,7 +694,8 @@
                                 <li> <strong>End Date:</strong> 28/02/2025 </li>
 
                             </ul>
-                            <p class="govuk-body-s">A Dynamic Purchasing System (DPS) for public sector customers who
+                            <p class="govuk-body-s">A Dynamic Purchasing System (DPS) for public sector customers
+                                who
                                 need complex audio visual (AV) services. Plus support services for rooms that use a
                                 range of AV technology.
                             </p>
@@ -654,7 +703,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Audit &amp; Assurance Services
+                                <a href="/ccs-home/content">Audit &amp; Assurance Services
                                     (A&amp;AS)</a>
                             </h3>
 
@@ -665,14 +714,15 @@
                                 <li> <strong>End Date:</strong> 10/08/2025 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Access audit and assurance services including internal and external
+                            <p class="govuk-body-s">Access audit and assurance services including internal and
+                                external
                                 audit, counter fraud and investigation.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Automation Marketplace DPS</a>
+                                <a href="/ccs-home/content">Automation Marketplace DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -682,14 +732,15 @@
                                 <li> <strong>End Date:</strong> 15/11/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Intelligent automation services and solutions, including automation
+                            <p class="govuk-body-s">Intelligent automation services and solutions, including
+                                automation
                                 technologies, services, consultancy and licences.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Back Office Software</a>
+                                <a href="/ccs-home/content">Back Office Software</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -699,15 +750,17 @@
                                 <li> <strong>End Date:</strong> 05/04/2025 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Software as a Service (SaaS) solutions for back office applications,
-                                for deploying either in the cloud, on premise or hybrid. Available for all public sector
+                            <p class="govuk-body-s">Software as a Service (SaaS) solutions for back office
+                                applications,
+                                for deploying either in the cloud, on premise or hybrid. Available for all public
+                                sector
                                 organisations.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Big Data and Analytics</a>
+                                <a href="/ccs-home/content">Big Data and Analytics</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -717,14 +770,15 @@
                                 <li> <strong>End Date:</strong> 08/08/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">All public sector organisations can access both bespoke professional
+                            <p class="govuk-body-s">All public sector organisations can access both bespoke
+                                professional
                                 services and commercial 'off the shelf' software specific to data and analytics.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Building Materials and Equipment</a>
+                                <a href="/ccs-home/content">Building Materials and Equipment</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -734,7 +788,8 @@
                                 <li> <strong>End Date:</strong> 26/01/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">UK government departments, devolved administrations and the wider
+                            <p class="govuk-body-s">UK government departments, devolved administrations and the
+                                wider
                                 public sector can access a range of building materials, equipment and associated
                                 services.
                             </p>
@@ -742,7 +797,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Buying Better Food and Drink</a>
+                                <a href="/ccs-home/content">Buying Better Food and Drink</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -752,15 +807,17 @@
                                 <li> <strong>End Date:</strong> 22/01/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">All public sector organisations can use this agreement to buy food
-                                and drink through a single on-line access point. You will be able to access all food and
+                            <p class="govuk-body-s">All public sector organisations can use this agreement to buy
+                                food
+                                and drink through a single on-line access point. You will be able to access all food
+                                and
                                 drink sub-categories.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Campaign Solutions 2</a>
+                                <a href="/ccs-home/content">Campaign Solutions 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -770,15 +827,17 @@
                                 <li> <strong>End Date:</strong> 06/09/2025 </li>
 
                             </ul>
-                            <p class="govuk-body-s">UK government and public sector bodies can access the services they
-                                need for end to end campaign solutions to support the running of their public service
+                            <p class="govuk-body-s">UK government and public sector bodies can access the services
+                                they
+                                need for end to end campaign solutions to support the running of their public
+                                service
                                 campaigns.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Cloud Compute 2</a>
+                                <a href="/ccs-home/content">Cloud Compute 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -796,7 +855,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Communications Marketplace</a>
+                                <a href="/ccs-home/content">Communications Marketplace</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -806,14 +865,15 @@
                                 <li> <strong>End Date:</strong> 04/09/2027 </li>
 
                             </ul>
-                            <p class="govuk-body-s">A Marketplace for marketing and communications services to help UK
+                            <p class="govuk-body-s">A Marketplace for marketing and communications services to help
+                                UK
                                 government and public sector bodies run public service campaigns.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Construction Professional Services</a>
+                                <a href="/ccs-home/content">Construction Professional Services</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -831,7 +891,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Construction Professional Services DPS</a>
+                                <a href="/ccs-home/content">Construction Professional Services DPS</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -841,14 +901,15 @@
                                 <li> <strong>End Date:</strong> 28/10/2027 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Central government and wider public sector organisations can buy a
+                            <p class="govuk-body-s">Central government and wider public sector organisations can buy
+                                a
                                 range of expert professional and technical construction services.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Construction Works and Associated
+                                <a href="/ccs-home/content">Construction Works and Associated
                                     Services</a>
                             </h3>
 
@@ -866,7 +927,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Construction Works and Associated Services
+                                <a href="/ccs-home/content">Construction Works and Associated Services
                                     2 (CWAS2) /
                                     ProCure 23 (P23)</a>
                             </h3>
@@ -878,14 +939,15 @@
                                 <li> <strong>End Date:</strong> 30/10/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">NHS England and all other UK public sector bodies can buy a range of
+                            <p class="govuk-body-s">NHS England and all other UK public sector bodies can buy a
+                                range of
                                 construction works and services.
                             </p>
                         </li>
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Costs Lawyer Services 2</a>
+                                <a href="/ccs-home/content">Costs Lawyer Services 2</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -902,7 +964,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Courier and Specialist Movements</a>
+                                <a href="/ccs-home/content">Courier and Specialist Movements</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -912,7 +974,8 @@
                                 <li> <strong>End Date:</strong> 10/02/2026 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Gives all public sector customers access to a wide range of courier
+                            <p class="govuk-body-s">Gives all public sector customers access to a wide range of
+                                courier
                                 and specialist movements from simple parcel deliveries to complex and large scale
                                 specialist services.
                             </p>
@@ -920,7 +983,7 @@
                         <li>
                             <h3
                                 class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
-                                <a href="/ccs-home-beta/content-beta">Crown Hosting II</a>
+                                <a href="/ccs-home/content">Crown Hosting II</a>
                             </h3>
 
                             <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
@@ -930,9 +993,11 @@
                                 <li> <strong>End Date:</strong> 06/10/2029 </li>
 
                             </ul>
-                            <p class="govuk-body-s">Access secure, reliable and efficient specialist rooms (data halls)
+                            <p class="govuk-body-s">Access secure, reliable and efficient specialist rooms (data
+                                halls)
                                 and buildings (data centres) which you can use to operate your server, network and
-                                security infrastructure (ICT) from. This data centre co-location is available to all UK
+                                security infrastructure (ICT) from. This data centre co-location is available to all
+                                UK
                                 public sector organisations.
                             </p>
                         </li>
@@ -951,24 +1016,24 @@
                         <li class="pagination__item active"><span class="visuallyhidden">Page </span>1
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home-beta/content-beta/agreements/2?keyword=&amp;status%5B0%5D=Live">
+                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live">
                                 <span class="visuallyhidden">Page </span>2
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home-beta/content-beta/agreements/3?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home/content/agreements/3?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>3
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home-beta/content-beta/agreements/4?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home/content/agreements/4?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>4
                             </a>
                         </li>
                         <li class="pagination__item">
-                            <a href="/ccs-home-beta/content-beta/agreements/5?keyword=&amp;status%5B0%5D=Live"><span
+                            <a href="/ccs-home/content/agreements/5?keyword=&amp;status%5B0%5D=Live"><span
                                     class="visuallyhidden">Page
                                 </span>5
                             </a>
@@ -977,8 +1042,7 @@
 
 
                         <li class="pagination__item pagination__item--next">
-                            <a href="/ccs-home-beta/content-beta/agreements/2?keyword=&amp;status%5B0%5D=Live"
-                                rel="next">
+                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live" rel="next">
                                 <span>Next</span> <span class="visuallyhidden">page</span>
                                 <span class="icon">
                                     <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg">
@@ -1292,7 +1356,7 @@
 
                 },
                 frontendSearchUrl: function () {
-                    var searchUrl = '/ccs-home-beta/content-beta/agreements' + this.frontendQueryUrl;
+                    var searchUrl = '/ccs-home/content/agreements' + this.frontendQueryUrl;
                     return searchUrl;
                 }
             },
@@ -1566,6 +1630,8 @@
 
 
 
+
+
     <script src="/assets/scripts/libraries/jquery-3.6.0.min.js"></script>
     <script src="/assets/scripts/libraries/objectFitPolyfill.min.js"></script>
     <script src="/assets/scripts/app.js?v=2.3"></script>
@@ -1773,10 +1839,38 @@
             initAll()
         }, false);
     </script>
+
+    <script>
+        function setTextSize(size) {
+            const html = document.documentElement;
+            switch (size) {
+                case 'small':
+                    html.style.fontSize = '14px';
+                    break;
+                case 'medium':
+                    html.style.fontSize = '16px';
+                    break;
+                case 'large':
+                    html.style.fontSize = '18px';
+                    break;
+            }
+            // Store the preference
+            localStorage.setItem('textSize', size);
+        }
+
+        // Apply saved preference on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedSize = localStorage.getItem('textSize');
+            if (savedSize) {
+                setTextSize(savedSize);
+                document.getElementById(`text-size-${savedSize}`).checked = true;
+            }
+        });
+    </script>
 </body>
 
 {% endblock %}
 
 {% block footer %}
-{% include "includes/footer-js-beta.njk" %}
+{% include "includes/footer-js.njk" %}
 {% endblock %}

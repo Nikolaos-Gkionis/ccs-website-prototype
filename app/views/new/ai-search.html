@@ -1,0 +1,339 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+AI Search – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-beta.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body class="govuk-template__body pillar--none">
+    <div class="govuk-width-container">
+
+        <!--
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    This is a new service – your
+                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>feedback</a> will help us
+                    to improve it.
+                </span>
+                -->
+        </p>
+    </div>
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/new/index">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                AI Search
+            </li>
+        </ol>
+    </div>
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl" style="font-family: 'Source Sans Pro', sans-serif;">
+                    AI Assistant Search
+                </h1>
+
+                <!-- Chat-like interface container -->
+                <div class="chat-container"
+                    style="min-height: 250px; background: #ffffff; border: 2px solid #2d2d2d; padding: 20px; margin-bottom: 20px;">
+                    <!-- Messages will appear here -->
+                    <div id="chat-messages" style="max-height: 400px; overflow-y: auto;">
+                        <div class="system-message"
+                            style="background: #f3f2f1; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: Arial, Helvetica, sans-serif;">
+                            Hello! I'm your AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback buttons container -->
+                <div class="feedback-container" style="display: none; margin-bottom: 15px;">
+                    <button class="feedback-btn" onclick="handleFeedback('copy')" aria-label="Copy message">
+                        📋
+                    </button>
+                    <button class="feedback-btn" onclick="handleFeedback('thumbsUp')" aria-label="Thumbs up">
+                        👍
+                    </button>
+                    <button class="feedback-btn" onclick="handleFeedback('thumbsDown')" aria-label="Thumbs down">
+                        👎
+                    </button>
+                </div>
+
+                <!-- Search input container -->
+                <div style="position: relative; margin-bottom: 30px;">
+                    <form class="search-form" style="display: flex; gap: 10px;">
+                        <textarea class="govuk-textarea" id="search-input" name="search-query" rows="2"
+                            style="resize: none; padding-right: 50px;"
+                            placeholder="Try: 'Find me suppliers who provide cloud services'"></textarea>
+                        <button class="govuk-button" data-module="govuk-button" type="submit">
+                            Send
+                        </button>
+                    </form>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.querySelector('.search-form');
+                        const input = document.querySelector('#search-input');
+                        const messagesContainer = document.querySelector('#chat-messages');
+                        const feedbackContainer = document.querySelector('.feedback-container');
+
+                        // Define the chat handling function
+                        function handleChat(message) {
+                            if (message) {
+                                // Add user message
+                                const userMessage = document.createElement('div');
+                                userMessage.className = 'user-message';
+                                userMessage.textContent = message;
+                                messagesContainer.appendChild(userMessage);
+
+                                // Add loading spinner
+                                const loadingSpinner = document.createElement('div');
+                                loadingSpinner.className = 'loading-spinner';
+                                loadingSpinner.innerHTML = `
+                                    <div class="spinner"></div>
+                                    <span class="thinking-text">AI is thinking...</span>
+                                `;
+                                messagesContainer.appendChild(loadingSpinner);
+
+                                // Clear input and scroll to bottom
+                                input.value = '';
+                                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                                // Simulate AI thinking with delay
+                                setTimeout(() => {
+                                    // Remove loading spinner
+                                    loadingSpinner.remove();
+
+                                    // Add system response
+                                    const systemResponse = document.createElement('div');
+                                    systemResponse.className = 'system-message';
+                                    systemResponse.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#" class="govuk-link">Click here</a> for more information.';
+                                    messagesContainer.appendChild(systemResponse);
+
+                                    // Show feedback buttons
+                                    feedbackContainer.style.display = 'block';
+
+                                    // Scroll to bottom again
+                                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                                }, 2000); // 2 second delay
+                            }
+                        }
+
+                        // Handle form submissions
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            handleChat(input.value.trim());
+                        });
+
+                        // Check for URL parameter and handle initial query
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const searchQuery = urlParams.get('search-query');
+
+                        if (searchQuery) {
+                            input.value = searchQuery;
+                            handleChat(searchQuery);
+                        }
+                    });
+                </script>
+
+            </div>
+
+            <!-- Sidebar -->
+
+            <aside class="govuk-grid-column-one-third">
+                <div class="apollo-enclosure apollo-enclosure--padded event-detail__aside__inner">
+                    <h2 class="aside__heading">Related content</h2>
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="#" class="govuk-link">How to use AI assistants effectively</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link">Understanding AI in public sector procurement</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="apollo-enclosure apollo-enclosure--padded event-detail__aside__inner">
+                    <h2 class="aside__heading">Help us make this service better for you</h2>
+                    <p> <a class="govuk-link" style="font-weight: 600;" href="/survey">Give
+                            feedback on how we can improve this service.
+                        </a>.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+    </div>
+
+    <style>
+        .chat-container {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-form {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 10px 0;
+        }
+
+        #search-input {
+            flex-grow: 1;
+        }
+
+        .system-message {
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: #1d70b8;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            margin-left: 20%;
+            max-width: 80%;
+        }
+
+        .feedback-container {
+            text-align: right;
+            margin-top: -15px;
+        }
+
+        .feedback-btn {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 5px;
+            margin: 0 5px;
+        }
+
+        .feedback-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .loading-spinner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f3f2f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #1d70b8;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .thinking-text {
+            color: #505a5f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.search-form');
+            const input = document.querySelector('#search-input');
+            const messagesContainer = document.querySelector('#chat-messages');
+            const feedbackContainer = document.querySelector('.feedback-container');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const message = input.value.trim();
+
+                if (message) {
+                    // Add user message
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'user-message';
+                    userMessage.textContent = message;
+                    messagesContainer.appendChild(userMessage);
+
+                    // Add loading spinner
+                    const loadingSpinner = document.createElement('div');
+                    loadingSpinner.className = 'loading-spinner';
+                    loadingSpinner.innerHTML = `
+                        <div class="spinner"></div>
+                        <span class="thinking-text">AI is thinking...</span>
+                    `;
+                    messagesContainer.appendChild(loadingSpinner);
+
+                    // Clear input and scroll to bottom
+                    input.value = '';
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                    // Simulate AI thinking with delay
+                    setTimeout(() => {
+                        // Remove loading spinner
+                        loadingSpinner.remove();
+
+                        // Add system response
+                        const systemResponse = document.createElement('div');
+                        systemResponse.className = 'system-message';
+                        systemResponse.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#" class="govuk-link">Click here</a> for more information.';
+                        messagesContainer.appendChild(systemResponse);
+
+                        // Show feedback buttons
+                        feedbackContainer.style.display = 'block';
+
+                        // Scroll to bottom again
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }, 2000); // 2 second delay
+                }
+            });
+        });
+
+        function handleFeedback(type) {
+            switch (type) {
+                case 'copy':
+                    // Get last message and copy to clipboard
+                    const lastMessage = document.querySelector('#chat-messages').lastElementChild;
+                    navigator.clipboard.writeText(lastMessage.textContent)
+                        .then(() => alert('Message copied to clipboard!'));
+                    break;
+                case 'thumbsUp':
+                    alert('Thank you for your positive feedback!');
+                    break;
+                case 'thumbsDown':
+                    alert('Thank you for your feedback. We will work on improving.');
+                    break;
+            }
+        }
+    </script>
+</body>
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js-beta.njk" %}
+{% endblock %}

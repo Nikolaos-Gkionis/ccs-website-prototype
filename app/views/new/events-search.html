@@ -599,7 +599,7 @@
                             <h2 class="aside__heading">Help us make this service better for you</h2>
                             <p> <a class="govuk-link" style="font-weight: 600;" href="/survey">Give
                                     feedback on how we can improve this service.
-                                </a>.</p>
+                                </a></p>
                         </div>
                     </form>
                 </div>
@@ -623,14 +623,28 @@
                                     </h3>
 
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li v-if="result.startDate == result.endDate"><strong>Date:</strong>
-                                            {[result.startDate]} </li>
+                                        <li v-if="result.startDate == result.endDate">
+                                            <strong>Date:</strong>
+                                            <span class="govuk-body govuk-!-font-size-16">{[result.startDate]}</span>
+                                        </li>
                                         <template v-else>
-                                            <li><strong>Start Date:</strong> {[result.startDate]} </li>
-                                            <li><strong>End Date:</strong> {[result.endDate]} </li>
+                                            <li>
+                                                <strong>Start Date:</strong>
+                                                <span
+                                                    class="govuk-body govuk-!-font-size-16">{[result.startDate]}</span>
+                                            </li>
+                                            <li>
+                                                <strong>End Date:</strong>
+                                                <span class="govuk-body govuk-!-font-size-16">{[result.endDate]}</span>
+                                            </li>
                                         </template>
-                                        <li><strong>Type:</strong> {[result.event_type]}</li>
+                                        <li>
+                                            <strong>Type:</strong>
+                                            <span class="govuk-body govuk-!-font-size-16">{[result.event_type]}</span>
+                                        </li>
                                     </ul>
+                                    <span
+                                        class="govuk-body govuk-!-font-size-16">{[events.acf.event_description]}</span>
                                 </div>
                             </li>
                         </ol>
@@ -648,172 +662,168 @@
                     </div>
 
                     <div v-show="!javascriptVersion">
-                        <h2 class="govuk-heading-m">31 event(s) found</h2>
+                        <h2 class="govuk-heading-m">28 event(s) found</h2>
 
                         <ol class="events-list">
                             <li class="event-list__item">
-
+                                <picture><!----></picture>
                                 <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/ccs-home/event-1">Event: Interchange UK</a>
-                                    </h3>
-
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/71069/event-dprte-2025">Event:
+                                            DPRTE 2025</a></h3>
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Start Date:</strong> 4 March 2025</li>
-                                        <li><strong>End Date:</strong> 5 March 2025</li>
+                                        <li><strong>Start Date:</strong> 26 March 2025 </li>
+                                        <li><strong>End Date:</strong> 27 March 2025 </li>
                                         <li><strong>Type:</strong> Conference and exhibition</li>
                                     </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">DPRTE, UK’s leading defence
+                                        procurement event, connects buyers and suppliers from across the defence
+                                        procurement and supply chain community.</span>
                                 </div>
-
                             </li>
                             <li class="event-list__item">
-
+                                <picture><!----></picture>
                                 <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/events/67739/webinar-g-cloud-14--what-can-i-buy-and-how-can-i-buy-it">Webinar:
-                                            G-Cloud 14 – what can I buy and how can I buy it?</a>
-                                    </h3>
-
-
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/71718/legal-panel-for-public-sector-rm6374-supplier-engagement-event">Legal
+                                            Panel for Public Sector RM6374 Supplier Engagement Event</a></h3>
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 5 March 2025</li>
-                                        <li><strong>Type:</strong> Live webinar</li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="event-list__item">
-
-                                <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/events/71319/ccs-technology-forum">CCS Technology Forum</a>
-                                    </h3>
-
-
-                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 6 March 2025</li>
-                                        <li><strong>Type:</strong> Conference and exhibition</li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="event-list__item">
-
-                                <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/events/73521/engagement-housing-category-customer-forum">Engagement:
-                                            Housing Category Customer Forum</a>
-                                    </h3>
-
-
-                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 11 March 2025</li>
+                                        <li><strong>Date:</strong> 1 April 2025 </li>
                                         <li><strong>Type:</strong> Engagement</li>
                                     </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">This is our second supplier engagement
+                                        event for our new Legal Panel for Public Sector agreement. During this session
+                                        for suppliers we will be sharing an overview of the feedback received from the
+                                        supplier surveys.</span>
                                 </div>
-
                             </li>
                             <li class="event-list__item">
-
+                                <picture><!----></picture>
                                 <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/events/69363/webinar-supplier-showcase-8211-innovation-038-ai">Webinar:
-                                            Supplier Showcase &#8211; Innovation &#038; AI</a>
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/74410/event-p4h-scotland-2">Event:
+                                            P4H Scotland</a>
                                     </h3>
-
-
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 12 March 2025</li>
-                                        <li><strong>Type:</strong> Live webinar</li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="event-list__item">
-
-                                <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a
-                                            href="/events/71706/legal-panel-for-public-sector-rm6374-supplier-engagement">Legal
-                                            Panel for Public Sector RM6374 Supplier Engagement</a>
-                                    </h3>
-
-
-                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 19 March 2025</li>
-                                        <li><strong>Type:</strong> Engagement</li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="event-list__item">
-
-                                <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a
-                                            href="/events/73770/webinar-unlock-public-sector-artificial-intelligence-opportunities-8211-smevcse">Webinar:
-                                            Unlock Public Sector Artificial Intelligence Opportunities &#8211;
-                                            SME/VCSE</a>
-                                    </h3>
-
-
-                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 19 March 2025</li>
-                                        <li><strong>Type:</strong> Live webinar</li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="event-list__item">
-
-                                <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a
-                                            href="/events/71614/technology-sme-meet-the-buyer-forum-8211-unlocking-public-procurement-opportunities">Technology
-                                            SME Meet the Buyer Forum &#8211; Unlocking Public Procurement
-                                            Opportunities</a>
-                                    </h3>
-
-
-                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 20 March 2025</li>
+                                        <li><strong>Date:</strong> 2 April 2025 </li>
                                         <li><strong>Type:</strong> Conference and exhibition</li>
                                     </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">Officially supported by NHS Scotland,
+                                        the event provides an unrivalled opportunity for buyers and suppliers across the
+                                        healthcare procurement community to collaborate, learn and share
+                                        challenges.</span>
                                 </div>
-
                             </li>
                             <li class="event-list__item">
-
+                                <picture><!----></picture>
                                 <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a href="/events/71069/event-dprte-2025">Event: DPRTE 2025</a>
-                                    </h3>
-
-
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/67741/webinar-g-cloud-14-what-can-i-buy-and-how-can-i-buy-it-6">Webinar:
+                                            G-Cloud 14 – what can I buy and how can I buy it?</a></h3>
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Start Date:</strong> 26 March 2025</li>
-                                        <li><strong>End Date:</strong> 27 March 2025</li>
-                                        <li><strong>Type:</strong> Conference and exhibition</li>
+                                        <li><strong>Date:</strong> 2 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
                                     </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">This webinar will provide an overview
+                                        of the G-Cloud 14 framework, including the new and updated services available,
+                                        and how to buy them.</span>
                                 </div>
-
                             </li>
                             <li class="event-list__item">
-
+                                <picture><!----></picture>
                                 <div class="event-list__details">
-                                    <h3 class="event-list__title govuk-!-margin-bottom-2 ">
-                                        <a
-                                            href="/events/71718/legal-panel-for-public-sector-rm6374-supplier-engagement-event">Legal
-                                            Panel for Public Sector RM6374 Supplier Engagement Event</a>
-                                    </h3>
-
-
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/73324/achieving-best-value-through-early-contractor-involvement-procurement-routes-and-benefits">Webinar:
+                                            Achieving best value through early contractor involvement – procurement
+                                            routes and benefits</a></h3>
                                     <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
-                                        <li><strong>Date:</strong> 1 April 2025</li>
-                                        <li><strong>Type:</strong> Engagement</li>
+                                        <li><strong>Date:</strong> 3 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
                                     </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">Early contractor involvement is
+                                        promoted by the Construction Playbook and Cabinet Office guidance to reduce
+                                        project risk and enable best value project delivery.</span>
                                 </div>
-
+                            </li>
+                            <li class="event-list__item">
+                                <picture><!----></picture>
+                                <div class="event-list__details">
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/67138/aggregation-microsoft-autumn-winter-2025">Aggregation:
+                                            Microsoft, autumn/winter 2025</a></h3>
+                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                        <li><strong>Date:</strong> 4 April 2025 </li>
+                                        <li><strong>Type:</strong> Aggregation</li>
+                                    </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">We run a programme of
+                                        aggregated
+                                        competitions to help customers secure a value for money Microsoft Licence
+                                        Solutions Partner (LSP).</span>
+                                </div>
+                            </li>
+                            <li class="event-list__item">
+                                <picture><!----></picture>
+                                <div class="event-list__details">
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/74241/webinar-biodiversity-and-net-zero-understanding-bng-legislation-and-ccs-solutions">Webinar:
+                                            Biodiversity and Net Zero: Understanding BNG, Legislation, and CCS
+                                            Solutions</a></h3>
+                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                        <li><strong>Date:</strong> 15 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
+                                    </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">Join us for an insightful webinar on
+                                        biodiversity, its growing importance, and the latest legislative developments.
+                                        By
+                                        2030, the UK aims to protect 30% of its land and sea under the 30×30 commitment,
+                                        a
+                                        key step in reversing nature loss.</span>
+                                </div>
+                            </li>
+                            <li class="event-list__item">
+                                <picture><!----></picture>
+                                <div class="event-list__details">
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/74376/customer-carbon-reduction-plans">Webinar:
+                                            Carbon Reduction Plans</a></h3>
+                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                        <li><strong>Date:</strong> 16 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
+                                    </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">In 2019, the UK became the first major
+                                        economy to adopt a legal commitment to achieve ‘Net Zero’ carbon emissions by
+                                        2050.</span>
+                                </div>
+                            </li>
+                            <li class="event-list__item">
+                                <picture><!----></picture>
+                                <div class="event-list__details">
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/74522/supplier-showcase-innovation-ai">Supplier
+                                            Showcase: Innovation &amp; AI</a></h3>
+                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                        <li><strong>Date:</strong> 16 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
+                                    </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">We are proud to be hosting Supplier
+                                        Showcases over the next 6 months. Each of these showcases will have a specific
+                                        focus on either innovation, data, ethics, or sustainability and AI.</span>
+                                </div>
+                            </li>
+                            <li class="event-list__item">
+                                <picture><!----></picture>
+                                <div class="event-list__details">
+                                    <h3 class="event-list__title govuk-!-margin-bottom-2"><a
+                                            href="https://www.crowncommercial.gov.uk/events/68698/technology-products-and-services-2-buyer-webinar-2">Technology
+                                            Products and Services 2 buyer webinar</a></h3>
+                                    <ul class="event-list__meta list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                        <li><strong>Date:</strong> 22 April 2025 </li>
+                                        <li><strong>Type:</strong> Live webinar</li>
+                                    </ul>
+                                    <span class="govuk-body govuk-!-font-size-16">As a buyer, we will walk you through
+                                        what TePAS 2 has to offer.
+                                    </span>
+                                </div>
                             </li>
                         </ol>
 
@@ -1221,6 +1231,7 @@
                                     self.results[i].startDate = self.formatDate(jsonResponse.body[i].acf.start_datetime.split(' ')[0]);
                                     self.results[i].endDate = self.formatDate(jsonResponse.body[i].acf.end_datetime.split(' ')[0]);
                                     self.results[i].event_type = self.results[i].acf.event_type;
+                                    self.results[i].event_description = jsonResponse.body[i].acf.event_description;
 
                                     self.results[i].imageSet = false;
                                     if (self.results[i].acf.featured_image_url != false) {
