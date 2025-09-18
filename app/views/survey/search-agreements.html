@@ -1,0 +1,1789 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body class="govuk-template__body   pillar--none">
+
+    <div class="main-width-container">
+
+        <!-- Phase banner 
+
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    Help us make this service better for you
+                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>Give feedback on how we can improve this service.</a>
+                </span>
+            </p>
+
+        </div>
+        -->
+
+
+    </div>
+
+    <p class="visuallyhidden">This is a page with JS</p>
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/ccs-home/">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/ccs-home/search-agreements">Search agreements </a>
+            </li>
+        </ol>
+    </div>
+
+    <main id="main-content" role="main" class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full hideWithoutJS govuk-visually-hidden">
+                <h1 v-if="displayKeyword" class="govuk-heading-xl page-title"
+                    style="font-family: 'Source Sans Pro', sans-serif;">Search agreements for {[displayKeyword]}
+                </h1>
+                <h1 v-else class="govuk-heading-xl page-title" style="font-family: 'Source Sans Pro', sans-serif;">
+                    Search agreements</h1>
+            </div>
+            <div v-show="!javascriptVersion" class="govuk-grid-column-full">
+                <h1 v-else class="govuk-heading-xl page-title" style="font-family: 'Source Sans Pro', sans-serif;">
+                    Search agreements</h1>
+            </div>
+        </div>
+
+
+        <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-one-third">
+
+                <form v-on:submit.prevent="fetchAPIData" action="/ccs-home/content" method="GET">
+
+                    <div class="apollo-enclosure"
+                        style="background-color: #9B1A47; color: #ffffff; margin-bottom: 10px;">
+                        <h2 class="aside__heading">Help us make this service better for you</h2>
+                        <p> <a class="govuk-link" style="color: #ffffff; font-weight: 600;" href="/survey">Give
+                                feedback on how we can improve this service.
+                            </a></p>
+                    </div>
+
+                    <div class="govuk-form-group govuk-form-group--enclosure">
+                        <div class="govuk-form-group sidebar__search-group">
+                            <label class="govuk-label" for="keyword"> Search agreements </label>
+                            <input v-model="keyword" class="govuk-input" id="keyword" name="keyword" value="" />
+                            <button type="submit" class="sidebar__search-button govuk-input">
+                                <span class="visuallyhidden">Search agreements</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div v-if="keyword" class="guided-match-area hideWithoutJS govuk-visually-hidden">
+                        <h2 class="govuk-heading-m ccs-font-weight-semibold govuk-!-margin-bottom-2 text-white">Need
+                            help finding the right agreement</h2>
+                        <p class="govuk-body text-white">Answer some questions to find the best agreement for your
+                            needs</br></p>
+                        <a v-bind:href="'https://www.crowncommercial.gov.uk/find-a-commercial-agreement/guidedmatch?q='+ keyword"
+                            draggable="false"
+                            class="govuk-button govuk-button--start govuk-!-margin-top-3 govuk-!-margin-bottom-3"
+                            data-module="govuk-button"> Start now
+                            <svg class="govuk-!-padding-left-2" xmlns="http://www.w3.org/2000/svg" width="17.5"
+                                height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                            </svg>
+                        </a>
+                    </div>
+
+
+
+
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-half">
+                            <h2 class="govuk-heading-m">Apply filters</h2>
+                        </div>
+                        <div class="govuk-grid-column-one-half" style="text-align:right;">
+                            <a style="cursor: pointer;"
+                                onclick="pushToDataLayer({'event': 'search_filter', 'interaction_type': 'clear'});"
+                                @click="resetAllFilter" class="govuk-link hideWithoutJS govuk-visually-hidden">Clear
+                                filters</a>
+                            <a v-show="!javascriptVersion" href="/ccs-home/content" class="govuk-link">Clear
+                                filters</a>
+                        </div>
+                    </div>
+
+                    <!-- hidden filter button 
+
+                    <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion"> Filter
+                    </button>
+
+                    -->
+                    <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                        id="accordion-with-summary-sections">
+                        <div
+                            class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight govuk-accordion__section--expanded">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span
+                                        class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                        id="accordion-with-summary-sections-heading-1">
+                                        Filter by agreement status
+                                    </span>
+                                </h2>
+                                <span class="govuk-body-s hideWithoutJS govuk-visually-hidden">{[ checkedStatus.length
+                                    ]} selected</span>
+
+                                <span class="govuk-body-s" v-show="!javascriptVersion">1 selected</span>
+                            </div>
+
+                            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-with-summary-sections-heading-1" role="region">
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("Live",null) v-model="checkedStatus" name="status[]"
+                                        value="Live" class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="Live" type="checkbox" checked>
+                                    <label class="govuk-label govuk-checkboxes__label" for="Live">
+                                        Live
+                                    </label>
+                                </div>
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("Expired",null) v-model="checkedStatus"
+                                        name="status[]" value="Expired"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="Expired"
+                                        type="checkbox">
+                                    <label class="govuk-label govuk-checkboxes__label" for="Expired">
+                                        Expired
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="apollo-enclosure">
+                                <h2 class="aside__heading">Upcoming agreements</h2>
+
+                                <p><a href="/ccs-home/content">View our upcoming agreement page</a>
+                                    for agreements
+                                    that are being developed and are not yet live.</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                        id="accordion-with-summary-sections">
+                        <div
+                            class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight govuk-accordion__section--expanded">
+                            <div class="govuk-accordion__section-header govuk-!-padding-bottom-0">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span
+                                        class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                        id="accordion-with-summary-sections-heading-4">
+                                        Browse by category
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-with-summary-sections-heading-4" role="region">
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("allPillarAndCategory",null) v-model="checkedPillar"
+                                        name="allPillarAndCategory" value="allPillarAndCategory"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="allPillarAndCategory" type="checkbox" checked>
+                                    <label class="govuk-label govuk-checkboxes__label" style="font-weight:600"
+                                        for="allPillarAndCategory">
+                                        View all
+                                    </label>
+                                </div>
+
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("corporate",null) v-model="checkedPillar"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by pillar&quot;,&quot;interaction_detail&quot;:&quot;Corporate&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="corporate"
+                                        name="pillar[]" type="checkbox" value="Corporate">
+                                    <label class="govuk-label govuk-checkboxes__label" style="font-weight: 600"
+                                        for="corporate">
+                                        Corporate
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("financial-services",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Financial Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="financial-services" name="category[]" type="checkbox"
+                                        value="Financial+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="financial-services">
+                                        Financial Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("fleet",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Fleet&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="fleet"
+                                        name="category[]" type="checkbox" value="Fleet">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="fleet">
+                                        Fleet
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("hr-and-workforce-services",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;HR and Workforce Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="hr-and-workforce-services" name="category[]" type="checkbox"
+                                        value="HR+and+Workforce+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="hr-and-workforce-services">
+                                        HR and Workforce Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("outsourced-services",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Outsourced Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="outsourced-services" name="category[]" type="checkbox"
+                                        value="Outsourced+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="outsourced-services">
+                                        Outsourced Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("professional-services",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Professional Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="professional-services" name="category[]" type="checkbox"
+                                        value="Professional+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="professional-services">
+                                        Professional Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("travel-accommodation-and-Venues",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Travel, Accommodation and Venues&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="travel-accommodation-and-Venues" name="category[]" type="checkbox"
+                                        value="Travel,+Accommodation+and+Venues">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="travel-accommodation-and-Venues">
+                                        Travel, Accommodation and Venues
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("estates",null) v-model="checkedPillar"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by pillar&quot;,&quot;interaction_detail&quot;:&quot;Estates&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="estates"
+                                        name="pillar[]" type="checkbox" value="Estates">
+                                    <label class="govuk-label govuk-checkboxes__label" style="font-weight: 600"
+                                        for="estates">
+                                        Estates
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("construction",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Construction&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="construction"
+                                        name="category[]" type="checkbox" value="Construction">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="construction">
+                                        Construction
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("energy",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Energy&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="energy"
+                                        name="category[]" type="checkbox" value="Energy">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="energy">
+                                        Energy
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("estates-support-services",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Estates Support Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="estates-support-services" name="category[]" type="checkbox"
+                                        value="Estates+Support+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="estates-support-services">
+                                        Estates Support Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("facilities-management",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Facilities Management&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="facilities-management" name="category[]" type="checkbox"
+                                        value="Facilities+Management">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="facilities-management">
+                                        Facilities Management
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("technology",null) v-model="checkedPillar"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by pillar&quot;,&quot;interaction_detail&quot;:&quot;Technology&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small" id="technology"
+                                        name="pillar[]" type="checkbox" value="Technology">
+                                    <label class="govuk-label govuk-checkboxes__label" style="font-weight: 600"
+                                        for="technology">
+                                        Technology
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("cloud-and-hosting",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Cloud and Hosting&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="cloud-and-hosting" name="category[]" type="checkbox"
+                                        value="Cloud+and+Hosting">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="cloud-and-hosting">
+                                        Cloud and Hosting
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("digital-capability-and-delivery",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Digital Capability and Delivery&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="digital-capability-and-delivery" name="category[]" type="checkbox"
+                                        value="Digital+Capability+and+Delivery">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="digital-capability-and-delivery">
+                                        Digital Capability and Delivery
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("network-services",null) v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Network Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="network-services" name="category[]" type="checkbox"
+                                        value="Network+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="network-services">
+                                        Network Services
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("software-and-hardware",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Software and Hardware&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="software-and-hardware" name="category[]" type="checkbox"
+                                        value="Software+and+Hardware">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="software-and-hardware">
+                                        Software and Hardware
+                                    </label>
+                                </div>
+
+
+                                <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                    <input v-on:change=fetchAPIData("technology-services",null)
+                                        v-model="checkedCategory"
+                                        onclick="pushToDataLayer('{&quot;event&quot;:&quot;search_interaction&quot;,&quot;interaction_type&quot;:&quot;filter by category&quot;,&quot;interaction_detail&quot;:&quot;Technology Services&quot;}');"
+                                        class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                        id="technology-services" name="category[]" type="checkbox"
+                                        value="Technology+Services">
+                                    <label class="govuk-label govuk-checkboxes__label search-subcategory-label"
+                                        for="technology-services">
+                                        Technology Services
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- hidden filter button 
+                    <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion"> Filter
+                    </button>
+                    -->
+
+                    <aside class="aside">
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Help us make this service better for you</h2>
+                            <p> <a class="govuk-link" style="font-weight: 600;" href="/survey">Give
+                                    feedback on how we can improve this service.
+                                </a></p>
+                        </div>
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Helpful Links</h2>
+                            <ul class="govuk-list govuk-!-font-size-19">
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/glossary">Glossary</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/start-buying">How
+                                        to buy</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/start-supplying">How
+                                        to supply</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/transforming-public-procurement">Transforming
+                                        Public Procurement</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/news/?&categories=168&page=1">Procurement
+                                        Essentials</a></li>
+                            </ul>
+                        </div>
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Do you need help requesting agreement pricing?</h2>
+                            <p>If pricing is available you will find instructions on how to access pricing in the 'how
+                                to buy' section on the individual agreement webpage.</p>
+                        </div>
+                    </aside>
+
+
+                </form>
+
+            </div>
+            <div class="govuk-grid-column-two-thirds hideWithoutJS govuk-visually-hidden">
+                <h2 class="govuk-heading-m" v-if="totalResults == 1"> {[totalResults]} agreement found</h2>
+                <h2 class="govuk-heading-m" v-else> {[totalResults]} agreements found</h2>
+            </div>
+            <div v-show="!javascriptVersion" class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m ccs-font-weight-semibold govuk-!-font-size-24">110 agreements found</h2>
+            </div>
+
+            <div v-if="displayKeyword" class="govuk-grid-column-two-thirds hideWithoutJS govuk-visually-hidden">
+                <div class="ccs-filters-summary ccs-filter-summary-frameworks">
+                    <div class="ccs-filters-summary__facets" style="display: block; margin-top:0">
+                        <span class="ccs-filters-summary__label">Containing</span>
+                        <ul class="ccs-filters-summary__list">
+                            <li class="ccs-filters-summary__facet">
+                                <a style="cursor: pointer;" @click="clearSearchKeyword"
+                                    class="ccs-filters-summary__facet__cancel"> <span>{[ displayKeyword]}</span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+                <div v-if="responseAvailable" class="hideWithoutJS govuk-visually-hidden">
+                    <ul class="govuk-list govuk-list--frameworks" v-show="javascriptVersion">
+                        <li v-show="javascriptVersion" v-for="result in results">
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a v-bind:href="'/ccs-home/content">{[ result.title
+                                    ]}</a>
+                                <span v-if="result.status == 'Expired - Data Still Received'"
+                                    class="govuk-tag ccs-tag ccs-tag--error"> Expired: {[ result.end_date | toDateDMY ]}
+                                </span>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> {[ result.rm_number ]} </li>
+                                <li> <strong>Start Date:</strong> {[ result.start_date | toDateDMY ]} </li>
+
+                                <li v-if="result.status == 'Expired - Data Still Received'"> <strong>End Date:</strong>
+                                    {[ result.end_date | toDateDMY ]} </li>
+
+                            </ul>
+                            <p class="govuk-body-s" v-html="result.summary"></p>
+                        </li>
+
+                        <results-pagination :total-results="totalResults" :number-of-pages="numberOfPages"
+                            :current-page="currentPage" v-on:update-page="updatePageValue($event)"></results-pagination>
+                    </ul>
+                </div>
+
+                <div v-else-if="!responseAvailable" class="hideWithoutJS govuk-visually-hidden">
+                    <p>Loading...</p>
+                </div>
+
+                <div v-if="emptyResult" class="hideWithoutJS govuk-visually-hidden">
+                    <div
+                        v-if="checkedRegulation.length == 1 && checkedRegulation.includes('PCR2006') || checkedType.length == 1 && checkedType.includes('PCR06+Framework')">
+                        <p>All agreements under The Public Contracts Regulation (PCR) 2006 are now expired. <br>You can
+                            view these archived agreements by clicking 'Expired' on the left side of this page.</p>
+                    </div>
+                    <div v-else>
+                        <h3>There are no matching results.</h3>
+                        <p class="govuk-!-margin-bottom-0">Improve your search results by:</p>
+                        <ul>
+                            <li>
+                                <p class="govuk-!-margin-bottom-1">removing filters</p>
+                            </li>
+                            <li v-if="keyword">
+                                <p class="govuk-!-margin-bottom-1">double-checking your spelling</p>
+                            </li>
+                            <li v-if="keyword">
+                                <p class="govuk-!-margin-bottom-1">using fewer keywords</p>
+                            </li>
+                            <li v-if="keyword">
+                                <p class="govuk-!-margin-bottom-1">clicking 'start now' and answering a few simple
+                                    questions to find the best agreement for your needs</p>
+                            </li>
+                        </ul>
+                        <br>
+                        <p>If you are still unable to find what you need, contact our customer service centre using our
+                            <a class="govuk-link" href="/contact">contact us form</a>.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div v-show="!javascriptVersion">
+                    <ul class="govuk-list govuk-list--frameworks">
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Adult Skills and Learning DPS</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6348 </li>
+                                <li> <strong>Start Date:</strong> 16/08/2024 </li>
+
+                                <li> <strong>End Date:</strong> 27/10/2028 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">All public sector organisations can access training for adults and
+                                young adults in the general public. Training is available both regionally and nationally
+                                through a range of funding types.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Apprenticeship Training Dynamic
+                                    Marketplace DPS</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6102 </li>
+                                <li> <strong>Start Date:</strong> 30/04/2019 </li>
+
+                                <li> <strong>End Date:</strong> 27/10/2028 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Provides access to an extensive range of apprenticeship training
+                                programmes that fully supports Education and Skills Funding Agency (ESFA) funding rules.
+                                These rules give departments and public sector bodies the freedom to choose who they
+                                contract with.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Artificial Intelligence (AI)</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6200 </li>
+                                <li> <strong>Start Date:</strong> 03/09/2020 </li>
+
+                                <li> <strong>End Date:</strong> 04/11/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Discovery and consultancy services related to artificial
+                                intelligence (AI), implementation and support of AI systems, end-to-end partnerships,
+                                and AI technologies.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Audio Visual Technical Consultancy &amp;
+                                    Commissioning</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6225 </li>
+                                <li> <strong>Start Date:</strong> 01/03/2021 </li>
+
+                                <li> <strong>End Date:</strong> 28/02/2025 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">A Dynamic Purchasing System (DPS) for public sector customers who
+                                need complex audio visual (AV) services. Plus support services for rooms that use a
+                                range of AV technology.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Audit &amp; Assurance Services
+                                    (A&amp;AS)</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6188 </li>
+                                <li> <strong>Start Date:</strong> 11/08/2021 </li>
+
+                                <li> <strong>End Date:</strong> 10/08/2025 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Access audit and assurance services including internal and external
+                                audit, counter fraud and investigation.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Automation Marketplace DPS</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6173 </li>
+                                <li> <strong>Start Date:</strong> 16/03/2020 </li>
+
+                                <li> <strong>End Date:</strong> 15/11/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Intelligent automation services and solutions, including automation
+                                technologies, services, consultancy and licences.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Back Office Software</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6194 </li>
+                                <li> <strong>Start Date:</strong> 06/04/2021 </li>
+
+                                <li> <strong>End Date:</strong> 05/04/2025 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Software as a Service (SaaS) solutions for back office applications,
+                                for deploying either in the cloud, on premise or hybrid. Available for all public sector
+                                organisations.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Big Data and Analytics</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6195 </li>
+                                <li> <strong>Start Date:</strong> 09/08/2022 </li>
+
+                                <li> <strong>End Date:</strong> 08/08/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">All public sector organisations can access both bespoke professional
+                                services and commercial 'off the shelf' software specific to data and analytics.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Building Materials and Equipment</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6157 </li>
+                                <li> <strong>Start Date:</strong> 27/07/2021 </li>
+
+                                <li> <strong>End Date:</strong> 26/01/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">UK government departments, devolved administrations and the wider
+                                public sector can access a range of building materials, equipment and associated
+                                services.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Buying Better Food and Drink</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6279 </li>
+                                <li> <strong>Start Date:</strong> 23/01/2024 </li>
+
+                                <li> <strong>End Date:</strong> 22/01/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">All public sector organisations can use this agreement to buy food
+                                and drink through a single on-line access point. You will be able to access all food and
+                                drink sub-categories.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Campaign Solutions 2</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6125 </li>
+                                <li> <strong>Start Date:</strong> 07/09/2021 </li>
+
+                                <li> <strong>End Date:</strong> 06/09/2025 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">UK government and public sector bodies can access the services they
+                                need for end to end campaign solutions to support the running of their public service
+                                campaigns.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Cloud Compute 2</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6292 </li>
+                                <li> <strong>Start Date:</strong> 28/11/2023 </li>
+
+                                <li> <strong>End Date:</strong> 27/11/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">All central government and wider public sector organisations can
+                                access cloud computing services. Includes Platform-as-a-Service (PaaS),
+                                Infrastructure-as-a-service (IaaS) and other additional ancillary services.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Communications Marketplace</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6124 </li>
+                                <li> <strong>Start Date:</strong> 06/09/2021 </li>
+
+                                <li> <strong>End Date:</strong> 04/09/2027 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">A Marketplace for marketing and communications services to help UK
+                                government and public sector bodies run public service campaigns.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Construction Professional Services</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6165 </li>
+                                <li> <strong>Start Date:</strong> 01/10/2021 </li>
+
+                                <li> <strong>End Date:</strong> 29/03/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Central government and the wider public sector can access a wide
+                                range of technical advisory services in support of building and civil engineering
+                                projects of all scales and sizes.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Construction Professional Services DPS</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6242 </li>
+                                <li> <strong>Start Date:</strong> 03/11/2021 </li>
+
+                                <li> <strong>End Date:</strong> 28/10/2027 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Central government and wider public sector organisations can buy a
+                                range of expert professional and technical construction services.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Construction Works and Associated
+                                    Services</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6088 </li>
+                                <li> <strong>Start Date:</strong> 31/10/2019 </li>
+
+                                <li> <strong>End Date:</strong> 28/10/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Delivers a wide range of major and minor building, and civil
+                                engineering projects for central government and the wider public sector.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Construction Works and Associated Services
+                                    2 (CWAS2) /
+                                    ProCure 23 (P23)</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6267 </li>
+                                <li> <strong>Start Date:</strong> 21/03/2022 </li>
+
+                                <li> <strong>End Date:</strong> 30/10/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">NHS England and all other UK public sector bodies can buy a range of
+                                construction works and services.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Costs Lawyer Services 2</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6284 </li>
+                                <li> <strong>Start Date:</strong> 25/07/2023 </li>
+
+                                <li> <strong>End Date:</strong> 24/07/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">All public sector organisations can access costs law services
+                                including law advice and consultancy and negotiation.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Courier and Specialist Movements</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6171 </li>
+                                <li> <strong>Start Date:</strong> 11/08/2021 </li>
+
+                                <li> <strong>End Date:</strong> 10/02/2026 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Gives all public sector customers access to a wide range of courier
+                                and specialist movements from simple parcel deliveries to complex and large scale
+                                specialist services.
+                            </p>
+                        </li>
+                        <li>
+                            <h3
+                                class="govuk-heading-m ccs-heading-link ccs-heading-link--inline govuk-!-margin-bottom-2 ccs-font-weight-semibold govuk-!-font-size-22">
+                                <a href="/ccs-home/content">Crown Hosting II</a>
+                            </h3>
+
+                            <ul class="list--inline govuk-body-s govuk-!-margin-bottom-2">
+                                <li> <strong>Agreement ID:</strong> RM6262 </li>
+                                <li> <strong>Start Date:</strong> 07/10/2022 </li>
+
+                                <li> <strong>End Date:</strong> 06/10/2029 </li>
+
+                            </ul>
+                            <p class="govuk-body-s">Access secure, reliable and efficient specialist rooms (data halls)
+                                and buildings (data centres) which you can use to operate your server, network and
+                                security infrastructure (ICT) from. This data centre co-location is available to all UK
+                                public sector organisations.
+                            </p>
+                        </li>
+                    </ul>
+
+
+
+
+
+                    <ul class="list--inline pagination govuk-body" aria-label="Pagination">
+
+
+
+
+
+                        <li class="pagination__item active"><span class="visuallyhidden">Page </span>1
+                        </li>
+                        <li class="pagination__item">
+                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live">
+                                <span class="visuallyhidden">Page </span>2
+                            </a>
+                        </li>
+                        <li class="pagination__item">
+                            <a href="/ccs-home/content/agreements/3?keyword=&amp;status%5B0%5D=Live"><span
+                                    class="visuallyhidden">Page
+                                </span>3
+                            </a>
+                        </li>
+                        <li class="pagination__item">
+                            <a href="/ccs-home/content/agreements/4?keyword=&amp;status%5B0%5D=Live"><span
+                                    class="visuallyhidden">Page
+                                </span>4
+                            </a>
+                        </li>
+                        <li class="pagination__item">
+                            <a href="/ccs-home/content/agreements/5?keyword=&amp;status%5B0%5D=Live"><span
+                                    class="visuallyhidden">Page
+                                </span>5
+                            </a>
+                        </li>
+
+
+
+                        <li class="pagination__item pagination__item--next">
+                            <a href="/ccs-home/content/agreements/2?keyword=&amp;status%5B0%5D=Live" rel="next">
+                                <span>Next</span> <span class="visuallyhidden">page</span>
+                                <span class="icon">
+                                    <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z" fill="#007194"
+                                            fill-rule="evenodd" />
+                                    </svg>
+                                </span> </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+    </div>
+
+    <script src="/assets/scripts/libraries/vue.min.js?v=1"></script>
+    <script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href, 'page_type': 'agreement' });</script>
+
+    <script type="application/javascript">
+        searchFilterAgreement();
+
+        function supportsLiterals() {
+            try {
+                return eval("''===``");
+            }
+            catch (e) {
+                return false;
+            }
+        }
+
+        if (!('Promise' in window) || !supportsLiterals() || !window.fetch) {
+            throw new Error("Your browser doesn't support the necessary JavaScript functions to use the enhanced search and has been served a non-JavaScript version");
+        }
+
+
+        var apiBaseUrl = 'https://www.crowncommercial.gov.uk/api/';
+        var appBaseUrl = 'https://www.crowncommercial.gov.uk';
+        var pageNumber = 1;
+        var keyword = null;
+        var checkedStatus = [];
+        var checkedRegulation = [];
+        var checkedType = [];
+        var checkedPillar = [];
+        var checkedCategory = [];
+        var pillars = new Map();
+        var pillarsSize = '3';
+        var categorySize = '15';
+
+
+        var checkedStatus = JSON.parse('\u005B\u0022Live\u0022\u005D');
+
+
+
+
+
+        var allPillar = JSON.parse('\u005B\u007B\u0022name\u0022\u003A\u0022Corporate\u0022,\u0022db_value\u0022\u003A\u0022Corporate\u0022,\u0022slug\u0022\u003A\u0022corporate\u0022,\u0022categories\u0022\u003A\u005B\u007B\u0022name\u0022\u003A\u0022Financial\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Financial\u0020Services\u0022,\u0022slug\u0022\u003A\u0022financial\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Fleet\u0022,\u0022db_value\u0022\u003A\u0022Fleet\u0022,\u0022slug\u0022\u003A\u0022fleet\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022HR\u0020and\u0020Workforce\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022HR\u0020and\u0020Workforce\u0020Services\u0022,\u0022slug\u0022\u003A\u0022hr\u002Dand\u002Dworkforce\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Outsourced\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Outsourced\u0020Services\u0022,\u0022slug\u0022\u003A\u0022outsourced\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Professional\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Professional\u0020Services\u0022,\u0022slug\u0022\u003A\u0022professional\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Travel,\u0020Accommodation\u0020and\u0020Venues\u0022,\u0022db_value\u0022\u003A\u0022Travel,\u0020Accommodation\u0020and\u0020Venues\u0022,\u0022slug\u0022\u003A\u0022travel\u002Daccommodation\u002Dand\u002DVenues\u0022\u007D\u005D\u007D,\u007B\u0022name\u0022\u003A\u0022Estates\u0022,\u0022db_value\u0022\u003A\u0022Estates\u0022,\u0022slug\u0022\u003A\u0022estates\u0022,\u0022categories\u0022\u003A\u005B\u007B\u0022name\u0022\u003A\u0022Construction\u0022,\u0022db_value\u0022\u003A\u0022Construction\u0022,\u0022slug\u0022\u003A\u0022construction\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Energy\u0022,\u0022db_value\u0022\u003A\u0022Energy\u0022,\u0022slug\u0022\u003A\u0022energy\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Estates\u0020Support\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Estates\u0020Support\u0020Services\u0022,\u0022slug\u0022\u003A\u0022estates\u002Dsupport\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Facilities\u0020Management\u0022,\u0022db_value\u0022\u003A\u0022Facilities\u0020Management\u0022,\u0022slug\u0022\u003A\u0022facilities\u002Dmanagement\u0022\u007D\u005D\u007D,\u007B\u0022name\u0022\u003A\u0022Technology\u0022,\u0022db_value\u0022\u003A\u0022Technology\u0022,\u0022slug\u0022\u003A\u0022technology\u0022,\u0022categories\u0022\u003A\u005B\u007B\u0022name\u0022\u003A\u0022Cloud\u0020and\u0020Hosting\u0022,\u0022db_value\u0022\u003A\u0022Cloud\u0020and\u0020Hosting\u0022,\u0022slug\u0022\u003A\u0022cloud\u002Dand\u002Dhosting\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Digital\u0020Capability\u0020and\u0020Delivery\u0022,\u0022db_value\u0022\u003A\u0022Digital\u0020Capability\u0020and\u0020Delivery\u0022,\u0022slug\u0022\u003A\u0022digital\u002Dcapability\u002Dand\u002Ddelivery\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Network\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Network\u0020Services\u0022,\u0022slug\u0022\u003A\u0022network\u002Dservices\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Software\u0020and\u0020Hardware\u0022,\u0022db_value\u0022\u003A\u0022Software\u0020and\u0020Hardware\u0022,\u0022slug\u0022\u003A\u0022software\u002Dand\u002Dhardware\u0022\u007D,\u007B\u0022name\u0022\u003A\u0022Technology\u0020Services\u0022,\u0022db_value\u0022\u003A\u0022Technology\u0020Services\u0022,\u0022slug\u0022\u003A\u0022technology\u002Dservices\u0022\u007D\u005D\u007D\u005D');
+
+        for (var i = 0; i < allPillar.length; i++) {
+            categoryNames = allPillar[i].categories.map(category => category.slug.toLowerCase());
+            pillars.set(allPillar[i].name, categoryNames);
+        }
+
+        Vue.component('results-pagination', {
+            delimiters: ['{[', ']}'],
+            props: {
+                currentPage: Number,
+                totalResults: Number,
+                numberOfPages: Number,
+            },
+            computed: {
+                nextPage: function () {
+                    if (this.currentPage == this.numberOfPages) {
+                        return this.currentPage;
+                    }
+                    return this.currentPage + 1;
+                },
+                previousPage: function () {
+                    if (this.currentPage == 1) {
+                        return this.currentPage;
+                    }
+                    return this.currentPage - 1;
+                },
+                paginationStartNumber: function () {
+                    // start page defaults to 2 (second page) because the
+                    // first page link is always output by default
+                    var linksStartPage = 1;
+
+                    // if the start page is at the beginning of the pagination
+                    // then account for this
+                    if ((this.currentPage - 2) < 2) {
+                        linksStartPage = 2;
+                    } else {
+                        // otherwise the start page is equal to the current
+                        // page minus 2, this means that the pagination should
+                        // have a couple of links either side of the current
+                        // page, e.g.   2 3 [4] 5 6
+                        linksStartPage = this.currentPage - 2;
+                    }
+
+                    // if the start page is very close to the last page, then
+                    // account for this
+                    if ((this.currentPage + 2) > this.numberOfPages) {
+                        linksStartPage = linksStartPage - 2;
+                    }
+
+                    if (linksStartPage <= 1) {
+                        linksStartPage = 2;
+                    }
+
+                    return linksStartPage;
+                },
+                paginationEndNumber: function () {
+                    var linksEndPage = this.paginationStartNumber + 4;
+
+                    // if there aren't more pages than the number we
+                    // want to show by minimum, then the end page is just equal
+                    // to the final result page
+
+                    if ((linksEndPage >= this.numberOfPages)) {
+                        // minus 1 because the last page is always output
+                        linksEndPage = this.numberOfPages - 1;
+                    }
+
+                    if (this.numberOfPages == 1) {
+                        linksEndPage = 1;
+                    }
+
+                    return linksEndPage;
+                }
+            },
+            methods: {
+                updatePageNumber: function (event, newPage) {
+                    event.preventDefault();
+                    this.$emit('update-page', newPage);
+                    search.fetchAPIData(null, newPage)
+                },
+                range: function (start, end) {
+                    return Array(end - start + 1).fill().map(function (_, idx) {
+                        return start + idx;
+                    });
+                }
+            },
+            template:
+                `
+                <div>
+                    <ul class="list--inline pagination govuk-body" role="list" aria-label="Pagination" v-if="numberOfPages > 0">
+                        <li class="pagination__item pagination__item--previous" v-if="currentPage != 1">
+                            <a href="#" rel="previous" v-on:click="updatePageNumber($event, previousPage)">
+                                <span class="icon">
+                                    <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6.7 0l1.4 1.4-4.3 4.3h13v2H3.9l4.2 4-1.4 1.4L0 6.7z" fill="#007194" fill-rule="evenodd"></path></svg>
+                                </span>
+                                <span>Previous</span> <span class="visuallyhidden">page</span>
+                            </a>
+                        </li>
+
+                        <li class="pagination__item">
+                            <span v-if="currentPage == 1"><span class="visuallyhidden">Page </span>1</span>
+                            <a v-else href="#" v-on:click="updatePageNumber($event, 1)"><span class="visuallyhidden">Page </span>1</a>
+                        </li>
+
+                        <li class="pagination__item" v-if="paginationStartNumber > 2">…</li>
+
+                        <li class="pagination__item" v-for="page in range(paginationStartNumber, paginationEndNumber)" v-if="numberOfPages > 1">
+                            <span v-if="page == currentPage"><span class="visuallyhidden">Page </span>{[ page ]}</span>
+                            <a v-else href="#" v-on:click="updatePageNumber($event, page)"><span class="visuallyhidden">Page </span>{[ page ]}</a>
+                        </li>
+
+                        <li class="pagination__item" v-if="(paginationEndNumber + 1) < numberOfPages">…</li>
+
+                        <li class="pagination__item" v-if="numberOfPages > 1">
+                            <span v-if="currentPage == numberOfPages"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</span>
+                            <a v-else href="#" v-on:click="updatePageNumber($event, numberOfPages)"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</a>
+                        </li>
+
+                        <li class="pagination__item pagination__item--next" v-if="currentPage != numberOfPages">
+                            <a href="#" rel="next" v-on:click="updatePageNumber($event, nextPage)">
+                                <span>Next</span> <span class="visuallyhidden">page</span>
+                                <span class="icon">
+                                    <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z" fill="#007194" fill-rule="evenodd"></path></svg>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                `
+        });
+
+        var search = new Vue({
+            delimiters: ['{[', ']}'],
+            el: '#main-content',
+            mounted: function () {
+                this.filtering(null, "status");
+                this.filtering(null, "regulation");
+                this.filtering(null, "type");
+                this.filtering(null, "pillar");
+                this.filtering(null, "category");
+            },
+            data: {
+                javascriptVersion: true,
+                results: "",
+                responseAvailable: null,
+                emptyResult: false,
+                apiURL: apiBaseUrl + "frameworks?",
+                keyword: keyword,
+                displayKeyword: null,
+                checkedStatus: checkedStatus,
+                checkedRegulation: checkedRegulation,
+                checkedType: checkedType,
+                checkedPillar: checkedPillar,
+                checkedCategory: checkedCategory,
+                pillars: pillars,
+                currentPage: pageNumber,
+                pillarsSize: pillarsSize,
+                categorySize: categorySize,
+                numberOfPages: Number,
+                totalResults: Number,
+
+                popstateLoad: false
+            },
+            filters: {
+                toDateDMY: function (value) {
+                    if (!value) return ''
+                    date = new Date(value);
+                    return date.getDate().toString().padStart(2, '0') + '/' + (date.getMonth() + 1).toString().padStart(2, '0') + '/' + date.getFullYear();
+                }
+            },
+            created: function () {
+                const hideWithOutJS = document.querySelectorAll('.hideWithoutJS');
+
+                hideWithOutJS.forEach(component => {
+                    if (component.classList.contains('govuk-visually-hidden')) {
+                        component.classList.remove('govuk-visually-hidden');
+                    }
+                });
+
+                // unfortunately we have to update the results when we instantiate
+                // the Vue app so it hooks in all the correct event handlers etc.
+                this.fetchAPIData(null, this.currentPage);
+
+                // setup popstate event listener for History API
+                this.setupHistoryApi();
+            },
+            watch: {
+                keyword(keyword) {
+                    if (this.keyword.trim().length == 0 || /^[\-\(\)&]*$/.test(this.keyword)) {
+                        this.keyword = "";
+                    }
+                    this.keyword = this.keyword
+                        .replace(/\//g, "")                   // Remove slashes
+                        .replace(/[^a-zA-Z0-9\s\-&()]/g, ""); // Allow letters, numbers, spaces, and the specified characters
+                },
+                searchRequestUrl: function () {
+
+                    // if the searchRequestUrl hasn't been updated by a popstate
+                    // event (back/forward button) then we push a state item to the
+                    // JS History API
+                    if (this.popstateLoad === false) {
+                        history.pushState({
+                            checkedStatus: this.checkedStatus,
+                            checkedRegulation: this.checkedRegulation,
+                            checkedType: this.checkedType,
+                            checkedPillar: this.checkedPillar,
+                            checkedCategory: this.checkedCategory,
+                            keyword: this.keyword,
+                        }, 'Agreements', this.frontendSearchUrl);
+                    }
+
+                    // reset the popstateLoad property to false
+                    this.popstateLoad = false;
+                }
+            },
+            computed: {
+                frontendQueryUrl: function () {
+                    var queryUrl = '/?';
+
+                    if (this.checkedStatus.length != 0) {
+                        queryUrl += '&status=' + this.checkedStatus.join();
+                    }
+
+                    if (this.checkedRegulation.length != 0 && !this.checkedRegulation.includes("allRegulation")) {
+                        queryUrl += '&regulation=' + this.checkedRegulation.join();
+                    }
+
+                    if (this.checkedType.length != 0 && !this.checkedType.includes("allType")) {
+                        this.checkedType = this.checkedType.map(str => str.replace(/ /g, '+'));
+                        queryUrl += '&type=' + this.checkedType.join();
+                    }
+
+                    if (this.checkedPillar.length != 0 && !this.checkedPillar.includes("allPillarAndCategory")) {
+                        queryUrl += '&pillar=' + this.checkedPillar.join();
+                    }
+
+                    if (this.checkedCategory.length != 0) {
+                        this.checkedCategory = this.checkedCategory.map(str => str.replace(/ /g, '+'));
+                        queryUrl += '&category=' + this.checkedCategory.join();
+                    }
+
+                    if (this.keyword) {
+                        queryUrl += '&keyword=' + this.keyword;
+                    }
+
+                    if (this.currentPage) {
+                        queryUrl += '&page=' + this.currentPage;
+                    }
+
+                    return queryUrl != '/?' ? queryUrl : "";
+
+                },
+                frontendSearchUrl: function () {
+                    var searchUrl = '/ccs-home/content/agreements' + this.frontendQueryUrl;
+                    return searchUrl;
+                }
+            },
+            methods: {
+                filtering: function (selected, filtertingOption) {
+                    filterArray = null
+                    viewAllCheckboxID = null
+                    paramaString = null
+                    returnFilter = ""
+                    maxFilter = 0
+
+                    switch (filtertingOption) {
+                        case "status":
+                            this.checkedStatus.forEach((currentElement) => {
+                                returnFilter += "&status[]=" + currentElement
+                            })
+                            if (this.checkedStatus.length == 0) {
+                                document.getElementById("Live").checked = true;
+                                this.checkedStatus = ["Live"]
+                            }
+                            return returnFilter
+                            break
+                        case "regulation":
+                            filterArray = this.checkedRegulation
+                            paramaString = "&regulation[]="
+                            viewAllCheckboxID = "allRegulation"
+                            maxFilter = 3
+                            break
+                        case "type":
+                            filterArray = this.checkedType
+                            paramaString = "&regulation_type[]="
+                            viewAllCheckboxID = "allType"
+                            maxFilter = 6
+                            break
+                        case "pillar":
+                            filterArray = this.checkedPillar
+                            paramaString = "&pillar[]="
+                            viewAllCheckboxID = "allPillarAndCategory"
+                            maxFilter = this.pillarsSize
+                            break
+                        case "category":
+                            if (this.checkedCategory.length == this.categorySize || selected == "allPillarAndCategory") {
+                                document.getElementById("allPillarAndCategory").checked = true
+                                document.getElementById("corporate").checked = false
+                                document.getElementById("estates").checked = false
+                                document.getElementById("technology").checked = false
+                                this.checkedCategory = [];
+                                this.checkedPillar = [];
+
+                                return ""
+                            } else if (this.checkedCategory.length != 0) {
+                                document.getElementById("allPillarAndCategory").checked = false
+                            }
+
+                            seletedOptions = this.checkedCategory.map(str => str.replace(/,/g, '').replace(/[+]/g, '-').toLowerCase());
+
+                            for (let [key, value] of pillars) {
+                                if (value.every(value => seletedOptions.includes(value))) {
+                                    this.checkedPillar.includes(key) ? null : this.checkedPillar.push(key);
+                                    document.getElementById(key.toLowerCase()).checked = true;
+                                } else if (value.includes(selected)) {
+                                    document.getElementById(key.toLowerCase()).checked = false;
+                                    this.checkedPillar = this.checkedPillar.filter(item => item !== key);
+                                }
+                            }
+
+                            this.checkedCategory.forEach((currentElement) => {
+                                returnFilter += "&category[]=" + currentElement
+                            })
+                            return returnFilter
+                        default:
+                            console.log('An error occurred');
+                            return
+                    }
+
+                    if ((selected == "Live" || selected == "Expired") && filtertingOption != "status") {
+                        selected = "dummy value"
+                    }
+
+                    //if nothing is check || everything is checked || View all is checked 
+                    if (filterArray.length == 0 || filterArray.length == maxFilter || filterArray.includes(viewAllCheckboxID)) {
+
+                        //edge case where there are some category checked but all the pullar has also been checked
+                        this.checkedCategory = filtertingOption == "pillar" && filterArray.length == maxFilter ? [] : this.checkedCategory;
+
+                        filterArray.splice(0);
+                        document.getElementById(viewAllCheckboxID) != null ? document.getElementById(viewAllCheckboxID).checked = true : null
+                        document.getElementById(selected) != null ? document.getElementById(selected).checked = false : null
+                    } else {
+                        document.getElementById(viewAllCheckboxID) != null ? document.getElementById(viewAllCheckboxID).checked = false : null
+                        filterArray.forEach((currentElement) => {
+                            returnFilter += paramaString + currentElement
+                        })
+                    }
+                    return returnFilter;
+                },
+                searchRequestUrl: function (selected, page) {
+                    fetchURL = this.apiURL
+                        + this.filtering(selected, "status")
+                        + this.filtering(selected, "regulation")
+                        + this.filtering(selected, "type")
+                        + this.filtering(selected, "pillar")
+                        + this.filtering(selected, "category")
+
+                    fetchURL = fetchURL + "&per_page=20&page=" + this.currentPage;
+
+                    if (this.popstateLoad === false) {
+                        history.pushState({
+                            checkedStatus: this.checkedStatus,
+                            checkedRegulation: this.checkedRegulation,
+                            checkedType: this.checkedType,
+                            checkedPillar: this.checkedPillar,
+                            checkedCategory: this.checkedCategory,
+                            keyword: this.keyword,
+                        }, 'Agreements', this.frontendSearchUrl);
+                    }
+
+                    // reset the popstateLoad property to false
+                    this.popstateLoad = false;
+
+                    return fetchURL;
+                },
+                searchKeyword: function () {
+
+                    if (this.keyword) {
+                        pushToDataLayer({ 'event': 'view_search_results', 'interaction_type': 'agreements', 'search_term': this.keyword });
+
+                        if (this.popstateLoad === false) {
+                            history.pushState({
+                                checkedStatus: this.checkedStatus,
+                                checkedRegulation: this.checkedRegulation,
+                                checkedType: this.checkedType,
+                                checkedPillar: this.checkedPillar,
+                                checkedCategory: this.checkedCategory,
+                                keyword: this.keyword,
+                            }, 'Agreements', this.frontendSearchUrl);
+                        }
+
+                        // reset the popstateLoad property to false
+                        this.popstateLoad = false;
+
+                        this.displayKeyword = this.keyword
+
+                        return "&keyword=" + this.keyword.replace(/&/g, '');
+                    }
+                    this.displayKeyword = null
+                    return ""
+                },
+                clearSearchKeyword: function () {
+                    this.keyword = ""
+                    this.displayKeyword = null
+                    this.fetchAPIData(null, null)
+                },
+                resetAllFilter: function () {
+                    this.keyword = ""
+                    this.displayKeyword = null
+                    this.checkedStatus = []
+                    this.checkedRegulation = []
+                    this.checkedType = []
+                    this.checkedPillar = []
+                    this.checkedCategory = []
+                    this.pillars = []
+                    this.fetchAPIData(null, null)
+                },
+                fetchAPIData: function (input, page) {
+                    var self = this;
+                    this.responseAvailable = false;
+                    this.emptyResult = false;
+                    this.currentPage = page === null || page === undefined ? 1 : page;
+
+                    var requestUrl = this.searchRequestUrl(input, this.currentPage) + this.searchKeyword();
+
+                    console.log(requestUrl);
+
+                    fetch(requestUrl)
+                        .then(async function (response) {
+                            if (!response.ok) {
+                                throw new Error('HTTP error, status = ' + response.status);
+                            }
+                            return response.json();
+                        })
+                        .then(function (jsonResponse) {
+                            self.numberOfPages = parseInt(Math.ceil(jsonResponse.meta.total_results / jsonResponse.meta.limit))
+                            self.totalResults = parseInt(jsonResponse.meta.total_results)
+                            this.results = jsonResponse.results;
+
+                            self.results = jsonResponse.results;
+                            self.emptyResult = Object.keys(jsonResponse.results).length === 0 ? true : false
+                            self.responseAvailable = true;
+                        })
+                        .catch(function (error) {
+                            console.log('An error occurred');
+                            console.log(error);
+                            self.responseAvailable = false;
+                        });
+                },
+                updatePageValue: function (newPageValue) {
+                    this.currentPage = newPageValue;
+                },
+                setupHistoryApi: function () {
+
+                    window.onpopstate = function (event) {
+                        // set the popstate variable to true so that we can
+                        // tell in other parts of the code that the state change
+                        // is being caused by the back/forward button
+                        this.popstateLoad = true;
+
+                        if (event.state == null) {
+                            this.checkedStatus = [];
+                            this.checkedRegulation = [];
+                            this.checkedType = [];
+                            this.checkedPillar = [];
+                            this.checkedCategory = [];
+                            this.keyword = null;
+                            return
+                        }
+
+                        this.checkedStatus = event.state.checkedStatus;
+                        this.checkedRegulation = event.state.checkedRegulation;
+                        this.checkedType = event.state.checkedType;
+                        this.checkedPillar = event.state.checkedPillar;
+                        this.checkedCategory = event.state.checkedCategory;
+                        this.keyword = event.state.keyword;
+
+                        this.fetchAPIData(null, this.currentPage);
+                    }
+                },
+                shouldShowTypeCheckbox: function (item) {
+                    if (this.checkedRegulation.length === 0) {
+                        return true;
+                    }
+
+                    const regulationMap = {
+                        "Closed Framework": "PA2023",
+                        "Dynamic Market": "PA2023",
+                        "Open Framework": "PA2023",
+                        "Dynamic Purchasing System": "PCR2015",
+                        "PCR15 Framework": "PCR2015",
+                        "PCR06 Framework": "PCR2006"
+                    };
+
+                    const requiredRegulation = regulationMap[item];
+                    return requiredRegulation ? this.checkedRegulation.includes(requiredRegulation) : false;
+                },
+                removeTypeBasedOnReg: function () {
+                    const checkboxMap = {
+                        "PA2023": ["Closed+Framework", "Dynamic+Market", "Open+Framework"],
+                        "PCR2015": ["Dynamic+Purchasing+System", "PCR15+Framework"],
+                        "PCR2006": ["PCR06+Framework"]
+                    };
+
+                    for (const [key, types] of Object.entries(checkboxMap)) {
+                        const currentCheckbox = document.getElementById(key);
+                        if (currentCheckbox && !currentCheckbox.checked) {
+                            types.forEach(type => {
+                                const index = this.checkedType.indexOf(type);
+                                if (index !== -1) {
+                                    this.checkedType.splice(index, 1);
+                                    this.fetchAPIData(type, this.currentPage);
+                                }
+                            });
+                        }
+                    }
+                    console.log(this.checkedType);
+
+                },
+            }
+        });
+
+    </script>
+
+
+
+
+
+    <script src="/assets/scripts/libraries/jquery-3.6.0.min.js"></script>
+    <script src="/assets/scripts/libraries/objectFitPolyfill.min.js"></script>
+    <script src="/assets/scripts/app.js?v=2.3"></script>
+    <script type="text/javascript">
+        $('a[target^="_new-window"]').click(function () {
+            var width = window.innerWidth * 0.9;
+            var height = width * window.innerHeight / window.innerWidth;
+            window.open(this.href, 'popup', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2)); return false;
+        })
+    </script>
+
+
+    <!-- Pardot -->
+    <!-- @todo Wrap around Cookie Manager JS to ensure we have user consent before this is run -->
+    <script type="text/javascript">
+        piAId = '812463';
+        piCId = '';
+        piHostname = 'information.crowncommercial.gov.uk';
+
+        var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+        if (cookiePreferences !== null) {
+            if (cookiePreferences.marketing === true) {
+                (function () {
+                    function async_load() {
+                        var s = document.createElement('script'); s.type = 'text/javascript';
+                        s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + piHostname + '/pd.js';
+                        var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+                    }
+                    if (window.attachEvent) { window.attachEvent('onload', async_load); }
+                    else { window.addEventListener('load', async_load, false); }
+                })();
+            }
+        }
+
+        // toggle mobile menu icon
+        var menuIcon = document.querySelector(".global-navigation__toggler");
+        var iconClosed = document.querySelector(".icon-menu-closed");
+        var iconOpen = document.querySelector(".icon-menu-open");
+
+        menuIcon.addEventListener("click", function () {
+            if (window.getComputedStyle(iconClosed, null).display == "inline") {
+                iconClosed.style.display = "none";
+                iconOpen.style.display = "inline";
+            }
+
+            else if (window.getComputedStyle(iconOpen, null).display == "inline") {
+                iconOpen.style.display = "none";
+                iconClosed.style.display = "inline";
+            }
+        });
+
+        var backToTopBtn = document.getElementById("BackToTopButton");
+        var skipLink = document.querySelector(".govuk-skip-link");
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            animateScrollToTop();
+        });
+
+        backToTopBtn.addEventListener('keypress', function (e) {
+            e.preventDefault();
+            if (e.key === 'Enter') {
+                animateScrollToTop();
+            }
+        });
+
+        function animateScrollToTop() {
+            $('html, body').animate({ scrollTop: 0 }, '300');
+            // reset focus on page
+            if (skipLink !== null) {
+                skipLink.focus();
+            }
+
+        }
+
+        function showOrHideBackToTop() {
+            var contactForm = document.querySelector("form");
+
+            if (window.scrollY + window.innerHeight > (document.querySelector('footer').getBoundingClientRect().top + window.pageYOffset)) {
+                backToTopBtn.classList.add("fixed");
+                backToTopBtn.classList.remove("flex");
+            } else {
+                backToTopBtn.classList.add("flex");
+                backToTopBtn.classList.remove("fixed");
+            }
+
+            if (window.scrollY > 200) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+
+            if (contactForm !== null) {
+                if (contactForm.getAttribute("data-evt-type") == "contact_form") {
+                    makeBackToTopFocusable();
+                }
+            }
+
+        }
+
+        // this is to fix an edge case where back to top is not focusable properly on contact page
+        function makeBackToTopFocusable() {
+            var links = document.querySelectorAll("main a");
+            var lastLink = links[links.length - 1];
+            var contactCard = document.querySelector("#submit");
+
+            lastLink.addEventListener("keydown", function (event) {
+                if (event.key === "Tab" && !event.shiftKey) {
+                    event.preventDefault();
+                    contactCard.scrollIntoView({ behaviour: "smooth", block: "start" });
+                    // set timeout in order for scrollIntoView to finish firing first
+                    setTimeout(function () {
+                        backToTopBtn.classList.add("show");
+                        backToTopBtn.style.position = "absolute";
+                        backToTopBtn.focus();
+                    }, 200)
+
+                }
+            })
+        }
+
+        window.onload = function () {
+            dataLayerSetup();
+            showOrHideBackToTop()
+
+            window.addEventListener("scroll", function (event) {
+                showOrHideBackToTop()
+            }, false);
+
+        };
+
+        // add download notification to links
+        var links = document.querySelectorAll("a");
+
+        links.forEach(link => {
+            var href = link.getAttribute("href");
+            var exts = [".doc", ".docx", ".xlsx", ".pptx", ".csv", ".odt", ".ods", ".zip"];
+            var target = link.getAttribute("target");
+            var span = document.createElement("span");
+
+            if (target === "_blank") {
+                span.innerText = "Opens in new window";
+                link.classList.add("download-info")
+                link.appendChild(span);
+            }
+
+            if (href != null) {
+                if (exts.some(ext => href.includes(ext))) {
+                    span.innerText = "This file will download";
+                    link.classList.add("download-info")
+                    link.appendChild(span);
+                }
+            }
+
+
+
+        })
+
+        // make cards same height in list
+        var cardLists = document.querySelectorAll("ul.card-list");
+        var maxHeight = 0;
+        var windowWidth = window.innerWidth;
+
+        if (cardLists != null) {
+            cardLists.forEach(function (cardList) {
+                cards = cardList.querySelectorAll("li.card-list__item");
+
+                if (cards.length > 1) {
+                    cards.forEach(function (card) {
+                        var cardHeight = card.querySelector(".card-list__item__wrapper").offsetHeight;
+                        if (cardHeight > maxHeight) {
+                            maxHeight = cardHeight;
+                        }
+                    });
+
+                    cards.forEach(function (card) {
+                        card.querySelector(".card-list__item__wrapper").style.height = maxHeight - 50 + "px";
+
+                        if (windowWidth < 600) {
+                            card.querySelector(".card-list__item__wrapper").style.height = "auto";
+                        }
+                    })
+                }
+            })
+        }
+
+        // change colour of logo on focus for accessibility
+        var logo = document.querySelector(".logo");
+        var logoImg = document.querySelector(".navLogo");
+
+        logo.addEventListener("focus", function (event) {
+            logoImg.style.filter = "invert(100%)";
+        })
+
+        logo.addEventListener("focusout", function (event) {
+            logoImg.style.filter = "invert(0)";
+        })
+
+    </script>
+
+    <script type="module" src="/assets/scripts/all.js?v=2.3"></script>
+    <script type="module">
+        import { initAll } from '/assets/scripts/all.js'
+        window.addEventListener("DOMContentLoaded", function () {
+            initAll()
+        }, false);
+    </script>
+</body>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js.njk" %}
+{% endblock %}

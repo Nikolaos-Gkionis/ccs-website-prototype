@@ -1,0 +1,165 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}About CCS - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    About
+                </h1>
+                <p class="govuk-body-l">
+                    Learn about Crown Commercial Service, our mission to deliver value for the public sector, and how we
+                    support buyers and suppliers across the UK.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- About CCS Card -->
+                                <li class="card-list__item">
+                                    <a href="/about-ccs" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                About CCS
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about Crown Commercial Service, our mission to maximise the
+                                                    value of public procurement and deliver commercial benefits for the
+                                                    UK public sector.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Transforming Public Procurement Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/transforming-public-procurement"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Transforming Public Procurement
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover how we're transforming public procurement to deliver better
+                                                    outcomes, greater value, and improved services for the public
+                                                    sector.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Gov.uk Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Gov.uk
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access the UK government's official website for information about
+                                                    government services, policies, and public sector resources.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Careers at CCS Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/careers" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Careers at CCS
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Join our team and help shape the future of public procurement.
+                                                    Discover career opportunities at Crown Commercial Service.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Delivering value for the public sector</h2>
+                <p class="govuk-body">Crown Commercial Service is the UK's largest public procurement organisation,
+                    working to maximise the value of public procurement:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Supporting over 17,000 public sector organisations</li>
+                    <li>Managing commercial agreements worth billions of pounds</li>
+                    <li>Delivering significant savings for the public sector</li>
+                    <li>Promoting innovation and best practice in procurement</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Get in touch to learn more about CCS</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/new-footer.njk" %}
+{% endblock %}

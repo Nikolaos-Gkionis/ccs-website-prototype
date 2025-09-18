@@ -1,0 +1,388 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<!-- phase banner -->
+{% include "includes/phase.njk" %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                Sectors
+            </li>
+        </ol>
+    </div>
+
+</div>
+
+
+<!-- required wrapper 2 -->
+<main id="main-content" role="main" class="govuk-main-wrapper" data-template="page-templates/sectors.php">
+
+
+
+
+
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+
+
+                <h1 class="govuk-heading-xl page-title page-title--tight">Sectors</h1>
+
+                <p class="govuk-body-l">In public procurement, one size doesn’t fit all. That’s why we have a team of
+                    specialist industry experts to help you achieve the best value for your organisation.</p>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="page-components">
+
+
+
+
+
+
+
+
+
+            <div class="component sectors">
+                <div class="govuk-width-container">
+                    <div class="--greyed-bg">
+                        <div class="govuk-grid-row ccs-grid-row--loose">
+
+                            <div class="govuk-grid-column-full">
+
+
+                                <ul class="card-list card-list--four-on-large">
+
+                                    <li class="card-list__item [ sector--local-government ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Local government</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>We work with individual local authority colleagues, regional and
+                                                    national
+                                                    sector networks across the UK, as well as important stakeholders
+                                                    such as
+                                                    the Local Government Association and SOLACE to support the sector to
+                                                    achieve the best possible outcomes for their local communities
+                                                    through
+                                                    public procurement.</p>
+                                                <p><a href="/sectors/local-government">Find out how we can help local
+                                                        government.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--health ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Health</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>We work with all the different NHS organisations from individual NHS
+                                                    trusts and procurement groups, to Clinical Commissioning Groups,
+                                                    Integrated Care Systems, and other local partners to help you
+                                                    achieve
+                                                    your procurement goals.</p>
+                                                <p><a href="/sectors/health">Find out how we can help the health
+                                                        sector.</a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--housing-associations ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Housing associations</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>We want to help social housing providers save time and money when
+                                                    buying
+                                                    business goods and services, so that you can focus on the things
+                                                    that
+                                                    really matter to you and your tenants.</p>
+                                                <p><a href="/sectors/housing-associations">Find out how we can help
+                                                        housing
+                                                        associations. </a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--schools-academies ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Schools and academies</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>As the largest public procurement organisation in the UK, we’ve got a
+                                                    range of tailored solutions specifically for schools, academies and
+                                                    multi-academy trust.</p>
+                                                <p><a href="/sectors/schools-and-academies">Find out how we can help
+                                                        schools
+                                                        and academies. </a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--central-government ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Central government and arm&#039;s length bodies
+                                            </h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p><span style="font-weight: 400;">Our team know that in order to
+                                                        improve
+                                                        efficiency and reduce duplication, there is a need to work more
+                                                        collaboratively, bringing together teams and sharing expertise
+                                                        across government departments, arm&#8217;s length bodies and the
+                                                        wider public sector. </span></p>
+                                                <p><a href="/sectors/central-government">Find out how we can help
+                                                        central
+                                                        government.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--universities-colleges ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Universities and colleges</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>We have a dedicated team working with our higher and further
+                                                    education
+                                                    customers to help you achieve your procurement goals. Whether you’re
+                                                    a
+                                                    business manager responsible for buying office supplies, a finance
+                                                    manager looking to improve your payment processes, or an IT manager
+                                                    responsible for upgrading your networks and equipment.</p>
+                                                <p><a href="/sectors/universities-and-colleges">Find out how we can help
+                                                        universities and colleges.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--police-emergency-services ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Police and emergency services</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>Police forces, fire and rescue services, ambulance trusts,
+                                                    coastguards
+                                                    and other emergency services have more important things to handle
+                                                    than
+                                                    administrative issues and costly purchases.</p>
+                                                <p><a href="/sectors/police-and-emergency-services">Find out how we can
+                                                        help
+                                                        police and emergency services.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item [ sector--charities ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Charities</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>We want to help charities and not for profit organisations save time
+                                                    and
+                                                    money when buying business goods and services, so that you can focus
+                                                    on
+                                                    making a real difference.</p>
+                                                <p><a href="/sectors/charities">Find out how we can help charities. </a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="component sectors">
+                <div class="govuk-width-container">
+                    <div class="--greyed-bg">
+                        <div class="govuk-grid-row ccs-grid-row--loose">
+
+                            <div class="govuk-grid-column-full">
+
+
+                                <ul class="card-list card-list--four-on-large">
+
+                                    <li class="card-list__item [ sector--devolved ]">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Devolved</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p><span style="font-weight: 400;">We work closely with strategic
+                                                        partners
+                                                        and collaborate with the Centres of Procurement Expertise across
+                                                        Scotland, Wales and Northern Ireland to ensure our commercial
+                                                        agreements meet the needs of our customers in the devolved
+                                                        administrations by taking account of local policy and
+                                                        legislation.
+                                                    </span></p>
+                                                <p><a href="/sectors/devolved">Find out how we can help devolved
+                                                        administrations.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="component cards">
+                <div class="govuk-width-container">
+                    <div class="--greyed-bg">
+                        <div class="govuk-grid-row ccs-grid-row--loose">
+
+                            <div class="govuk-grid-column-full">
+
+                                <h2 class="govuk-heading-l intro__heading">Services</h2>
+
+                                <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                    <li class="card-list__item">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Aggregation</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p>Bulk buying, also known as aggregation, offers highly competitive
+                                                    prices
+                                                    and a simple tender process.</p>
+                                                <p><a
+                                                        href="https://www.crowncommercial.gov.uk/products-and-services/aggregation">Take
+                                                        a look at our aggregation opportunities.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li class="card-list__item">
+                                        <div class="card-list__item__wrapper">
+
+                                            <h3 class="govuk-heading-m">Our digital brochure</h3>
+
+                                            <div class="wysiwyg-content">
+                                                <p data-block-id="e664df3e-f798-4a0f-8640-614c1099b722">We&#8217;ve
+                                                    brought
+                                                    all our commercial agreements together along with guidance to help
+                                                    you
+                                                    get the most from working with us.</p>
+                                                <p data-block-id="cab5d258-869e-41cf-b7e5-9e05aba71618"><a
+                                                        href="https://www.crowncommercial.gov.uk/downloadable-resource/request/30384/commercial-agreements-digital-brochure">Download
+                                                        our digital brochure.</a></p>
+                                            </div>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+
+</main>
+<script>
+
+
+    document.querySelectorAll('input[name="00Nb0000009IXEg"]').forEach((option) => {
+        option.addEventListener("change", function (event) {
+            if (event.target.value == "Yes") {
+                setPhoneTextOptional(false);
+            } else
+                setPhoneTextOptional(true);
+        });
+    });
+
+    function setPhoneTextOptional(toggle) {
+        if (toggle) {
+            document.getElementById("phone-label").textContent = "Telephone number (optional)";
+        } else {
+            document.getElementById("phone-label").textContent = "Telephone number";
+        }
+        if (document.getElementById("callback-1").checked) {
+            document.getElementById("phone-label").textContent = "Telephone number";
+        }
+    }
+</script>
+</div>
+
+<script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href });</script>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js-beta.njk" %}
+{% endblock %}

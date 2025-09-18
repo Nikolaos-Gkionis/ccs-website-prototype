@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-{% include "includes/header.njk" %}
+{% include "includes/header-mobile.njk" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
 
     <div class="main-width-container">
 
-        <!-- Phase banner 
+        <!-- Phase banner
 
         <div class="govuk-phase-banner">
             <p class="govuk-phase-banner__content">
@@ -22,9 +22,8 @@
                     beta
                 </strong>
                 <span class="govuk-phase-banner__text">
-                    This is a new service – your
-                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>feedback</a> will help us
-                    to improve it.
+                    Help us make this service better for you
+                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>Give feedback on how we can improve this service.</a>
                 </span>
             </p>
 
@@ -113,7 +112,7 @@
                         </div>
                     </div>
 
-                    <!-- hidden filter button 
+                    <!-- hidden filter button
 
                     <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion"> Filter
                     </button>
@@ -442,7 +441,7 @@
                         </div>
                     </div>
 
-                    <!-- hidden filter button 
+                    <!-- hidden filter button
                     <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion"> Filter
                     </button>
                     -->
@@ -1372,7 +1371,7 @@
                         selected = "dummy value"
                     }
 
-                    //if nothing is check || everything is checked || View all is checked 
+                    //if nothing is check || everything is checked || View all is checked
                     if (filterArray.length == 0 || filterArray.length == maxFilter || filterArray.includes(viewAllCheckboxID)) {
 
                         //edge case where there are some category checked but all the pullar has also been checked

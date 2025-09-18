@@ -1,138 +1,321 @@
-<footer class="govuk-footer footer-global">
+<div id="feedback-container"
+    class="govuk-!-padding-left-9 govuk-!-padding-right-9 govuk-!-padding-top-4 govuk-!-padding-bottom-4 govuk-!-margin-top-6"
+    style="background-color: #f3f2f1; border-top: 1px solid #0b0c0c; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
+    <div id="feedback-content" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <h2 class="govuk-heading-m">Is this page useful?</h2>
+            <button onclick="handleFeedback('yes')" class="govuk-button govuk-button--secondary"
+                style="background-color: #BBC946;">Yes</button>
+            <button onclick="handleFeedback('no')" class="govuk-button govuk-button--secondary"
+                style="background-color: #BBC946;">No</button>
+        </div>
+    </div>
+
+    <div id="feedback-thanks-old" class="govuk-heading-m" style="display: none;">
+        Thank you for your feedback.
+    </div>
+
+    <div id="feedback-thanks-new" style="display: none;">
+        <h2 class="govuk-heading-m">
+            Thank you for letting us know
+        </h2>
+
+        <div style="background-color: white; padding: 2rem;">
+
+            <h2 class="govuk-heading-s">Can you tell us why this page was useful?</h2>
+
+            <div class="govuk-form-group">
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="info-needed" name="useful" type="checkbox"
+                            value="found-info">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;"
+                            for="info-needed">
+                            I found the information I was looking for
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="easy-find" name="useful" type="checkbox"
+                            value="easy-find">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;" for="easy-find">
+                            The information was clear and easy to understand
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="easy-understand" name="useful" type="checkbox"
+                            value="easy-understand">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;"
+                            for="easy-understand">
+                            The page was easy to navigate
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="use-again" name="useful" type="checkbox"
+                            value="use-again">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;" for="use-again">
+                            The information helped me complete what I needed to do
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+
+            <div class="govuk-form-group">
+                <h2 class="govuk-heading-m">Is there anything else you can tell us?</h2>
+                <div id="more-detail-hint" class="govuk-hint">
+                    Do not share any personal or commercially sensitive information like your National Insurance number
+                    or credit card details.
+                </div>
+                <textarea class="govuk-textarea" id="feedback-detail" rows="5"
+                    aria-describedby="more-detail-hint"></textarea>
+            </div>
+
+            -->
+
+            <div class="govuk-button-group">
+                <button onclick="handleFeedbackOld()" class="govuk-button"
+                    style="background-color: #BBC946;">Submit</button>
+                <button onclick="handleCancel()" class="govuk-button" style="background-color: #cbcbcb;">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="feedback-form" style="display: none;">
+        <h2 class="govuk-heading-m">
+            Thanks for letting us know
+        </h2>
+
+        <div style="background-color: white; padding: 2rem;">
+            <h2 class="govuk-heading-s">Can you tell us why this page was not useful?</h2>
+
+            <div class="govuk-form-group">
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="info-missing" name="not-useful" type="checkbox"
+                            value="info-missing">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;"
+                            for="info-missing">
+                            I could not find the information I was looking for
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="hard-find" name="not-useful" type="checkbox"
+                            value="hard-find">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;" for="hard-find">
+                            The information was out of date
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="hard-understand" name="not-useful" type="checkbox"
+                            value="hard-understand">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;"
+                            for="hard-understand">
+                            The information was difficult to understand
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item" style="padding: 0 0 10px 0;">
+                        <input class="govuk-checkboxes__input" id="looks-broken" name="not-useful" type="checkbox"
+                            value="looks-broken">
+                        <label class="govuk-label govuk-checkboxes__label" style="padding-left: 50px;"
+                            for="looks-broken">
+                            The page had technical problems (such as broken links or did not load properly)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+
+            <div class="govuk-form-group">
+                <h2 class="govuk-heading-m">Is there anything else you can tell us?</h2>
+                <div id="more-detail-hint" class="govuk-hint">
+                    Do not share any personal or commercially sensitive information like your National Insurance number
+                    or credit card details.
+                </div>
+                <textarea class="govuk-textarea" id="feedback-detail" rows="5"
+                    aria-describedby="more-detail-hint"></textarea>
+            </div>
+
+            -->
+
+
+            <div class="govuk-button-group">
+                <button onclick="handleFeedbackOld()" class="govuk-button"
+                    style="background-color: #BBC946;">Submit</button>
+                <button onclick="handleCancel()" class="govuk-button" style="background-color: #cbcbcb;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleFeedback(response) {
+        document.getElementById('feedback-content').style.display = 'none';
+        if (response === 'yes') {
+            document.getElementById('feedback-thanks-new').style.display = 'block';
+        } else {
+            document.getElementById('feedback-form').style.display = 'block';
+        }
+    }
+
+    function handleCancel() {
+        window.location.href = window.location.pathname;
+    }
+
+    function handleFeedbackOld() {
+        document.getElementById('feedback-form').style.display = 'none';
+        document.getElementById('feedback-thanks-new').style.display = 'none';
+        document.getElementById('feedback-thanks-old').style.display = 'block';
+
+        // Add smooth scroll to the thanks message
+        document.getElementById('feedback-thanks-old').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+</script>
+
+<footer class="govuk-footer footer-global" style="background-color: #C8C8C8; color: #0B0C0C; margin-top: 0;">
 
     <div class="ccs-width-container">
         <div class="govuk-footer__navigation">
 
-            <div class="govuk-footer__section govuk-footer-remove-flex-grow">
+            <div class="govuk-footer__section govuk-footer-remove-flex-grow"
+                style="border-right: 1px solid #9B1B48; padding-right: 20px;">
 
 
-                <h2 class="govuk-footer__heading govuk-!-font-size-22">Buy and supply</h2>
+                <h2 class="govuk-footer__heading govuk-!-font-size-22" style="color: #0B0C0C; border-color: #9B1B48;">
+                    Buy and supply</h2>
 
                 <ul class="govuk-list govuk-!-font-size-18">
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.gov.uk/contracts-finder"
-                            data-evt-placement="footer">Contracts Finder</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Contracts Finder</a>
                     </li>
                     <li class="">
-                        <a class="govuk-footer__link" href="https://www.gov.uk/find-tender"
-                            data-evt-placement="footer">Find
+                        <a class="govuk-footer__link" href="https://www.gov.uk/find-tender" data-evt-placement="footer"
+                            style="color: #0B0C0C;">Find
                             a Tender</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/glossary"
-                            data-evt-placement="footer">Glossary</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Glossary</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.crowncommercial.gov.uk/emarketplace-registration-form/"
-                            data-evt-placement="footer">Register for eMarketplace</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Register for eMarketplace</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/esourcing-training"
-                            data-evt-placement="footer">Register for eSourcing training</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Register for eSourcing training</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/esourcing-register"
-                            data-evt-placement="footer">Register for eSourcing tool</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Register for eSourcing tool</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://purchasingplatform.crowncommercial.gov.uk/mp-welcome"
-                            data-evt-placement="footer">Sign in to Purchasing Platform</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Sign in to Purchasing Platform</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.applytosupply.digitalmarketplace.service.gov.uk/user/login"
-                            data-evt-placement="footer">Sign in to Digital Marketplace</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Sign in to Digital Marketplace</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://fleetportal.crowncommercial.gov.uk/login.mth"
-                            data-evt-placement="footer">Sign in to fleet portal</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Sign in to fleet portal</a>
                     </li>
                     <li class="">
-                        <a class="govuk-footer__link" href="https://buyers.mpuk.basware.com"
-                            data-evt-placement="footer">Sign in to eMarketplace</a>
+                        <a class="govuk-footer__link" href="https://buyers.mpuk.basware.com" data-evt-placement="footer"
+                            style="color: #0B0C0C;">Sign in to eMarketplace</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://crowncommercialservice.bravosolution.co.uk/web/login.html"
-                            data-evt-placement="footer">Sign into eSourcing portal</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Sign into eSourcing portal</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.reportmi.crowncommercial.gov.uk/"
-                            data-evt-placement="footer">Submit your MI returns</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Submit your MI returns</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/newsletter"
-                            data-evt-placement="footer">Subscribe to customer newsletter</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Subscribe to customer newsletter</a>
                     </li>
                 </ul>
 
 
             </div>
 
-            <div class="govuk-footer__section">
+            <div class="govuk-footer__section" style="padding-left: 20px;">
 
 
-                <h2 class="govuk-footer__heading govuk-!-font-size-22">About and contact</h2>
+                <h2 class="govuk-footer__heading govuk-!-font-size-22" style="color: #0B0C0C; border-color: #9B1B48;">
+                    About and contact</h2>
 
                 <ul class="govuk-list govuk-!-font-size-18">
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/about-ccs/"
-                            data-evt-placement="footer">About CCS</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">About CCS</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/contact"
-                            data-evt-placement="footer">Contact CCS</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Contact CCS</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/about-ccs/press-office/"
-                            data-evt-placement="footer">Press Office</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Press Office</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/contact?type=complaint"
-                            data-evt-placement="footer">Make a complaint</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Make a complaint</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/careers-with-ccs/"
-                            data-evt-placement="footer">Careers with CCS</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Careers with CCS</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.gov.uk/government/organisations/crown-commercial-service"
-                            data-evt-placement="footer">Corporate Information</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Corporate Information</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.crowncommercial.gov.uk/public-sector-equality-duty-psed/"
-                            data-evt-placement="footer">Public Sector Equality</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Public Sector Equality</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.crowncommercial.gov.uk/about-ccs/vulnerability-disclosure-policy/"
-                            data-evt-placement="footer">Vulnerability disclosure policy</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Vulnerability disclosure policy</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.crowncommercial.gov.uk/fraud-bribery-and-corruption-statement-2/"
-                            data-evt-placement="footer">Fraud, Bribery and Corruption Statement</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Fraud, Bribery and Corruption
+                            Statement</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.gov.uk/government/publications/carbon-reduction-policy/carbon-reduction-policy"
-                            data-evt-placement="footer">Carbon Reduction Plan</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Carbon Reduction Plan</a>
                     </li>
                     <li class="">
                         <a class="govuk-footer__link"
                             href="https://www.crowncommercial.gov.uk/crown-commercial-service-style-guide/"
-                            data-evt-placement="footer">Crown Commercial Service style guide</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Crown Commercial Service style guide</a>
                     </li>
                 </ul>
 
 
             </div>
         </div>
-        <hr class="govuk-footer__section-break govuk-footer__heading ">
+        <hr class="govuk-footer__section-break govuk-footer__heading" style="border-color: #9B1B48;">
         <div class="govuk-footer__meta">
             <div class="govuk-footer__section govuk-footer-width-45">
 
@@ -140,29 +323,29 @@
                 <ul class="govuk-footer__inline-list govuk-!-display-none-print govuk-list govuk-!-font-size-18">
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/accessibility-statement"
-                            data-evt-placement="footer">Accessibility statement</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Accessibility statement</a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/cookie-policy/"
-                            data-evt-placement="footer">Cookie policy</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Cookie policy</a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/cookie-settings/"
-                            data-evt-placement="footer">Cookie settings</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Cookie settings</a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link"
                             href="https://www.gov.uk/government/organisations/crown-commercial-service/about/modern-slavery-statement"
-                            data-evt-placement="footer">Modern slavery</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Modern slavery</a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link"
                             href="https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice"
-                            data-evt-placement="footer">Privacy notice</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Privacy notice</a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/terms-and-conditions/"
-                            data-evt-placement="footer">Terms and conditions</a>
+                            data-evt-placement="footer" style="color: #0B0C0C;">Terms and conditions</a>
                     </li>
                 </ul>
 
@@ -173,13 +356,15 @@
                     <a class="govuk-footer__link govuk-footer__copyright-logo govuk-footer__copyright-display-block "
                         href="/" alt="Go to Homepage" aria-label="Go to Homepage"></a>
                     <a class="govuk-footer__link"
-                        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©
+                        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+                        style="color: #0B0C0C;">©
                         Crown copyright</a>
                 </div>
 
                 <ul class="list list--inline social-links">
                     <li>
-                        <a href="https://twitter.com/gov_procurement" class="govuk-footer__link">
+                        <a href="https://twitter.com/gov_procurement" class="govuk-footer__link"
+                            style="color: #0B0C0C;">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -190,7 +375,7 @@
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/company/government-procurement-service/"
-                            class="govuk-footer__link">
+                            class="govuk-footer__link" style="color: #0B0C0C;">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -201,7 +386,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="govuk-footer__section govuk-footer-logo-align-right govuk-footer-mobile-logo-view">
+            <div class="govuk-footer__section govuk-footer-logo-align-right govuk-footer-mobile-logo-view"
+                style="border-top: 1px solid #9B1B48; padding-top: 20px;">
                 <div class="govuk-footer__meta-item govuk-footer-logo-margin-left-10">
                     <a href="/" class="logo footer-logo-margin-bottom-20"><img
                             srcset="/assets/images/CCS_WHITE_SML_AW.png, /assets/images/CCS_BLACK_SML_AW.png"
@@ -210,7 +396,8 @@
 
                 <ul class="list list--inline social-links">
                     <li>
-                        <a href="https://twitter.com/gov_procurement" class="govuk-footer__link">
+                        <a href="https://twitter.com/gov_procurement" class="govuk-footer__link"
+                            style="color: #0B0C0C;">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -221,7 +408,7 @@
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/company/government-procurement-service/"
-                            class="govuk-footer__link">
+                            class="govuk-footer__link" style="color: #0B0C0C;">
                             <span class="icon" style="color:white;">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -232,7 +419,8 @@
                     </li>
                 </ul>
                 <a class="govuk-footer__link"
-                    href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©Crown
+                    href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+                    style="color: #0B0C0C;">©Crown
                     copyright</a>
             </div>
         </div>

@@ -1,0 +1,197 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}Procurement Activity - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-no-dropdown.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    Procurement activity
+                </h1>
+                <p class="govuk-body-l">
+                    Stay informed about current procurement opportunities, tender processes, and upcoming commercial
+                    agreements across the public sector.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- Current Tenders Card -->
+                                <li class="card-list__item">
+                                    <a href="/tenders/current" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Current tenders
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Browse active tender opportunities and procurement processes
+                                                    currently open for bidding across various sectors and categories.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Upcoming Procurements Card -->
+                                <li class="card-list__item">
+                                    <a href="/procurement/upcoming" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Upcoming procurements
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>View planned procurement activities and upcoming tender opportunities
+                                                    to prepare for future bidding processes.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Contract Awards Card -->
+                                <li class="card-list__item">
+                                    <a href="/procurement/awards" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Contract awards
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Review recently awarded contracts and procurement outcomes to
+                                                    understand market trends and successful suppliers.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Procurement Pipeline Card -->
+                                <li class="card-list__item">
+                                    <a href="/procurement/pipeline" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Procurement pipeline
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Explore the procurement pipeline to understand future opportunities
+                                                    and strategic procurement planning across sectors.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sector Procurement Card -->
+                                <li class="card-list__item">
+                                    <a href="/procurement/sectors" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sector procurement
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Find procurement opportunities specific to your sector including
+                                                    health, education, local government, and emergency services.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Procurement Statistics Card -->
+                                <li class="card-list__item">
+                                    <a href="/procurement/statistics" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Procurement statistics
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access procurement data, statistics, and insights to understand
+                                                    market trends and procurement performance metrics.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Need help with procurement?</h2>
+                <p class="govuk-body">Our procurement team can help you navigate the procurement process and find
+                    relevant opportunities. Contact us for guidance on:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Understanding tender requirements and processes</li>
+                    <li>Finding relevant procurement opportunities</li>
+                    <li>Preparing competitive bids and proposals</li>
+                    <li>Accessing procurement data and statistics</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our procurement team for support</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+{% endblock %}

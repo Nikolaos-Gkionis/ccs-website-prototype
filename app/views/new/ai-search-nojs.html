@@ -1,0 +1,410 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+AI Search – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #005ea5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+        display: block;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .thinking-text {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #505a5f;
+    }
+
+    /* Add this new style for links in AI responses */
+    .moj-message-item__text--received .govuk-link,
+    .moj-message-item__text--received strong .govuk-link {
+        color: #1d70b8 !important;
+        /* GOV.UK blue */
+        text-decoration: underline;
+    }
+</style>
+
+<body class="govuk-template__body pillar--none">
+    <div class="govuk-width-container">
+
+        <!--
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    Help us make this service better for you
+                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>Give feedback on how we can improve this service.</a>
+                </span>
+                -->
+        </p>
+    </div>
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/new/index">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                AI Search
+            </li>
+        </ol>
+    </div>
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-three-quarters">
+                <h1 class="govuk-heading-xl" style="font-family: 'Source Sans Pro', sans-serif;">
+                    AI Assistant Search
+                </h1>
+
+                <div class="govuk-inset-text">
+                    <div class="govuk-warning-text govuk-!-padding-bottom-4">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-visually-hidde">Warning</span>
+                            this chatbot is powered by Artificial Intelligence.
+                        </strong>
+                    </div>
+                    By using this chatbot, you acknowledge that the responses may be inaccurate, incomplete or outdated
+                    and we are not responsible for any decisions made based on
+                    its responses.
+                </div>
+
+                <!-- MOJ Messages Component -->
+                <div id="chat-messages" class="moj-messages-container"
+                    style="border: 2px solid #000; margin-bottom: 10px;">
+                    <div class="moj-message-list">
+                        <div class="moj-message-item moj-message-item--received">
+                            <div class="moj-message-item__text moj-message-item__text--received">
+                                Hello! I'm your AI assistant. How can I help you today?
+                            </div>
+                            <div class="moj-message-item__meta">
+                                <span class="moj-message-item__meta--sender">AI Assistant</span> at
+                                <time class="moj-message-item__meta--timestamp" datetime=""></time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback buttons container -->
+                <div class="feedback-container" style="display: none; margin-bottom: 15px;">
+                    <button class="feedback-btn" aria-label="Copy message">
+                        📋
+                    </button>
+                    <button class="feedback-btn" aria-label="Thumbs up">
+                        👍
+                    </button>
+                    <button class="feedback-btn" aria-label="Thumbs down">
+                        👎
+                    </button>
+                </div>
+
+                <!-- Search input container -->
+                <div style="position: relative; margin-bottom: 30px;">
+                    <form class="search-form" style="display: flex; gap: 10px;">
+                        <textarea class="govuk-textarea" id="search-input" name="search-query" rows="2"
+                            style="resize: none; padding-right: 50px;"
+                            placeholder="Try: 'Find me frameworks which provide cloud services'"></textarea>
+                        <button class="govuk-button" data-module="govuk-button" type="submit">
+                            Send
+                        </button>
+                    </form>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.querySelector('.search-form');
+                        const input = document.querySelector('#search-input');
+                        const messagesContainer = document.querySelector('.moj-message-list');
+                        const feedbackContainer = document.querySelector('.feedback-container');
+
+                        // Add initial timestamp to AI welcome message
+                        const initialTimestamp = document.querySelector('.moj-message-item__meta--timestamp');
+                        const now = new Date();
+                        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        const dateTimeAttr = now.toISOString();
+                        initialTimestamp.textContent = timeString;
+                        initialTimestamp.setAttribute('datetime', dateTimeAttr);
+
+                        async function getAIResponse(query) {
+                            try {
+                                const response = await fetch('https://azd-uks-ai-webpilot-intelligentsearch-api-a3ewg3deabbmasab.uksouth-01.azurewebsites.net/search', {
+                                    method: 'POST',
+                                    headers: {
+                                        'X-API-Key': 'web-intelligentSearchNS-20250403',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ query: query })
+                                });
+
+                                if (!response.ok) {
+                                    throw new Error('API request failed');
+                                }
+
+                                const data = await response.json();
+                                let formattedAnswer = data.answer
+                                    // First, handle the numbered framework entries - remove ** and format titles
+                                    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                                    // Then convert RM numbers to blue links
+                                    .replace(/\((RM\d+)\)/g, '(<a href="https://www.crowncommercial.gov.uk/agreements/$1" class="govuk-link" style="color: #1d70b8;" target="_blank">$1</a>)')
+                                    // Add paragraph breaks
+                                    .split('\n\n')
+                                    .map(para => `<p>${para}</p>`)
+                                    .join('');
+
+                                return formattedAnswer;
+                            } catch (error) {
+                                console.error('Error:', error);
+                                return 'I apologize, but I encountered an error while processing your request.';
+                            }
+                        }
+
+                        async function handleChat(message) {
+                            if (message) {
+                                const now = new Date();
+                                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                const dateTimeAttr = now.toISOString();
+                                const today = now.toLocaleDateString();
+
+                                // Check if we need to add a new date header
+                                const lastDate = messagesContainer.querySelector('.moj-message-list__date:last-child');
+                                if (!lastDate || lastDate.getAttribute('datetime') !== today) {
+                                    const dateHeader = document.createElement('time');
+                                    dateHeader.className = 'moj-message-list__date';
+                                    dateHeader.setAttribute('datetime', today);
+                                    dateHeader.textContent = today;
+                                    messagesContainer.appendChild(dateHeader);
+                                }
+
+                                // Add user message
+                                const userMessage = document.createElement('div');
+                                userMessage.className = 'moj-message-item moj-message-item--sent';
+                                userMessage.innerHTML = `
+                                    <div class="moj-message-item__text moj-message-item__text--sent">${message}</div>
+                                    <div class="moj-message-item__meta">
+                                        <span class="moj-message-item__meta--sender">You</span> at 
+                                        <time class="moj-message-item__meta--timestamp" datetime="${dateTimeAttr}">${timeString}</time>
+                                    </div>
+                                `;
+                                messagesContainer.appendChild(userMessage);
+
+                                // Add and show loading spinner
+                                const loadingSpinner = document.createElement('div');
+                                loadingSpinner.className = 'moj-message-item moj-message-item--received';
+                                loadingSpinner.innerHTML = `
+                                    <div class="moj-message-item__text moj-message-item__text--received">
+                                        <div class="spinner"></div>
+                                        <span class="thinking-text">AI is thinking...</span>
+                                    </div>
+                                `;
+                                messagesContainer.appendChild(loadingSpinner);
+                                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                                // Clear input
+                                input.value = '';
+
+                                try {
+                                    // Get AI response
+                                    const aiResponseText = await getAIResponse(message);
+
+                                    // Remove loading spinner
+                                    loadingSpinner.remove();
+
+                                    // Get updated time for AI response
+                                    const responseTime = new Date();
+                                    const responseTimeString = responseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                    const responseDateTimeAttr = responseTime.toISOString();
+
+                                    // Add AI response
+                                    const aiResponse = document.createElement('div');
+                                    aiResponse.className = 'moj-message-item moj-message-item--received';
+                                    aiResponse.innerHTML = `
+                                        <div class="moj-message-item__text moj-message-item__text--received">
+                                            ${aiResponseText}
+                                        </div>
+                                        <div class="moj-message-item__meta">
+                                            <span class="moj-message-item__meta--sender">AI Assistant</span> at 
+                                            <time class="moj-message-item__meta--timestamp" datetime="${responseDateTimeAttr}">${responseTimeString}</time>
+                                        </div>
+                                    `;
+
+                                    messagesContainer.appendChild(aiResponse);
+                                    feedbackContainer.style.display = 'block';
+                                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                                } catch (error) {
+                                    console.error('Error:', error);
+                                    loadingSpinner.remove();
+                                }
+                            }
+                        }
+
+                        // Handle form submissions
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            handleChat(input.value.trim());
+                        });
+
+                        // Check for URL parameter and handle initial query
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const searchQuery = urlParams.get('search-query');
+
+                        if (searchQuery) {
+                            input.value = searchQuery;
+                            handleChat(searchQuery);
+                        }
+                    });
+                </script>
+
+            </div>
+
+            <!-- Sidebar -->
+
+            <aside class="govuk-grid-column-one-quarter">
+
+                <div class="apollo-enclosure" style="background-color: #9B1A47; color: #ffffff; margin-bottom: 10px;">
+                    <h2 class="aside__heading">Help us make this service better for you</h2>
+                    <p> <a class="govuk-link" style="color: #ffffff; font-weight: 600;" href="/survey">Give
+                            feedback on how we can improve this service.
+                        </a></p>
+                </div>
+
+                <div class="apollo-enclosure apollo-enclosure--padded event-detail__aside__inner">
+                    <h2 class="aside__heading">Related content</h2>
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="#" class="govuk-link">How to use AI assistants effectively</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link">Understanding AI in public sector procurement</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.search-form');
+            const input = document.querySelector('#search-input');
+            const messagesContainer = document.querySelector('.moj-message-list');
+            const feedbackContainer = document.querySelector('.feedback-container');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const message = input.value.trim();
+
+                if (message) {
+                    // Add user message
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'moj-message-item moj-message-item--sent';
+                    userMessage.innerHTML = `
+                        <div class="moj-message-item__text moj-message-item__text--sent">${message}</div>
+                        <div class="moj-message-item__meta">
+                            <span class="moj-message-item__meta--sender">You</span> at 
+                            <time class="moj-message-item__meta--timestamp" datetime="${dateTimeAttr}">${timeString}</time>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(userMessage);
+
+                    // Add loading spinner
+                    const loadingSpinner = document.createElement('div');
+                    loadingSpinner.className = 'moj-message-item moj-message-item--received';
+                    loadingSpinner.innerHTML = `
+                        <div class="moj-message-item__text moj-message-item__text--received">
+                            <div class="spinner"></div>
+                            <span class="thinking-text">AI is thinking...</span>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(loadingSpinner);
+
+                    // Clear input and scroll to bottom
+                    input.value = '';
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                    // Simulate AI thinking with delay
+                    setTimeout(() => {
+                        // Remove loading spinner
+                        loadingSpinner.remove();
+
+                        // Get updated time for AI response
+                        const responseTime = new Date();
+                        const responseTimeString = responseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        const responseDateTimeAttr = responseTime.toISOString();
+
+                        // Add AI response
+                        const aiResponse = document.createElement('div');
+                        aiResponse.className = 'moj-message-item moj-message-item--received';
+                        aiResponse.innerHTML = `
+                            <div class="moj-message-item__text moj-message-item__text--received">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#" class="govuk-link">Click here</a> for more information.
+                            </div>
+                            <div class="moj-message-item__meta">
+                                <span class="moj-message-item__meta--sender">AI Assistant</span> at 
+                                <time class="moj-message-item__meta--timestamp" datetime="${responseDateTimeAttr}">${responseTimeString}</time>
+                            </div>
+                        `;
+                        messagesContainer.appendChild(aiResponse);
+
+                        // Show feedback buttons
+                        feedbackContainer.style.display = 'block';
+
+                        // Scroll to bottom again
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }, 2000);
+                }
+            });
+        });
+
+        function handleFeedback(type) {
+            switch (type) {
+                case 'copy':
+                    // Get last message and copy to clipboard
+                    const lastMessage = document.querySelector('.moj-message-list').lastElementChild;
+                    navigator.clipboard.writeText(lastMessage.textContent)
+                        .then(() => alert('Message copied to clipboard!'));
+                    break;
+                case 'thumbsUp':
+                    alert('Thank you for your positive feedback!');
+                    break;
+                case 'thumbsDown':
+                    alert('Thank you for your feedback. We will work on improving.');
+                    break;
+            }
+        }
+    </script>
+</body>
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+{% endblock %}

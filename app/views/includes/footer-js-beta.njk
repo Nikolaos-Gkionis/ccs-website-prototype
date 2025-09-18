@@ -59,6 +59,8 @@
                 </div>
             </div>
 
+            <!-- 
+
             <div class="govuk-form-group">
                 <h2 class="govuk-heading-m">Is there anything else you can tell us?</h2>
                 <div id="more-detail-hint" class="govuk-hint">
@@ -69,6 +71,7 @@
                     aria-describedby="more-detail-hint"></textarea>
             </div>
 
+            -->
 
             <div class="govuk-button-group">
                 <button onclick="handleFeedbackOld()" class="govuk-button">Submit</button>
@@ -122,6 +125,8 @@
                 </div>
             </div>
 
+            <!-- 
+
             <div class="govuk-form-group">
                 <h2 class="govuk-heading-m">Is there anything else you can tell us?</h2>
                 <div id="more-detail-hint" class="govuk-hint">
@@ -131,6 +136,9 @@
                 <textarea class="govuk-textarea" id="feedback-detail" rows="5"
                     aria-describedby="more-detail-hint"></textarea>
             </div>
+
+            -->
+
 
             <div class="govuk-button-group">
                 <button onclick="handleFeedbackOld()" class="govuk-button">Submit</button>
@@ -167,7 +175,8 @@
     }
 </script>
 
-<footer class="govuk-footer footer-global" style="margin-top: 0;">
+{% set is_news_page = request.path and request.path.startswith('/survey/news') %}
+<footer class="govuk-footer footer-global news-footer" style="margin-top: 0;">
 
     <div class="ccs-width-container">
         <div class="govuk-footer__navigation">

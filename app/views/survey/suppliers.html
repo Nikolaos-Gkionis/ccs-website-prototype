@@ -1,0 +1,2553 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<!-- required wrapper 1 -->
+<div class="govuk-width-container">
+
+    <!-- 
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                beta
+            </strong>
+            <span class="govuk-phase-banner__text">
+                Help us make this service better for you
+                <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>feedback</a> will help us to
+                improve it.
+            </span>
+        </p>
+
+    </div> -->
+
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                Search suppliers
+            </li>
+        </ol>
+    </div>
+
+
+
+
+
+    <!-- required wrapper 2 -->
+    <main id="main-content" role="main" class="govuk-main-wrapper">
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+                <h1 class="govuk-heading-xl page-title">Search suppliers</h1>
+
+                <p>Changes to Carbon Reduction Plan labelling in supplier search <a
+                        href="http://www.crowncommercial.gov.uk/news/removal-of-carbon-reduction-plan-label-functionality-on-ccs-website-supplier-search">read
+                        more here</a></p>
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Important</span>
+                        Some of our suppliers will not be displayed on this page, select one of the links outlined below
+                        to see suppliers for the type of agreement required.
+                    </strong>
+                    <br />
+                    <p><a href="https://supplierregistration.cabinetoffice.gov.uk/dps">Dynamic Purchasing Systems</a> -
+                        to buy a range of common products and services, from simple to complex requirements, from low to
+                        high volumes of products.</p>
+                    <p><a
+                            href="https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud/suppliers">G-Cloud</a>
+                        - for cloud supporting services, products and solutions. </p>
+                    <p><a href="/agreements/RM1043.8">Digital Outcomes & Specialists (DOS)</a>to access agile
+                        development and user-centred design services.</p>
+                    <p>To find out more abut our different types of framework agreements, <a
+                            href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/help-for-new-buyers-and-suppliers/start-buying">read
+                            our start buying page.</a></p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="govuk-grid-row" id="search-app">
+            <div class="govuk-grid-column-one-third">
+
+                <aside class="aside">
+
+                    <div class="apollo-enclosure"
+                        style="background-color: #9B1A47; color: #ffffff; margin-bottom: 10px;">
+                        <h2 class="aside__heading">Help us make this service better for you</h2>
+                        <p> <a class="govuk-link" style="color: #ffffff; font-weight: 600;" href="/survey">Give
+                                feedback on how we can improve this service.
+                            </a></p>
+                    </div>
+                </aside>
+
+                <form action="/suppliers/search" v-on:submit.prevent="updateResults">
+
+                    <div class="govuk-form-group govuk-form-group--enclosure">
+                        <div class="govuk-form-group sidebar__search-group">
+                            <label class="govuk-label" for="q">
+                                Search suppliers
+                            </label>
+                            <input class="govuk-input" id="q" name="q" type="text" value="" />
+                            <button class="sidebar__search-button govuk-input" id="submit-search-button"
+                                v-on:click="updateSearchQueryValue">
+                                <span class="visuallyhidden">Search suppliers</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="ccs-filters-intro">
+                        <a href="/suppliers" class="ccs-clear-filters" v-on:click="resetFilters">Clear Filters</a>
+                        <h2 class="govuk-heading-m">Apply filters</h2>
+                    </div>
+
+
+                    <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                        id="accordion-with-summary-sections">
+                        <div
+                            class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span
+                                        class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                        id="accordion-with-summary-sections-heading-1">
+                                        Select framework
+                                    </span>
+                                </h2>
+                            </div>
+                            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-with-summary-sections-heading-1" role="region">
+                                <div class="govuk-radios ccs-radios--scrollable" v-if="!frameworkList">
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3823" name="framework" type="radio" value="RM3823">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3823">
+                                            Apprenticeships Training and Related Services (RM3823)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6188" name="framework" type="radio" value="RM6188">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6188">
+                                            Audit &amp; Assurance Services (A&amp;AS) (RM6188)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6194" name="framework" type="radio" value="RM6194">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6194">
+                                            Back Office Software (RM6194)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6285" name="framework" type="radio" value="RM6285">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6285">
+                                            Back Office Software 2 (RM6285)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6195" name="framework" type="radio" value="RM6195">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6195">
+                                            Big Data and Analytics (RM6195)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6157" name="framework" type="radio" value="RM6157">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6157">
+                                            Building Materials and Equipment (RM6157)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6279" name="framework" type="radio" value="RM6279">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6279">
+                                            Buying Better Food and Drink (RM6279)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3774" name="framework" type="radio" value="RM3774">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3774">
+                                            Campaign Solutions (RM3774)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6125" name="framework" type="radio" value="RM6125">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6125">
+                                            Campaign Solutions 2 (RM6125)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6111" name="framework" type="radio" value="RM6111">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6111">
+                                            Cloud Compute (RM6111)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6292" name="framework" type="radio" value="RM6292">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6292">
+                                            Cloud Compute 2 (RM6292)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3796" name="framework" type="radio" value="RM3796">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3796">
+                                            Communication Services (RM3796)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3837" name="framework" type="radio" value="RM3837">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3837">
+                                            Construction Products Consumables and Materials (RM3837)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6165" name="framework" type="radio" value="RM6165">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6165">
+                                            Construction Professional Services (RM6165)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6088" name="framework" type="radio" value="RM6088">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6088">
+                                            Construction Works and Associated Services (RM6088)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6267" name="framework" type="radio" value="RM6267">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6267">
+                                            Construction Works and Associated Services 2 (CWAS2) / ProCure 23 (P23)
+                                            (RM6267)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3815" name="framework" type="radio" value="RM3815">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3815">
+                                            Contact Centre Services (RM3815)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6169" name="framework" type="radio" value="RM6169">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6169">
+                                            Corporate Finance Services 2 (RM6169)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1042" name="framework" type="radio" value="RM1042">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1042">
+                                            Corporate Software Solutions (RM1042)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6137" name="framework" type="radio" value="RM6137">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6137">
+                                            Costs Lawyer Services (RM6137)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6284" name="framework" type="radio" value="RM6284">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6284">
+                                            Costs Lawyer Services 2 (RM6284)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3798" name="framework" type="radio" value="RM3798">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3798">
+                                            Courier Services (RM3798)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6171" name="framework" type="radio" value="RM6171">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6171">
+                                            Courier and Specialist Movements (RM6171)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1069" name="framework" type="radio" value="RM1069">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1069">
+                                            Crown Hosting (RM1069)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6262" name="framework" type="radio" value="RM6262">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6262">
+                                            Crown Hosting II (RM6262)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3723" name="framework" type="radio" value="RM3723">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3723">
+                                            Crown Office Supplies (RM3723)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3821" name="framework" type="radio" value="RM3821">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3821">
+                                            Data and Application Solutions (RM3821)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6208" name="framework" type="radio" value="RM6208">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6208">
+                                            Debt Management Services (RM6208)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6226" name="framework" type="radio" value="RM6226">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6226">
+                                            Debt Resolution Services (RM6226)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6314" name="framework" type="radio" value="RM6314">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6314">
+                                            Demand Management &amp; Renewables Framework (RM6314)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6335" name="framework" type="radio" value="RM6335">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6335">
+                                            Digital &amp; Legacy Application Services (RM6335)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6221" name="framework" type="radio" value="RM6221">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6221">
+                                            Digital Capability for Health (RM6221)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6345" name="framework" type="radio" value="RM6345">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6345">
+                                            Digital Capability for Health 2 (RM6345)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6263" name="framework" type="radio" value="RM6263">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6263">
+                                            Digital Specialists and Programmes (RM6263)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3765" name="framework" type="radio" value="RM3765">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3765">
+                                            Digital Training and Support (RM3765)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6249" name="framework" type="radio" value="RM6249">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6249">
+                                            Digital and IT Professional Services (DIPS) (RM6249)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6103" name="framework" type="radio" value="RM6103">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6103">
+                                            Education Technology (RM6103)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6133" name="framework" type="radio" value="RM6133">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6133">
+                                            Employee Benefits (RM6133)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6273" name="framework" type="radio" value="RM6273">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6273">
+                                            Employee Benefits and Services (RM6273)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6168" name="framework" type="radio" value="RM6168">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6168">
+                                            Estate Management Services (RM6168)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3816" name="framework" type="radio" value="RM3816">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3816">
+                                            Estates Professional Services (RM3816)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6290" name="framework" type="radio" value="RM6290">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6290">
+                                            Executive &amp; Non-Executive Recruitment Services (RM6290)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3720" name="framework" type="radio" value="RM3720">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3720">
+                                            FM Assurance (Helpdesk and CAFM) Services (RM3720)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3830" name="framework" type="radio" value="RM3830">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3830">
+                                            Facilities Management Marketplace (RM3830)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6232" name="framework" type="radio" value="RM6232">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6232">
+                                            Facilities Management and Workplace Services (RM6232)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3787" name="framework" type="radio" value="RM3787">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3787">
+                                            Finance &amp; Complex Legal Services (RM3787)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6158" name="framework" type="radio" value="RM6158">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6158">
+                                            Flexible Resource Pool - Staff Bank (RM6158)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3707" name="framework" type="radio" value="RM3707">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3707">
+                                            Front Office Counters Service (FOCS) (RM3707)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6000" name="framework" type="radio" value="RM6000">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6000">
+                                            Fuel Cards and Associated Services V (RM6000)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6186" name="framework" type="radio" value="RM6186">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6186">
+                                            Fuel Cards and Associated Services VI (RM6186)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6119" name="framework" type="radio" value="RM6119">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6119">
+                                            Furniture &amp; Associated Services (RM6119)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6308" name="framework" type="radio" value="RM6308">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6308">
+                                            Furniture and Associated Services 2 (RM6308)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1557.13L4" name="framework" type="radio"
+                                            value="RM1557.13L4">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1557.13L4">
+                                            G-Cloud 13 Lot 4 (RM1557.13L4)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1557.14L4" name="framework" type="radio"
+                                            value="RM1557.14L4">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1557.14L4">
+                                            G-Cloud 14 Lot 4 (RM1557.14L4)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3786" name="framework" type="radio" value="RM3786">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3786">
+                                            General Legal Advice Services (RM3786)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6073" name="framework" type="radio" value="RM6073">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6073">
+                                            Government Hubs Fit Out Framework (RM6073)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM949" name="framework" type="radio" value="RM949">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM949">
+                                            Grants and Programme Services (RM949)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6331" name="framework" type="radio" value="RM6331">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6331">
+                                            Healthcare Soft FM (RM6331)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1050" name="framework" type="radio" value="RM1050">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1050">
+                                            ICT Services for Education (RM1050)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6349" name="framework" type="radio" value="RM6349">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6349">
+                                            Income Generation from Estates &amp; Assets (RM6349)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6276" name="framework" type="radio" value="RM6276">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6276">
+                                            Insourced Services to Support the Provision of Healthcare (including
+                                            Clinical Insourcing) (RM6276)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6323" name="framework" type="radio" value="RM6323">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6323">
+                                            Insurance &amp; Related Services 4 (RM6323)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3731" name="framework" type="radio" value="RM3731">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3731">
+                                            Insurance Services II (RM3731)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6020" name="framework" type="radio" value="RM6020">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6020">
+                                            Insurance and Related Services 3 (RM6020)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6333" name="framework" type="radio" value="RM6333">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6333">
+                                            International Healthcare Professional Recruitment and Associated Services
+                                            (RM6333)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6162" name="framework" type="radio" value="RM6162">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6162">
+                                            International Recruitment of Clinical Healthcare Professionals (RM6162)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6141" name="framework" type="radio" value="RM6141">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6141">
+                                            Language Services (RM6141)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1031" name="framework" type="radio" value="RM1031">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1031">
+                                            Laundry and Linen Services (RM1031)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6145" name="framework" type="radio" value="RM6145">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6145">
+                                            Learning and Development (RM6145)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6179" name="framework" type="radio" value="RM6179">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6179">
+                                            Legal Services Panel (RM6179)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6154" name="framework" type="radio" value="RM6154">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6154">
+                                            Linen and Laundry Services (RM6154)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6074" name="framework" type="radio" value="RM6074">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6074">
+                                            Logistics and Warehousing (RM6074)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6329" name="framework" type="radio" value="RM6329">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6329">
+                                            Logistics, Warehousing and Supply Chain Solutions (RM6329)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3822" name="framework" type="radio" value="RM3822">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3822">
+                                            Managed Learning Service (RM3822)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3785" name="framework" type="radio" value="RM3785">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3785">
+                                            Managed Print and Digital Solutions (RM3785)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6278" name="framework" type="radio" value="RM6278">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6278">
+                                            Managed Staff Banks (RM6278)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3745" name="framework" type="radio" value="RM3745">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3745">
+                                            Management Consultancy Framework (MCF) (RM3745)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6187" name="framework" type="radio" value="RM6187">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6187">
+                                            Management Consultancy Framework Three (MCF3) (RM6187)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6008" name="framework" type="radio" value="RM6008">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6008">
+                                            Management Consultancy Framework Two (MCF2) (RM6008)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6134" name="framework" type="radio" value="RM6134">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6134">
+                                            Media Monitoring and Associated Services (RM6134)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6123" name="framework" type="radio" value="RM6123">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6123">
+                                            Media Services (RM6123)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3702" name="framework" type="radio" value="RM3702">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3702">
+                                            Merchant Acquiring, Merchant Acquiring Equipment &amp; Payment Gateway
+                                            Services (RM3702)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6261" name="framework" type="radio" value="RM6261">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6261">
+                                            Mobile Voice and Data Services (RM6261)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6014" name="framework" type="radio" value="RM6014">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6014">
+                                            Modular Building Solutions (RM6014)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3711" name="framework" type="radio" value="RM3711">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3711">
+                                            Multidisciplinary Temporary Healthcare Personnel (RM3711)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6174" name="framework" type="radio" value="RM6174">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6174">
+                                            Multifunctional Devices (MFDs), Print and Digital Workflow Software Services
+                                            and Managed Print Service Provision (RM6174)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3781" name="framework" type="radio" value="RM3781">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3781">
+                                            Multifunctional Devices, Managed Print and Content Services and Records and
+                                            Information Management (RM3781)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3768" name="framework" type="radio" value="RM3768">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3768">
+                                            National Framework for Energy Performance Contracting (RE:FIT) (RM3768)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6281" name="framework" type="radio" value="RM6281">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6281">
+                                            National Framework for the Provision of Clinical and Healthcare Staffing
+                                            (RM6281)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6177" name="framework" type="radio" value="RM6177">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6177">
+                                            National Fuels 2 (RM6177)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6305" name="framework" type="radio" value="RM6305">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6305">
+                                            National Fuels 3 (RM6305)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3801" name="framework" type="radio" value="RM3801">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3801">
+                                            National Fuels Framework (RM3801)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3808" name="framework" type="radio" value="RM3808">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3808">
+                                            Network Services 2 (RM3808)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6116" name="framework" type="radio" value="RM6116">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6116">
+                                            Network Services 3 (RM6116)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6277" name="framework" type="radio" value="RM6277">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6277">
+                                            Non Clinical Staffing (RM6277)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6160" name="framework" type="radio" value="RM6160">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6160">
+                                            Non Clinical Temporary and Fixed Term Staff (RM6160)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM971" name="framework" type="radio" value="RM971">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM971">
+                                            Non Medical Non Clinical (RM971)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3795" name="framework" type="radio" value="RM3795">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3795">
+                                            Occupational Health, Employee Assistance Programmes and Eye Care (RM3795)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6182" name="framework" type="radio" value="RM6182">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6182">
+                                            Occupational Health, Employee Assistance Programmes and Eye Care Services
+                                            (RM6182)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6299" name="framework" type="radio" value="RM6299">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6299">
+                                            Office Solutions (RM6299)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6059" name="framework" type="radio" value="RM6059">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6059">
+                                            Office Supplies (RM6059)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3703" name="framework" type="radio" value="RM3703">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3703">
+                                            Office Supplies for the Wider Public Sector (RM3703)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6184" name="framework" type="radio" value="RM6184">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6184">
+                                            Offsite Construction Solutions (RM6184)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6181" name="framework" type="radio" value="RM6181">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6181">
+                                            Outsourced Contact Centre and Business Services (RM6181)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6167" name="framework" type="radio" value="RM6167">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6167">
+                                            PSN Core Services (RM6167)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6118" name="framework" type="radio" value="RM6118">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6118">
+                                            Payment Acceptance (RM6118)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6325" name="framework" type="radio" value="RM6325">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6325">
+                                            Payment Acceptance 2 (RM6325)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3828" name="framework" type="radio" value="RM3828">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3828">
+                                            Payment Solutions (RM3828)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6248" name="framework" type="radio" value="RM6248">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6248">
+                                            Payment Solutions 2 (RM6248)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6229" name="framework" type="radio" value="RM6229">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6229">
+                                            Permanent Recruitment 2 (RM6229)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6002" name="framework" type="radio" value="RM6002">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6002">
+                                            Permanent Recruitment Solutions (RM6002)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6017" name="framework" type="radio" value="RM6017">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6017">
+                                            Postal Goods, Services and Solutions (RM6017)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6280" name="framework" type="radio" value="RM6280">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6280">
+                                            Postal Services &amp; Solutions (RM6280)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6170" name="framework" type="radio" value="RM6170">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6170">
+                                            Print Management Services (RM6170)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6071" name="framework" type="radio" value="RM6071">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6071">
+                                            Print Marketplace (RM6071)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6371" name="framework" type="radio" value="RM6371">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6371">
+                                            Print Marketplace 2 (RM6371)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6297" name="framework" type="radio" value="RM6297">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6297">
+                                            Print and Digital Communications (RM6297)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6107" name="framework" type="radio" value="RM6107">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6107">
+                                            Professional Economist Integrated Degree Apprenticeship (RM6107)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3741" name="framework" type="radio" value="RM3741">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3741">
+                                            Project Management and Full Design Team Services (RM3741)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6161" name="framework" type="radio" value="RM6161">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6161">
+                                            Provision of Clinical and Healthcare Staffing (RM6161)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6164" name="framework" type="radio" value="RM6164">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6164">
+                                            Public Sector Global Travel and Venue Solutions (RM6164)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6240" name="framework" type="radio" value="RM6240">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6240">
+                                            Public Sector Legal Services (RM6240)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3749" name="framework" type="radio" value="RM3749">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3749">
+                                            Public Sector Resourcing (RM3749)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6016" name="framework" type="radio" value="RM6016">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6016">
+                                            Public Sector Travel and Venue Solutions (RM6016)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6013" name="framework" type="radio" value="RM6013">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6013">
+                                            Public Sector Vehicle Hire Solutions (RM6013)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6244" name="framework" type="radio" value="RM6244">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6244">
+                                            Purchase of Standard and Specialist Vehicles (RM6244)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3810" name="framework" type="radio" value="RM3810">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3810">
+                                            Quality Assurance and Testing for IT Systems (RM3810)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6204" name="framework" type="radio" value="RM6204">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6204">
+                                            Rail Legal Services (RM6204)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6175" name="framework" type="radio" value="RM6175">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6175">
+                                            Records Information Management, Digital Solutions and Associated Services
+                                            (RM6175)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6269" name="framework" type="radio" value="RM6269">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6269">
+                                            Restructuring &amp; Insolvency Services (RM6269)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6257" name="framework" type="radio" value="RM6257">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6257">
+                                            Security - Physical, Technical and Support Services (RM6257)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6193" name="framework" type="radio" value="RM6193">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6193">
+                                            Software Design and Implementation Services (RM6193)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3799" name="framework" type="radio" value="RM3799">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3799">
+                                            Specialist Courier Services (RM3799)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3772" name="framework" type="radio" value="RM3772">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3772">
+                                            Specialist Laundry Services (for Surgical Gowns, Drapes and Packs) (RM3772)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3820" name="framework" type="radio" value="RM3820">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3820">
+                                            Spend Analysis and Recovery Services 2 (RM3820)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6282" name="framework" type="radio" value="RM6282">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6282">
+                                            Storage, Distribution, Kitting and Associated Services (RM6282)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3826" name="framework" type="radio" value="RM3826">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3826">
+                                            Supply Teachers and Temporary Staff in Educational Establishments (RM3826)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6238" name="framework" type="radio" value="RM6238">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6238">
+                                            Supply Teachers and Temporary Staffing (STaTS) (RM6238)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3767" name="framework" type="radio" value="RM3767">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3767">
+                                            Supply and Fit of Tyres (RM3767)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6251" name="framework" type="radio" value="RM6251">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6251">
+                                            Supply of Energy 2 (RM6251)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6011" name="framework" type="radio" value="RM6011">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6011">
+                                            Supply of Energy and Ancillary Services (RM6011)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6142" name="framework" type="radio" value="RM6142">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6142">
+                                            Supply of tyres, glass and fast fit solutions (RM6142)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3812" name="framework" type="radio" value="RM3812">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3812">
+                                            Supply, Delivery and Installation of Furniture and Associated Services
+                                            (RM3812)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6202" name="framework" type="radio" value="RM6202">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6202">
+                                            Tail Spend Solution (RM6202)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6147" name="framework" type="radio" value="RM6147">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6147">
+                                            Technology Online Purchasing Content (RM6147)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6068" name="framework" type="radio" value="RM6068">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6068">
+                                            Technology Products &amp; Associated Services (RM6068)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6098" name="framework" type="radio" value="RM6098">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6098">
+                                            Technology Products &amp; Associated Services 2 (RM6098)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3733" name="framework" type="radio" value="RM3733">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3733">
+                                            Technology Products 2 (RM3733)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3804" name="framework" type="radio" value="RM3804">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3804">
+                                            Technology Services 2 (RM3804)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6100" name="framework" type="radio" value="RM6100">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6100">
+                                            Technology Services 3 (RM6100)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6183" name="framework" type="radio" value="RM6183">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6183">
+                                            Trade Law Panel (RM6183)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1089" name="framework" type="radio" value="RM1089">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1089">
+                                            Traffic Management Technology 2 (RM1089)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6155" name="framework" type="radio" value="RM6155">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6155">
+                                            Training Estate Services (RM6155)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6099" name="framework" type="radio" value="RM6099">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6099">
+                                            Transport Technology &amp; Associated Services (RM6099)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6217" name="framework" type="radio" value="RM6217">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6217">
+                                            Travel and Venue Solutions (RM6217)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6342" name="framework" type="radio" value="RM6342">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6342">
+                                            Travel, Transport, Accommodation and Venue Solutions (RM6342)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3800" name="framework" type="radio" value="RM3800">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3800">
+                                            Utility Management Software, Metering and Ancillary Services (RM3800)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6265" name="framework" type="radio" value="RM6265">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6265">
+                                            Vehicle Hire Solutions (RM6265)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6096" name="framework" type="radio" value="RM6096">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6096">
+                                            Vehicle Lease, Fleet Management &amp; Flexible Rental Solutions (RM6096)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6268" name="framework" type="radio" value="RM6268">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6268">
+                                            Vehicle Lease, Fleet Management and Salary Sacrifice Car Schemes (RM6268)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6060" name="framework" type="radio" value="RM6060">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6060">
+                                            Vehicle Purchase (RM6060)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3754" name="framework" type="radio" value="RM3754">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3754">
+                                            Vehicle Telematics (RM3754)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6143" name="framework" type="radio" value="RM6143">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6143">
+                                            Vehicle Telematics Hardware and Software Solutions (RM6143)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6315" name="framework" type="radio" value="RM6315">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6315">
+                                            Vehicle Telematics Solutions (RM6315)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6259" name="framework" type="radio" value="RM6259">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6259">
+                                            Vertical Application Solutions (RM6259)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6255" name="framework" type="radio" value="RM6255">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6255">
+                                            Voucher Schemes (RM6255)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3788" name="framework" type="radio" value="RM3788">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3788">
+                                            WPS Legal Services (RM3788)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3790" name="framework" type="radio" value="RM3790">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3790">
+                                            Water, Wastewater and Ancillary Services (RM3790)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6178" name="framework" type="radio" value="RM6178">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6178">
+                                            Water, Wastewater and Ancillary Services 2 (RM6178)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6306" name="framework" type="radio" value="RM6306">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6306">
+                                            Water, Wastewater and Ancillary Services 3 (RM6306)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6163" name="framework" type="radio" value="RM6163">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6163">
+                                            Workforce Improvement Services (RM6163)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM1072" name="framework" type="radio" value="RM1072">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM1072">
+                                            Workforce Management (RM1072)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6288" name="framework" type="radio" value="RM6288">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6288">
+                                            Workforce Solutions (RM6288)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6089" name="framework" type="radio" value="RM6089">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6089">
+                                            Workplace Services (FM Marketplace Phase 2) (RM6089)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM3717" name="framework" type="radio" value="RM3717">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM3717">
+                                            eDisclosure Services (RM3717)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6203" name="framework" type="radio" value="RM6203">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6203">
+                                            eDisclosure and Review Services (RM6203)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6336" name="framework" type="radio" value="RM6336">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6336">
+                                            eDisclosure and Review Services 2 (RM6336)
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="framework-RM6101" name="framework" type="radio" value="RM6101">
+                                        <label class="govuk-label govuk-radios__label" for="framework-RM6101">
+                                            eSourcing Platform (RM6101)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="govuk-form-group sidebar__search-group subsearch-filter"
+                                    v-show="frameworkList" style="display: none;">
+                                    <label for="searchFrameworkList" class="visuallyhidden">Filter Frameworks by
+                                        Title</label>
+                                    <input class="govuk-input" type="text" name="searchFrameworkList"
+                                        id="searchFrameworkList" v-model="frameworkFilter"
+                                        v-on:keydown.enter="frameworkFilterExecute" />
+                                    <button class="sidebar__search-button govuk-input"
+                                        v-on:click="frameworkFilterExecute"><span class="visuallyhidden">Filter
+                                            frameworks</span></button>
+                                </div>
+                                <div class="govuk-radios ccs-radios--scrollable" v-show="frameworkList"
+                                    style="display: none;">
+                                    <div class="govuk-radios__item govuk-radios__item--small"
+                                        v-for="framework in frameworkListFiltered">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            :id="'framework-' + framework.rm_number" name="framework" type="radio"
+                                            :value="framework" v-model="checkedFramework" :key="framework.rm_number">
+                                        <label class="govuk-label govuk-radios__label"
+                                            :for="'framework-' + framework.rm_number">
+                                            {[ framework.title ]} ({[ framework.rm_number ]})
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight"
+                            v-show="checkedFramework">
+
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span
+                                        class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                        id="accordion-with-summary-sections-heading-2">
+                                        Lot
+                                    </span>
+                                </h2>
+                            </div>
+                            <div role="region" id="accordion-with-summary-sections-content-2"
+                                class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-with-summary-sections-heading-2">
+                                <div class="govuk-radios" data-module="govuk-radios">
+
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="show-all-suppliers-on-framwork-1" name="lot-filter-nested" type="radio"
+                                            value="all" v-on:click="checkedLot = ''; displayLotFilter = false;" checked>
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="show-all-suppliers-on-framwork-1">
+                                            Show all suppliers on the selected framework
+                                        </label>
+                                    </div>
+
+                                    <div class="govuk-radios__item govuk-radios__item--small" v-show="lotList"
+                                        style="display: none;">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="how-contacted-conditional-3" name="lot-filter-nested" type="radio"
+                                            value="filterLot" v-on:click="displayLotFilter = true; checkedLot = ''">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="how-contacted-conditional-3">
+                                            Show suppliers on a specific lot
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__conditional govuk-radios__conditional--small" id=""
+                                        v-show="displayLotFilter" style="display: none;">
+
+                                        <div class="govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"
+                                                    style="margin-bottom: 0;">
+                                                    <h2 class="govuk-fieldset__heading visuallyhidden">
+                                                        Select lot to filter by
+                                                    </h2>
+                                                </legend>
+                                                <div class="govuk-radios ccs-radios--nested">
+                                                    <div class="govuk-radios__item govuk-radios__item--small"
+                                                        v-for="lot in lotList">
+                                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                                            :id="'lot-' + lot.id" name="lot-filter-nested" type="radio"
+                                                            :value="lot" v-model="checkedLot" :key="lot.id">
+                                                        <label class="govuk-label govuk-radios__label"
+                                                            :for="'lot-' + lot.id">
+                                                            Lot {[ lot.lot_number ]}: {[ lot.title ]}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div
+                            class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span
+                                        class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                        id="accordion-with-summary-sections-heading-3">
+                                        Results per page
+                                    </span>
+                                </h2>
+                            </div>
+                            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content"
+                                aria-labelledby="accordion-with-summary-sections-heading-3" role="region">
+                                <div class="govuk-radios">
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="results-per-page-1" name="limit" type="radio" :value="10" value="10"
+                                            v-model="resultsLimit">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="results-per-page-1">10</label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="results-per-page-2" name="limit" type="radio" :value="20" value="20"
+                                            checked v-model="resultsLimit">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="results-per-page-2">20</label>
+                                    </div>
+                                    <div class="govuk-radios__item govuk-radios__item--small">
+                                        <input class="govuk-radios__input govuk-radios__input--small"
+                                            id="results-per-page-3" name="limit" type="radio" :value="50" value="50"
+                                            v-model="resultsLimit">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="results-per-page-3">50</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---
+
+              
+                    <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion">
+                        Filter
+
+      -->
+
+
+                </form>
+
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+
+
+
+
+                <h2 class="govuk-heading-m ccs-font-weight-semibold govuk-!-font-size-24" aria-live="assertive">
+                    <span v-show="javascriptVersion" style="display: none;">{[ searchResultsNumber ]} supplier(s)
+                        found</span>
+                    <span v-if="!javascriptVersion">2762 supplier(s) found</span>
+                </h2>
+
+                <div class="ccs-filters-summary">
+
+                    <div class="ccs-filters-summary__facets" id="search-facets-summary" v-show="filtersSelected"
+                        style="display: none;">
+                        <span class="ccs-filters-summary__label">In</span>
+                        <ul class="ccs-filters-summary__list ccs-filters-summary__facets__list" id="search-facets-list">
+                            <li class="ccs-filters-summary__facet" v-if="checkedFramework">
+                                <a href="/suppliers/search?q=&limit=20" class="ccs-filters-summary__facet__cancel"
+                                    v-on:click="clearFramework">
+                                    <span>{[ checkedFramework.title ]} ({[ checkedFramework.rm_number ]})</span>
+                                </a>
+                            </li>
+
+                            <li class="ccs-filters-summary__facet" v-if="checkedLot">
+                                <a href="/suppliers/search?q=&framework=&limit=20"
+                                    class="ccs-filters-summary__facet__cancel" v-on:click="clearLot">Lot {[
+                                    checkedLot.lot_number ]}: {[ checkedLot.title ]}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="ccs-filters-summary__facets" id="search-query-summary" v-show="searchQuery"
+                        style="display: none;">
+                        <span class="ccs-filters-summary__label">Containing</span>
+                        <ul class="ccs-filters-summary__list" id="search-query-list">
+                            <li class="ccs-filters-summary__facet" v-if="searchQuery">
+                                <a href="/suppliers/search?framework=&lot-filter-nested=&limit=20"
+                                    class="ccs-filters-summary__facet__cancel" v-on:click="clearSearch">
+                                    <span v-show="searchQuery" style="display: none;">{[ searchQuery ]}</span>
+                                    <span v-show="!searchQuery"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="ccs-search-results-cta" v-show="supplierContactPrompt" style="display: none;">
+                    <a :href="'/agreements/' + checkedFramework.rm_number + ':' + checkedLot.lot_number + '/lot-suppliers'"
+                        class="govuk-button ccs-button--tight">See supplier contact details for this lot</a>
+                </div>
+
+
+                <div v-show="javascriptVersion" style="display: none;">
+                    <div v-if="loading" class="ccs-search-loading">Loading results ...</div>
+                </div>
+
+                <ul class="govuk-list govuk-list--suppliers" v-show="searchResults" style="display: none;">
+                    <li v-for="result in searchResults">
+
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a :href="result.url">{[ result.name ]}</a>
+                            <span class="ccs-subtle-notification" v-if="result.alternative_trading_names.length > 0">
+                                Trading as
+                                <span class="trading-name" v-for="trading_name in result.alternative_trading_names">{[
+                                    trading_name ]}</span>
+                            </span>
+                        </h3>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list"
+                            v-for="framework in result.live_frameworks">
+
+                            <li><span class="ccs-framework-list__title">{[ framework.title ]} ({[ framework.rm_number
+                                    ]})</span> <strong v-if="framework.status == 'Expired - Data Still Received'"
+                                    class="govuk-tag govuk-tag--red">Expired</strong></li>
+
+                        </ul>
+
+                    </li>
+                </ul>
+
+
+
+
+                <ul class="govuk-list govuk-list--suppliers" v-show="!searchResults">
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/5987/101-ways-limited">101 WAYS LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Cloud Compute 2 (RM6292)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/10665/18-week-support-limited">18 WEEK SUPPORT LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Insourced Services to Support the Provision of
+                                    Healthcare (including Clinical Insourcing) (RM6276)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/1365/1st-biotech-limited">1ST BIOTECH LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Linen and Laundry Services (RM6154)</span>
+                                <strong class="govuk-tag govuk-tag--red">Expired</strong>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/10748/1st-executive-limited">1ST EXECUTIVE LIMITED</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">1st Executive. 1st Executive Limited.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Non Clinical Staffing (RM6277)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Permanent Recruitment 2 (RM6229)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/1934/23red-limited">23RED LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Campaign Solutions (RM3774)</span> <strong
+                                    class="govuk-tag govuk-tag--red">Expired</strong></li>
+
+
+                            <li><span class="ccs-framework-list__title">Campaign Solutions 2 (RM6125)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/13466/2cl-communications-limited">2CL COMMUNICATIONS LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Network Services 3 (RM6116)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/10749/300-north-consulting-ltd">300 NORTH CONSULTING LTD</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">300 North.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Non Clinical Staffing (RM6277)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Permanent Recruitment 2 (RM6229)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/9963/31ten-consulting-limited">31TEN CONSULTING LIMITED</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">31ten Consulting Ltd.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Management Consultancy Framework Three (MCF3)
+                                    (RM6187)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/13388/360medicare-personnel-limited">360MEDICARE PERSONNEL LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">International Healthcare Professional
+                                    Recruitment and Associated Services (RM6333)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/585/3d-recruit-limited">3D RECRUIT LIMITED</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">3D Recruit.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Supply Teachers and Temporary Staffing (STaTS)
+                                    (RM6238)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/1556/4-recruitment-services-ltd">4 RECRUITMENT SERVICES LTD</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">National Framework for the Provision of Clinical
+                                    and Healthcare Staffing (RM6281)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/774/4c-associates-limited">4C ASSOCIATES LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Logistics, Warehousing and Supply Chain
+                                    Solutions (RM6329)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Management Consultancy Framework Three (MCF3)
+                                    (RM6187)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Management Consultancy Framework Two (MCF2)
+                                    (RM6008)</span> <strong class="govuk-tag govuk-tag--red">Expired</strong></li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/9671/4myschools-ltd">4MYSCHOOLS LTD</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">4myschools.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Supply Teachers and Temporary Staffing (STaTS)
+                                    (RM6238)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/1506/4net-technologies-ltd">4NET TECHNOLOGIES LTD</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Network Services 2 (RM3808)</span> <strong
+                                    class="govuk-tag govuk-tag--red">Expired</strong></li>
+
+
+                            <li><span class="ccs-framework-list__title">Network Services 3 (RM6116)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/12046/4sight-communications-limited">4SIGHT COMMUNICATIONS LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Network Services 3 (RM6116)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/2637/6-point-6-limited">6 POINT 6 LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Digital Specialists and Programmes
+                                    (RM6263)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Management Consultancy Framework Three (MCF3)
+                                    (RM6187)</span> </li>
+
+
+                            <li><span class="ccs-framework-list__title">Technology Services 3 (RM6100)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/6719/8build-limited">8BUILD LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Construction Works and Associated Services
+                                    (RM6088)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/1511/8x8-uk-limited">8X8 UK LIMITED</a>
+
+                        </h3>
+
+                        <span class="ccs-subtle-notification">Trading as
+                            <span class="trading-name">8x8.</span>
+                        </span>
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Network Services 2 (RM3808)</span> <strong
+                                    class="govuk-tag govuk-tag--red">Expired</strong></li>
+
+
+                            <li><span class="ccs-framework-list__title">Network Services 3 (RM6116)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/6567/a-e-yates-limited">A E YATES LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Construction Works and Associated Services
+                                    (RM6088)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+
+                    <li>
+                        <h3 class="govuk-heading-m ccs-heading-link ccs-font-weight-semibold govuk-!-font-size-22">
+                            <a href="/suppliers/13647/a-v-parts-master-limited">A V PARTS MASTER LIMITED</a>
+
+                        </h3>
+
+
+                        <ul class="govuk-list govuk-!-font-size-17featured ccs-framework-list">
+
+                            <li><span class="ccs-framework-list__title">Technology Products &amp; Associated Services 2
+                                    (RM6098)</span> </li>
+
+                        </ul>
+
+                    </li>
+
+
+                </ul>
+
+
+
+
+
+                <results-pagination v-bind:total-results="searchResultsNumber" v-bind:results-per-page="resultsLimit"
+                    v-bind:current-page="currentPage" v-bind:result-pages-link-number="6"
+                    v-bind:query-url="frontendQueryUrl" v-on:update-page="updatePageValue($event)" />
+
+
+
+                <ul class="list--inline pagination govuk-body" aria-label="Pagination">
+
+
+
+
+
+                    <li class="pagination__item active"><span class="visuallyhidden">Page </span>1
+                    </li>
+                    <li class="pagination__item">
+                        <a href="/suppliers/search/2?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20"><span
+                                class="visuallyhidden">Page </span>2
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="/suppliers/search/3?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20"><span
+                                class="visuallyhidden">Page </span>3
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="/suppliers/search/4?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20"><span
+                                class="visuallyhidden">Page </span>4
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="/suppliers/search/5?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20"><span
+                                class="visuallyhidden">Page </span>5
+                        </a>
+                    </li>
+                    <li class="pagination__item">…</li>
+                    <li class="pagination__item">
+                        <a href="/suppliers/search/139?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20"><span
+                                class="visuallyhidden">Page </span>139
+                        </a>
+                    </li>
+
+
+
+                    <li class="pagination__item pagination__item--next">
+                        <a href="/suppliers/search/2?q=&amp;framework=&amp;lot-filter-nested=&amp;limit=20" rel="next">
+                            <span>Next</span> <span class="visuallyhidden">page</span>
+                            <span class="icon">
+                                <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z" fill="#007194"
+                                        fill-rule="evenodd" />
+                                </svg>
+                            </span> </a>
+                    </li>
+                </ul>
+
+
+
+
+            </div>
+        </div>
+
+
+        <script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href, 'page_type': 'supplier' });</script>
+
+    </main>
+</div>
+
+<!-- Vue and Custom JavaScript -->
+<script src="/assets/scripts/libraries/vue.min.js?v=1"></script>
+
+<script>
+    /**
+     * Function to test if the browser supports ES6 template literals
+     */
+    function supportsLiterals() {
+        try {
+            return eval("''===``");
+        }
+        catch (e) {
+            return false;
+        }
+    }
+
+    if (!('Promise' in window) || !supportsLiterals() || !window.fetch) {
+        throw new Error("Your browser doesn't support the necessary JavaScript functions to use the enhanced search and has been served a non-JavaScript version");
+    }
+    /**
+     * Not the cleanest way to do this, but perhaps the simplest
+     *
+     * We use these variables to pass values from PHP to the Vue JS
+     * JavaScript application
+     */
+    var apiBaseUrl = 'https://www.crowncommercial.gov.uk/api/';
+    var searchQuery = '';
+    var resultsLimitInitial = 20;
+
+    var selectedFramework = '';
+
+    var selectedLot = '';
+
+    var totalResults = 2762;
+    var pageNumber = 1;
+
+
+
+    // Define a new component for the results pagination
+    Vue.component('results-pagination', {
+        delimiters: ['{[', ']}'],
+        props: {
+            currentPage: Number,
+            totalResults: Number,
+            resultsPerPage: Number,
+            // How many result links to display before we shorten the list
+            resultPagesLinkNumber: Number,
+            queryUrl: String
+        },
+        computed: {
+            numberOfPages: function () {
+                return Math.ceil(this.totalResults / this.resultsPerPage);
+            },
+            nextPage: function () {
+                if (this.currentPage == this.numberOfPages) {
+                    return this.currentPage;
+                }
+
+                return this.currentPage + 1;
+            },
+            previousPage: function () {
+                if (this.currentPage == 1) {
+                    return this.currentPage;
+                }
+
+                return this.currentPage - 1;
+            },
+            paginationStartNumber: function () {
+                // start page defaults to 2 (second page) because the
+                // first page link is always output by default
+                var linksStartPage = 1;
+
+                // if the start page is at the beginning of the pagination
+                // then account for this
+                if ((this.currentPage - 2) < 2) {
+                    linksStartPage = 2;
+                } else {
+                    // otherwise the start page is equal to the current
+                    // page minus 2, this means that the pagination should
+                    // have a couple of links either side of the current
+                    // page, e.g.   2 3 [4] 5 6
+                    linksStartPage = this.currentPage - 2;
+                }
+
+                // if the start page is very close to the last page, then
+                // account for this
+                if ((this.currentPage + 2) > this.numberOfPages) {
+                    linksStartPage = linksStartPage - 2;
+                }
+
+                if (this.numberOfPages < this.resultPagesLinkNumber) {
+                    linksStartPage = 1;
+                }
+
+                if (linksStartPage <= 0) {
+                    linksStartPage = 1;
+                }
+
+                return linksStartPage;
+            },
+            paginationEndNumber: function () {
+                var linksEndPage = this.paginationStartNumber + 4;
+
+                // if there aren't more pages than the number we
+                // want to show by minimum, then the end page is just equal
+                // to the final result page
+                if (this.numberOfPages < this.resultPagesLinkNumber) {
+                    linksEndPage = this.totalResults;
+                }
+
+                if ((linksEndPage >= this.numberOfPages)) {
+                    // minus 1 because the last page is always output
+                    linksEndPage = this.numberOfPages - 1;
+                }
+
+                if (this.numberOfPages == 1) {
+                    linksEndPage = 1;
+                }
+
+                return linksEndPage;
+            }
+        },
+        methods: {
+            updatePageNumber: function (event, newPage) {
+                event.preventDefault();
+                this.$emit('update-page', newPage);
+            },
+            range: function (start, end) {
+                return Array(end - start + 1).fill().map(function (_, idx) {
+                    return start + idx;
+                });
+            }
+        },
+        template: `
+                <ul class="list--inline pagination govuk-body" role="list" aria-label="Pagination" v-if="numberOfPages > 0">
+                    <li class="pagination__item pagination__item--previous" v-if="currentPage != 1">
+                        <a :href="'/suppliers/search' + previousPage + queryUrl" rel="previous" v-on:click="updatePageNumber($event, previousPage)">
+                            <span class="icon">
+                                <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6.7 0l1.4 1.4-4.3 4.3h13v2H3.9l4.2 4-1.4 1.4L0 6.7z" fill="#007194" fill-rule="evenodd"></path></svg>
+                            </span>
+                            <span>Previous</span> <span class="visuallyhidden">page</span>
+                        </a>
+                    </li>
+
+                    <li class="pagination__item" v-if="numberOfPages > 6">
+                        <span v-if="currentPage == 1"><span class="visuallyhidden">Page </span>1</span>
+                        <a v-else :href="'/suppliers/search/1' + queryUrl" v-on:click="updatePageNumber($event, 1)"><span class="visuallyhidden">Page </span>1</a>
+                    </li>
+
+                    <li class="pagination__item" v-if="paginationStartNumber > 2">…</li>
+
+                    <li class="pagination__item" v-for="page in range(paginationStartNumber, paginationEndNumber)" v-if="numberOfPages > 1">
+                        <span v-if="page == currentPage"><span class="visuallyhidden">Page </span>{[ page ]}</span>
+                        <a v-else :href="'/suppliers/search/' + page + queryUrl" v-on:click="updatePageNumber($event, page)"><span class="visuallyhidden">Page </span>{[ page ]}</a>
+                    </li>
+
+                    <li class="pagination__item" v-if="(paginationEndNumber + 1) < numberOfPages">…</li>
+
+                    <li class="pagination__item" v-if="numberOfPages > 1">
+                        <span v-if="currentPage == numberOfPages"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</span>
+                        <a v-else :href="'/suppliers/search/' + numberOfPages + queryUrl" v-on:click="updatePageNumber($event, numberOfPages)"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</a>
+                    </li>
+
+                    <li class="pagination__item pagination__item--next" v-if="currentPage != numberOfPages">
+                        <a :href="'/suppliers/search/' + nextPage + queryUrl" rel="next" v-on:click="updatePageNumber($event, nextPage)">
+                            <span>Next</span> <span class="visuallyhidden">page</span>
+                            <span class="icon">
+                                <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z" fill="#007194" fill-rule="evenodd"></path></svg>
+                            </span>
+                        </a>
+                    </li>
+                </ul>`
+    });
+
+
+
+    new Vue({
+        // we have to change the delimeted used as the default is reserved by Twig
+        delimiters: ['{[', ']}'],
+        el: '#search-app',
+        data: {
+            // an almost arbitrary variable, we use this to hide the non-js
+            // version of the search components if the Vue search is instantiated
+            javascriptVersion: true,
+            searchApiBaseUrl: apiBaseUrl,
+            searchQuery: searchQuery,
+            checkedFramework: selectedFramework,
+            checkedLot: selectedLot,
+            frameworkFilter: '',
+            frameworkList: null,
+            frameworkListFiltered: null,
+            lotList: null,
+            displayLotFilter: false,
+            searchResults: null,
+            searchResultsNumber: totalResults,
+            resultsLimit: resultsLimitInitial,
+            currentPage: pageNumber,
+            // used to display/hide the loading text as appropriate (if the
+            // search results are loading, this property is set to true)
+            loading: false,
+            popstateLoad: false
+        },
+        created: function () {
+            // unfortunately we have to update the results when we instantiate
+            // the Vue app so it hooks in all the correct event handlers etc.
+            this.updateResults();
+
+            // setup popstate event listener for History API
+            this.setupHistoryApi();
+
+            // If a lot is set to filter on page load, then show the lot filters
+            if (this.checkedLot) {
+                this.$set(this, 'displayLotFilter', true);
+            }
+        },
+        watch: {
+            searchRequestUrl: function () {
+                this.updateResults();
+
+                // if the searchRequestUrl hasn't been updated by a popstate
+                // event (back/forward button) then we push a state item to the
+                // JS History API
+                if (this.popstateLoad === false) {
+                    history.pushState({
+                        searchQuery: this.searchQuery,
+                        checkedFramework: this.checkedFramework,
+                        checkedLot: this.checkedLot,
+                        resultsLimit: this.resultsLimit
+                    }, 'Search suppliers - CCS', this.frontendSearchUrl);
+                }
+
+                // reset the popstateLoad property to false
+                this.popstateLoad = false;
+            },
+            checkedFramework: function () {
+                // when a framework is selected, then we must reset any
+                // previous lot filters, as we can't guarantee they are applicable
+                // to the newly filtered framework
+                this.checkedLot = '';
+
+                // select the 'show all lots suppliers' radio button
+                document.getElementById('show-all-suppliers-on-framwork-1').checked = true;
+                this.displayLotFilter = false;
+
+                // go back to page 1
+                this.currentPage = 1;
+            }
+        },
+        computed: {
+            filtersSelected: function () {
+                return (this.checkedFramework.rm_number || this.checkedLot.id);
+            },
+            supplierContactPrompt: function () {
+                return (this.checkedFramework.rm_number && this.checkedLot.id);
+            },
+            // the URL we use to request items from the API
+            searchRequestUrl: function () {
+                console.log("update search URL");
+                return this.searchApiBaseUrl + 'suppliers?keyword=' + this.searchQuery.replace('&', '') + '&framework=' + (this.checkedFramework.rm_number ? this.checkedFramework.rm_number : '') + '&lot=' + (this.checkedLot.id ? this.checkedLot.id : '') + '&limit=' + this.resultsLimit + '&page=' + this.currentPage;
+
+                // page=
+            },
+            /**
+             * We pass this through to the pagination component so that
+             * we can retain the query params for each search page link
+             */
+            frontendQueryUrl: function () {
+                var queryUrl = '?search=true';
+                var emailRegex = /(([^<>()\[\]\\.,;:\s@"%]+(\.[^<>()\[\]\\.,;:\s@"%]+)*)|(".+"))(@|%40)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+
+                if (this.searchQuery) {
+                    if (this.searchQuery.match(emailRegex) !== null) {
+                        queryUrl += '&q=' + 'EMAIL_REDACTED';
+                    } else {
+                        queryUrl += '&q=' + this.searchQuery;
+                    }
+                }
+
+                if (this.checkedFramework.rm_number) {
+                    queryUrl += '&framework=' + this.checkedFramework.rm_number;
+                }
+
+                if (this.checkedLot) {
+                    queryUrl += '&lot-filter-nested=' + this.checkedLot.id;
+                }
+
+                if (this.resultsLimit) {
+                    queryUrl += '&limit=' + this.resultsLimit;
+                }
+
+                return queryUrl;
+            },
+            // the URL that we should update using the history API
+            frontendSearchUrl: function () {
+                var searchUrl = '/suppliers/search/' + this.currentPage + this.frontendQueryUrl;
+
+                return searchUrl;
+
+            }
+        },
+        methods: {
+            updateSearchQueryValue: function (event) {
+                event.preventDefault();
+                var searchTextInput = document.getElementById('q');
+                pushToDataLayer({ 'event': 'view_search_results', 'interaction_type': 'suppliers', 'search_term': searchTextInput.value });
+                this.searchQuery = searchTextInput.value;
+            },
+            /**
+             * Filter an object, only return object properties that match
+             * the search query
+             *
+             * @param objectArray
+             * @param query
+             */
+            filterObject: function (objectArray, query) {
+                var filteredArray = Object.keys(objectArray)
+                    .filter(
+                        function (el) {
+                            return el.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                        }
+                    )
+                    .reduce(function (obj, key) {
+                        obj[key] = objectArray[key];
+                        return obj;
+                    }, {});
+
+                return filteredArray;
+            },
+            frameworkFilterExecute: function (event) {
+                if (event) {
+                    event.preventDefault();
+                }
+
+                this.frameworkListFiltered = this.filterObject(this.frameworkList, this.frameworkFilter);
+            },
+            resetFilters: function (event) {
+                if (event) {
+                    event.preventDefault();
+                }
+
+                this.searchQuery = '';
+                this.checkedFramework = '';
+                this.checkedLot = '';
+                this.currentPage = 1;
+                this.displayLotFilter = false;
+                this.frameworkFilter = '';
+                document.getElementById('q').value = '';
+                this.frameworkFilterExecute();
+            },
+            clearFramework: function (event) {
+                event.preventDefault();
+                this.checkedFramework = '';
+                // we also reset the lot filter, as it is dependent on a
+                // framework filter being specified
+                this.checkedLot = '';
+            },
+            clearLot: function (event) {
+                event.preventDefault();
+                this.checkedLot = '';
+            },
+            clearSearch: function (event) {
+                event.preventDefault();
+                this.searchQuery = '';
+                document.getElementById('q').value = '';
+            },
+            setupHistoryApi: function () {
+                var self = this;
+
+                window.onpopstate = function (event) {
+                    // set the popstate variable to true so that we can
+                    // tell in other parts of the code that the state change
+                    // is being caused by the back/forward button
+                    self.popstateLoad = true;
+
+                    if (event.state == null) {
+                        self.resetFilters(null);
+                        return;
+                    }
+
+                    self.searchQuery = event.state.searchQuery;
+                    self.checkedFramework = event.state.checkedFramework;
+                    self.checkedLot = event.state.checkedLot;
+                    self.resultsLimit = event.state.resultsLimit;
+                }
+            },
+            updatePageValue: function (newPageValue) {
+                this.currentPage = newPageValue;
+            },
+            updateResults: function () {
+                // we have to define this variable as arrow functions are
+                // ES6, and the `this` variable changes in the fetch promises
+                var self = this;
+                self.loading = true;
+
+                var requestUrl = this.searchRequestUrl;
+
+                console.log(requestUrl);
+
+                fetch(requestUrl)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('HTTP error, status = ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function (jsonResponse) {
+                        // update the results property
+                        var tempResults = jsonResponse.results;
+                        for (var i = 0; i < tempResults.length; i++) {
+                            // @TODO: we need to pull through the encoded title for each supplier result
+                            tempResults[i].url = '/suppliers/' + tempResults[i].id + '/' + tempResults[i].encoded_name;
+                        }
+
+                        self.searchResults = tempResults;
+                        self.searchResultsNumber = jsonResponse.meta.total_results;
+                        self.frameworkList = jsonResponse.meta.facets.frameworks;
+                        self.frameworkFilterExecute(null);
+                        self.lotList = jsonResponse.meta.facets.lots;
+
+                        self.loading = false;
+                    })
+                    .catch(function (error) {
+                        // @TODO: handle errors
+                        console.log('An error occurred');
+                        console.log(error);
+                        self.loading = false;
+                    });
+            }
+        }
+    })
+</script>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer-js.njk" %}
+{% endblock %}

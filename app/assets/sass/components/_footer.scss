@@ -100,7 +100,7 @@
 .govuk-footer__meta {
     align-items: initial;
 
-    
+
 }
 
 .govuk-footer-width-45 {
@@ -133,6 +133,17 @@
 
 .govuk-footer__copyright-display-block {
     display: block;
+}
+
+/* Override the default GOV.UK crest with our new SVG */
+.govuk-footer__link.govuk-footer__copyright-logo.govuk-footer__copyright-display-block {
+    background-image: url("/public/images/govuk-crest-2.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 0% !important;
+    background-size: 125px 102px !important;
+    min-width: 125px !important;
+    padding-top: 102px !important;
+    display: block !important;
 }
 
 .govuk-footer-remove-flex-grow {

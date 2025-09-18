@@ -1,0 +1,181 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}For Buyers - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    For buyers
+                </h1>
+                <p class="govuk-body-l">
+                    Access our procurement frameworks, tools, and support services to help you buy goods and services
+                    efficiently and achieve best value for your organisation.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- How to buy Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/how-to-buy" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                How to buy
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about our procurement processes, frameworks, and best practices
+                                                    to make informed buying decisions.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Procurement Essentials articles Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/procurement-essentials"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Procurement Essentials articles
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access essential articles and guidance on procurement best practices,
+                                                    regulations, and industry insights.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Assisted procurement service Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/assisted-procurement" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Assisted procurement service
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Get expert assistance with your procurement needs through our
+                                                    dedicated support service for complex requirements.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- What is social value Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/social-value" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                What is social value
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about social value in procurement and how to incorporate
+                                                    social, economic, and environmental benefits into your buying
+                                                    decisions.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Subscribe to newsletter Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/newsletter" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Subscribe to newsletter
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Stay informed with the latest procurement news, updates, and
+                                                    opportunities by subscribing to our newsletter.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Why choose CCS frameworks?</h2>
+                <p class="govuk-body">Our procurement frameworks are designed to save you time and money while
+                    ensuring compliance and best value:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Pre-agreed terms and conditions with suppliers</li>
+                    <li>Competitive pricing through aggregated buying power</li>
+                    <li>Compliance with public procurement regulations</li>
+                    <li>Access to innovative solutions and emerging technologies</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our buyer support team for assistance</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/new-footer.njk" %}
+{% endblock %}

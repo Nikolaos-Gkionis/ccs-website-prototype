@@ -1,0 +1,230 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}Login and tools - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    Digital platforms
+                </h1>
+                <p class="govuk-body-l">
+                    Access our digital tools and platforms to manage your procurement activities, supplier
+                    relationships, and commercial agreements.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- Contracts finder Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.find-tender.service.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Contracts finder
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Search for government contracts and procurement opportunities across
+                                                    all public sector organizations.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Find a tender Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.find-tender.service.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Find a tender
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover current tender opportunities and procurement notices from
+                                                    government departments and public bodies.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sign in to Purchasing Platform Card -->
+                                <li class="card-list__item">
+                                    <a href="https://identify.crowncommercial.gov.uk/" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sign in to Purchasing Platform
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our purchasing platform to buy goods and services through our
+                                                    commercial agreements and frameworks.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sign in to Digital Marketplace Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.digitalmarketplace.service.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sign in to Digital Marketplace
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our digital marketplace to discover and procure digital
+                                                    services and technology solutions.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sign in to fleet portal Card -->
+                                <li class="card-list__item">
+                                    <a href="https://fleet.crowncommercial.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sign in to fleet portal
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our fleet management portal to manage vehicle procurement,
+                                                    leasing, and fleet services.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sign in to eMarketplace Card -->
+                                <li class="card-list__item">
+                                    <a href="https://emarketplace.crowncommercial.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sign in to eMarketplace
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our electronic marketplace for streamlined procurement of
+                                                    goods and services through our frameworks.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sign in to eSourcing Card -->
+                                <li class="card-list__item">
+                                    <a href="https://esourcing.crowncommercial.gov.uk" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sign in to eSourcing
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access your eSourcing account to view opportunities, submit bids, and
+                                                    manage your procurement activities.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- eSourcing training Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/esourcing-training" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                eSourcing training
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access training resources and guidance to help you use our eSourcing
+                                                    platform effectively and efficiently.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Need help with our tools?</h2>
+                <p class="govuk-body">Our technical support team can help you navigate our digital platforms and tools:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Account setup and user management</li>
+                    <li>Platform navigation and functionality</li>
+                    <li>Technical issues and troubleshooting</li>
+                    <li>Training and user guidance</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our technical support team</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/new-footer.njk" %}
+{% endblock %}

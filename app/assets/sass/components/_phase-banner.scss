@@ -34,3 +34,32 @@
     padding-right: 0;
 
 }
+
+.govuk-phase-banner--inverse {
+    background-color: #9B1A47; /* Dark background */
+    border-bottom-color: rgba(white, 0.2);
+    border-top: 1px solid white;
+    .govuk-phase-banner__text {
+        color: white;
+        font-weight: 600;
+        padding-left: 10px;
+        
+        
+        .govuk-link {
+            color: white;
+            text-decoration: underline;
+            padding-left: 20px;
+            
+            &:hover,
+            &:focus,
+            &:active {
+                text-decoration: none;
+            }
+        }
+    }
+    
+    .govuk-phase-banner__inverse__tag {
+        background-color: #e8f1f8; /* Light Blue tag background */
+        color: #0c2d4a; /* Dark text in tag */
+    }
+}

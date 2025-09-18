@@ -1,0 +1,180 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}For Suppliers - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    For suppliers
+                </h1>
+                <p class="govuk-body-l">
+                    Discover opportunities to work with the public sector through our procurement frameworks,
+                    learn about our processes, and access resources to help you succeed.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- How to supply Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/how-to-supply" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                How to supply
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about the steps and processes involved in supplying goods
+                                                    and services to the public sector through our frameworks.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Supplier Specifics articles Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/supplier-specifics" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Supplier Specifics articles
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access detailed articles and guidance specifically designed for
+                                                    suppliers working with the public sector.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Find tender opportunities Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/find-tender-opportunities"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Find tender opportunities
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover current tender opportunities and procurement notices from
+                                                    government departments and public bodies.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Create a carbon reduction plan Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/carbon-reduction-plan" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Create a carbon reduction plan
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn how to create and implement a carbon reduction plan to meet
+                                                    public sector sustainability requirements.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Submit MI returns Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/mi-returns" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Submit MI returns
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Submit your Management Information returns and access reporting tools
+                                                    to track your procurement activity and compliance requirements.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Benefits of working with CCS</h2>
+                <p class="govuk-body">Joining our frameworks provides suppliers with numerous advantages
+                    and opportunities:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Access to a wide range of public sector contracts</li>
+                    <li>Streamlined procurement processes and reduced bidding costs</li>
+                    <li>Pre-agreed terms and conditions with public sector buyers</li>
+                    <li>Opportunities for business growth and market expansion</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our supplier support team for assistance</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/new-footer.njk" %}
+{% endblock %}

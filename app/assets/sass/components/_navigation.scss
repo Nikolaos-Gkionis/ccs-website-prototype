@@ -46,38 +46,30 @@
     position: relative;
     min-width: 1200px; 
     margin: 0 auto; 
-    margin-left: -100px;
 
     @include govuk-media-query($from: desktop) {
-
         display: flex;
         flex-flow: row nowrap;
         align-items: flex-end;
         padding: govuk-px-to-rem(22) 0 govuk-px-to-rem(26) 0;
         text-align: right;
-
+    }
+    
+    // Mobile-specific overrides
+    @include govuk-media-query($until: desktop) {
+        min-width: auto;
+        width: 100%;
+        padding: 0 0 govuk-px-to-rem(15) 0;
     }
 
 }
 
 .global-navigation {
+    display: none; /* Hidden by default on mobile */
+}
 
-    display: flex;
-    flex-flow: column nowrap;
-
-    background-color: #7C1539;
-    margin-bottom: govuk-px-to-rem(- 20);
-    // This is to offset the margin-bottom which is rendered on .global-header when the navigation is closed
-    margin-top: govuk-px-to-rem(20);
-
-    @include govuk-media-query($from: desktop) {
-
-        background-color: transparent;
-        margin-top: 0;
-        margin-bottom: 0;
-
-    }
-
+.global-navigation.is-active {
+    display: block; /* Show when toggled active */
 }
 
 .global-navigation[aria-hidden="false"] {
@@ -315,39 +307,38 @@
 
 }
 
+/* Reset the display property for the menu toggle button */
 .global-navigation__toggler {
-
-    background-color: white;
-    border: 0;
-    border-radius: govuk-px-to-rem(3);
-    color: #9B1A47;
-    padding: govuk-px-to-rem(7) govuk-px-to-rem(14);
-    position: absolute;
-    right: govuk-px-to-rem(15);
-    top: govuk-px-to-rem(41);
-    font-size: govuk-px-to-rem(18);
-    font-weight: 500;
-
-    @include govuk-media-query($from: 641) {
-
-        right: govuk-px-to-rem(30);
-
-    }
-
-    @include govuk-media-query($from: desktop) {
-
-        display: none;
-
-    }
-
-    @include govuk-media-query($until: 261) {
-
-        position: static;
-        margin-top: 20px;
-
-    }
+    display: block !important; /* Force display at all screen sizes */
+    position: absolute !important;
+    top: 20px !important;
+    right: 15px !important;
+    background-color: white !important;
+    border: 0 !important;
+    border-radius: 3px !important;
+    color: #9B1A47 !important;
+    padding: 7px 14px !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    z-index: 9999 !important; /* Ensure it's at the very top layer */
 }
 
+/* State management for menu icons */
+.global-navigation__toggler[aria-expanded="false"] .icon-menu-open {
+    display: none !important;
+}
+
+.global-navigation__toggler[aria-expanded="false"] .icon-menu-closed {
+    display: inline-block !important;
+}
+
+.global-navigation__toggler[aria-expanded="true"] .icon-menu-closed {
+    display: none !important;
+}
+
+.global-navigation__toggler[aria-expanded="true"] .icon-menu-open {
+    display: inline-block !important;
+}
 
 .nav-list--primary,
 .nav-list--secondary, nav-list-ppg {
@@ -364,5 +355,81 @@
 .nav-list--secondary .nav-list__link {
     @media only print {
         line-height: .6;
+    }
+}
+
+// ========================================
+// MOBILE-SPECIFIC STYLES
+// ========================================
+
+/* Mobile navigation styles - only apply below desktop breakpoint */
+@include govuk-media-query($until: desktop) {
+    
+    /* Ensure header container can handle mobile menu positioning */
+    .header-global {
+        position: relative;
+        overflow: visible;
+    }
+    
+    /* Ensure navigation wrapper is responsive on mobile */
+    .nav-wrapper {
+        min-width: auto !important;
+        width: 100% !important;
+        padding: 0 0 govuk-px-to-rem(15) 0 !important;
+        position: relative;
+    }
+    
+    /* Mobile navigation container */
+    .global-navigation {
+        &.is-active {
+            display: block !important;
+            width: 100%;
+            background-color: $ccs-colour;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            padding: govuk-px-to-rem(20) 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+    
+    /* Mobile navigation lists */
+    .nav-list {
+        width: 100%;
+        margin-bottom: govuk-px-to-rem(10);
+    }
+    
+    /* Mobile navigation items */
+    .nav-list__item {
+        display: block !important;
+        width: 100%;
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    
+    /* Mobile navigation links */
+    .nav-list__link {
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+        line-height: 1.4;
+        padding: govuk-px-to-rem(12) govuk-px-to-rem(15) govuk-px-to-rem(11) govuk-px-to-rem(15) !important;
+    }
+}
+
+/* Desktop navigation styles - ensure desktop functionality is preserved */
+@include govuk-media-query($from: desktop) {
+    .global-navigation {
+        display: block !important;
+        flex-grow: 1;
+    }
+    
+    .global-navigation__toggler {
+        display: none !important;
     }
 }

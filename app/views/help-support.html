@@ -1,0 +1,163 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}Support and guidance - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    Help and support
+                </h1>
+                <p class="govuk-body-l" style="font-size: 1.4rem; line-height: 1.6;">
+                    Get the help you need to use CCS services effectively. Whether you're a buyer or supplier, our
+                    support team is ready to assist you with any questions or issues.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- Contact CCS Card -->
+                                <li class="card-list__item">
+                                    <a href="/help-support" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Contact CCS
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Get in touch with our support team for personalized assistance with
+                                                    your procurement queries and requirements.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Glossary Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/glossary" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Glossary
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our comprehensive glossary of procurement terms, definitions,
+                                                    and acronyms to help you understand industry terminology.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Information for buyers and suppliers Card -->
+                                <li class="card-list__item">
+                                    <a href="/for-buyers" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Information for buyers and suppliers
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Comprehensive information and guidance for both buyers and suppliers
+                                                    on procurement processes, framework usage, and best practices.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Make a complaint Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/complaints" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Make a complaint
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Submit complaints and feedback about our services. We take all
+                                                    feedback seriously and use it to improve our services.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l" style="font-size: 2.5rem; font-weight: 600; color: #00703c;">Need help?</h2>
+                <p class="govuk-body" style="font-size: 1.2rem; line-height: 1.6;">Our support team is here to help you
+                    navigate public procurement successfully. We
+                    provide guidance on:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Understanding procurement processes and regulations</li>
+                    <li>Finding and using the right commercial agreements</li>
+                    <li>Compliance with public procurement rules</li>
+                    <li>Best practices for buyers and suppliers</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our support team for assistance</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/new-footer.njk" %}
+{% endblock %}

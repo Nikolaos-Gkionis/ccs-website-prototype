@@ -1,0 +1,1402 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body>
+
+    <div class="hero news-header">
+
+        <figcaption>
+
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+
+                    <div class="ccs-hero-text-container">
+
+                        <div class="hero__caption">
+
+                            <h1 class="govuk-heading-xl hero__title"
+                                style="font-family: 'Source Sans Pro', sans-serif; color: #000;">Explore our latest news
+                            </h1>
+
+                            <div class="hero__content">
+
+                            </div>
+
+                            <a href="/newsletter" class="govuk-button news-subscribe-btn">Subscribe to customer
+                                newsletter</a>
+                        </div>
+
+                    </div>
+
+                    <picture class="hero__picture ">
+                        <img src="/assets/images/CCS-news_600.jpg" role="presentation" class="hero__image"
+                            data-object-fit="cover" data-object-position="right center" alt="" width="600" height="208">
+                    </picture>
+
+                </div>
+            </div>
+
+        </figcaption>
+
+        <div class="hero__flourish"></div>
+    </div>
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-width-container">
+
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+                <li class="govuk-breadcrumbs__list-item" aria-current="page">News</li>
+            </ol>
+        </div>
+
+        <main id="main-content" role="main" class="govuk-main-wrapper">
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-quarter news-filters">
+
+                    <div class="govuk-grid-row">
+                        <form action="/news" method="GET" id="form1">
+                            <div class="govuk-grid-column-one-half">
+                                <h2 class="govuk-heading-m">Apply filters</h2>
+                            </div>
+                            <div class="govuk-grid-column-one-half" style="text-align:right;">
+                                <a href=/news class="govuk-link"> Clear filters </a>
+                            </div>
+                    </div>
+
+                    <!--
+                <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion">
+                    Filter
+                </button>
+-->
+
+                    <fieldset class="govuk-fieldset" aria-describedby="filter_article">
+                        <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                            id="filter_article">
+                            <div
+                                class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight govuk-accordion__section">
+                                <div class="govuk-accordion__section-header">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                        <h2 class="govuk-accordion__section-heading">
+                                            <span
+                                                class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                                id="accordion-for-categories">
+                                                Type of article
+                                            </span>
+                                        </h2>
+                                    </legend>
+                                </div>
+
+                                <div id="filter_article-content-1" role="region"
+                                    class="govuk-accordion__section-content" aria-labelledby="accordion-for-categories">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData(null,null) v-model="checkedCategories"
+                                            name="allCategories" value="allCategories"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="allCategories" type="checkbox" checked>
+                                        <label class="govuk-label govuk-checkboxes__label" for="allCategories">
+                                            View all
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("news",null) v-model="checkedCategories"
+                                            name="categories[]" value="26"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="news"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="news">
+                                            News and blogs
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("case-study",null) v-model="checkedCategories"
+                                            name="categories[]" value="29"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="case-study" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="case-study">
+                                            Case study
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("procurement-essentials",null)
+                                            v-model="checkedCategories" name="categories[]" value="168"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="procurement-essentials" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="procurement-essentials">
+                                            Procurement Essentials
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("commercial",null) v-model="checkedCategories"
+                                            name="categories[]" value="188"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="commercial" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="commercial">
+                                            Commercial Insider
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("supplier-specifics",null)
+                                            v-model="checkedCategories" name="categories[]" value="194"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="supplier-specifics" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="supplier-specifics">
+                                            Supplier Specifics
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData(whitepaper,null) v-model="whitepaper"
+                                            name="whitepaper" value=1
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="whitepaper" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="whitepaper">
+                                            Whitepaper
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData(webinar,null) v-model="webinar" name="webinar"
+                                            value=1 class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="webinar" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="webinar">
+                                            Webinar
+                                        </label>
+                                    </div>
+
+
+
+
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("guide",null) v-model="checkedDigitalDownload"
+                                            name="digitalDownload[]" value="176"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="guide"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="guide">
+                                            Digital guide
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="govuk-fieldset" aria-describedby="filter_sector">
+                        <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                            id="filter_sector">
+                            <div
+                                class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight govuk-accordion__section">
+                                <div class="govuk-accordion__section-header">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                        <h2 class="govuk-accordion__section-heading">
+                                            <span
+                                                class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                                id="accordion-for-sectors">
+                                                Sectors
+                                            </span>
+                                        </h2>
+                                    </legend>
+                                </div>
+
+                                <div id="filter_sector-content-1" role="region" class="govuk-accordion__section-content"
+                                    aria-labelledby="accordion-for-sectors">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData(null,null) v-model="checkedSectors"
+                                            name="allSectors" value="allSectors"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="allSectors" type="checkbox" checked>
+                                        <label class="govuk-label govuk-checkboxes__label" for="allSectors">
+                                            View all
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("central-government",null)
+                                            v-model="checkedSectors" name="sectors[]" value="150"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="central-government" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="central-government">
+                                            Central government
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("charities",null) v-model="checkedSectors"
+                                            name="sectors[]" value="111"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="charities" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="charities">
+                                            Charities
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("devolved",null) v-model="checkedSectors"
+                                            name="sectors[]" value="133"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="devolved"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="devolved">
+                                            Devolved
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("health",null) v-model="checkedSectors"
+                                            name="sectors[]" value="112"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="health"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="health">
+                                            Health
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("housing-associations",null)
+                                            v-model="checkedSectors" name="sectors[]" value="113"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="housing-associations" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="housing-associations">
+                                            Housing associations
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("local-government",null)
+                                            v-model="checkedSectors" name="sectors[]" value="114"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="local-government" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="local-government">
+                                            Local government
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("police-emergency-services",null)
+                                            v-model="checkedSectors" name="sectors[]" value="115"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="police-emergency-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label"
+                                            for="police-emergency-services">
+                                            Police and emergency services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("schools-academies",null)
+                                            v-model="checkedSectors" name="sectors[]" value="116"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="schools-academies" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="schools-academies">
+                                            Schools and academies
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("supplier",null) v-model="checkedSectors"
+                                            name="sectors[]" value="170"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="supplier"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="supplier">
+                                            Supplier
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("universities-colleges",null)
+                                            v-model="checkedSectors" name="sectors[]" value="117"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="universities-colleges" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="universities-colleges">
+                                            Universities and colleges
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="govuk-fieldset" aria-describedby="filter_p_and_s">
+                        <div class="govuk-accordion ccs-accordion ccs-accordion--clean" data-module="govuk-accordion"
+                            id="filter_p_and_s">
+                            <div
+                                class="govuk-accordion__section ccs-accordion__section--clean govuk-form-group govuk-form-group--enclosure ccs-form-group--enclosure--tight govuk-accordion__section">
+                                <div class="govuk-accordion__section-header">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                        <h2 class="govuk-accordion__section-heading">
+                                            <span
+                                                class="no-top-line govuk-accordion__section-button ccs-accordion__section-button"
+                                                id="accordion-for-ps">
+                                                Products and services
+                                            </span>
+                                        </h2>
+                                    </legend>
+                                </div>
+
+                                <div id="filter_p_and_s-content-1" role="region"
+                                    class="govuk-accordion__section-content" aria-labelledby="accordion-for-ps">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData(null,null) v-model="checkedProducts_services"
+                                            name="allPS" value="allPS"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="allPS"
+                                            type="checkbox" checked>
+                                        <label class="govuk-label govuk-checkboxes__label" for="allPS">
+                                            View all
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("aggregation",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="166"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="aggregation" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="aggregation">
+                                            Aggregation
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("cnz",null) v-model="checkedProducts_services"
+                                            name="PandS[]" value="164"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="cnz"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="cnz">
+                                            Carbon net zero
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("cloud-and-hosting",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="179"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="cloud-and-hosting" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="cloud-and-hosting">
+                                            Cloud and hosting
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("construction",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="125"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="construction" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="construction">
+                                            Construction
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("corporate",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="121"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="corporate" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="corporate">
+                                            Corporate
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("digital-capability-and-delivery",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="189"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="digital-capability-and-delivery" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label"
+                                            for="digital-capability-and-delivery">
+                                            Digital capability and delivery
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("energy",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="126"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="energy"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="energy">
+                                            Energy
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("estates",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="119"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="estates"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="estates">
+                                            Estates
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("estates-support-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="190"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="estates-support-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label"
+                                            for="estates-support-services">
+                                            Estates support services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("facilities-management",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="191"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="facilities-management" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="facilities-management">
+                                            Facilities management
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("financial-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="134"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="financial-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="financial-services">
+                                            Financial services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("fleet",null) v-model="checkedProducts_services"
+                                            name="PandS[]" value="135"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="fleet"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="fleet">
+                                            Fleet
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("hr-and-workforce",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="192"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="hr-and-workforce" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="hr-and-workforce">
+                                            HR and workforce
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("network-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="130"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="network-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="network-services">
+                                            Network services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("outsourced-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="193"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="outsourced-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="outsourced-services">
+                                            Outsourced services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("professional-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="123"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="professional-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="professional-services">
+                                            Professional services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("social-value",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="172"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="social-value" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="social-value">
+                                            Social value
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("software-and-hardware",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="157"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="software-and-hardware" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="software-and-hardware">
+                                            Software and hardware
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("technology",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="118"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="technology" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="technology">
+                                            Technology
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("technology-services",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="132"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="technology-services" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="technology-services">
+                                            Technology services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("transforming-public-procurement",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="181"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small"
+                                            id="transforming-public-procurement" type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label"
+                                            for="transforming-public-procurement">
+                                            Transforming Public Procurement
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--small">
+                                        <input v-on:change=fetchAPIData("travel",null)
+                                            v-model="checkedProducts_services" name="PandS[]" value="136"
+                                            class="govuk-checkboxes__input govuk-checkboxes__input--small" id="travel"
+                                            type="checkbox">
+                                        <label class="govuk-label govuk-checkboxes__label" for="travel">
+                                            Travel, accommodation and venues
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!---
+                    <button class="govuk-button" data-module="govuk-button" v-show="!javascriptVersion">
+                        Filter
+                    </button>
+                    -->
+                    </form>
+                </div>
+                <div class="govuk-grid-column-three-quarters news-list-pagination-container">
+
+                    <div v-if="responseAvailable" class="hideWithoutJS govuk-visually-hidden">
+                        <div v-show="javascriptVersion" v-for="result in results">
+                            <div class="news_div">
+                                <div class="govuk-width-container">
+                                    <div class="govuk-grid-row news_wrapper">
+
+                                        <div class="news-listing-block"
+                                            :class="{'govuk-grid-column-one-half': result.imageSet, 'govuk-grid-column-full':!result.imageSet}">
+                                            <p class="news-listing-meta">
+                                                <a :href="result.CategoriesLink">{[ result.postType ]}</a>
+                                                <span> {[result.modifiedDate]} </span>
+                                            </p>
+                                            <h2 class="news-listing-title">
+                                                <a :href="result.postLink" v-html="result.title.rendered"></a>
+                                            </h2>
+                                            <p v-html="result.postDescription"></p>
+                                        </div>
+
+                                        <div class="govuk-grid-column-one-half news-img-container">
+                                            <figure class="image-wrapper news_img">
+                                                <picture class="">
+                                                    <div v-if="result.imageSet">
+                                                        <img :src="result.imageURL" :alt="result.altText"
+                                                            role="presentation" class="" loading="lazy" />
+                                                    </div>
+                                                </picture>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <results-pagination :total-results="totalResults" :number-of-pages="numberOfPages"
+                            :current-page="currentPage" v-on:update-page="updatePageValue($event)"></results-pagination>
+
+
+                    </div>
+                    <div v-else-if="responseAvailable === false" class="hideWithoutJS govuk-visually-hidden">
+                        <p>Loading...</p>
+                    </div>
+                    <div v-if="emptyResult" class="hideWithoutJS govuk-visually-hidden">
+                        <p>There are no matching results.</p>
+                    </div>
+
+                    <div v-show="!javascriptVersion">
+
+
+
+
+
+
+                        <div class="news_div">
+                            <div class="govuk-width-container">
+                                <div class="govuk-grid-row news_wrapper ">
+                                    <div
+                                        class="govuk-grid-column-one-half govuk-grid-column-one-half news-listing-block">
+                                        <p class="news-listing-meta">
+                                            <a href="/news?categories%5B%5D=26">News and blogs</a>
+                                            <span> 27th March 2025 </span>
+                                        </p>
+                                        <h2 class="news-listing-title">
+                                            <a
+                                                href="/news/what-suppliers-need-to-know-about-technical-ability-certificates-supplier-specifics">What
+                                                suppliers need to know about Technical Ability Certificates &#8211;
+                                                Supplier
+                                                Specifics</a>
+                                        </h2>
+
+                                        <p class="govuk-body govuk-!-font-size-17featured">
+                                            Top tips to help suppliers succeed with Technical Ability Certificate
+                                            completion
+                                        </p>
+                                    </div>
+                                    <div class="govuk-grid-column-one-half news-img-container">
+                                        <figure class="image-wrapper news_img">
+                                            <picture class="">
+                                                <source
+                                                    srcset="https://assets.crowncommercial.gov.uk/wp-content/uploads/7645-24-Procurement-Essentials-Supplier-series-600x400_1-1.jpg">
+                                                <img src="https://assets.crowncommercial.gov.uk/wp-content/uploads/7645-24-Procurement-Essentials-Supplier-series-600x400_1-1.jpg"
+                                                    role="presentation" alt="" class="" loading="lazy" />
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="news_div">
+                            <div class="govuk-width-container">
+                                <div class="govuk-grid-row news_wrapper ">
+                                    <div
+                                        class="govuk-grid-column-one-half govuk-grid-column-one-half news-listing-block">
+                                        <p class="news-listing-meta">
+                                            <a href="/news?categories%5B%5D=26">News and blogs</a>
+                                            <span> 17th March 2025 </span>
+                                        </p>
+                                        <h2 class="news-listing-title">
+                                            <a
+                                                href="/news/how-ccs-is-supporting-sme-involvement-in-public-sector-ai-procurement">How
+                                                CCS is supporting SME involvement in public sector AI
+                                                procurement</a>
+                                        </h2>
+
+                                        <p class="govuk-body govuk-!-font-size-17featured">
+                                            Small and Medium-sized Enterprises play a vital role in enabling AI
+                                            adoption
+                                            throughout the UK public sector, through offering innovative solutions
+                                            and
+                                            improving accessibility to technology
+                                        </p>
+                                    </div>
+                                    <div class="govuk-grid-column-one-half news-img-container">
+                                        <figure class="image-wrapper news_img">
+                                            <picture class="">
+                                                <source
+                                                    srcset="https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_177062270-640x427.jpg">
+                                                <img src="https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_177062270-640x427.jpg"
+                                                    role="presentation" alt="" class="" loading="lazy" />
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="news_div">
+                            <div class="govuk-width-container">
+                                <div class="govuk-grid-row news_wrapper ">
+                                    <div
+                                        class="govuk-grid-column-one-half govuk-grid-column-one-half news-listing-block">
+                                        <p class="news-listing-meta">
+                                            <a href="/news?categories%5B%5D=26">News and blogs</a>
+                                            <span> 10th March 2025 </span>
+                                        </p>
+                                        <h2 class="news-listing-title">
+                                            <a href="/news/changes-to-our-agreements-in-february-4">Changes to our
+                                                agreements in February</a>
+                                        </h2>
+
+                                        <p class="govuk-body govuk-!-font-size-17featured">
+                                            A brief summary of the CCS agreements that expired, extended, or were
+                                            awarded in
+                                            February 2025
+                                        </p>
+                                    </div>
+                                    <div class="govuk-grid-column-one-half news-img-container">
+                                        <figure class="image-wrapper news_img">
+                                            <picture class="">
+                                                <source
+                                                    srcset="https://assets.crowncommercial.gov.uk/wp-content/uploads/Studio-Session-409-56-640x427.jpg">
+                                                <img src="https://assets.crowncommercial.gov.uk/wp-content/uploads/Studio-Session-409-56-640x427.jpg"
+                                                    role="presentation" alt="" class="" loading="lazy" />
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="news_div">
+                            <div class="govuk-width-container">
+                                <div class="govuk-grid-row news_wrapper ">
+                                    <div
+                                        class="govuk-grid-column-one-half govuk-grid-column-one-half news-listing-block">
+                                        <p class="news-listing-meta">
+                                            <a href="/news?categories%5B%5D=194">Supplier Specifics</a>
+                                            <span> 3rd March 2025 </span>
+                                        </p>
+                                        <h2 class="news-listing-title">
+                                            <a
+                                                href="/news/how-we-can-support-you-to-promote-your-place-on-a-ccs-agreement-supplier-specifics">How
+                                                we can support you to promote your place on a CCS agreement &#8211;
+                                                Supplier
+                                                Specifics</a>
+                                        </h2>
+
+                                        <p class="govuk-body govuk-!-font-size-17featured">
+                                            How effective communications about your position as a CCS supplier can
+                                            be a
+                                            vital tool to help you promote your organisation to your customers
+                                        </p>
+                                    </div>
+                                    <div class="govuk-grid-column-one-half news-img-container">
+                                        <figure class="image-wrapper news_img">
+                                            <picture class="">
+                                                <source
+                                                    srcset="https://assets.crowncommercial.gov.uk/wp-content/uploads/7645-24-Procurement-Essentials-Supplier-series-600x400_2-1.jpg">
+                                                <img src="https://assets.crowncommercial.gov.uk/wp-content/uploads/7645-24-Procurement-Essentials-Supplier-series-600x400_2-1.jpg"
+                                                    role="presentation"
+                                                    alt="Guidance for suppliers on how to prepare for financial risk assessment and achieve financial readiness ."
+                                                    class="" loading="lazy" />
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="news_div">
+                            <div class="govuk-width-container">
+                                <div class="govuk-grid-row news_wrapper ">
+                                    <div
+                                        class="govuk-grid-column-one-half govuk-grid-column-one-half news-listing-block">
+                                        <p class="news-listing-meta">
+                                            <a href="/news?categories%5B%5D=26">News and blogs</a>
+                                            <span> 25th February 2025 </span>
+                                        </p>
+                                        <h2 class="news-listing-title">
+                                            <a
+                                                href="/news/crown-commercial-service-to-showcase-digital-innovation-at-digigov-expo-2025">Crown
+                                                Commercial Service to showcase digital innovation at DigiGov Expo
+                                                2025</a>
+                                        </h2>
+
+                                        <p class="govuk-body govuk-!-font-size-17featured">
+                                            Join us at the ExCel London on the 24 and 25 September 2025 to network
+                                            and
+                                            connect with over 3,000 digital, data, and technology experts from
+                                            across the
+                                            public sector.
+                                        </p>
+                                    </div>
+                                    <div class="govuk-grid-column-one-half news-img-container">
+                                        <figure class="image-wrapper news_img">
+                                            <picture class="">
+                                                <source
+                                                    srcset="https://assets.crowncommercial.gov.uk/wp-content/uploads/DigiGovExpo-2025-CCS-640x427.jpg">
+                                                <img src="https://assets.crowncommercial.gov.uk/wp-content/uploads/DigiGovExpo-2025-CCS-640x427.jpg"
+                                                    role="presentation" alt="" class="" loading="lazy" />
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <ul class="list--inline pagination govuk-body news-pagination">
+
+
+
+
+
+                            <li class="pagination__item active"><span class="visuallyhidden">Page </span>1
+                            </li>
+                            <li class="pagination__item">
+                                <a href="/news/2?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"><span
+                                        class="visuallyhidden">Page </span>2
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="/news/3?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"><span
+                                        class="visuallyhidden">Page </span>3
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="/news/4?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"><span
+                                        class="visuallyhidden">Page </span>4
+                                </a>
+                            </li>
+                            <li class="pagination__item">
+                                <a href="/news/5?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"><span
+                                        class="visuallyhidden">Page </span>5
+                                </a>
+                            </li>
+                            <li class="pagination__item">…</li>
+                            <li class="pagination__item">
+                                <a
+                                    href="/news/139?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"><span
+                                        class="visuallyhidden">Page </span>139
+                                </a>
+                            </li>
+
+
+
+                            <li class="pagination__item pagination__item--next">
+                                <a href="/news/2?allCategories=allCategories&amp;allSectors=allSectors&amp;allPS=allPS"
+                                    rel="next">
+                                    <span>Next</span> <span class="visuallyhidden">page</span>
+                                    <span class="icon">
+                                        <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z"
+                                                fill="#007194" fill-rule="evenodd" />
+                                        </svg>
+                                    </span> </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href, 'page_type': 'news' });</script>
+        </main>
+
+        <!-- Vue and Custom JavaScript -->
+        <script src="/assets/scripts/libraries/vue.min.js?v=1"></script>
+
+        <script>
+            /**
+            * Function to test if the browser supports ES6 template literals
+            */
+            function supportsLiterals() {
+                try {
+                    return eval("''===``");
+                }
+                catch (e) {
+                    return false;
+                }
+            }
+
+            if (!('Promise' in window) || !supportsLiterals() || !window.fetch) {
+                throw new Error("Your browser doesn't support the necessary JavaScript functions to use the enhanced search and has been served a non-JavaScript version");
+            }
+
+            var apiBaseUrl = 'https://www.crowncommercial.gov.uk/api/';
+            var appBaseUrl = 'https://www.crowncommercial.gov.uk';
+            var pageNumber = 1;
+            var checkedCategories = [];
+            var checkedSectors = [];
+            var checkedProducts_services = [];
+            var whitepaper = false;
+            var webinar = false;
+            var digitalBrochure = false;
+            var checkedDigitalDownload = [];
+            var allDigitalDownload = [];
+
+
+
+
+
+
+
+
+
+            var allDigitalDownload = Array.from([176]);
+
+
+            Vue.component('results-pagination', {
+                delimiters: ['{[', ']}'],
+                props: {
+                    currentPage: Number,
+                    totalResults: Number,
+                    numberOfPages: Number,
+                },
+                computed: {
+                    nextPage: function () {
+                        if (this.currentPage == this.numberOfPages) {
+                            return this.currentPage;
+                        }
+                        return this.currentPage + 1;
+                    },
+                    previousPage: function () {
+                        if (this.currentPage == 1) {
+                            return this.currentPage;
+                        }
+                        return this.currentPage - 1;
+                    },
+                    paginationStartNumber: function () {
+                        // start page defaults to 2 (second page) because the
+                        // first page link is always output by default
+                        var linksStartPage = 1;
+
+                        // if the start page is at the beginning of the pagination
+                        // then account for this
+                        if ((this.currentPage - 2) < 2) {
+                            linksStartPage = 2;
+                        } else {
+                            // otherwise the start page is equal to the current
+                            // page minus 2, this means that the pagination should
+                            // have a couple of links either side of the current
+                            // page, e.g.   2 3 [4] 5 6
+                            linksStartPage = this.currentPage - 2;
+                        }
+
+                        // if the start page is very close to the last page, then
+                        // account for this
+                        if ((this.currentPage + 2) > this.numberOfPages) {
+                            linksStartPage = linksStartPage - 2;
+                        }
+
+                        if (linksStartPage <= 1) {
+                            linksStartPage = 2;
+                        }
+
+                        return linksStartPage;
+                    },
+                    paginationEndNumber: function () {
+                        var linksEndPage = this.paginationStartNumber + 4;
+
+                        // if there aren't more pages than the number we
+                        // want to show by minimum, then the end page is just equal
+                        // to the final result page
+
+                        if ((linksEndPage >= this.numberOfPages)) {
+                            // minus 1 because the last page is always output
+                            linksEndPage = this.numberOfPages - 1;
+                        }
+
+                        if (this.numberOfPages == 1) {
+                            linksEndPage = 1;
+                        }
+
+                        return linksEndPage;
+                    }
+                },
+                methods: {
+                    updatePageNumber: function (event, newPage) {
+                        event.preventDefault();
+                        this.$emit('update-page', newPage);
+                        search.fetchAPIData(null, newPage)
+                    },
+                    range: function (start, end) {
+                        return Array(end - start + 1).fill().map(function (_, idx) {
+                            return start + idx;
+                        });
+                    }
+                },
+                template:
+                    `
+    <div>
+        <ul class="list--inline pagination govuk-body" role="list" aria-label="Pagination" v-if="numberOfPages > 0">
+            <li class="pagination__item pagination__item--previous" v-if="currentPage != 1">
+                <a href="#" rel="previous" v-on:click="updatePageNumber($event, previousPage)">
+                    <span class="icon">
+                        <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6.7 0l1.4 1.4-4.3 4.3h13v2H3.9l4.2 4-1.4 1.4L0 6.7z" fill="#007194" fill-rule="evenodd"></path></svg>
+                    </span>
+                    <span>Previous</span> <span class="visuallyhidden">page</span>
+                </a>
+            </li>
+
+            <li class="pagination__item">
+                <span v-if="currentPage == 1"><span class="visuallyhidden">Page </span>1</span>
+                <a v-else href="#" v-on:click="updatePageNumber($event, 1)"><span class="visuallyhidden">Page </span>1</a>
+            </li>
+
+            <li class="pagination__item" v-if="paginationStartNumber > 2">…</li>
+
+            <li class="pagination__item" v-for="page in range(paginationStartNumber, paginationEndNumber)" v-if="numberOfPages > 1">
+                <span v-if="page == currentPage"><span class="visuallyhidden">Page </span>{[ page ]}</span>
+                <a v-else href="#" v-on:click="updatePageNumber($event, page)"><span class="visuallyhidden">Page </span>{[ page ]}</a>
+            </li>
+
+            <li class="pagination__item" v-if="(paginationEndNumber + 1) < numberOfPages">…</li>
+
+            <li class="pagination__item" v-if="numberOfPages > 1">
+                <span v-if="currentPage == numberOfPages"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</span>
+                <a v-else href="#" v-on:click="updatePageNumber($event, numberOfPages)"><span class="visuallyhidden">Page </span>{[ numberOfPages ]}</a>
+            </li>
+
+            <li class="pagination__item pagination__item--next" v-if="currentPage != numberOfPages">
+                <a href="#" rel="next" v-on:click="updatePageNumber($event, nextPage)">
+                    <span>Next</span> <span class="visuallyhidden">page</span>
+                    <span class="icon">
+                        <svg width="17" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M10.1 0L8.7 1.4 13 5.7H0v2h12.9l-4.2 4 1.4 1.4 6.7-6.4z" fill="#007194" fill-rule="evenodd"></path></svg>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    `
+            });
+
+
+            var search = new Vue({
+                delimiters: ['{[', ']}'],
+                el: '#main-content',
+                mounted: function () {
+                    this.categoriesFilter();
+                    this.sectorsFilter();
+                    this.productsServicesFilter();
+                    this.otherPostType();
+                },
+                data: {
+                    javascriptVersion: true,
+                    results: "",
+                    responseAvailable: null,
+                    emptyResult: false,
+                    apiURL: apiBaseUrl + "news?",
+                    checkedCategories: checkedCategories,
+                    checkedSectors: checkedSectors,
+                    checkedProducts_services: checkedProducts_services,
+                    whitepaper: whitepaper,
+                    webinar: webinar,
+                    digitalBrochure: digitalBrochure,
+                    checkedDigitalDownload: checkedDigitalDownload,
+                    allDigitalDownload: allDigitalDownload,
+                    currentPage: pageNumber,
+                    numberOfPages: Number,
+                    totalResults: Number,
+
+                    popstateLoad: false
+                },
+                created: function () {
+                    const hideWithOutJS = document.querySelectorAll('.hideWithoutJS');
+
+                    hideWithOutJS.forEach(card => {
+                        if (card.classList.contains('govuk-visually-hidden')) {
+                            card.classList.remove('govuk-visually-hidden');
+                        }
+                    });
+
+                    // unfortunately we have to update the results when we instantiate
+                    // the Vue app so it hooks in all the correct event handlers etc.
+                    this.fetchAPIData(null, this.currentPage);
+
+                    // setup popstate event listener for History API
+                    this.setupHistoryApi();
+                },
+                watch: {
+                    searchRequestUrl: function () {
+                        // if the searchRequestUrl hasn't been updated by a popstate
+                        // event (back/forward button) then we push a state item to the
+                        // JS History API
+                        if (this.popstateLoad === false) {
+                            history.pushState({
+                                checkedCategories: this.checkedCategories,
+                                checkedSectors: this.checkedSectors,
+                                checkedProducts_services: this.checkedProducts_services,
+                                whitepaper: this.whitepaper,
+                                webinar: this.webinar,
+                                digitalBrochure: this.digitalBrochure,
+                                checkedDigitalDownload: checkedDigitalDownload,
+                            }, 'News', this.frontendSearchUrl);
+                        }
+
+                        // reset the popstateLoad property to false
+                        this.popstateLoad = false;
+                    }
+                },
+                computed: {
+                    frontendQueryUrl: function () {
+                        var queryUrl = '/?';
+
+                        if (this.checkedCategories.length != 0) {
+                            queryUrl += '&categories=' + this.checkedCategories.join();
+                        }
+
+                        if (this.whitepaper == true) {
+                            queryUrl += '&whitepaper=1';
+                        }
+
+                        if (this.webinar == true) {
+                            queryUrl += '&webinar=1';
+                        }
+
+                        if (this.digitalBrochure == true) {
+                            queryUrl += '&digitalBrochure=1';
+                        }
+
+                        if (this.checkedSectors.length != 0) {
+                            queryUrl += '&sectors=' + this.checkedSectors.join();
+                        }
+
+                        if (this.checkedProducts_services.length != 0) {
+                            queryUrl += '&products_services=' + this.checkedProducts_services.join();
+                        }
+
+                        if (this.checkedDigitalDownload.length != 0) {
+                            queryUrl += '&digitalDownload=' + this.checkedDigitalDownload.join();
+                        }
+
+                        if (this.currentPage) {
+                            queryUrl += '&page=' + this.currentPage;
+                        }
+
+                        queryUrl += this.utmTagsRemain();
+
+                        return queryUrl != '/?' ? queryUrl : "";
+
+                    },
+                    frontendSearchUrl: function () {
+                        var searchUrl = '/news' + this.frontendQueryUrl;
+                        return searchUrl;
+                    }
+                },
+                methods: {
+                    utmTagsRemain: function () {
+                        urlParams = new URLSearchParams(window.location.href);
+
+                        utmParams = '';
+
+                        for (var param of urlParams) {
+                            [key, value] = param;
+
+                            if (key.startsWith("utm")) {
+                                utmParams += `&${key}=${value}`;
+                            }
+                        }
+
+                        if (utmParams != '') {
+                            return utmParams;
+                        }
+                        return "";
+                    },
+                    formatDate: function (date) {
+                        var self = this;
+                        date = new Date(Date.parse(date));
+                        const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][date.getMonth()];
+                        return date.getDate() + ' ' + month + ' ' + date.getFullYear();
+
+                    },
+                    categoriesFilter: function (categoriesSlug) {
+                        var self = this;
+                        var categoriesFilter = "";
+
+                        if (self.checkedCategories.includes("allCategories")) {
+                            self.setOtherPostTypeToFalse();
+                            self.checkedCategories = [];
+                        } else if (self.checkedCategories.length != 0) {
+                            document.getElementById("allCategories").checked = false;
+                            categoriesFilter = "&categories=" + self.checkedCategories.join();
+
+                            self.whitepaper = self.whitepaper === false ? false : self.whitepaper;
+                            self.webinar = self.webinar === false ? false : self.webinar;
+                            self.digitalBrochure = self.digitalBrochure === false ? false : self.digitalBrochure;
+                        }
+
+                        return categoriesFilter;
+                    },
+                    sectorsFilter: function (sectorSlug) {
+                        var self = this;
+                        var sectorsFilter = "";
+
+                        if (self.checkedSectors.includes("allSectors") || self.checkedSectors.length == 0 || self.checkedSectors.length == "10") {
+                            self.checkedSectors = [];
+                            document.getElementById("allSectors").checked = true;
+                            document.getElementById(sectorSlug) != null ? document.getElementById(sectorSlug).checked = false : null
+                        } else {
+                            document.getElementById("allSectors").checked = false;
+                            sectorsFilter = "&sectors=" + self.checkedSectors.join()
+                        }
+
+                        return sectorsFilter;
+                    },
+                    productsServicesFilter: function (psSlug) {
+                        var self = this;
+                        var products_servicesFilter = "";
+
+                        if (self.checkedProducts_services.includes("allPS") || self.checkedProducts_services.length == 0 || self.checkedProducts_services.length == "22") {
+                            self.checkedProducts_services = [];
+                            document.getElementById("allPS").checked = true;
+                            document.getElementById(psSlug) != null ? document.getElementById(psSlug).checked = false : null
+                        } else {
+                            document.getElementById("allPS").checked = false;
+                            products_servicesFilter = "&products_services=" + self.checkedProducts_services.join()
+                        }
+
+                        return products_servicesFilter;
+                    },
+                    otherPostType: function (categoriesSlug) {
+                        var self = this;
+                        var otherPostType = "";
+                        var allCategoriesClear = this.whitepaper === false && this.webinar === false && this.digitalBrochure === false && this.checkedCategories.length == 0 && this.checkedDigitalDownload.length == 0;
+
+                        if (allCategoriesClear) {
+                            document.getElementById("allCategories").checked = true;
+                            return "&whitepaper=1&webinar=1&digitalBrochure=1&digitalDownload=" + self.allDigitalDownload
+                        } else if (this.checkedCategories.length == "5" && this.whitepaper && this.webinar && this.digitalBrochure && this.checkedDigitalDownload.length == this.allDigitalDownload.length) {
+                            this.checkedCategories = [];
+                            this.checkedDigitalDownload = [];
+                            self.setOtherPostTypeToFalse();
+                            document.getElementById(categoriesSlug) != null ? document.getElementById(categoriesSlug).checked = false : null
+                            document.getElementById("allCategories").checked = true;
+                            document.getElementById("whitepaper").checked = false;
+                            document.getElementById("webinar").checked = false;
+                            document.getElementById("digitalBrochure").checked = false;
+                            return "&whitepaper=1&webinar=1&digitalBrochure=1&digitalDownload=" + self.allDigitalDownload
+                        } else {
+                            otherPostType = this.whitepaper ? otherPostType + "&whitepaper=1" : otherPostType;
+                            otherPostType = this.webinar ? otherPostType + "&webinar=1" : otherPostType;
+                            otherPostType = this.digitalBrochure ? otherPostType + "&digitalBrochure=1" : otherPostType;
+                            otherPostType = this.checkedCategories.length == 0 ? otherPostType + "&noPost=1" : otherPostType;
+                            otherPostType = this.checkedDigitalDownload.length != 0 ? otherPostType + "&digitalDownload=" + self.checkedDigitalDownload.join() : otherPostType;
+                            document.getElementById("allCategories").checked = false;
+                        }
+
+                        return otherPostType;
+                    },
+                    setOtherPostTypeToFalse: function () {
+                        var self = this;
+                        self.whitepaper = false;
+                        self.webinar = false;
+                        self.digitalBrochure = false;
+                        self.checkedDigitalDownload = [];
+                    },
+                    searchRequestUrl: function (categoriesSlug, page) {
+
+                        fetchURL = this.apiURL + this.categoriesFilter(categoriesSlug) + this.sectorsFilter(categoriesSlug) + this.productsServicesFilter(categoriesSlug) + this.otherPostType(categoriesSlug);
+
+                        fetchURL = fetchURL + "&per_page=5&page=" + this.currentPage;
+
+                        if (this.popstateLoad === false) {
+                            history.pushState({
+                                checkedCategories: this.checkedCategories,
+                                checkedSectors: this.checkedSectors,
+                                checkedProducts_services: this.checkedProducts_services,
+                                whitepaper: this.whitepaper,
+                                webinar: this.webinar,
+                                digitalBrochure: this.digitalBrochure,
+                                checkedDigitalDownload: checkedDigitalDownload
+                            }, 'Search suppliers - CCS', this.frontendSearchUrl);
+                        }
+
+                        // reset the popstateLoad property to false
+                        this.popstateLoad = false;
+
+                        return fetchURL;
+                    },
+                    fetchAPIData: function (categoriesSlug, page) {
+                        var self = this;
+                        this.responseAvailable = false;
+                        this.emptyResult = false;
+                        const utmTags = '?' + this.utmTagsRemain().substring(1);
+
+                        this.currentPage = page === null ? 1 : page;
+                        var requestUrl = this.searchRequestUrl(categoriesSlug, this.currentPage);
+                        console.log(requestUrl);
+                        fetch(requestUrl)
+                            .then(async function (response) {
+                                if (!response.ok) {
+                                    throw new Error('HTTP error, status = ' + response.status);
+                                }
+                                return response.json();
+                            })
+                            .then(function (jsonResponse) {
+                                self.numberOfPages = jsonResponse.meta['X-WP-TotalPages'];
+                                self.totalResults = jsonResponse.meta['X-WP-Total'];
+                                for (var i = 0; i < jsonResponse.body.length; i++) {
+                                    jsonResponse.body[i].modifiedDate = self.formatDate(jsonResponse.body[i].modified);
+                                    jsonResponse.body[i].postType = jsonResponse.body[i].acf.category_type;
+                                    jsonResponse.body[i].index = i;
+
+                                    switch (jsonResponse.body[i].postType) {
+                                        case 'Whitepaper':
+                                            postLink = appBaseUrl + "/whitepaper/request/" + jsonResponse.body[i].id + "/" + jsonResponse.body[i].slug + utmTags;
+                                            postDescription = jsonResponse.body[i].excerpt.rendered;
+                                            categoriesLink = appBaseUrl + "/news/?&whitepaper=1";
+                                            break;
+                                        case 'Webinar':
+                                            postLink = appBaseUrl + "/webinar/request/" + jsonResponse.body[i].id + "/" + jsonResponse.body[i].slug + utmTags;
+                                            postDescription = jsonResponse.body[i].excerpt.rendered;
+                                            categoriesLink = appBaseUrl + "/news/?&webinar=1";
+                                            break;
+                                        case 'Digital Brochure':
+                                            postLink = appBaseUrl + "/digital_brochure/request/" + jsonResponse.body[i].id + "/" + jsonResponse.body[i].slug + utmTags;
+                                            postDescription = jsonResponse.body[i].excerpt.rendered;
+                                            categoriesLink = appBaseUrl + "/news/?&digitalBrochure=1";
+                                            break;
+                                        case 'Downloadable':
+                                            jsonResponse.body[i].postType = jsonResponse.body[i].acf.content_type_name;
+                                            postLink = appBaseUrl + "/downloadable-resource/request/" + jsonResponse.body[i].id + "/" + jsonResponse.body[i].slug + utmTags;
+                                            postDescription = jsonResponse.body[i].excerpt.rendered;
+                                            categoriesLink = appBaseUrl + "/news/?digitalDownload=" + jsonResponse.body[i].acf.content_type_id;
+                                            break;
+                                        default:
+                                            postLink = appBaseUrl + "/news/" + jsonResponse.body[i].slug;
+                                            postDescription = jsonResponse.body[i].acf.post_lead_text
+                                            categoriesLink = appBaseUrl + "/news?categories=" + jsonResponse.body[i].categories[0];
+                                            break;
+                                    }
+
+                                    jsonResponse.body[i].postLink = postLink;
+                                    jsonResponse.body[i].postDescription = postDescription;
+                                    jsonResponse.body[i].CategoriesLink = categoriesLink
+
+
+                                    jsonResponse.body[i].imageSet = false;
+                                    if (jsonResponse.body[i].acf.featured_image_url != false) {
+                                        jsonResponse.body[i].imageSet = true;
+                                        jsonResponse.body[i].imageURL = jsonResponse.body[i].acf.featured_image_url;
+                                        jsonResponse.body[i].altText = jsonResponse.body[i].acf.alt_text;
+                                    }
+                                }
+                                self.results = jsonResponse.body;
+                                if (Object.keys(jsonResponse.body).length === 0) {
+                                    self.emptyResult = true;
+                                    self.responseAvailable = null;
+                                } else {
+                                    self.responseAvailable = true;
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log('An error occurred');
+                                console.log(error);
+                                this.responseAvailable = false;
+                            });
+                    },
+                    updatePageValue: function (newPageValue) {
+                        this.currentPage = newPageValue;
+                    },
+                    setupHistoryApi: function () {
+                        var self = this;
+                        window.onpopstate = function (event) {
+                            // set the popstate variable to true so that we can
+                            // tell in other parts of the code that the state change
+                            // is being caused by the back/forward button
+                            self.popstateLoad = true;
+
+                            if (event.state == null) {
+                                self.checkedCategories = [];
+                                self.checkedSectors = [];
+                                self.checkedProducts_services = []
+                                self.whitepaper = null
+                                self.webinar = null
+                                self.digitalBrochure = null
+                                self.checkedDigitalDownload = []
+                                return;
+                            }
+
+                            self.checkedCategories = event.state.checkedCategories;
+                            self.checkedSectors = event.state.checkedSectors;
+                            self.checkedProducts_services = event.checkedProducts_services;
+                            self.whitepaper = event.state.whitepaper;
+                            self.webinar = event.state.webinar;
+                            self.digitalBrochure = event.state.digitalBrochure;
+                            self.checkedDigitalDownload = event.state.checkedDigitalDownload;
+                        }
+                    },
+                }
+            });
+        </script>
+    </div>
+</body>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+
+{% endblock %}

@@ -1,0 +1,269 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}Corporate and governance - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    Corporate information
+                </h1>
+                <p class="govuk-body-l">
+                    Learn about our corporate structure, governance framework, leadership team, and strategic objectives
+                    as we deliver value for the public sector.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- Corporate Information Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/corporate-information" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Corporate information
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access comprehensive corporate information including our structure,
+                                                    policies, and governance framework.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Careers at CCS Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/careers" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Careers at CCS
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Explore career opportunities and join our team of procurement
+                                                    professionals delivering value for the public sector.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Crown Commercial Service Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/about-ccs" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Crown Commercial Service
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about our organisation, mission, and role as the UK's largest
+                                                    public procurement organisation.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Transforming Public Procurement Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/transforming-public-procurement"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Transforming public procurement
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover our initiatives and strategies for modernizing and
+                                                    improving public sector procurement processes.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Bribery and corruption statement Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/bribery-and-corruption"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Bribery and corruption statement
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Review our commitment to preventing bribery and corruption
+                                                    in all our business activities and relationships.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Carbon Reduction Plan Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/carbon-reduction-plan" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Carbon reduction plan
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about our environmental commitments and carbon reduction
+                                                    strategies to support sustainability goals.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Public Sector Equality Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/public-sector-equality"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Public sector equality
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Understand our commitment to equality, diversity, and inclusion
+                                                    in all aspects of our operations and services.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Vulnerability Disclosure Policy Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/vulnerability-disclosure"
+                                        class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Vulnerability disclosure policy
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Access our policy for reporting and addressing security
+                                                    vulnerabilities in our systems and services.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- About CCS Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/about-ccs" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                About CCS
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover our mission, vision, and role as the UK's largest public
+                                                    procurement organisation, delivering value for the public sector.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Value Card -->
+                                <li class="card-list__item">
+                                    <a href="https://www.crowncommercial.gov.uk/social-value" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Social value
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Learn about our commitment to creating social value and positive
+                                                    impact through our procurement activities and partnerships.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Transparency and accountability</h2>
+                <p class="govuk-body">We are committed to transparency and open governance. Our corporate information
+                    helps stakeholders understand our operations and impact:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Clear governance structures and decision-making processes</li>
+                    <li>Regular reporting on performance and achievements</li>
+                    <li>Open access to corporate policies and procedures</li>
+                    <li>Engagement with stakeholders and public sector partners</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our corporate team for more information</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+{% endblock %}

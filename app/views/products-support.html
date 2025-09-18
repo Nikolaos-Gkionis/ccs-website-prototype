@@ -1,0 +1,182 @@
+{% extends "layouts/ccs-layout.html" %}
+
+{% block pageTitle %}Search - Crown Commercial Service{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile-linear.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card hover effects */
+    .card-link:hover .govuk-heading-m {
+        text-decoration: none !important;
+    }
+
+    /* Ensure the entire card is clickable */
+    .card-link {
+        cursor: pointer;
+    }
+
+    /* Enhanced card styling on hover */
+    .card-link:hover .card-list__item__wrapper {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #FEC901 !important;
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Smooth transition for the default state */
+    .card-list__item__wrapper {
+        transition: border-top 0.2s ease, box-shadow 0.2s ease;
+    }
+</style>
+
+<div class="govuk-width-container">
+
+    {% include "includes/phase.njk" %}
+
+    <div class="govuk-main-wrapper">
+
+        <!-- Page header -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+                <h1 class="govuk-heading-xl">
+                    Search
+                </h1>
+                <p class="govuk-body-l">
+                    Find and access commercial agreements, suppliers, and procurement opportunities across the public
+                    sector.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards section -->
+        <div class="component cards">
+            <div class="govuk-width-container">
+                <div class="--greyed-bg">
+                    <div class="govuk-grid-row ccs-grid-row--loose">
+                        <div class="govuk-grid-column-full">
+                            <ul class="card-list govuk-!-margin-top-6 card-list--two-on-large">
+
+                                <!-- Search Agreements Card -->
+                                <li class="card-list__item">
+                                    <a href="/ccs-home-beta/search-agreements" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Search agreements
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Find and explore commercial agreements available through Crown
+                                                    Commercial Service. Search by category, sector, or supplier to find
+                                                    the right
+                                                    agreement for your needs.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Upcoming Agreements Card -->
+                                <li class="card-list__item">
+                                    <a href="/agreements/upcoming" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Upcoming agreements
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Stay informed about new commercial agreements in development. Find
+                                                    upcoming procurement opportunities.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Search Suppliers Card -->
+                                <li class="card-list__item">
+                                    <a href="/suppliers" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Search suppliers
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Discover suppliers registered on our commercial agreements. Find
+                                                    companies that can provide the goods and services you need.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Products and Services Card -->
+                                <li class="card-list__item">
+                                    <a href="/products-and-services" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Products and services
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Explore the wide range of products and services available through our
+                                                    commercial agreements. Find solutions for your specific
+                                                    requirements.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Sectors Card -->
+                                <li class="card-list__item">
+                                    <a href="/sectors" class="card-link"
+                                        style="text-decoration: none; color: inherit; display: block;">
+                                        <div class="card-list__item__wrapper">
+                                            <h3 class="govuk-heading-m"
+                                                style="text-decoration: underline; transition: text-decoration 0.2s ease;">
+                                                Sectors
+                                            </h3>
+                                            <div class="wysiwyg-content">
+                                                <p>Browse commercial agreements and services organized by sector. Find
+                                                    specialized solutions for your industry or area of work.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional information section -->
+        <div class="govuk-grid-row" style="margin-top: 40px;">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l">Need help finding the right agreement?</h2>
+                <p class="govuk-body">Our team can help you identify the most suitable commercial agreements for your
+                    requirements. Contact us for guidance on:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Understanding agreement categories and sectors</li>
+                    <li>Finding suppliers for specific requirements</li>
+                    <li>Accessing upcoming procurement opportunities</li>
+                    <li>Understanding framework agreement benefits</li>
+                </ul>
+                <p class="govuk-body">
+                    <a href="/contact" class="govuk-link">Contact our team for support</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+{% endblock %}

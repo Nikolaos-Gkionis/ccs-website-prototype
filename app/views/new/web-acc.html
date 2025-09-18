@@ -1,0 +1,1250 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+
+
+    <title> Contact Crown Commercial Services - CCS </title>
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <script>(function (H) {
+            H.className = H.className.replace(/\bno-js\b/, 'js')
+        })(document.documentElement)</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <style>
+        :root {
+            --govuk-frontend-version: "5.4.0";
+            --govuk-frontend-breakpoint-mobile: 20rem;
+            --govuk-frontend-breakpoint-tablet: 40.0625rem;
+            --govuk-frontend-breakpoint-desktop: 48.0625rem;
+        }
+    </style>
+
+    <link rel="preload" href="/assets/styles/styles.min.css?v=1.73" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/assets/styles/styles.min.css?v=1.73">
+    </noscript>
+
+    <link rel="icon" href="/assets/images/favicon.ico?v=1" />
+
+
+    <script>
+
+        var emailRegex = /(([^<>()\[\]\\.,;:\s@"%]+(\.[^<>()\[\]\\.,;:\s@"%]+)*)|(".+"))(@|%40)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+
+        function extractParams() {
+            var urlParams = {},
+                match,
+                search = /([^&=]+)=?([^&]*)/g,
+                query = window.location.search.substring(1);
+            while (match = search.exec(query)) {
+                urlParams[match[1]] = match[2];
+            }
+            return urlParams
+        }
+
+        function rewriteURL(urlParams) {
+            var keys = Object.keys(urlParams).sort();
+            var params = "?";
+
+            for (var i = 0; i < keys.length; i++) {
+                if (i > 0) {
+                    params = params.concat("&")
+                }
+                params = params.concat(keys[i] + "=" + urlParams[keys[i]])
+            }
+            return window.location.protocol + "//" + window.location.host + window.location.pathname + params + window.location.hash
+        }
+
+        if (Object.keys(window.location.search).length === 0) {
+            var host = window.location.host;
+            var pathname = window.location.pathname
+            var url = host + pathname;
+
+            if (url.match(emailRegex) !== null) {
+                window.history.replaceState({}, '', 'EMAIL_REDACTED');
+            }
+
+        } else {
+            var urlParams = extractParams()
+            // look for any email and replace it 
+            for (var key in urlParams) {
+                urlParams[key] = decodeURIComponent(urlParams[key]).replace(emailRegex, "EMAIL_REDACTED")
+            }
+
+            var newURL = rewriteURL(urlParams);
+
+            if (newURL !== window.location.href) {
+                window.history.replaceState({}, "", newURL)
+            }
+        }
+
+        window.readCookie = function (name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1, c.length);
+                }
+                if (c.indexOf(nameEQ) == 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            return null;
+        };
+
+        var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+        if ('prod' != "dev") {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5NQGRQN');
+        }
+    </script>
+    <script src="/assets/scripts/dataLayer.js?v=1.0"></script>
+
+</head>
+
+
+
+<body class="govuk-template__body   pillar--none">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <div id="app-env" style="display: none" data-env="prod"></div>
+
+
+
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NQGRQN" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <div class="cookie-message" id="cookie-consent-container" aria-label="Cookie Policy" aria-live="polite"
+        style="display: none;">
+        <div class="cookie-message__inner govuk-width-container site-container">
+            <h2 class="govuk-heading-m">Cookies on crowncommercial.gov.uk</h2>
+            <div class="cookie-message__intro">
+                <p>We use cookies to collect information about how you use crowncommercial.gov.uk.<br><br> We use this
+                    information to make the website work as well as possible and improve government services.</p>
+            </div>
+            <div class="cookie-message__actions">
+                <button
+                    class="govuk-!-font-size-18 govuk-!-font-weight-bold govuk-button gtm--accept-cookies-in-banner">Accept
+                    all cookies</button>
+                <a class="govuk-!-font-size-18 govuk-!-font-weight-bold govuk-button" href="/cookie-settings">Set cookie
+                    preferences</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/scripts/libraries/cookies-opt-in.js?v=3.0.4"></script>
+
+    <div id="skiplink-container">
+        <div>
+            <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+        </div>
+    </div>
+
+
+    <header class="header-global" role="banner">
+        <div class="ccs-width-container">
+
+
+
+
+            <div class="nav-wrapper">
+
+                <a href="/" class="logo">
+                    <picture>
+                        <source srcset="/assets/images/CCS_WHITE_UPDATED_AW.png" media="(min-width: 400px)" />
+                        <source srcset="/assets/images/CCS_WHITE_UPDATED_AW.png" media="(min-width: 1000px)" />
+                        <img class="navLogo" src="/assets/images/CCS_WHITE_UPDATED_AW.svg" alt="Go to CCS Homepage"
+                            width="140" height="117" />
+                    </picture>
+                </a>
+
+
+
+                <button class="global-navigation__toggler" data-toggler="nav">
+                    <span>Menu</span> <span class="icon-menu-closed"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="12" viewBox="0 0 15 12" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14.9561 3.59459L13.3615 2L7.47022 7.89124L1.59508 2.01609L0.000483532 3.61069L7.47187 11.0821L9.06646 9.48748L9.06482 9.48583L14.9561 3.59459Z"
+                                fill="#9B1A47" />
+                        </svg></span>
+                    <span class="icon-menu-open" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="12" viewBox="0 0 15 12" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.0439452 8.40541L1.63854 10L7.52978 4.10876L13.4049 9.98391L14.9995 8.38931L7.52813 0.917931L5.93354 2.51252L5.93518 2.51417L0.0439452 8.40541Z"
+                                fill="#9B1A47" />
+                        </svg></span>
+                </button>
+
+                <nav class="global-navigation" role="navigation" data-toggle="nav"
+                    data-app-uri="http://www.crowncommercial.gov.uk/contact" data-app-pathinfo="/contact">
+
+                    <ul class="nav-list nav-list--secondary">
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/about-ccs" data-evt-placement="header">About</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/information-for-buyers-and-suppliers"
+                                data-evt-placement="header">Information for buyers and suppliers</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/social-value" data-evt-placement="header">Social
+                                value</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/news" data-evt-placement="header">News</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/events" data-evt-placement="header">Events</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  item-current  " href="/contact"
+                                data-evt-placement="header">Contact</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="tel:0345%20410%202222" data-evt-placement="header">call
+                                us: 0345 410 2222</a>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav-list nav-list--primary">
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/agreements" data-evt-placement="header">Search
+                                agreements</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/suppliers" data-evt-placement="header">Search
+                                suppliers</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/agreements/upcoming" data-evt-placement="header">Upcoming
+                                agreements</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/products-and-services"
+                                data-evt-placement="header">Products and services</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link  " href="/sectors" data-evt-placement="header">Sectors</a>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav-list nav-list-ppg">
+                        <li class="nav-list__item">
+                            <p class="nav-list__link" data-evt-placement="header">Public Procurement Gateway</p>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link" href="http://identify.crowncommercial.gov.uk/"
+                                data-evt-placement="header">Sign In</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a class="nav-list__link" href="https://identify.crowncommercial.gov.uk/manage-org/register"
+                                data-evt-placement="header">Create account</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <div class="govuk-width-container">
+
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    This is a new service – your
+                    <a href=https://crowncommercial.qualtrics.com/jfe/form/SV_b2hqVz3TYDCxN2u>feedback</a> will help us
+                    to improve it.
+                </span>
+            </p>
+
+        </div>
+
+        <main id="main-content" class="govuk-main-wrapper">
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                    <h1 class="govuk-heading-xl page-title">Contact CCS</h1>
+                    <p class="govuk-body-l">You can use the contact form below to ask a question or give us feedback</p>
+
+                    <form class="govuk-!-width-three-quarters pardot-submit" action="/contact/submit" method="POST"
+                        novalidate data-evt-type='contact_form' enctype="multipart/form-data">
+
+                        <input type="hidden" id="subject" maxlength="80" name="subject" size="20"
+                            value="Website - Question" />
+                        <input type="hidden" name="00N4L000009OPAj" id="referrer" name="referrer" value="">
+
+                        <label hidden class="visuallyhidden" aria-hidden="true" for="surname">dummy hidden label</label>
+                        <input type="checkbox" id="surname" name="surname" value="1" style="display:none !important"
+                            tabindex="-1" autocomplete="off">
+
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset" aria-describedby="typeOfEnquiry">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    <h2 class="govuk-fieldset__heading" id="typeOfEnquiry">Type of enquiry</h2>
+                                </legend>
+                                <div id="how-contacted-conditional-hint" class="govuk-hint">Select one option.</div>
+                                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="how-contacted-conditional-1"
+                                            name="origin" type="radio" value="Website - Question" checked="">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="how-contacted-conditional-1">Ask a question</label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="how-contacted-conditional-2"
+                                            name="origin" type="radio" value="Website - Feedback">
+                                        <label class="govuk-label govuk-radios__label"
+                                            for="how-contacted-conditional-2">Feedback</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div id="">
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label" for="name">Name</label>
+
+
+                                <input class="govuk-input pardot-field gtm-form-start " id="name" maxlength="80"
+                                    name="name" size="20" type="text" value="" autocomplete="name" />
+                            </div>
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label" for="email">
+                                    Email </label>
+
+
+
+                                <input class="govuk-input pardot-email " id="email" maxlength="80" name="email"
+                                    size="20" type="email" value="" autocomplete="email" required />
+                            </div>
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label" for="jobTitle">
+                                    Job title </label>
+
+
+
+                                <input class="govuk-input " id="jobTitle" maxlength="100" name="jobTitle" size="20"
+                                    type="text" value="" autocomplete="organization-title" />
+                            </div>
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label" for="company">
+                                    Name of organisation </label>
+
+
+
+                                <input class="govuk-input pardot-field " id="company" maxlength="80" name="company"
+                                    size="20" type="text" value="" autocomplete="organization" />
+                            </div>
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label" for="phone" id="phone-label">
+                                    Telephone number (optional)
+                                </label>
+
+
+                                <input class="govuk-input " id="phone" maxlength="20" name="phone" size="20" type="text"
+                                    value="" autocomplete="tel" required />
+                            </div>
+
+                            <div class="govuk-form-group" id="callbackOptions">
+                                <fieldset class="govuk-fieldset" aria-describedby="callback">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                        <h2 class="govuk-fieldset__heading" id="callback">Do you need a callback?
+                                            (optional)</h2>
+                                    </legend>
+                                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="callback-1" name="00Nb0000009IXEg"
+                                                type="radio" value="Yes" data-aria-controls="conditional-callback-1"
+                                                aria-expanded="true">
+                                            <label class="govuk-label govuk-radios__label" for="callback-1">Yes</label>
+                                        </div>
+                                        <div class="govuk-radios__conditional" id="conditional-callback-1">
+                                            <div class="govuk-form-group">
+                                                <fieldset class="govuk-fieldset">
+                                                    <div class="govuk-radios" data-module="govuk-radios">
+                                                        <div class="govuk-radios__item">
+                                                            <input class="govuk-radios__input" id="callbackTimeslot-1"
+                                                                name="callbackTimeslot" type="radio"
+                                                                value="Between 9am to 12pm">
+                                                            <label class="govuk-label govuk-radios__label"
+                                                                for="callbackTimeslot-1">Between 9am to 12pm</label>
+                                                        </div>
+                                                        <div class="govuk-radios__item">
+                                                            <input class="govuk-radios__input" id="callbackTimeslot-2"
+                                                                name="callbackTimeslot" type="radio"
+                                                                value="Between 2pm to 5pm">
+                                                            <label class="govuk-label govuk-radios__label"
+                                                                for="callbackTimeslot-2">Between 2pm to 5pm</label>
+                                                        </div>
+                                                        <div class="govuk-radios__item">
+                                                            <input class="govuk-radios__input" id="callbackTimeslot-3"
+                                                                name="callbackTimeslot" type="radio"
+                                                                value="No preference">
+                                                            <label class="govuk-label govuk-radios__label"
+                                                                for="callbackTimeslot-3">No preference</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="callback-2" name="00Nb0000009IXEg"
+                                                type="radio" value="No">
+                                            <label class="govuk-label govuk-radios__label" for="callback-2">No</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="govuk-form-group ">
+                                <label id="more-detail-label" class="govuk-label" for="more-detail">Provide more
+                                    details</label>
+
+
+                                <div id="more-detail-hint" class="govuk-hint">Tell us more about your question or
+                                    describe the problem you are having. Include specific details such as the agreement
+                                    RM number (RMXXXX) or the name of the digital platform you are using.
+                                    <br /><br />Do not include personal or financial information, like your credit card
+                                    details.
+                                </div>
+                                <textarea maxlength="3000" class="govuk-textarea" style="margin-bottom: 0px; "
+                                    id="more-detail" name="more-detail" rows="10" aria-describedby="more-detail-hint"
+                                    required></textarea>
+                                <p class="govuk-hint">You can enter up to 3000 characters</p>
+                            </div>
+
+
+                            <div class="govuk-form-group ">
+                                <div class="govuk-hint">You can upload a file to support your query. If you wish to do
+                                    this, the file must be smaller than 10MB</div>
+                                <label class="govuk-label" for="attachment">Upload a file (optional)</label>
+
+
+                                <input class="govuk-file-upload " id="attachment" name="attachment" type="file">
+                            </div>
+
+                            <div class="govuk-form-group" id="contactedBeforeOptions">
+                                <fieldset class="govuk-fieldset" aria-describedby="contactedBefore">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                        <h2 class="govuk-fieldset__heading" id="contactedBefore">Have you contacted us
+                                            before? (optional)</h2>
+                                    </legend>
+                                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="contactedBefore-1"
+                                                name="contactedBefore" type="radio" value="Yes"
+                                                data-aria-controls="conditional-contactedBefore-1" aria-expanded="true">
+                                            <label class="govuk-label govuk-radios__label"
+                                                for="contactedBefore-1">Yes</label>
+                                        </div>
+                                        <div class="govuk-radios__conditional" id="conditional-contactedBefore-1">
+                                            <div class="govuk-form-group">
+                                                <label class="govuk-label" for="00N4L000009vOyr">Case Reference number
+                                                    (Optional)</label>
+                                                <div class="govuk-hint">If you have contacted us before you will have
+                                                    received a case reference number. Your case reference number will
+                                                    begin with a 0 and will be 7 digits long. It will be on all emails
+                                                    from our customer service team.</div>
+                                                <input class="govuk-input" id="00N4L000009vOyr" maxlength="7"
+                                                    name="00N4L000009vOyr" size="20" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="contactedBefore-2"
+                                                name="contactedBefore" type="radio" value="No">
+                                            <label class="govuk-label govuk-radios__label"
+                                                for="contactedBefore-2">No</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <input type="hidden" class="govuk-!-width-full" name="description"
+                                id="salesforce-textarea" />
+
+
+                            <p>To find out how we use your data, you can <a
+                                    href="https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice">read
+                                    our privacy notice</a>. </br>
+                                Once you submit your details, you will receive a confirmation email to let you know your
+                                case reference number and next steps.</p>
+
+                            <div class="govuk-form-group">
+                                <button data-prevent-double-click="true" data-module="govuk-button" type="submit"
+                                    id="submit"
+                                    class="--gem-c-button govuk-!-font-size-18 govuk-!-font-weight-bold govuk-button gtm-form-submit"
+                                    onclick="pushToDataLayer({'event':'form_submit', 'form_type':'Contact CCS', 'form_id': document.querySelector('[name=subject]').value })">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="contact_card">
+                        <h2 class="govuk-heading-m">Talk to us</h2>
+                        <p>You can also contact us by email or phone</p>
+                        <p>
+                            Email: <a href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a>
+                            <br>
+                            Telephone: <a href="tel:03454102222">0345 410 2222</a>
+                        </p>
+                        <p> When calling our customer service centre, be ready to give: your name, job title,
+                            organisation, email and any relevant framework numbers or departments.</p>
+
+                        <p>CCS customer services team is available Monday to Friday, 9am to 5pm.</p>
+                    </div>
+
+                    <script>
+                        var formType = "Contact CCS";
+                        var formID = document.querySelector('[name=subject]').value
+
+                        // condition for contact ccs form
+                        const radios = document.querySelectorAll('input[name="origin"]');
+
+                        radios.forEach((radio) => {
+                            if (radio.checked) {
+                                formID = radio.value;
+                            }
+                        });
+                        // condition for contact ccs form
+
+                        formStart(formType);
+                    </script>
+                    <script>pushToDataLayer({ 'event': 'page_view', 'page_referrer': window.location.href });</script>
+                    <script>
+
+                        const originCheckboxes = document.getElementsByName("origin");
+                        const customerTypeCheckboxes = document.getElementsByName("customerType");
+                        const contactWayCheckboxes = document.getElementsByName("contactWay");
+                        const formSubmitButton = document.getElementById("submit");
+
+                        dataCollectionFieldForSalesforce = document.getElementById("salesforce-textarea");
+
+
+                        document.querySelectorAll('input[name="00Nb0000009IXEg"]').forEach((option) => {
+                            option.addEventListener("change", function (event) {
+                                if (event.target.value == "Yes") {
+                                    setPhoneTextOptional(false);
+                                } else
+                                    setPhoneTextOptional(true);
+                            });
+                        });
+
+                        document.querySelectorAll('input[name="origin"]').forEach((option) => {
+                            option.addEventListener("change", function (event) {
+                                switch (event.target.value) {
+                                    case 'Website - Feedback':
+                                        document.getElementById("subject").value = "Website - Feedback";
+                                        break;
+                                    default:
+                                        document.getElementById("subject").value = "Website - Question";
+                                }
+                            });
+                        });
+
+                        formSubmitButton.addEventListener('click', function handler(e) {
+
+                            dataCollectionFieldForSalesforce.value = "";
+
+                            const fieldMoreDetail = document.getElementById("more-detail");
+                            var calledbackOptionAddedToDataField = false;
+
+                            dataCollectionFieldForSalesforce.value += prepareCheckboxOptionToSfField(originCheckboxes);
+                            dataCollectionFieldForSalesforce.value += prepareCheckboxOptionToSfField(customerTypeCheckboxes);
+                            dataCollectionFieldForSalesforce.value += prepareCheckboxOptionToSfField(contactWayCheckboxes);
+                            dataCollectionFieldForSalesforce.value += " " + fieldMoreDetail.name + ": " + fieldMoreDetail.value;
+
+                            this.removeEventListener('click', handler);
+
+                        }, false);
+
+                        function setPhoneTextOptional(toggle) {
+                            if (toggle) {
+                                document.getElementById("phone-label").textContent = "Telephone number (optional)";
+                            } else {
+                                document.getElementById("phone-label").textContent = "Telephone number";
+                            }
+                            if (document.getElementById("callback-1").checked) {
+                                document.getElementById("phone-label").textContent = "Telephone number";
+                            }
+
+                        }
+                        function prepareCheckboxOptionToSfField(checkboxesName) {
+                            for (var i = 0, length = checkboxesName.length; i < length; i++) {
+                                if (checkboxesName[i].checked) {
+                                    return checkboxesName[i].name + ": " + checkboxesName[i].value + ", \n";
+                                }
+                            }
+                            return "";
+                        }
+
+                    </script>
+
+                </div>
+
+                <div class="govuk-grid-column-one-third">
+                    <aside class="aside" role="complementary">
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Helpful Links</h2>
+                            <ul class="govuk-list govuk-!-font-size-19">
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/glossary">Glossary</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/start-buying">How
+                                        to buy</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/start-supplying">How
+                                        to supply</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/information-for-buyers-and-suppliers/transforming-public-procurement">Transforming
+                                        Public Procurement</a></li>
+                                <li><a class="govuk-link"
+                                        href="https://www.crowncommercial.gov.uk/news/?&categories=168&page=1">Procurement
+                                        Essentials</a></li>
+                            </ul>
+                        </div>
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Make a complaint</h2>
+                            <p>We're sorry you are unhappy with the service you have received from us. Let us know what
+                                went wrong so we can try to fix the problem.</a></p>
+                            <p><a href="/complaint ">I want to make a complaint.</a></p>
+                        </div>
+
+                        <div class="apollo-enclosure">
+                            <h2 class="aside__heading">Do you need help requesting agreement pricing?</h2>
+                            <p>If pricing is available you will find instructions on how to access pricing in the 'how
+                                to buy' section of the agreement webpage. <a class="govuk-link"
+                                    href="/agreements">Search for an agreement</a>.</p>
+                            <p>You will need to specify the framework (RM number) and lot(s) in your request.</p>
+
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <footer class="govuk-footer footer-global" role="contentinfo">
+
+        <a id="BackToTopButton" class="back-to-top-button" tabindex=0>Back to top
+            <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="arrow_upward">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+            </svg>
+        </a>
+
+        <div class="govuk-width-container ">
+
+            <div class="govuk-footer__navigation">
+
+                <div class="govuk-footer__section govuk-footer-remove-flex-grow">
+
+
+                    <h2 class="govuk-footer__heading govuk-!-font-size-22">Buy and supply</h2>
+
+                    <ul class="govuk-list govuk-!-font-size-18">
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.gov.uk/contracts-finder"
+                                data-evt-placement="footer">Contracts Finder</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.gov.uk/find-tender"
+                                data-evt-placement="footer">Find a Tender</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="/glossary" data-evt-placement="footer">Glossary</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/emarketplace-registration-form/"
+                                data-evt-placement="footer">Register for eMarketplace</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="/esourcing-training"
+                                data-evt-placement="footer">Register for eSourcing training</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="/esourcing-register"
+                                data-evt-placement="footer">Register for eSourcing tool</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://purchasingplatform.crowncommercial.gov.uk/mp-welcome"
+                                data-evt-placement="footer">Sign in to Purchasing Platform</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.applytosupply.digitalmarketplace.service.gov.uk/user/login"
+                                data-evt-placement="footer">Sign in to Digital Marketplace</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://fleetportal.crowncommercial.gov.uk/login.mth"
+                                data-evt-placement="footer">Sign in to fleet portal</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://buyers.mpuk.basware.com"
+                                data-evt-placement="footer">Sign in to eMarketplace</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://crowncommercialservice.bravosolution.co.uk/web/login.html"
+                                data-evt-placement="footer">Sign into eSourcing portal</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.reportmi.crowncommercial.gov.uk"
+                                data-evt-placement="footer">Submit your MI returns</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="/newsletter" data-evt-placement="footer">Subscribe to
+                                customer newsletter</a>
+
+
+                        </li>
+                    </ul>
+
+
+                </div>
+
+                <div class="govuk-footer__section">
+
+
+                    <h2 class="govuk-footer__heading govuk-!-font-size-22">About and contact</h2>
+
+                    <ul class="govuk-list govuk-!-font-size-18">
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/about-ccs/"
+                                data-evt-placement="footer">About CCS</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="/contact" data-evt-placement="footer">Contact CCS</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/about-ccs/press-office/"
+                                data-evt-placement="footer">Press Office</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/make-a-complaint"
+                                data-evt-placement="footer">Make a complaint</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/careers-with-ccs/"
+                                data-evt-placement="footer">Careers with CCS</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.gov.uk/government/organisations/crown-commercial-service"
+                                data-evt-placement="footer">Corporate Information</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/public-sector-equality-duty-psed/"
+                                data-evt-placement="footer">Public Sector Equality</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/about-ccs/vulnerability-disclosure-policy/"
+                                data-evt-placement="footer">Vulnerability disclosure policy</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/fraud-bribery-and-corruption-statement-2/"
+                                data-evt-placement="footer">Fraud, Bribery and Corruption Statement</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.gov.uk/government/publications/carbon-reduction-policy/carbon-reduction-policy"
+                                data-evt-placement="footer">Carbon Reduction Plan</a>
+
+
+                        </li>
+                        <li class="">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/crown-commercial-service-style-guide/"
+                                data-evt-placement="footer">Crown Commercial Service style guide</a>
+
+
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+            <hr class="govuk-footer__section-break govuk-footer__heading ">
+            <div class="govuk-footer__meta">
+                <div class="govuk-footer__section govuk-footer-width-45">
+
+
+                    <ul class="govuk-footer__inline-list govuk-!-display-none-print govuk-list govuk-!-font-size-18">
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link" href="/accessibility-statement"
+                                data-evt-placement="footer">Accessibility statement</a>
+
+
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/cookie-policy/"
+                                data-evt-placement="footer">Cookie policy</a>
+
+
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link" href="https://www.crowncommercial.gov.uk/cookie-settings/"
+                                data-evt-placement="footer">Cookie settings</a>
+
+
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.gov.uk/government/organisations/crown-commercial-service/about/modern-slavery-statement"
+                                data-evt-placement="footer">Modern slavery</a>
+
+
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice"
+                                data-evt-placement="footer">Privacy notice</a>
+
+
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+
+
+
+                            <a class="govuk-footer__link"
+                                href="https://www.crowncommercial.gov.uk/terms-and-conditions/"
+                                data-evt-placement="footer">Terms and conditions</a>
+
+
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="govuk-footer__section govuk-footer-logo-align-right govuk-footer-web-logo-view">
+                    <div class="govuk-footer__meta-item">
+                        <a class="govuk-footer__link govuk-footer__copyright-logo govuk-footer__copyright-display-block "
+                            href="/" alt="Go to Homepage" aria-label="Go to Homepage"></a>
+                        <a class="govuk-footer__link"
+                            href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©
+                            Crown copyright</a>
+                    </div>
+
+                    <ul class="list list--inline social-links">
+                        <li>
+                            <a href="https://x.com/gov_procurement" class="govuk-footer__link">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M26.37,26l-8.795,-12.822l0.015,0.012l7.93,-9.19h-2.65l-6.46,7.48l-5.13,-7.48h-6.95l8.211,11.971l-0.001,-0.001l-8.66,10.03h2.65l7.182,-8.322l5.708,8.322zM10.23,6l12.34,18h-2.1l-12.35,-18z" />
+                                    </svg>
+                                </span> <span class="visuallyhidden">Follow us on Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/government-procurement-service/"
+                                class="govuk-footer__link">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                    </svg>
+                                </span> <span class="visuallyhidden">Connect with us on LinkedIn</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="govuk-footer__section govuk-footer-logo-align-right govuk-footer-mobile-logo-view">
+                    <div class="govuk-footer__meta-item govuk-footer-logo-margin-left-10">
+                        <a href="/" class="logo footer-logo-margin-bottom-20"><img
+                                srcset="/assets/images/CCS_WHITE_UPDATED_AW.png"
+                                src="/assets/images/CCS_WHITE_UPDATED_AW.svg" alt="Go to the CCS homepage" width="140"
+                                height="117"></a>
+                    </div>
+
+                    <ul class="list list--inline social-links">
+                        <li>
+                            <a href="https://x.com/gov_procurement" class="govuk-footer__link">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M26.37,26l-8.795,-12.822l0.015,0.012l7.93,-9.19h-2.65l-6.46,7.48l-5.13,-7.48h-6.95l8.211,11.971l-0.001,-0.001l-8.66,10.03h2.65l7.182,-8.322l5.708,8.322zM10.23,6l12.34,18h-2.1l-12.35,-18z" />
+                                    </svg>
+                                </span> <span class="visuallyhidden">Follow us on Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/government-procurement-service/"
+                                class="govuk-footer__link">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                    </svg>
+                                </span> <span class="visuallyhidden">Connect with us on LinkedIn</span></a>
+                        </li>
+                    </ul>
+                    <a class="govuk-footer__link"
+                        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©Crown
+                        copyright</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <script src="/assets/scripts/pardot.js"></script>
+
+
+
+    <script src="/assets/scripts/libraries/jquery-3.6.0.min.js"></script>
+    <script src="/assets/scripts/libraries/objectFitPolyfill.min.js"></script>
+    <script src="/assets/scripts/app.js?v=2.4"></script>
+    <script type="text/javascript">
+        $('a[target^="_new-window"]').click(function () {
+            var width = window.innerWidth * 0.9;
+            var height = width * window.innerHeight / window.innerWidth;
+            window.open(this.href, 'popup', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2)); return false;
+        })
+    </script>
+
+
+    <!-- Pardot -->
+    <!-- @todo Wrap around Cookie Manager JS to ensure we have user consent before this is run -->
+    <script type="text/javascript">
+        piAId = '812463';
+        piCId = '';
+        piHostname = 'information.crowncommercial.gov.uk';
+
+        var cookiePreferences = JSON.parse(decodeURIComponent(readCookie('cookie_preferences')));
+        if (cookiePreferences !== null) {
+            if (cookiePreferences.marketing === true) {
+                (function () {
+                    function async_load() {
+                        var s = document.createElement('script'); s.type = 'text/javascript';
+                        s.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + piHostname + '/pd.js';
+                        var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+                    }
+                    if (window.attachEvent) { window.attachEvent('onload', async_load); }
+                    else { window.addEventListener('load', async_load, false); }
+                })();
+            }
+        }
+
+        // toggle mobile menu icon
+        var menuIcon = document.querySelector(".global-navigation__toggler");
+        var iconClosed = document.querySelector(".icon-menu-closed");
+        var iconOpen = document.querySelector(".icon-menu-open");
+
+        menuIcon.addEventListener("click", function () {
+            if (window.getComputedStyle(iconClosed, null).display == "inline") {
+                iconClosed.style.display = "none";
+                iconOpen.style.display = "inline";
+            }
+
+            else if (window.getComputedStyle(iconOpen, null).display == "inline") {
+                iconOpen.style.display = "none";
+                iconClosed.style.display = "inline";
+            }
+        });
+
+        var backToTopBtn = document.getElementById("BackToTopButton");
+        var skipLink = document.querySelector(".govuk-skip-link");
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            animateScrollToTop();
+        });
+
+        backToTopBtn.addEventListener('keypress', function (e) {
+            e.preventDefault();
+            if (e.key === 'Enter') {
+                animateScrollToTop();
+            }
+        });
+
+        function animateScrollToTop() {
+            $('html, body').animate({ scrollTop: 0 }, '300');
+            // reset focus on page
+            if (skipLink !== null) {
+                skipLink.focus();
+            }
+
+        }
+
+        function showOrHideBackToTop() {
+            var contactForm = document.querySelector("form");
+
+            if (window.scrollY + window.innerHeight > (document.querySelector('footer').getBoundingClientRect().top + window.pageYOffset)) {
+                backToTopBtn.classList.add("fixed");
+                backToTopBtn.classList.remove("flex");
+            } else {
+                backToTopBtn.classList.add("flex");
+                backToTopBtn.classList.remove("fixed");
+            }
+
+            if (window.scrollY > 200) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+
+            if (contactForm !== null) {
+                if (contactForm.getAttribute("data-evt-type") == "contact_form") {
+                    makeBackToTopFocusable();
+                }
+            }
+
+        }
+
+        // this is to fix an edge case where back to top is not focusable properly on contact page
+        function makeBackToTopFocusable() {
+            var links = document.querySelectorAll("main a");
+            var lastLink = links[links.length - 1];
+            var contactCard = document.querySelector("#submit");
+
+            lastLink.addEventListener("keydown", function (event) {
+                if (event.key === "Tab" && !event.shiftKey) {
+                    event.preventDefault();
+                    contactCard.scrollIntoView({ behaviour: "smooth", block: "start" });
+                    // set timeout in order for scrollIntoView to finish firing first
+                    setTimeout(function () {
+                        backToTopBtn.classList.add("show");
+                        backToTopBtn.style.position = "absolute";
+                        backToTopBtn.focus();
+                    }, 200)
+
+                }
+            })
+        }
+
+        window.onload = function () {
+            dataLayerSetup();
+            showOrHideBackToTop()
+
+            window.addEventListener("scroll", function (event) {
+                showOrHideBackToTop()
+            }, false);
+
+        };
+
+        // add download notification to links
+        var links = document.querySelectorAll("a");
+
+        links.forEach(link => {
+            var href = link.getAttribute("href");
+            var exts = [".doc", ".docx", ".xlsx", ".pptx", ".csv", ".odt", ".ods", ".zip"];
+            var target = link.getAttribute("target");
+            var span = document.createElement("span");
+
+            if (target === "_blank") {
+                span.innerText = "Opens in new window";
+                link.classList.add("download-info")
+                link.appendChild(span);
+            }
+
+            if (href != null) {
+                if (exts.some(ext => href.includes(ext))) {
+                    span.innerText = "This file will download";
+                    link.classList.add("download-info")
+                    link.appendChild(span);
+                }
+            }
+
+
+
+        })
+
+        // change colour of logo on focus for accessibility
+        var logo = document.querySelector(".logo");
+        var logoImg = document.querySelector(".navLogo");
+
+        logo.addEventListener("focus", function (event) {
+            logoImg.style.filter = "invert(100%)";
+        })
+
+        logo.addEventListener("focusout", function (event) {
+            logoImg.style.filter = "invert(0)";
+        })
+
+    </script>
+
+    <script type="module" src="/assets/scripts/all.js?v=2.3"></script>
+    <script type="module">
+        import { initAll } from '/assets/scripts/all.js'
+        window.addEventListener("DOMContentLoaded", function () {
+            initAll()
+        }, false);
+    </script>
+</body>
+
+</html>

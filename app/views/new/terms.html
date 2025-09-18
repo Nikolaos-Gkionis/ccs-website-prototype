@@ -1,0 +1,118 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+Terms and conditions – Crown Commercial Service
+{% endblock %}
+
+{% block header %}
+{% include "includes/header-mobile.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<body class="govuk-template__body pillar--none">
+    <div class="govuk-width-container">
+        <p></p>
+    </div>
+
+    <div class="govuk-breadcrumbs">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/new/index">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/new/new-ai">AI Search</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                Terms and conditions
+            </li>
+        </ol>
+    </div>
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-three-quarters">
+                <h1 class="govuk-heading-l" style="font-family: 'Source Sans Pro', sans-serif;">Terms and conditions
+                </h1>
+
+                <div class="govuk-body">
+                    <p>Welcome to Crown Commercial Service (CCS) intelligent search. This is an AI driven
+                        tool,
+                        built specifically for CCS customers. This is an early version of the tool, please
+                        agree
+                        to the following conditions:</p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>you agree only to use CCS intelligent search for official purposes related to
+                            your
+                            role within the UK public sector</li>
+                        <li>you agree not to use CCS intelligent search as an automated decision making
+                            tool,
+                            recognising the importance of retaining human owned decisions</li>
+                        <li>you agree to always carefully review the content of any outputs CCS intelligent
+                            search provides in order to identify and remove any potentially misleading or
+                            biassed information prior to using these outputs in your work</li>
+                        <li>you understand that you are responsible for the appropriate onward use of the
+                            outputs of CCS intelligent search</li>
+                        <li>you agree not to input any secret or top secret information into CCS intelligent
+                            search</li>
+                    </ul>
+
+                    <p>This application is monitored for security and operational purposes. However, data
+                        will
+                        be anonymised and will not be attributed back to you without your consent.</p>
+                </div>
+
+                <form method="post" action="/new/new-ai" novalidate>
+
+                    <div class="govuk-button-group">
+                        <button class="govuk-button" data-module="govuk-button" type="submit" id="continue-button">
+                            Continue
+                        </button>
+                    </div>
+                </form>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.querySelector('form');
+                        const checkbox = document.getElementById('terms-agreement');
+                        const errorDiv = document.getElementById('terms-error');
+                        const errorGroup = document.getElementById('terms-error-group');
+
+                        form.addEventListener('submit', function (e) {
+                            if (!checkbox.checked) {
+                                e.preventDefault();
+
+                                // Show error message
+                                errorDiv.style.display = 'block';
+                                errorGroup.classList.add('govuk-form-group--error');
+
+                                // Focus on checkbox for accessibility
+                                checkbox.focus();
+
+                                return false;
+                            }
+
+                            // Hide error if checkbox is checked
+                            errorDiv.style.display = 'none';
+                            errorGroup.classList.remove('govuk-form-group--error');
+                        });
+
+                        // Hide error when checkbox is checked
+                        checkbox.addEventListener('change', function () {
+                            if (this.checked) {
+                                errorDiv.style.display = 'none';
+                                errorGroup.classList.remove('govuk-form-group--error');
+                            }
+                        });
+                    });
+                </script>
+
+            </div>
+        </div>
+    </main>
+
+    {% endblock %}
+    {% block footer %}
+    {% include "includes/footer.njk" %}
+    {% endblock %}

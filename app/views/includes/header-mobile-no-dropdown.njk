@@ -1,0 +1,399 @@
+{% block header %}
+
+<header class="header-global news-header" style="background: #699AFF;">
+    <div class="govuk-width-container" style="margin-bottom: 0px;">
+        <!-- Top section with logo, search, and account -->
+        <div class="header-top-section"
+            style="display: flex; align-items: start; justify-content: space-between; padding:0;">
+            <!-- Logo on the left -->
+            <div class="header-logo">
+                <a href="/" class="logo-small">
+                    <img src="{{ asset_path }}images/CCS_black_linear.png" alt="Go to the CCS homepage"
+                        class="logo-desktop"
+                        onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';"
+                        style="max-height: 40px; width: auto;">
+                    <img src="{{ asset_path }}images/CCS_BLACK_SML_AW.png" alt="Go to the CCS homepage"
+                        class="logo-mobile"
+                        onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';"
+                        style="max-height: 60px; width: auto;">
+                </a>
+            </div>
+
+            <!-- Search bar in the center 
+            <div class="header-search-container" style="flex: 1; max-width: 300px; margin: 0 20px;">
+                <form class="header-search-form" action="/search" method="GET" style="position: relative;">
+                    <div class="search-input-wrapper" style="position: relative;">
+                        <input type="text" name="q" placeholder="Search" class="header-search-input"
+                            style="width: 100%; padding: 10px 12px 10px 12px; border: none; border-radius: 4px; font-size: 16px; background: white;">
+                        <button type="submit" class="header-search-button"
+                            style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 4px;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.7422 10.3439C12.5329 9.2673 13 7.9385 13 6.5C13 2.91015 10.0899 0 6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C7.93858 13 9.26739 12.5329 10.3439 11.7422L14.2929 15.6914C14.6834 16.0819 15.3166 16.0819 15.7071 15.6914C16.0976 15.3009 16.0976 14.6677 15.7071 14.2772L11.7422 10.3439ZM6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 8.98528 8.98528 11 6.5 11Z"
+                                    fill="#333" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Menu toggle button for mobile -->
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-navigation"
+                style="display: none; background: white; border: none; border-radius: 4px; cursor: pointer; padding: 8px 12px; color: #000; font-weight: 600; font-size: 14px;">
+                <span class="menu-text">Menu</span>
+                <span class="chevron-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6L8 10L12 6" stroke="#000" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <!-- Navigation bar -->
+        <nav class="global-navigation" id="mobile-navigation"
+            style="width: 100%; margin-top: 5px; padding-bottom: 10px;">
+            <ul class="nav-list nav-list--primary"
+                style="padding: 0; margin: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 20px;">
+                <!-- 1. Search -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/search-access" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Search & Access
+                    </a>
+                </li>
+                <!-- 2. Procurement -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/procurement-activity" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Procurement Activity
+                    </a>
+                </li>
+                <!-- 3. Corporate -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/corporate-governance" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Corporate & Governance
+                    </a>
+                </li>
+                <!-- 4. News -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/news-updates" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        News & Updates
+                    </a>
+                </li>
+                <!-- 5. Support -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/support-guidance" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Support & Guidance
+                    </a>
+                </li>
+                <!-- 6. About -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/about-ccs" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        About CCS
+                    </a>
+                </li>
+                <!-- 7. Login -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/login-tools" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Login & Tools
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+    /* Mobile-first responsive design */
+
+    /* Default styles for mobile (up to 768px) */
+    .header-top-section {
+        position: relative;
+        padding: 10px 0;
+    }
+
+    .header-search-container {
+        display: none;
+        /* Hide search on mobile by default */
+    }
+
+    .mobile-menu-toggle {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        z-index: 1000;
+        transition: all 0.2s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+        background: #5a8aee !important;
+    }
+
+    .global-navigation {
+        display: none;
+        /* Hide navigation by default on mobile */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #699AFF !important;
+        /* Force blue background */
+        z-index: 999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .global-navigation.is-active {
+        display: block;
+    }
+
+    /* Override the red background from application.scss */
+    .global-navigation .nav-list--primary {
+        background: #699AFF !important;
+        /* Force blue background */
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+    }
+
+    .nav-list--primary {
+        flex-direction: column !important;
+        gap: 0 !important;
+        padding: 20px !important;
+        background: #699AFF !important;
+        /* Force blue background */
+    }
+
+    .nav-list__item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        background: #699AFF !important;
+        /* Force blue background */
+    }
+
+    .nav-list__item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        padding: 15px 0 !important;
+        font-size: 18px !important;
+        border-bottom: none !important;
+        color: #000 !important;
+        /* Ensure black text */
+    }
+
+    /* Tablet styles (768px and up) */
+    @media (min-width: 768px) {
+        .header-search-container {
+            display: block;
+            flex: 1;
+            max-width: 300px;
+            margin: 0 20px;
+        }
+
+        .mobile-menu-toggle {
+            display: none !important;
+        }
+
+        .global-navigation {
+            display: block !important;
+            position: static;
+            background: #699AFF !important;
+            /* Force blue background */
+            box-shadow: none;
+            border-top: none;
+        }
+
+        .nav-list--primary {
+            flex-direction: row !important;
+            gap: 20px !important;
+            padding: 0 !important;
+            background: #699AFF !important;
+            /* Force blue background */
+        }
+
+        .nav-list__item {
+            border-bottom: none;
+            background: #699AFF !important;
+            /* Force blue background */
+        }
+
+        .nav-link {
+            padding: 8px 0 !important;
+            font-size: 16px !important;
+            color: #000 !important;
+            /* Ensure black text */
+        }
+    }
+
+    /* Desktop styles (1024px and up) */
+    @media (min-width: 1024px) {
+        .header-top-section {
+            padding: 15px 0;
+        }
+
+        .header-search-container {
+            max-width: 400px;
+        }
+    }
+
+    /* Hover effect for navigation links */
+    .nav-list--primary .nav-link:hover {
+        text-decoration: none !important;
+    }
+
+    /* Menu toggle button styles */
+    .mobile-menu-toggle {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .mobile-menu-toggle .chevron-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .chevron-icon {
+        transform: rotate(180deg);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .menu-text {
+        display: inline;
+    }
+
+    /* Ensure menu button stays white in all states */
+    .mobile-menu-toggle,
+    .mobile-menu-toggle:hover,
+    .mobile-menu-toggle:focus,
+    .mobile-menu-toggle[aria-expanded="true"] {
+        background: white !important;
+        border: none !important;
+    }
+
+    /* Logo responsive behavior */
+    .logo-mobile {
+        display: none;
+        /* Hide mobile logo by default */
+    }
+
+    .logo-desktop {
+        display: block;
+        /* Show desktop logo by default */
+    }
+
+    /* Mobile styles - show mobile logo, hide desktop logo */
+    @media (max-width: 768px) {
+        .logo-mobile {
+            display: block;
+        }
+
+        .logo-desktop {
+            display: none;
+        }
+
+        /* Move logo to the left on mobile */
+        .header-top-section {
+            justify-content: flex-start !important;
+            align-items: start;
+            min-height: 60px;
+            padding: 10px 0;
+        }
+
+        .header-logo {
+            margin: 0;
+            padding-left: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Ensure menu button stays on the right */
+        .mobile-menu-toggle {
+            margin-left: auto;
+        }
+
+        /* Darker blue wrapper for menu with padding */
+        .global-navigation {
+            background: #5a8aee !important;
+            /* Darker blue */
+            padding: 10px !important;
+            margin: 0 !important;
+        }
+
+        /* Ensure navigation items don't start at edge */
+        .nav-list--primary {
+            margin: 0 !important;
+            padding: 10px 15px !important;
+        }
+    }
+
+    /* Additional overrides to ensure blue background */
+    .header-global.news-header .global-navigation,
+    .header-global.news-header .global-navigation .nav-list--primary,
+    .header-global.news-header .nav-list--primary {
+        background: #699AFF !important;
+    }
+
+    .header-global.news-header .nav-list__item {
+        background: #699AFF !important;
+    }
+
+    .header-global.news-header .nav-link {
+        color: #000 !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle functionality
+        var mobileToggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.querySelector('.global-navigation');
+
+        if (mobileToggle && nav) {
+            mobileToggle.addEventListener('click', function () {
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                // Toggle the expanded state
+                this.setAttribute('aria-expanded', !isExpanded);
+
+                // Toggle the navigation visibility
+                nav.classList.toggle('is-active');
+
+                // Prevent body scroll when menu is open on mobile
+                if (!isExpanded) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!mobileToggle.contains(event.target) && !nav.contains(event.target)) {
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.remove('is-active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when window is resized to desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) {
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.remove('is-active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+</script>
+
+{% endblock %}

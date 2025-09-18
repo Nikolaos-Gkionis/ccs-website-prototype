@@ -1,0 +1,175 @@
+{% block header %}
+
+<header class="header-global news-header" style="background: #7fa6e6;">
+    <div class="govuk-width-container">
+        <div class="nav-wrapper">
+            <!-- Logo on the left -->
+            <a href="/" class="logo-small">
+                <img src="{{ asset_path }}images/CCS_BLACK_SML_AW.png" alt="Go to the CCS homepage"
+                    onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';">
+            </a>
+            <!-- Navigation bar to the right -->
+            <nav class="global-navigation" id="mobile-navigation">
+                <ul class="nav-list nav-list--primary" style="padding-top: 15px;">
+                    <!-- 1. Search -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Search &
+                            Access</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="/ccs-home-beta/search-agreements">Search Agreements</a></li>
+                                <li><a href="/suppliers">Search Suppliers</a></li>
+                                <li><a href="/agreements/upcoming">Upcoming Agreements</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 2. Procurement -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Procurement
+                            Activity</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/information-for-buyers">Information for
+                                        Buyers</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/information-for-suppliers">Information
+                                        for Suppliers</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/supplier-guidance">Supplier Guidance</a>
+                                </li>
+                                <li><a href="/products-and-services">Products and Services</a></li>
+                                <li><a href="/sectors">Sectors</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 3. Corporate -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corporate &
+                            Governance</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/corporate-information">Corporate
+                                        Information</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/transforming-public-procurement">Transforming
+                                        Public Procurement</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/style-guide">Style Guide</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/bribery-and-corruption">Bribery and
+                                        Corruption</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/carbon-reduction-plan">Carbon Reduction
+                                        Plan</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/public-sector-equality">Public Sector
+                                        Equality</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/vulnerability-disclosure">Vulnerability
+                                        Disclosure</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/social-value">Social Value</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 4. News -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">News &
+                            Updates</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/news">News</a></li>
+                                <li><a href="/ccs-home/events-search">Events</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/press-office">Press Office</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/newsletter-signup">Newsletter Signup</a>
+                                </li>
+                                <li><a href="https://www.crowncommercial.gov.uk/digital-brochure">Digital Brochure</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 5. Support -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Support &
+                            Guidance</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/support-for-buyers-and-suppliers">Support
+                                        for Buyers and Suppliers</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/glossary">Glossary</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/submit-mi-returns">Submit MI Returns</a>
+                                </li>
+                                <li><a href="https://www.crowncommercial.gov.uk/how-to-buy">How to Buy</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/contact">Contact CCS</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/make-a-complaint">Make a Complaint</a>
+                                </li>
+                                <li><a href="https://www.crowncommercial.gov.uk/how-to-supply">How to Supply</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/info-for-buyers-and-suppliers">Info for
+                                        Buyers and Suppliers</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 6. About -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">About CCS</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/about-ccs">About CCS</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/careers">Careers</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 7. Login -->
+                    <li class="nav-list__item has-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Login & Tools</a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="https://www.crowncommercial.gov.uk/register-for-esourcing">Register for
+                                        eSourcing</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/register-for-emarketplace">Register for
+                                        eMarketplace</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/sign-in-to-esourcing">Sign in to
+                                        eSourcing</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/sign-in-to-purchasing-platform">Sign in
+                                        to Purchasing Platform</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/sign-in-to-fleet-portal">Sign in to
+                                        Fleet Portal</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/sign-in-to-digital-marketplace">Sign in
+                                        to Digital Marketplace</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/sign-in-to-emarketplace">Sign in to
+                                        eMarketplace</a></li>
+                                <li><a href="https://www.crowncommercial.gov.uk/esourcing-training">eSourcing
+                                        Training</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- (Optional) Menu toggle button for mobile, can be last -->
+            <button class="global-navigation__toggler" data-toggler="nav" aria-expanded="false"
+                aria-controls="mobile-navigation">
+                <span>Menu</span>
+                <span class="icon-menu-closed"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                        viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14.9561 3.59459L13.3615 2L7.47022 7.89124L1.59508 2.01609L0.000483532 3.61069L7.47187 11.0821L9.06646 9.48748L9.06482 9.48583L14.9561 3.59459Z"
+                            fill="#9B1A47" />
+                    </svg></span>
+                <span class="icon-menu-open"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                        viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.0439452 8.40541L1.63854 10L7.52978 4.10876L13.4049 9.98391L14.9995 8.38931L7.52813 0.917931L5.93354 2.51252L5.93518 2.51417L0.0439452 8.40541Z"
+                            fill="#9B1A47" />
+                    </svg></span>
+        </div>
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggler = document.querySelector('.global-navigation__toggler');
+        if (toggler) {
+            toggler.addEventListener('click', function () {
+                var nav = document.querySelector('.global-navigation');
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                this.setAttribute('aria-expanded', !isExpanded);
+                if (nav) nav.classList.toggle('is-active');
+            });
+        }
+    });
+</script>
+
+{% endblock %}

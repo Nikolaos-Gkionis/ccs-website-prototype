@@ -1,0 +1,53 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<header class="header-global news-header" style="background: #8FB3FF;">
+    <div class="govuk-width-container">
+        <div class="nav-wrapper">
+            <a href="/" style="max-height: 120px; width: auto;">
+                <img src="{{ asset_path }}images/CCS_BLACK_SML_AW.png" alt="Go to the CCS homepage"
+                    onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';"
+                    style="max-height: 120px; width: auto;">
+            </a>
+            <div class="navs-container govuk-!-margin-top-2 govuk-!-margin-left-9">
+                <nav class="main-navigation">
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/info">Information for buyers and suppliers</a></li>
+                        <li><a href="/social-value">Social value</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="tel:03454102222">call us: 0345 410 2222</a></li>
+                    </ul>
+                </nav>
+                <nav class="secondary-navigation">
+                    <ul>
+                        <li><a href="/ccs-home-beta/search-agreements"><strong>Search agreements</strong></a></li>
+                        <li><a href="/suppliers"><strong>Search suppliers</strong></a></li>
+                        <li><a href="/agreements/upcoming"><strong>Upcoming agreements</strong></a></li>
+                        <li><a href="/products-and-services"><strong>Products and services</strong></a></li>
+                        <li><a href="/sectors"><strong>Sectors</strong></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/hero-beta.njk" %}
+
+{% include "includes/main.njk" %}
+
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.njk" %}
+{% endblock %}

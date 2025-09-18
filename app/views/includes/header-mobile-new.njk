@@ -1,0 +1,467 @@
+{% block header %}
+
+<header class="header-global news-header" style="background: #8FB3FF;">
+    <div class="govuk-width-container" style="margin-bottom: -2px;">
+        <!-- Top section with logo and navigation -->
+        <div class="header-top-section"
+            style="display: flex; align-items: center; justify-content: flex-start; padding: 12px 0;">
+            <!-- Logo on the left -->
+            <div class="header-logo" style="margin-right: 40px !important;">
+                <a href="/" class="logo-link">
+                    <!-- Desktop logo (linear) -->
+                    <img src="{{ asset_path }}images/CCS_black_linear.png" alt="Go to the CCS homepage"
+                        class="logo-desktop"
+                        onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';">
+                    <!-- Mobile logo (stacked) -->
+                    <img src="{{ asset_path }}images/CCS_BLACK_SML_AW.png" alt="Go to the CCS homepage"
+                        class="logo-mobile"
+                        onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';">
+                </a>
+            </div>
+
+            <!-- Navigation on the right -->
+            <nav class="global-navigation" id="mobile-navigation" style="flex: 0 0 auto; margin-left: 25px;">
+                <ul class="nav-list nav-list--primary"
+                    style="padding: 0; margin: 0; list-style: none; display: flex; flex-wrap: nowrap; gap: 4px; justify-content: flex-start;">
+                    <!-- 1. Products and suppliers -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="products-suppliers" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            Products and suppliers
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <li style="margin: 4px 0;"><a href="/ccs-home-beta/search-agreements"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Search agreements</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/agreements/upcoming"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Search upcoming agreements</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/suppliers"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Search suppliers</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/products-and-services"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Products and services</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/sectors"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sectors</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 2. For buyers and suppliers -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="for-buyers" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            For buyers and suppliers
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <!-- For buyers section -->
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/how-to-buy"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">How to buy</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/procurement-essentials"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Procurement Essentials
+                                        articles</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/assisted-procurement"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Assisted procurement service</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/social-value"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">What is social value</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/newsletter"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Subscribe to newsletter</a></li>
+                                <!-- For suppliers section -->
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/how-to-supply"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">How to supply</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/supplier-specifics"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Supplier Specifics articles</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/find-tender-opportunities"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Find tender opportunities</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/carbon-reduction-plan"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Create a carbon reduction plan</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/mi-returns"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Submit MI returns</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 3. About -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="about" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            About
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <li style="margin: 4px 0;"><a href="/about-ccs"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">About CCS</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/transforming-public-procurement"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Transforming Public
+                                        Procurement</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Gov.uk</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/careers"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Careers at CCS</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 4. News -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="news" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            News
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <li style="margin: 4px 0;"><a href="/news"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">News and guides</a></li>
+                                <li style="margin: 4px 0;"><a href="/ccs-home/events-search"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Events</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/digital-brochure"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Digital brochure</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/contact-press-office"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Contact press office</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 5. Help and support -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="help-support" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            Help and support
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <li style="margin: 4px 0;"><a href="/help-support"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Contact CCS</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/glossary"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Glossary</a></li>
+                                <li style="margin: 4px 0;"><a href="/for-buyers"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Information for buyers and
+                                        suppliers</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.crowncommercial.gov.uk/complaints"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Make a complaint</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- 6. Digital platforms -->
+                    <li class="nav-list__item has-dropdown" style="position: relative;">
+                        <a href="digital-platforms" class="nav-link"
+                            style="display: block; padding: 4px 2px; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; line-height: 1.2; white-space: nowrap;">
+                            Digital platforms
+                        </a>
+                        <div class="dropdown-menu"
+                            style="display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                            <ul style="list-style: none; padding: 6px; margin: 0;">
+                                <li style="margin: 4px 0;"><a href="https://www.find-tender.service.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Contracts finder</a></li>
+                                <li style="margin: 4px 0;"><a href="https://www.find-tender.service.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Find a tender</a></li>
+                                <li style="margin: 4px 0;"><a href="https://identify.crowncommercial.gov.uk/"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sign in to Purchasing Platform</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a href="https://www.digitalmarketplace.service.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sign in to Digital Marketplace</a>
+                                </li>
+                                <li style="margin: 4px 0;"><a href="https://fleet.crowncommercial.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sign in to fleet portal</a></li>
+                                <li style="margin: 4px 0;"><a href="https://emarketplace.crowncommercial.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sign in to eMarketplace</a></li>
+                                <li style="margin: 4px 0;"><a href="https://esourcing.crowncommercial.gov.uk"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">Sign in to eSourcing</a></li>
+                                <li style="margin: 4px 0;"><a
+                                        href="https://www.crowncommercial.gov.uk/esourcing-training"
+                                        style="font-size: 16px; color: #000; text-decoration: none; line-height: 1.3;"
+                                        onmouseover="this.style.textDecoration='underline'"
+                                        onmouseout="this.style.textDecoration='none'">eSourcing training</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Menu toggle button positioned at the top right -->
+            <button class="global-navigation__toggler" data-toggler="nav" aria-expanded="false"
+                aria-controls="mobile-navigation"
+                style="position: absolute; top: 3px; right: 15px; background: none; border: none; cursor: pointer; padding: 8px;">
+                <span style="font-size: 16px; font-weight: 600; color: #000;">Menu</span>
+                <span class="icon-menu-closed"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                        viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14.9561 3.59459L13.3615 2L7.47022 7.89124L1.59508 2.01609L0.000483532 3.61069L7.47187 11.0821L9.06646 9.48748L9.06482 9.48583L14.9561 3.59459Z"
+                            fill="#000" />
+                    </svg></span>
+                <span class="icon-menu-open"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                        viewBox="0 0 15 12" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.0439452 8.40541L1.63854 10L7.52978 4.10876L13.4049 9.98391L14.9995 8.38931L7.52813 0.917931L5.93354 2.51252L5.93518 2.51417L0.0439452 8.40541Z"
+                            fill="#000" />
+                    </svg></span>
+            </button>
+        </div>
+</header>
+
+<style>
+    /* Logo responsive styles */
+    .logo-link {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .logo-desktop {
+        display: block;
+        max-height: 35px;
+        width: auto;
+        margin: 12px 0 12px -10px;
+    }
+
+    .logo-mobile {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .header-logo {
+            flex: 0 0 auto;
+            margin-right: 10px;
+            margin-left: -5px;
+        }
+
+        .logo-desktop {
+            display: block;
+            max-height: 35px;
+            width: auto;
+            margin: 8px 0 8px -5px;
+        }
+
+        .logo-mobile {
+            display: none;
+        }
+
+        .header-top-section {
+            justify-content: flex-start !important;
+        }
+
+        .global-navigation {
+            margin-left: 20px !important;
+        }
+    }
+
+    /* Mobile navigation styles */
+    @media (max-width: 768px) {
+
+        /* Hide the navigation menu by default on mobile */
+        .global-navigation {
+            display: none;
+        }
+
+        /* Show the navigation menu when the toggle button is clicked */
+        .global-navigation.is-active {
+            display: block;
+            background-color: #8FB3FF !important;
+            /* Override burgundy with blue */
+        }
+
+        /* Change the navigation layout for mobile */
+        .nav-list--primary {
+            flex-direction: column !important;
+            gap: 0 !important;
+        }
+
+        .nav-list__item {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 0;
+        }
+
+        .nav-link {
+            padding: 8px 0 !important;
+            font-size: 16px !important;
+        }
+
+        /* Hide dropdowns on mobile devices */
+        .dropdown-menu {
+            display: none !important;
+        }
+
+        /* Remove hover effects on mobile */
+        .nav-list__item.has-dropdown:hover .dropdown-menu {
+            display: none !important;
+        }
+
+        /* Style the menu toggle button */
+        .global-navigation__toggler {
+            display: block !important;
+        }
+
+        /* Hide menu icons by default, show when menu is open */
+        .icon-menu-open {
+            display: none;
+        }
+
+        .icon-menu-closed {
+            display: inline-block;
+        }
+
+        /* When menu is active, show the open icon */
+        .global-navigation__toggler[aria-expanded="true"] .icon-menu-open {
+            display: inline-block;
+        }
+
+        .global-navigation__toggler[aria-expanded="true"] .icon-menu-closed {
+            display: none;
+        }
+    }
+
+    /* Desktop styles - show navigation and hide toggle button */
+    @media (min-width: 769px) {
+        .global-navigation {
+            display: block !important;
+            min-width: 0;
+            /* Allow flex shrinking */
+        }
+
+        .global-navigation__toggler {
+            display: none !important;
+        }
+
+        .nav-list--primary {
+            overflow: visible;
+            /* Ensure all items are visible */
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Menu toggle functionality
+        var toggler = document.querySelector('.global-navigation__toggler');
+        var nav = document.querySelector('.global-navigation');
+
+        if (toggler && nav) {
+            toggler.addEventListener('click', function () {
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                // Toggle the expanded state
+                this.setAttribute('aria-expanded', !isExpanded);
+
+                // Toggle the navigation visibility
+                nav.classList.toggle('is-active');
+
+                // Update button text
+                var buttonText = this.querySelector('span');
+                if (buttonText) {
+                    buttonText.textContent = isExpanded ? 'Menu' : 'Close';
+                }
+            });
+        }
+
+        // Hover-based dropdown functionality - only on desktop
+        var dropdownItems = document.querySelectorAll('.nav-list__item.has-dropdown');
+        dropdownItems.forEach(function (item) {
+            var dropdown = item.querySelector('.dropdown-menu');
+            var navLink = item.querySelector('.nav-link');
+
+            // Show dropdown on mouse enter (desktop only)
+            item.addEventListener('mouseenter', function () {
+                // Only show dropdowns on desktop (screen width > 768px)
+                if (window.innerWidth > 768 && dropdown) {
+                    dropdown.style.display = 'block';
+                }
+                if (navLink) {
+                    navLink.style.textDecoration = 'underline';
+                }
+            });
+
+            // Hide dropdown on mouse leave (desktop only)
+            item.addEventListener('mouseleave', function () {
+                // Only hide dropdowns on desktop (screen width > 768px)
+                if (window.innerWidth > 768 && dropdown) {
+                    dropdown.style.display = 'none';
+                }
+                if (navLink) {
+                    navLink.style.textDecoration = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

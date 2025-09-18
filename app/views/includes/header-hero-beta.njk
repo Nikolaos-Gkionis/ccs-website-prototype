@@ -64,6 +64,9 @@
 
                 <ul class="nav-list nav-list--primary">
                     <li class="nav-list__item">
+                        <a class="nav-list__link  " href="/new/new-ai" data-evt-placement="header">AI search</a>
+                    </li>
+                    <li class="nav-list__item">
                         <a class="nav-list__link  " href="/ccs-home-beta/search-agreements"
                             data-evt-placement="header">Search agreements</a>
                     </li>
@@ -108,11 +111,25 @@
 
     <!-- Hero -->
     {% block hero %}
-    <div class="govuk-widthless-container">
+    <div class="govuk-widthless-container" style="margin-bottom: 0;">
         {% include "includes/hero-beta.njk" %}
     </div>
     {% endblock %}
 
+
+    <!-- Feedback
+    <div id="feedback-container" class="govuk-!-padding-4 govuk-!-margin-top-6"
+        style="background-color: #6A99FF; color: #ffffff; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw;">
+        <div id="feedback-content" style="display: flex; align-items: center; gap: 20px;">
+            <h2 class="aside__heading govuk-!-margin-bottom-0 govuk-!-margin-left-9">Help us make this service better
+                for you
+            </h2>
+            <p class="govuk-!-margin-bottom-0" style="color: #ffffff;"><a class="govuk-link"
+                    style="color: #ffffff; font-weight: 600;" href="/survey">Give feedback on how we can improve this
+                    service.</a>.</p>
+        </div>
+    </div>
+-->
 
 </header>
 

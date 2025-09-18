@@ -14,3 +14,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }
 </style>
 {% endblock %}
+
+{% block body %}
+{{ super() }}
+<script src="/node_modules/govuk-frontend/govuk/all.js"></script>
+<script>
+    window.GOVUKFrontend.initAll();
+</script>
+{% endblock %}

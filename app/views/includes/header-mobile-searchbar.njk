@@ -1,0 +1,159 @@
+{% block header %}
+
+<header class="header-global news-header" style="background: #699AFF;">
+    <div class="govuk-width-container" style="margin-bottom: 0px;">
+        <!-- Top section with logo, search, and account -->
+        <div class="header-top-section"
+            style="display: flex; align-items: center; justify-content: space-between; padding:0;">
+            <!-- Logo on the left -->
+            <div class="header-logo">
+                <a href="/" class="logo-small">
+                    <img src="{{ asset_path }}images/CCS_black_linear.png" alt="Go to the CCS homepage"
+                        onerror="this.onerror=null; this.src='{{ asset_path }}images/fallback-logo.png';"
+                        style="max-height: 40px; width: auto;">
+                </a>
+            </div>
+
+            <!-- Search bar in the center -->
+            <div class="header-search-container" style="flex: 1; max-width: 300px; margin-left: 600px;">
+                <form class="header-search-form" action="/search" method="GET" style="position: relative;">
+                    <div class="search-input-wrapper" style="position: relative;">
+                        <input type="text" name="q" placeholder="Search" class="header-search-input"
+                            style="width: 100%; padding: 10px 12px 10px 12px; border: none; border-radius: 4px; font-size: 16px; background: white;">
+                        <button type="submit" class="header-search-button"
+                            style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 4px;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.7422 10.3439C12.5329 9.2673 13 7.9385 13 6.5C13 2.91015 10.0899 0 6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C7.93858 13 9.26739 12.5329 10.3439 11.7422L14.2929 15.6914C14.6834 16.0819 15.3166 16.0819 15.7071 15.6914C16.0976 15.3009 16.0976 14.6677 15.7071 14.2772L11.7422 10.3439ZM6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 8.98528 8.98528 11 6.5 11Z"
+                                    fill="#333" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Account link on the right -->
+            <div class="header-account">
+                <a href="/account" class="header-account-link"
+                    style="display: flex; align-items: center; color: #000; text-decoration: none; font-weight: 600; font-size: 14px;">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-right: 6px;">
+                        <path
+                            d="M8 8C10.21 8 12 6.21 12 4C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4C4 6.21 5.79 8 8 8ZM8 10C5.33 10 0 11.34 0 14V16H16V14C16 11.34 10.67 10 8 10Z"
+                            fill="#000" />
+                    </svg>
+                    My account
+                </a>
+            </div>
+
+
+        </div>
+
+        <!-- Navigation bar -->
+        <nav class="global-navigation" id="mobile-navigation"
+            style="width: 100%; margin-top: 5px; padding-bottom: 10px;">
+            <ul class="nav-list nav-list--primary"
+                style="padding: 0; margin: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 20px;">
+                <!-- 1. Search -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/search-access" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Search & Access
+                    </a>
+                </li>
+                <!-- 2. Procurement -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/procurement-activity" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Procurement Activity
+                    </a>
+                </li>
+                <!-- 3. Corporate -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/corporate-governance" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Corporate & Governance
+                    </a>
+                </li>
+                <!-- 4. News -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/news-updates" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        News & Updates
+                    </a>
+                </li>
+                <!-- 5. Support -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/support-guidance" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Support & Guidance
+                    </a>
+                </li>
+                <!-- 6. About -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/about-ccs" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        About CCS
+                    </a>
+                </li>
+                <!-- 7. Login -->
+                <li class="nav-list__item" style="position: relative;">
+                    <a href="/login-tools" class="nav-link"
+                        style="display: block; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000; text-decoration: underline; line-height: 1.4; transition: text-decoration 0.2s ease;">
+                        Login & Tools
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Menu toggle button positioned at the top right -->
+        <button class="global-navigation__toggler" data-toggler="nav" aria-expanded="false"
+            aria-controls="mobile-navigation"
+            style="position: absolute; top: 15px; right: 15px; background: none; border: none; cursor: pointer; padding: 8px;">
+            <span style="font-size: 16px; font-weight: 600; color: #000;">Menu</span>
+            <span class="icon-menu-closed"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                    viewBox="0 0 15 12" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M14.9561 3.59459L13.3615 2L7.47022 7.89124L1.59508 2.01609L0.000483532 3.61069L7.47187 11.0821L9.06646 9.48748L9.06482 9.48583L14.9561 3.59459Z"
+                        fill="#9B1A47" />
+                </svg></span>
+            <span class="icon-menu-open"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="12"
+                    viewBox="0 0 15 12" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.0439452 8.40541L1.63854 10L7.52978 4.10876L13.4049 9.98391L14.9995 8.38931L7.52813 0.917931L5.93354 2.51252L5.93518 2.51417L0.0439452 8.40541Z"
+                        fill="#9B1A47" />
+                </svg></span>
+        </button>
+    </div>
+</header>
+
+<style>
+    /* Hover effect for navigation links */
+    .nav-list--primary .nav-link:hover {
+        text-decoration: none !important;
+    }
+
+    /* Focus color for search input - matches active card color */
+    .header-search-input:focus {
+        outline: 3px solid #FEC901 !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Menu toggle functionality
+        var toggler = document.querySelector('.global-navigation__toggler');
+        if (toggler) {
+            toggler.addEventListener('click', function () {
+                var nav = document.querySelector('.global-navigation');
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                this.setAttribute('aria-expanded', !isExpanded);
+                if (nav) nav.classList.toggle('is-active');
+            });
+        }
+    });
+</script>
+
+{% endblock %}

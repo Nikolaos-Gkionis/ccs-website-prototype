@@ -1,7 +1,7 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra /sass/styles here
 
@@ -353,4 +353,524 @@ $govuk-spacing-responsive-scale: (
 
 .govuk-body {
     font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+/* Layout the top-level menu horizontally */
+.nav-list--primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* space between menu items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #fff; /* CCS brand color */
+}
+
+/* Style top-level links */
+.nav-list__item > .dropdown-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Dropdown menu: align left edge with parent, prevent overflow */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 220px;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  z-index: 100;
+  padding: 0;
+  text-align: left;
+  max-width: 90vw;
+  box-sizing: border-box;
+}
+
+/* Dropdown title: bold, white on burgundy, no border-radius */
+.dropdown-title {
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0;
+  background: #fff;
+  padding: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+/* Dropdown links: white text on burgundy, no border-radius */
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
+  color: #fff !important;
+  background: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0;
+  display: block;
+  font-weight: normal;
+  transition: background 0.2s, text-decoration 0.2s;
+  padding: 8px;
+}
+
+/* Dropdown links: hover style - darker burgundy, underlined, no movement */
+.dropdown-menu a:hover {
+  background: #fff;
+  color: #fff;
+  text-decoration: underline;
+  border-radius: 0;
+  /* Remove any shifting or padding changes on hover */
+}
+
+/* Show dropdown on hover */
+.has-dropdown:hover > .dropdown-menu,
+.has-dropdown:focus-within > .dropdown-menu {
+  display: block;
+}
+
+/* Style dropdown links */
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu li {
+  margin-bottom: 0.5rem;
+}
+.dropdown-menu a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Ensure dropdowns are positioned relative to their parent */
+.nav-list__item.has-dropdown {
+  position: relative;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 800px) {
+  .nav-list--primary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start;
+  gap: 2rem; /* Optional: space between logo and nav */
+  position: relative;
+}
+
+/* Make sure the logo stays at its natural size */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem; /* Optional: space between logo and nav */
+  width: 100px; /* Smaller size for news page */
+  height: 100px;
+}
+
+.logo-small {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem; /* Optional: space between logo and nav */
+    width: 100px;
+    height: 100px;
+  }
+
+.logo-linear {
+  width: 20%;
+  height: 20%;
+}
+
+/* Let the nav take up remaining space and align to the top */
+.global-navigation {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Mobile Header Specific Overrides for Blue Theme */
+.header-global.news-header .nav-list--primary {
+  background: #8FB3FF !important; /* Blue background */
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 1rem !important; /* Reduced gap */
+}
+
+.header-global.news-header .nav-list__item > .dropdown-toggle {
+  color: #000 !important; /* White text */
+  font-size: 0.9rem !important; /* Smaller font */
+  padding: 0.5rem 0.25rem !important; /* Reduced padding */
+  white-space: nowrap !important;
+}
+
+.header-global.news-header .dropdown-menu {
+  background: #fff !important; /* Blue background */
+  padding: 0.25rem !important; /* Reduced padding */
+  margin: 0 !important;
+}
+
+.header-global.news-header .dropdown-menu a {
+  color: #000 !important; /* White text */
+  background: #fff !important; /* Blue background */
+  font-size: 0.85rem !important; /* Smaller font */
+  padding: 0.25rem 0.5rem !important; /* Reduced padding */
+}
+
+.header-global.news-header .dropdown-menu a:hover {
+  background: #B4CDFE !important; /* Slightly darker blue on hover */
+  color: #000 !important;
+}
+
+/* Last dropdown alignment - make it open inward
+.header-global.news-header .nav-list__item:last-child {
+  margin-left: auto !important; /* Push to the right
+}
+*/
+
+.header-global.news-header .nav-list__item:last-child .dropdown-menu {
+  right: 0 !important; /* Align dropdown to right edge */
+  left: auto !important; /* Override default left alignment */
+  text-align: left !important; /* Keep text left-aligned */
+}
+
+/* Override for mobile linear header - keep all items aligned naturally */
+.header-global.news-header .nav-wrapper[style*="flex-direction: column"] .nav-list__item:last-child {
+  margin-left: 0 !important; /* Don't push to the right */
+}
+
+.header-global.news-header .nav-wrapper[style*="flex-direction: column"] .nav-list__item:last-child .dropdown-menu {
+  right: auto !important; /* Don't align to right edge */
+  left: 0 !important; /* Keep left alignment */
+  text-align: left !important; /* Keep text left-aligned */
+}
+
+/* Logo spacing adjustments for mobile header */
+.header-global.news-header .logo-small {
+  width: 100px !important; /* Even bigger logo for mobile header */
+  height: 100px !important;
+  margin-right: 1rem !important; /* Reduced margin */
+}
+
+.header-global.news-header .nav-wrapper {
+  gap: 1rem !important; /* Reduced gap */
+  align-items: center !important; /* Center vertically */
+}
+
+.header-global.news-header .nav-list--primary {
+  padding-top: 0 !important; /* Remove top padding since we're centering */
+  align-items: center !important; /* Center the nav items vertically */
+}
+
+.ccs-header-search-bar {
+  background: #fff;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.ccs-header-search-form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ccs-header-search-label {
+  display: none; /* Hide label visually but keep for accessibility */
+}
+
+.ccs-header-search-input-wrapper {
+  display: flex;
+  align-items: left;
+  width: 100%;
+}
+
+.ccs-header-search-input {
+  flex: 1 1 auto;
+  font-size: 1rem; /* Smaller font */
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #222;
+  border-radius: 0;
+  height: 2.5rem; /* Shorter height */
+  border: 3px solid #000;
+}
+
+.ccs-header-search-button {
+  background: #fff;
+  border: none;
+  width: 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.ccs-header-search-button:hover,
+.ccs-header-search-button:focus {
+  background: #fff;
+}
+
+.ccs-header-search-button svg {
+  display: block;
+}
+
+// --- News Page Colour Overrides (High Specificity) ---
+
+.hero.news-header,
+.hero.news-header .govuk-width-container,
+.hero.news-header .ccs-hero-text-container,
+.hero.news-header .hero__caption {
+  background: #7fa6e6 !important; // Light blue
+  color: #222 !important;
+}
+
+.hero.news-header .govuk-heading-xl,
+.hero.news-header .hero__title {
+  color: #222 !important;
+}
+
+.news-subscribe-btn,
+a.govuk-button.news-subscribe-btn {
+  background: #b6e23a !important; // Bright green
+  color: #222 !important;
+  border: none !important;
+}
+
+.govuk-grid-column-one-quarter.news-filters,
+.news-filters {
+  background: #f5f8fc !important; // Very light blue/grey
+  border-radius: 8px;
+  padding: 16px 8px;
+}
+
+.govuk-accordion__section-header,
+.news-filter-section,
+.govuk-accordion__section {
+  background: #f5f8fc !important; // Very light blue/grey
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+}
+
+ul.news-pagination.list--inline.pagination.govuk-body,
+.news-pagination {
+  background: transparent !important;
+}
+
+.news-pagination .pagination__item.active,
+.news-pagination .pagination__item span,
+.news-pagination .pagination__item a {
+  color: #2a5db0 !important; // Blue for active page
+}
+
+footer,
+.news-footer,
+.govuk-footer {
+  background: #f5f5f5 !important; // Light grey
+  color: #222 !important;
+}
+
+.hero__picture {
+    display: block;
+    width: 600px;
+    height: 208px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #7fa6e6;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -48%;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1096.000000 362.000000' preserveAspectRatio='xMidYMid meet'%3E%3Cg transform='translate(0.000000,362.000000) scale(0.100000,-0.100000)' stroke='none'%3E%3Cpath d='M0 1810 l0 -1810 3403 1 c2858 1 3388 3 3312 14 -823 121 -1458 777 -1556 1610 -18 151 -6 411 25 561 145 691 659 1231 1341 1409 l90 23 -3307 1 -3308 1 0 -1810z' fill='%237fa6e6'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.header-global .main-navigation a,
+.header-global .secondary-navigation a {
+  color: #000 !important; /* !important ensures it overrides other styles */
+  text-decoration: none;
+}
+
+.header-global .main-navigation ul,
+.header-global .secondary-navigation ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.header-global .secondary-navigation ul {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.header-global .nav-wrapper {
+  display: flex;
+  flex-direction: row;      // logo and navs side by side
+  align-items: flex-start;  // align tops
+  gap: 2rem;                // space between logo and navs
+}
+
+.header-global .navs-container {
+  display: flex;
+  flex-direction: column;   // navs stacked vertically
+  justify-content: center;
+}
+
+.header-global .main-navigation {
+  margin-bottom: 0.5rem; /* adjust as needed */
+}
+
+/* New NHS-style header layout */
+.header-top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-search-container {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+.header-search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.header-search-input {
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  background: white;
+  outline: none;
+}
+
+.header-search-input:focus {
+  box-shadow: 0 0 0 2px #007194;
+}
+
+.header-search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-search-button:hover {
+  opacity: 0.7;
+}
+
+.header-account {
+  flex-shrink: 0;
+}
+
+.header-account-link {
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.header-account-link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.header-separator {
+  height: 1px;
+  background: white;
+  margin: 5px 0;
+  width: 100%;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .header-top-section {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .header-search-container {
+    margin: 10px 0;
+    max-width: none;
+  }
+
+  .header-account {
+    align-self: flex-end;
+  }
+
+  .global-navigation__toggler {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
 }
